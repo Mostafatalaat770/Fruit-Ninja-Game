@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="jfoenix">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Desktop/Programs/jfoenix.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../River Crossing Game(with Ahmed Swidan, Abdelrahman Zaghlol)/libs/jfoenix-8.0.8.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

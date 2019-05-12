@@ -4,38 +4,45 @@ import java.util.ArrayList;
 
 public interface GameActions {
     /**
-     *@return created game object
+     * @return created game object
      */
-    public GameObject createGameObject();
-/**
-* update moving objects locations
- */
-public void updateObjectsLocations();
+    GameObject createGameObject();
+
     /**
-    * it is used to slice fruits located in your swiping region
-    This method can take your swiping region as parameters (they
-    depend on how you calculate it).
-    */
-    public void sliceObjects();
-    /**
-     *saves the current state of the game
+     * update moving objects locations
      */
-    public void saveGame();
+    void updateObjectsLocations();
+
     /**
-     *loads the last saved state of the game
+     * it is used to slice fruits located in your swiping region
+     * This method can take your swiping region as parameters (they
+     * depend on how you calculate it).
      */
-    public void loadGame();
+    void sliceObjects();
+
     /**
-     *resets the game to its initial state
+     * saves the current state of the game
      */
-    public void ResetGame();
+    void saveGame();
+
+    /**
+     * loads the last saved state of the game
+     */
+    void loadGame();
+
+    /**
+     * resets the game to its initial state
+     */
+    void ResetGame();
+
     /**
      * returns any random throwable randomly
      */
-    public GameObject getRandomThrowable();
+    GameObject getRandomThrowable();
+
     /**
      * removes any out of screen throwable from the array list
      */
-    public void removeUnwantedThrowable(ArrayList<GameObject> throwables);
+    void removeUnwantedThrowable(ArrayList<GameObject> throwables);
 
 }

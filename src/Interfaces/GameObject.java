@@ -4,51 +4,62 @@ import javafx.scene.image.Image;
 
 public interface GameObject {
     /**
-     *@return the type of game object
+     * @return X location of game object
      */
-    public enum getObjectType{};
+    int getXlocation();
+
     /**
-     *@return X location of game object
+     * @return Y location of game object
      */
-    public int getXlocation();
+    int getYlocation();
+
     /**
-     *@return Y location of game object
+     * @return max Y location that the object can reach on the screen
      */
-    public int getYlocation();
+    int getMaxHeight();
+
     /**
-     *@return max Y location that the object can reach on the screen
+     * @return velocity at which game object is thrown
      */
-    public int getMaxHeight();
+    int getInitialVelocity();
+
     /**
-     *@return velocity at which game object is thrown
+     * @return failing velocity of game object
      */
-    public int getInitialVelocity();
+    int getFallingVelocity();
+
     /**
-     *@return failing velocity of game object
+     * @return whether the object is sliced or not
      */
-    public int getFallingVelocity();
+    Boolean isSliced();
+
     /**
-     *@return whether the object is sliced or not
+     * @return whether the object is dropped off the screen or not
      */
-    public Boolean isSliced();
+    Boolean hasMovedOffScreen();
+
     /**
-     *@return whether the object is dropped off the screen or not
+     * it is used to slice the object
      */
-    public Boolean hasMovedOffScreen();
+    void slice();
+
     /**
-     *it is used to slice the object
+     * it is used to move the object on the screen
+     *
+     * @param time: time elapsed since the object is thrown
+     *              it is used calculate the new position of
+     *              fruit object.
      */
-    public void slice();
+    void move(double time);
+
     /**
-    *it is used to move the object on the screen
-    @param time: time elapsed since the object is thrown
-    it is used calculate the new position of
-    fruit object.
-    */
-    public void move(double time);
+     * @return at least two images of the object, one when it is
+     * sliced and one when it is not.
+     */
+    Image[] getImages();
+
     /**
-    *@return at least two images of the object, one when it is
-    sliced and one when it is not.
-    */
-    public Image[] getImages();
+     * @return the type of game object
+     */
+    enum getObjectType {}
 }
