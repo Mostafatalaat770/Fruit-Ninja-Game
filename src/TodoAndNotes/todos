@@ -1,0 +1,14 @@
+boso b2a ya shbb here's what we are gonna do:
+in a nutshell i'll tell you how this game works
+there is a time iterator called animations that's like a while loop that refreshes every said time (1 sec for example)
+1-this iterator will call the getRandomThrowables and put them in the arrayList
+2- once they are in the array list then they will be drawn on the canvas and we will deal with the gui part insha'llah
+3- once the object leaves the screen it should be removed from the array list by searching in the list for objects with offscreen bool true and removing them
+
+Mosta & Islam: ive uploaded the interfaces start working on the controller and throwables
+
+swidan: finish the object's interface by completing the rendering methods and finish the canvas
+
+seif: download scene builder  jFeniox lib and start working on the main menu ( preferably use animations and imageView) be crative fash5
+
+zaghloul: download scene builder  jFeniox lib and start working on the settings ( preferably use animations and imageView) be crative fash5
