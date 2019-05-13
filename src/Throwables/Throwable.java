@@ -1,16 +1,18 @@
 package Throwables;
 
 import Interfaces.GameObject;
+import javafx.scene.canvas.GraphicsContext;
 
 /**
  * @author Mostafa Talaat
  */
 public abstract class Throwable implements GameObject {
-    private int x;
-    private int y;
+    private double x;
+    private double y;
     private int maxHeight;
     private int intialVelocity;
     private int fallingVelocity;
+    private boolean isfalling=false;
     private boolean sliced = false;
     private boolean movedOffScreen = false;
 
@@ -23,12 +25,12 @@ public abstract class Throwable implements GameObject {
     }
 
     @Override
-    public int getXlocation() {
+    public double getXlocation() {
         return x;
     }
 
     @Override
-    public int getYlocation() {
+    public double getYlocation() {
         return y;
     }
 
@@ -70,5 +72,14 @@ public abstract class Throwable implements GameObject {
     @Override
     public javafx.scene.image.Image[] getImages() {
         return new javafx.scene.image.Image[0];
+    }
+
+    @Override
+    public void render(GraphicsContext gc){
+        if(isSliced())
+        gc.drawImage(getImages()[1],x,y);
+        else
+            gc.drawImage(getImages()[0],x,y);
+
     }
 }

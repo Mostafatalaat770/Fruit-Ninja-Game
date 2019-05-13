@@ -1,17 +1,18 @@
 package Interfaces;
 
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public interface GameObject {
     /**
      * @return X location of game object
      */
-    int getXlocation();
+    double getXlocation();
 
     /**
      * @return Y location of game object
      */
-    int getYlocation();
+    double getYlocation();
 
     /**
      * @return max Y location that the object can reach on the screen
@@ -62,4 +63,8 @@ public interface GameObject {
      * @return the type of game object
      */
     enum getObjectType {}
+    /**
+     * used to render the image on the canvas
+     */
+    public void render(GraphicsContext gc);
 }
