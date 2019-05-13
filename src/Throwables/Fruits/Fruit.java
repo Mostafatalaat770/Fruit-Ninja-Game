@@ -13,4 +13,5 @@ public abstract class Fruit extends Throwables.Throwable {
     public void slice() {
         super.slice();
     }
+
 }
