@@ -1,5 +1,7 @@
 package Throwables.Fruits.SpecialFruits;
 
+import javafx.scene.image.Image;
+
 /**
  * @author Mostafa Talaat
  */
@@ -14,7 +16,7 @@ public class MagicBeans extends SpecialFruit {
     }
 
     @Override
-    public javafx.scene.image.Image[] getImages() {
+    public Image[] getImages() {
         return super.getImages();
     }
 }

@@ -1,5 +1,7 @@
 package Throwables.Bombs;
 
+import javafx.scene.image.Image;
+
 /**
  * @author Mostafa Talaat
  */
@@ -14,7 +16,7 @@ public class FatalBomb extends Bomb {
     }
 
     @Override
-    public javafx.scene.image.Image[] getImages() {
+    public Image[] getImages() {
         return super.getImages();
     }
 }

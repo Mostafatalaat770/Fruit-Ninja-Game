@@ -2,6 +2,7 @@ package Throwables;
 
 import Interfaces.GameObject;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 /**
  * @author Mostafa Talaat
@@ -72,14 +73,5 @@ public abstract class Throwable implements GameObject {
     @Override
     public javafx.scene.image.Image[] getImages() {
         return new javafx.scene.image.Image[0];
-    }
-
-    @Override
-    public void render(GraphicsContext gc){
-        if(isSliced())
-        gc.drawImage(getImages()[1],x,y);
-        else
-            gc.drawImage(getImages()[0],x,y);
-
     }
 }
