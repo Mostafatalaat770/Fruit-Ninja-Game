@@ -17,7 +17,7 @@ public interface GameObject {
     /**
      * @return max Y location that the object can reach on the screen
      */
-    int getMaxHeight();
+    double getMaxHeight();
 
     /**
      * @return velocity at which game object is thrown
@@ -81,4 +81,12 @@ public interface GameObject {
      * updates the movment of any fruit
      */
     void updatePosition();
+
+    void setX(double x);
+
+     void setY(double y);
+
+     void setMaxHeight(double maxHeight);
+
+     void setInitialVelocity(int initialVelocity) ;
 }

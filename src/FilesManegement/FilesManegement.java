@@ -60,7 +60,7 @@ public class FilesManegement {
             child = new Element("Y");
             child.setText(Double.toString(throwable.getYlocation()));
             child = new Element("maxHeight");
-            child.setText(Integer.toString(throwable.getMaxHeight()));
+            child.setText(Double.toString(throwable.getMaxHeight()));
             child = new Element("initialVelocity");
             child.setText(Integer.toString(throwable.getInitialVelocity()));
             child = new Element("fal");

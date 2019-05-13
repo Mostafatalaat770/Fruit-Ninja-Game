@@ -19,7 +19,12 @@ public class Controller implements GameActions {
 
     @Override
     public GameObject createGameObject() {
-        return null;
+        Random random= new Random();
+        GameObject gameObject= getRandomThrowable();
+        gameObject.setX(100+random.nextDouble()*1080);
+        gameObject.setY(720);
+        gameObject.setMaxHeight(200*random.nextDouble());
+        return gameObject;
     }
 
     @Override
@@ -64,4 +69,7 @@ public class Controller implements GameActions {
             }
         }
     }
+
+
+
 }

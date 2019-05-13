@@ -9,7 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 public abstract class Throwable implements GameObject {
     private double x;
     private double y;
-    private int maxHeight;
+    private double maxHeight;
     private int initialVelocity;
     private int fallingVelocity;
     private boolean falling = false;
@@ -35,7 +35,7 @@ public abstract class Throwable implements GameObject {
     }
 
     @Override
-    public int getMaxHeight() {
+    public double getMaxHeight() {
         return maxHeight;
     }
 
@@ -96,6 +96,22 @@ public abstract class Throwable implements GameObject {
         else
             gc.drawImage(getImages()[0], x, y);
 
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public void setMaxHeight(double maxHeight) {
+        this.maxHeight = maxHeight;
+    }
+
+    public void setInitialVelocity(int initialVelocity) {
+        this.initialVelocity = initialVelocity;
     }
 
     @Override
