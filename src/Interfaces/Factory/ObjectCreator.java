@@ -17,21 +17,21 @@ public class ObjectCreator {
     public GameObject createObject(int flag) {
         switch (flag) {
             case 0:
-                return new Apple(100, 100, 100, 100, 100);
+                return new Apple(100, 100, 100, 100, 100, false, false, false);
             case 1:
-                return new Banana(100, 100, 100, 100, 100);
+                return new Banana(100, 100, 100, 100, 100, false, false, false);
             case 2:
-                return new Melon(100, 100, 100, 100, 100);
+                return new Melon(100, 100, 100, 100, 100, false, false, false);
             case 3:
-                return new Orange(100, 100, 100, 100, 100);
+                return new Orange(100, 100, 100, 100, 100, false, false, false);
             case 4:
-                return new MagicBeans(100, 100, 100, 100, 100);
+                return new MagicBeans(100, 100, 100, 100, 100, false, false, false);
             case 5:
-                return new Score2xBanana(100, 100, 100, 100, 100);
+                return new Score2xBanana(100, 100, 100, 100, 100, false, false, false);
             case 6:
-                return new DangerousBomb(100, 100, 100, 100, 100);
+                return new DangerousBomb(100, 100, 100, 100, 100, false, false, false);
             case 7:
-                return new FatalBomb(100, 100, 100, 100, 100);
+                return new FatalBomb(100, 100, 100, 100, 100, false, false, false);
         }
         return null;
     }
