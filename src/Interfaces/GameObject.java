@@ -44,6 +44,15 @@ public interface GameObject {
      */
     void slice();
 
+    Boolean isFalling();
+
+    void setFalling(boolean falling);
+
+    void setSliced(boolean sliced);
+
+    void setMovedOffScreen(boolean movedOffScreen);
+
+
     /**
      * it is used to move the object on the screen
      *
@@ -63,8 +72,9 @@ public interface GameObject {
      * @return the type of game object
      */
     enum getObjectType {}
+
     /**
      * used to render the image on the canvas
      */
-    public void render(GraphicsContext gc);
+    void render(GraphicsContext gc);
 }
