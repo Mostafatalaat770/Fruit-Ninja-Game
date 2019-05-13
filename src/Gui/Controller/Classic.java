@@ -25,20 +25,7 @@ public class Classic implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         gc=canvas.getGraphicsContext2D();
         gc.drawImage(image, 0, 0);
-        new AnimationTimer() {
-            @Override
-            public void handle(long now) {
 
-                canvas.setOnMouseMoved(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                       if(event.getSceneX()<100&&event.getSceneY()<100)
-                           System.out.println("naga7na");
-                    }
-                });
-
-            }
-        }.start();
     }
 
 

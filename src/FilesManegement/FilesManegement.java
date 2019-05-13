@@ -56,15 +56,15 @@ public class FilesManegement {
                 parent.addContent("fatalBomb");
             }
             child = new Element("X");
-            child.setText(Integer.toString(throwable.getXlocation()));
+            child.setText(Double.toString(throwable.getXlocation()));
             child = new Element("Y");
-            child.setText(Integer.toString(throwable.getYlocation()));
+            child.setText(Double.toString(throwable.getYlocation()));
             child = new Element("maxHeight");
             child.setText(Integer.toString(throwable.getMaxHeight()));
             child = new Element("initialVelocity");
             child.setText(Integer.toString(throwable.getInitialVelocity()));
             child = new Element("fal");
-            child.setText(Integer.toString(throwable.getXlocation()));
+            child.setText(Double.toString(throwable.getXlocation()));
         }
     }
 

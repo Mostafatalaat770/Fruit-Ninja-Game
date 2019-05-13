@@ -77,4 +77,8 @@ public interface GameObject {
      * used to render the image on the canvas
      */
     void render(GraphicsContext gc);
+    /**
+     * updates the movment of any fruit
+     */
+    void updatePosition();
 }

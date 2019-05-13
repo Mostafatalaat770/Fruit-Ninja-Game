@@ -57,6 +57,7 @@ public class Controller implements GameActions {
 
     @Override
     public void removeUnwantedThrowable(ArrayList<GameObject> throwables) {
+        //  todo : 23mlha bel iterator, htdeek intersections kda
         for (GameObject throwable : throwables) {
             if (throwable.hasMovedOffScreen()) {
                 throwables.remove(throwable);

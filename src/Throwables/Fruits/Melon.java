@@ -1,5 +1,6 @@
 package Throwables.Fruits;
 
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
@@ -13,5 +14,10 @@ public class Melon extends Fruit {
     @Override
     public Image[] getImages() {
         return super.getImages();
+    }
+
+    @Override
+    public void render(GraphicsContext gc) {
+
     }
 }

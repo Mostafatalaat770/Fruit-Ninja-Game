@@ -1,5 +1,6 @@
 package Throwables.Fruits;
 
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
@@ -14,4 +15,8 @@ public class Apple extends Fruit {
     public Image[] getImages() {
         return super.getImages();
     }
+
+
+
+
 }

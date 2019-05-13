@@ -97,4 +97,20 @@ public abstract class Throwable implements GameObject {
             gc.drawImage(getImages()[0], x, y);
 
     }
+
+    @Override
+    public void updatePosition(){
+        double newPos= y-initialVelocity;
+        if(falling==false){
+            if(newPos>maxHeight){
+                falling=true;
+                y+=initialVelocity;
+            }
+            else{
+                y-=initialVelocity;
+            }
+        }else{
+            y+=initialVelocity;
+        }
+    }
 }

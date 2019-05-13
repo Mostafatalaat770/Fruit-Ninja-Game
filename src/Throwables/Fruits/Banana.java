@@ -10,8 +10,5 @@ public class Banana extends Fruit {
         super(x, y, maxHeight, intialVelocity, fallingVelocity);
     }
 
-    @Override
-    public Image[] getImages() {
-        return super.getImages();
-    }
+
 }
