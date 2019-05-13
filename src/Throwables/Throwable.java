@@ -1,6 +1,7 @@
 package Throwables;
 
 import Interfaces.GameObject;
+import javafx.scene.image.Image;
 
 /**
  * @author Mostafa Talaat
@@ -68,7 +69,7 @@ public abstract class Throwable implements GameObject {
     }
 
     @Override
-    public javafx.scene.image.Image[] getImages() {
-        return new javafx.scene.image.Image[0];
+    public Image[] getImages() {
+        return new Image[0];
     }
 }
