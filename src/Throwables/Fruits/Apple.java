@@ -1,14 +1,15 @@
 package Throwables.Fruits;
 
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
  * @author Mostafa Talaat
  */
 public class Apple extends Fruit {
-    public Apple(int x, int y, int maxHeight, int intialVelocity, int fallingVelocity) {
-        super(x, y, maxHeight, intialVelocity, fallingVelocity);
+
+
+    public Apple(double x, double y, double maxHeight, int initialVelocity, int fallingVelocity, boolean falling, boolean sliced, boolean movedOffScreen) {
+        super(x, y, maxHeight, initialVelocity, fallingVelocity, falling, sliced, movedOffScreen);
     }
 
     @Override

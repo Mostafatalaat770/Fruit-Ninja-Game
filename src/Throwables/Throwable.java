@@ -16,12 +16,15 @@ public abstract class Throwable implements GameObject {
     private boolean sliced = false;
     private boolean movedOffScreen = false;
 
-    public Throwable(int x, int y, int maxHeight, int initialVelocity, int fallingVelocity) {
+    public Throwable(double x, double y, double maxHeight, int initialVelocity, int fallingVelocity, boolean falling, boolean sliced, boolean movedOffScreen) {
         this.x = x;
         this.y = y;
         this.maxHeight = maxHeight;
         this.initialVelocity = initialVelocity;
         this.fallingVelocity = fallingVelocity;
+        this.falling = falling;
+        this.sliced = sliced;
+        this.movedOffScreen = movedOffScreen;
     }
 
     @Override

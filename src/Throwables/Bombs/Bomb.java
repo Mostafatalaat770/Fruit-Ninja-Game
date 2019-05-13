@@ -5,9 +5,9 @@ package Throwables.Bombs;
  */
 public abstract class Bomb extends Throwables.Throwable {
 
-    public Bomb(int x, int y, int maxHeight, int intialVelocity, int fallingVelocity) {
-        super(x, y, maxHeight, intialVelocity, fallingVelocity);
-    }
 
+    public Bomb(double x, double y, double maxHeight, int initialVelocity, int fallingVelocity, boolean falling, boolean sliced, boolean movedOffScreen) {
+        super(x, y, maxHeight, initialVelocity, fallingVelocity, falling, sliced, movedOffScreen);
+    }
 }
 
