@@ -21,7 +21,7 @@ public class FatalBomb extends Bomb {
     public Image[] getImages() {
         Image[] images= new Image[2];
         images[0]= new Image("Resources/Bomb.png");
-        images[1]= new Image("Resources/Bomb.png");
+        images[1]= new Image("Resources/Banana.png");
         return images;
     }
 }

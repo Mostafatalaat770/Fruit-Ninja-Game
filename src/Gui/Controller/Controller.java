@@ -3,6 +3,7 @@ package Gui.Controller;
 import Interfaces.Factory.ObjectCreator;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
+import Throwables.Bombs.FatalBomb;
 import Throwables.Fruits.Melon;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -16,6 +17,7 @@ import java.util.Random;
 public class Controller implements GameActions {
     private static Controller ourInstance = new Controller();
     public ArrayList<GameObject> throwables= new ArrayList<>();
+    public int Score = 0;
 
     public static Controller getInstance() {
         return ourInstance;
@@ -23,13 +25,7 @@ public class Controller implements GameActions {
 
     @Override
     public GameObject createGameObject() {
-        Random random= new Random();
-        GameObject gameObject= getRandomThrowable();
-        gameObject.setX(100+random.nextDouble()*1080);
-        gameObject.setY(720);
-        gameObject.setMaxHeight(100+200*random.nextDouble());
-        gameObject.setInitialVelocity(3);
-        return gameObject;
+       return null;
     }
 
     @Override
@@ -82,6 +78,21 @@ public class Controller implements GameActions {
             list.get(i).render(gc);
             list.get(i).updatePosition();
         }
+    }
+
+    public boolean isSliced(ArrayList<GameObject> throwables,double x, double y){
+        for(int i=0;i<throwables.size();i++){
+            if(x>throwables.get(i).getXlocation()&&x<throwables.get(i).getXlocation()+throwables.get(i).getImages()[0].getWidth()){
+                if(y>throwables.get(i).getYlocation()&&y<throwables.get(i).getYlocation()+throwables.get(i).getImages()[0].getHeight()){
+                    if(throwables.get(i).isSliced()==false){
+                        throwables.get(i).setSliced(true);
+
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
 

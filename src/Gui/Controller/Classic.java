@@ -32,7 +32,7 @@ public class Classic implements Initializable {
         gc.drawImage(image, 0, 0);
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(1000), actionEvent->{
-            controller.throwables.add(controller.createGameObject());
+            controller.throwables.add(controller.getRandomThrowable());
 
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -43,7 +43,15 @@ public class Classic implements Initializable {
             @Override
             public void handle(long now) {
                 controller.drawAllThings(gc,controller.throwables);
+                canvas.setOnMouseMoved(event -> {
+                    if(controller.isSliced(controller.throwables,event.getSceneX(),event.getSceneY())) {
+                        System.out.println("cut");
+                        controller.Score++;
+                    }
+
+                });
                 controller.removeUnwantedThrowable(controller.throwables);
+
             }
         };
         timer.start();
