@@ -9,6 +9,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 /**
@@ -63,10 +64,12 @@ public class Controller implements GameActions {
 
     @Override
     public void removeUnwantedThrowable(ArrayList<GameObject> throwables) {
-        //  todo : 23mlha bel iterator, htdeek intersections kda
-        for (GameObject throwable : throwables) {
+        Iterator<GameObject> iterator= throwables.iterator();
+       while (iterator.hasNext()){
+           GameObject throwable= iterator.next();
             if (throwable.hasMovedOffScreen()) {
-                throwables.remove(throwable);
+                iterator.remove();
+                System.out.println("removed");
             }
         }
     }
