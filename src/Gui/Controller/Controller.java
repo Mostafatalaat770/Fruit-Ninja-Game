@@ -12,6 +12,7 @@ import java.util.Random;
  */
 public class Controller implements GameActions {
     private static Controller ourInstance = new Controller();
+    public ArrayList<GameObject> throwables= new ArrayList<>();
 
     public static Controller getInstance() {
         return ourInstance;
@@ -24,6 +25,7 @@ public class Controller implements GameActions {
         gameObject.setX(100+random.nextDouble()*1080);
         gameObject.setY(720);
         gameObject.setMaxHeight(200*random.nextDouble());
+        gameObject.setInitialVelocity(1+random.nextInt(3));
         return gameObject;
     }
 

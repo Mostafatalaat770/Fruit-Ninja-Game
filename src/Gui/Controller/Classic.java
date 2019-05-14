@@ -16,6 +16,7 @@ import java.time.Duration;
 import java.util.ResourceBundle;
 
 public class Classic implements Initializable {
+    Controller controller= new Controller();
     @FXML  Canvas canvas ;
     GraphicsContext gc;
     Image image = new Image("Resources/ConceptGreatWave1 (2).jpg",1280,720,false,false);
@@ -25,6 +26,7 @@ public class Classic implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         gc=canvas.getGraphicsContext2D();
         gc.drawImage(image, 0, 0);
+
 
     }
 

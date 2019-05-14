@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="startscene.FXMLDocumentController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.FXMLDocumentController">
    <children>
       <ImageView fitHeight="656.0" fitWidth="826.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Fruit-Ninja-304.png" />
+            <Image url="@../../Resources/Fruit-Ninja-304.png" />
          </image>
       </ImageView>
       <AnchorPane fx:id="anchor" prefHeight="379.0" prefWidth="786.0">
          <children>
             <ImageView fx:id="slicedbanana_bottom" fitHeight="161.0" fitWidth="173.0" layoutX="-19.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 50;" visible="false">
                <image>
-                  <Image url="@Banana-bottom.png" />
+                  <Image url="@../../Resources/Banana-bottom.png" />
                </image>
             </ImageView>
             <ImageView fx:id="classic_img" fitHeight="106.0" fitWidth="113.0" layoutX="26.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Classic.png" />
+                  <Image url="@../../Resources/Classic.png" />
                </image>
                <effect>
                   <Glow />
@@ -30,7 +34,7 @@
             </ImageView>
             <ImageView fx:id="arcade_img" fitHeight="117.0" fitWidth="123.0" layoutX="21.0" layoutY="192.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Arcade.png" />
+                  <Image url="@../../Resources/Arcade.png" />
                </image>
                <effect>
                   <Glow />
@@ -38,7 +42,7 @@
             </ImageView>
             <ImageView fx:id="exit_img" fitHeight="117.0" fitWidth="85.0" layoutX="703.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 40;">
                <image>
-                  <Image url="@Bomb.png" />
+                  <Image url="@../../Resources/Bomb.png" />
                </image>
                <effect>
                   <Glow />
@@ -46,17 +50,17 @@
             </ImageView>
             <ImageView fx:id="slicedmelon_right" fitHeight="64.0" fitWidth="79.0" layoutX="55.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 50;" visible="false">
                <image>
-                  <Image url="@half%20watermelon.png" />
+                  <Image url="@../../Resources/half%20watermelon.png" />
                </image>
             </ImageView>
             <ImageView fx:id="slicedmelon_left" fitHeight="64.0" fitWidth="79.0" layoutX="39.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 230;" visible="false">
                <image>
-                  <Image url="@half%20watermelon.png" />
+                  <Image url="@../../Resources/half%20watermelon.png" />
                </image>
             </ImageView>
             <ImageView fx:id="slicedbanana_top" fitHeight="188.0" fitWidth="185.0" layoutX="1.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 70;" visible="false">
                <image>
-                  <Image url="@Banana-top.png" />
+                  <Image url="@../../Resources/Banana-top.png" />
                </image>
             </ImageView>
          </children>
