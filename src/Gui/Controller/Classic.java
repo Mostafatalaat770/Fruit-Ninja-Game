@@ -18,6 +18,8 @@ public class Classic implements Initializable {
    private Controller controller= new Controller();
     @FXML private Canvas canvas ;
     private GraphicsContext gc;
+    private  int seconds=0;
+    private  int mins=0;
     private Image image = new Image("Resources/ConceptGreatWave1 (2).jpg",1280,720,false,false);
 
 
@@ -26,12 +28,22 @@ public class Classic implements Initializable {
         gc=canvas.getGraphicsContext2D();
         gc.drawImage(image, 0, 0);
 
-        Timeline timeline = new Timeline(new KeyFrame(new Duration(1000), actionEvent->{
+        Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
             controller.throwables.add(controller.getRandomThrowable());
 
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+
+        Timeline clock= new Timeline(new KeyFrame(new Duration(1000), actionEvent1->{
+            seconds++;
+            if(seconds==60){
+                seconds=0;
+                mins++;
+            }
+        }));
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
 
         canvas.setOnMouseMoved(event -> {
             if(controller.isSliced(controller.throwables,event.getSceneX(),event.getSceneY(),controller)) {
@@ -44,7 +56,7 @@ public class Classic implements Initializable {
         AnimationTimer timer=new AnimationTimer() {
             @Override
             public void handle(long now) {
-                controller.drawAllThings(gc,controller.throwables,controller.Score);
+                controller.drawAllThings(gc,controller.throwables,controller.Score,seconds,mins);
 
                 controller.removeUnwantedThrowable(controller.throwables);
 

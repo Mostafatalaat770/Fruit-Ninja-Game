@@ -78,7 +78,7 @@ public class Controller implements GameActions {
         }
     }
 
-    public void drawAllThings(GraphicsContext gc,ArrayList<GameObject> list,int score){
+    public void drawAllThings(GraphicsContext gc,ArrayList<GameObject> list,int score,int secs,int mins){
         Image image = new Image("Resources/ConceptGreatWave1 (2).jpg",1280,720,false,false);
         gc.drawImage(image, 0, 0);
         gc.setFill(Color.ORANGE);
@@ -86,10 +86,14 @@ public class Controller implements GameActions {
         Font theFont = Font.font("Gang Of Three", 30);
         gc.setFont(theFont);
         gc.fillText("score: " + score , 20, 30);
+        gc.fillText(mins+" : "+secs,1180,30);
         Font theFont2 = Font.font("Gang Of Three", 15);
         gc.setFont(theFont2);
         gc.setFill(Color.GRAY);
         gc.fillText("best score: ",20,50);
+
+
+
         for(int i=0;i<list.size();i++){
             list.get(i).render(gc);
             list.get(i).updatePosition();
