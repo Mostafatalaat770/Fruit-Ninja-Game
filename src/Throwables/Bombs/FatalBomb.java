@@ -19,6 +19,9 @@ public class FatalBomb extends Bomb {
 
     @Override
     public Image[] getImages() {
-        return super.getImages();
+        Image[] images= new Image[2];
+        images[0]= new Image("Resources/Bomb.png");
+        images[1]= new Image("Resources/Bomb.png");
+        return images;
     }
 }

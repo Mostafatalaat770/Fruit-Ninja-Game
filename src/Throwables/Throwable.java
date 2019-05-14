@@ -57,8 +57,11 @@ public abstract class Throwable implements GameObject {
     }
 
     @Override
-    public Boolean hasMovedOffScreen() {
-        return movedOffScreen;
+    public Boolean hasMovedOffScreen(){
+        if(falling==true&&y>=720)
+            return true;
+        else
+            return false;
     }
 
     public Boolean isFalling() {
@@ -121,7 +124,7 @@ public abstract class Throwable implements GameObject {
     public void updatePosition(){
         double newPos= y-initialVelocity;
         if(falling==false){
-            if(newPos>maxHeight){
+            if(newPos<maxHeight){
                 falling=true;
                 y+=initialVelocity;
             }

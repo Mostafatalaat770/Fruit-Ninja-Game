@@ -3,6 +3,9 @@ package Gui.Controller;
 import Interfaces.Factory.ObjectCreator;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
+import Throwables.Fruits.Melon;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -24,8 +27,8 @@ public class Controller implements GameActions {
         GameObject gameObject= getRandomThrowable();
         gameObject.setX(100+random.nextDouble()*1080);
         gameObject.setY(720);
-        gameObject.setMaxHeight(200*random.nextDouble());
-        gameObject.setInitialVelocity(1+random.nextInt(3));
+        gameObject.setMaxHeight(100+200*random.nextDouble());
+        gameObject.setInitialVelocity(3);
         return gameObject;
     }
 
@@ -69,6 +72,15 @@ public class Controller implements GameActions {
             if (throwable.hasMovedOffScreen()) {
                 throwables.remove(throwable);
             }
+        }
+    }
+
+    public void drawAllThings(GraphicsContext gc,ArrayList<GameObject> list){
+        Image image = new Image("Resources/ConceptGreatWave1 (2).jpg",1280,720,false,false);
+        gc.drawImage(image, 0, 0);
+        for(int i=0;i<list.size();i++){
+            list.get(i).render(gc);
+            list.get(i).updatePosition();
         }
     }
 

@@ -6,13 +6,18 @@
 package Gui.Controller;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
@@ -20,6 +25,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -48,7 +55,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ImageView slicedbanana_top;
 
-    
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
         label.setText("Hello World!");
@@ -110,7 +116,7 @@ public class FXMLDocumentController implements Initializable {
            transition5.play();
            transition6.play();
            transition3.setOnFinished((event1) -> {
-               //TODO: close this scene and open the classic mode scene
+
            });
            System.out.println("Classic mode activated");
        });

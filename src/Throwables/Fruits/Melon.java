@@ -13,8 +13,6 @@ public class Melon extends Fruit {
     }
 
     @Override
-    public Image[] getImages() {
-        return super.getImages();
-    }
+    public Image[] getImages() { return super.getImages(); }
 
 }
