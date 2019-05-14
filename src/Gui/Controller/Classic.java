@@ -34,9 +34,9 @@ public class Classic implements Initializable {
         timeline.play();
 
         canvas.setOnMouseMoved(event -> {
-            if(controller.isSliced(controller.throwables,event.getSceneX(),event.getSceneY())) {
+            if(controller.isSliced(controller.throwables,event.getSceneX(),event.getSceneY(),controller)) {
                 System.out.println("cut");
-                controller.Score++;
+                // todo: cut
             }
 
         });

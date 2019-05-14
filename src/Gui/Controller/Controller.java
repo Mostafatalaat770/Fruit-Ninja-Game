@@ -3,8 +3,10 @@ package Gui.Controller;
 import Interfaces.Factory.ObjectCreator;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
+import Throwables.Bombs.Bomb;
 import Throwables.Bombs.FatalBomb;
 import Throwables.Fruits.Melon;
+import Throwables.Fruits.SpecialFruits.SpecialFruit;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -94,13 +96,22 @@ public class Controller implements GameActions {
         }
     }
 
-    public boolean isSliced(ArrayList<GameObject> throwables,double x, double y){
+    public boolean isSliced(ArrayList<GameObject> throwables,double x, double y,Controller controller){
         for(int i=0;i<throwables.size();i++){
             if(x>throwables.get(i).getXlocation()&&x<throwables.get(i).getXlocation()+throwables.get(i).getImages()[0].getWidth()){
                 if(y>throwables.get(i).getYlocation()&&y<throwables.get(i).getYlocation()+throwables.get(i).getImages()[0].getHeight()){
                     if(throwables.get(i).isSliced()==false){
                         throwables.get(i).setFalling(true);
                         throwables.get(i).setSliced(true);
+                        controller.Score++;
+                        if(throwables.get(i) instanceof Bomb){
+                            // todo : special effects
+                            controller.Score--;
+                        }
+                        if(throwables.get(i) instanceof SpecialFruit){
+                            //todo : special effects
+                            controller.Score--;
+                        }
 
 
                         return true;
