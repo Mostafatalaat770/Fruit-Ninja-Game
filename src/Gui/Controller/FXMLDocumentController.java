@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import Gui.Main;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -116,6 +118,14 @@ public class FXMLDocumentController implements Initializable {
            transition5.play();
            transition6.play();
            transition3.setOnFinished((event1) -> {
+        	   Main main = new Main();
+				try {
+					main.getClassic(event);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 
            });
            System.out.println("Classic mode activated");
