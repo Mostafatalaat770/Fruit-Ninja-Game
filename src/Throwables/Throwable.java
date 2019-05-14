@@ -104,21 +104,6 @@ public abstract class Throwable implements GameObject {
 
     }
 
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
-
-    public void setMaxHeight(double maxHeight) {
-        this.maxHeight = maxHeight;
-    }
-
-    public void setInitialVelocity(int initialVelocity) {
-        this.initialVelocity = initialVelocity;
-    }
 
     @Override
     public void updatePosition(){

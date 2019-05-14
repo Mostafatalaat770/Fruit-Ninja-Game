@@ -82,11 +82,4 @@ public interface GameObject {
      */
     void updatePosition();
 
-    void setX(double x);
-
-     void setY(double y);
-
-     void setMaxHeight(double maxHeight);
-
-     void setInitialVelocity(int initialVelocity) ;
 }
