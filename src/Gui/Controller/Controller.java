@@ -7,6 +7,8 @@ import Throwables.Bombs.FatalBomb;
 import Throwables.Fruits.Melon;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -74,9 +76,18 @@ public class Controller implements GameActions {
         }
     }
 
-    public void drawAllThings(GraphicsContext gc,ArrayList<GameObject> list){
+    public void drawAllThings(GraphicsContext gc,ArrayList<GameObject> list,int score){
         Image image = new Image("Resources/ConceptGreatWave1 (2).jpg",1280,720,false,false);
         gc.drawImage(image, 0, 0);
+        gc.setFill(Color.ORANGE);
+        gc.setLineWidth(2);
+        Font theFont = Font.font("Gang Of Three", 30);
+        gc.setFont(theFont);
+        gc.fillText("score: " + score , 20, 30);
+        Font theFont2 = Font.font("Gang Of Three", 15);
+        gc.setFont(theFont2);
+        gc.setFill(Color.GRAY);
+        gc.fillText("best score: ",20,50);
         for(int i=0;i<list.size();i++){
             list.get(i).render(gc);
             list.get(i).updatePosition();

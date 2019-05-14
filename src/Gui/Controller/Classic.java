@@ -42,7 +42,7 @@ public class Classic implements Initializable {
         AnimationTimer timer=new AnimationTimer() {
             @Override
             public void handle(long now) {
-                controller.drawAllThings(gc,controller.throwables);
+                controller.drawAllThings(gc,controller.throwables,controller.Score);
                 canvas.setOnMouseMoved(event -> {
                     if(controller.isSliced(controller.throwables,event.getSceneX(),event.getSceneY())) {
                         System.out.println("cut");
