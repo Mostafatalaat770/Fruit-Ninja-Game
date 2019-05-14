@@ -18,17 +18,16 @@ public class Classic implements Initializable {
    private Controller controller= new Controller();
     @FXML private Canvas canvas ;
     private GraphicsContext gc;
-    private  int seconds=0;
-    private  int mins=0;
     private Image image = new Image("Resources/ConceptGreatWave1 (2).jpg",1280,720,false,false);
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        controller.lives=3;
         gc=canvas.getGraphicsContext2D();
         gc.drawImage(image, 0, 0);
 
-        Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
+        Timeline timeline = new Timeline(new KeyFrame(new Duration(1500), actionEvent->{
             controller.throwables.add(controller.getRandomThrowable());
 
         }));
@@ -36,10 +35,10 @@ public class Classic implements Initializable {
         timeline.play();
 
         Timeline clock= new Timeline(new KeyFrame(new Duration(1000), actionEvent1->{
-            seconds++;
-            if(seconds==60){
-                seconds=0;
-                mins++;
+            controller.secs++;
+            if(controller.secs==60){
+                controller.secs=0;
+                controller.mins++;
             }
         }));
         clock.setCycleCount(Animation.INDEFINITE);
@@ -56,9 +55,17 @@ public class Classic implements Initializable {
         AnimationTimer timer=new AnimationTimer() {
             @Override
             public void handle(long now) {
-                controller.drawAllThings(gc,controller.throwables,controller.Score,seconds,mins);
+                controller.drawAllThings(gc,controller.throwables,controller);
+                if (!controller.removeUnwantedThrowable(controller.throwables))
+                    controller.lives--;
+                if(controller.lives==0){
+                    timeline.stop();
+                    clock.stop();
+                    // todo: game over scene
+                    System.out.println("GAME OVER");
 
-                controller.removeUnwantedThrowable(controller.throwables);
+
+                }
 
             }
         };

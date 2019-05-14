@@ -23,6 +23,9 @@ public class Controller implements GameActions {
     private static Controller ourInstance = new Controller();
     public ArrayList<GameObject> throwables= new ArrayList<>();
     public int Score = 0;
+    public int secs  =  0;
+    public  int mins = 0;
+    public int lives;
 
     public static Controller getInstance() {
         return ourInstance;
@@ -67,26 +70,40 @@ public class Controller implements GameActions {
     }
 
     @Override
-    public void removeUnwantedThrowable(ArrayList<GameObject> throwables) {
+    public boolean removeUnwantedThrowable(ArrayList<GameObject> throwables) {
         Iterator<GameObject> iterator= throwables.iterator();
        while (iterator.hasNext()){
            GameObject throwable= iterator.next();
-            if (throwable.hasMovedOffScreen()) {
+            if (throwable.hasMovedOffScreen()&&throwable.isSliced()) {
                 iterator.remove();
-                System.out.println("removed");
+                return true;
+            }
+            else if(throwable.hasMovedOffScreen()&&!throwable.isSliced()){
+                iterator.remove();
+                return false;
+            }
+            else if(throwable.hasMovedOffScreen()&&throwable instanceof Bomb){
+                // todo : fix that shit
+                iterator.remove();
+                return true;
             }
         }
+        return true;
     }
 
-    public void drawAllThings(GraphicsContext gc,ArrayList<GameObject> list,int score,int secs,int mins){
+    public void drawAllThings(GraphicsContext gc,ArrayList<GameObject> list,Controller controller){
         Image image = new Image("Resources/ConceptGreatWave1 (2).jpg",1280,720,false,false);
         gc.drawImage(image, 0, 0);
         gc.setFill(Color.ORANGE);
         gc.setLineWidth(2);
         Font theFont = Font.font("Gang Of Three", 30);
         gc.setFont(theFont);
-        gc.fillText("score: " + score , 20, 30);
-        gc.fillText(mins+" : "+secs,1180,30);
+        gc.fillText("score: " + controller.Score , 20, 30);
+        gc.fillText(controller.mins+" : "+controller.secs,1180,30);
+        if(controller.lives!=0)
+        {
+            gc.fillText("lives: "+controller.lives,1150,70);
+        }
         Font theFont2 = Font.font("Gang Of Three", 15);
         gc.setFont(theFont2);
         gc.setFill(Color.GRAY);
@@ -116,8 +133,6 @@ public class Controller implements GameActions {
                             //todo : special effects
                             controller.Score--;
                         }
-
-
                         return true;
                     }
                 }
