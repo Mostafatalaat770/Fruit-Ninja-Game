@@ -99,7 +99,9 @@ public class Controller implements GameActions {
             if(x>throwables.get(i).getXlocation()&&x<throwables.get(i).getXlocation()+throwables.get(i).getImages()[0].getWidth()){
                 if(y>throwables.get(i).getYlocation()&&y<throwables.get(i).getYlocation()+throwables.get(i).getImages()[0].getHeight()){
                     if(throwables.get(i).isSliced()==false){
+                        throwables.get(i).setFalling(true);
                         throwables.get(i).setSliced(true);
+
 
                         return true;
                     }

@@ -8,7 +8,7 @@ import Throwables.Fruits.Banana;
 import Throwables.Fruits.Melon;
 import Throwables.Fruits.Orange;
 import Throwables.Fruits.SpecialFruits.MagicBeans;
-import Throwables.Fruits.SpecialFruits.Score2xBanana;
+import Throwables.Fruits.SpecialFruits.FreezeBanana;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -76,7 +76,7 @@ public class FilesManegement {
             if (throwable instanceof Melon) {
                 parent.addContent("melon");
             }
-            if (throwable instanceof Score2xBanana) {
+            if (throwable instanceof FreezeBanana) {
                 parent.addContent("score2xBanana");
             }
             if (throwable instanceof MagicBeans) {
@@ -152,7 +152,7 @@ public class FilesManegement {
                 case "magicBeans":
                     throwables.add(new MagicBeans(Double.parseDouble(child.getChild("X").getText()), Double.parseDouble(child.getChild("Y").getText()), Double.parseDouble(child.getChild("maxHeight").getText()), Integer.parseInt(child.getChild("initialVelocity").getText()), Integer.parseInt(child.getChild("fallingVelocity").getText()), Boolean.parseBoolean(child.getChild("falling").getText()), Boolean.parseBoolean(child.getChild("sliced").getText()), Boolean.parseBoolean(child.getChild("movedOffScreen").getText())));
                 case "score2xBanana":
-                    throwables.add(new Score2xBanana(Double.parseDouble(child.getChild("X").getText()), Double.parseDouble(child.getChild("Y").getText()), Double.parseDouble(child.getChild("maxHeight").getText()), Integer.parseInt(child.getChild("initialVelocity").getText()), Integer.parseInt(child.getChild("fallingVelocity").getText()), Boolean.parseBoolean(child.getChild("falling").getText()), Boolean.parseBoolean(child.getChild("sliced").getText()), Boolean.parseBoolean(child.getChild("movedOffScreen").getText())));
+                    throwables.add(new FreezeBanana(Double.parseDouble(child.getChild("X").getText()), Double.parseDouble(child.getChild("Y").getText()), Double.parseDouble(child.getChild("maxHeight").getText()), Integer.parseInt(child.getChild("initialVelocity").getText()), Integer.parseInt(child.getChild("fallingVelocity").getText()), Boolean.parseBoolean(child.getChild("falling").getText()), Boolean.parseBoolean(child.getChild("sliced").getText()), Boolean.parseBoolean(child.getChild("movedOffScreen").getText())));
                 case "dangerousBomb":
                     throwables.add(new DangerousBomb(Double.parseDouble(child.getChild("X").getText()), Double.parseDouble(child.getChild("Y").getText()), Double.parseDouble(child.getChild("maxHeight").getText()), Integer.parseInt(child.getChild("initialVelocity").getText()), Integer.parseInt(child.getChild("fallingVelocity").getText()), Boolean.parseBoolean(child.getChild("falling").getText()), Boolean.parseBoolean(child.getChild("sliced").getText()), Boolean.parseBoolean(child.getChild("movedOffScreen").getText())));
                 case "fatalBomb":

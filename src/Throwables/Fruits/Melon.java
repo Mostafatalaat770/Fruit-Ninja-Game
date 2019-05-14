@@ -13,6 +13,9 @@ public class Melon extends Fruit {
     }
 
     @Override
-    public Image[] getImages() { return super.getImages(); }
+    public Image[] getImages() { Image[] images= new Image[2];
+        images[0]= new Image("Resources/Watermelon.png",100,100,true,true);
+        images[1]= new Image("Resources/Watermelon.png",100,100,true,true);
+        return images; }
 
 }

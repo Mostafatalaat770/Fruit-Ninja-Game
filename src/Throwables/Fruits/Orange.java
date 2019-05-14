@@ -14,6 +14,9 @@ public class Orange extends Fruit {
 
     @Override
     public Image[] getImages() {
-        return super.getImages();
+        Image[] images= new Image[2];
+        images[0]= new Image("Resources/Orange.png",75,75,true,true);
+        images[1]= new Image("Resources/Orange.png",75,75,true,true);
+        return images;
     }
 }

@@ -14,6 +14,9 @@ public class Banana extends Fruit {
 
     @Override
     public Image[] getImages() {
-        return super.getImages();
+        Image[] images= new Image[2];
+        images[0]= new Image("Resources/Banana.png");
+        images[1]= new Image("Resources/Banana.png");
+        return images;
     }
 }
