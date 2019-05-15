@@ -1,5 +1,6 @@
 package Gui.Controller;
 
+import Gui.Main;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -13,6 +14,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import javafx.util.Duration;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -120,6 +123,12 @@ public class Classic implements Initializable {
                 timeline.play();
                 timer.start();
                 clock.play();
+                Main main = new Main();
+                try {
+                    main.getClassic(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 // todo : islam add reset method
             }
         });

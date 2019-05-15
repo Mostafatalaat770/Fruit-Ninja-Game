@@ -18,5 +18,10 @@
             <Image url="@../../Resources/resume.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="reset" fitHeight="274.0" fitWidth="163.0" layoutX="368.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/reset.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
