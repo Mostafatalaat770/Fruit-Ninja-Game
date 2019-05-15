@@ -23,23 +23,30 @@ public class Classic implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        controller.lives=3;
+        controller.type = "classic";
+        controller.lives = 3;
         gc=canvas.getGraphicsContext2D();
         gc.drawImage(image, 0, 0);
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(1500), actionEvent->{
-            controller.throwables.add(controller.getRandomThrowable());
+            for (int i = 0; i < controller.difficulty; i++) {
 
+                controller.throwables.add(controller.getRandomThrowable());
+            }
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
         Timeline clock= new Timeline(new KeyFrame(new Duration(1000), actionEvent1->{
             controller.secs++;
-            if(controller.secs==60){
-                controller.secs=0;
+            if (controller.secs == 60) {
+                controller.secs = 0;
                 controller.mins++;
             }
+            if (controller.secs % 30 == 0 && controller.difficulty < 3)
+                ++controller.difficulty;
+
+
         }));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();

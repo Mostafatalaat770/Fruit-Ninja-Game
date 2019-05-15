@@ -4,8 +4,6 @@ import Interfaces.Factory.ObjectCreator;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
 import Throwables.Bombs.Bomb;
-import Throwables.Bombs.FatalBomb;
-import Throwables.Fruits.Melon;
 import Throwables.Fruits.SpecialFruits.SpecialFruit;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -26,6 +24,8 @@ public class Controller implements GameActions {
     public int secs  =  0;
     public  int mins = 0;
     public int lives;
+    public int difficulty = 1;
+    public String type;
 
     public static Controller getInstance() {
         return ourInstance;
@@ -74,18 +74,9 @@ public class Controller implements GameActions {
         Iterator<GameObject> iterator= throwables.iterator();
        while (iterator.hasNext()){
            GameObject throwable= iterator.next();
-            if (throwable.hasMovedOffScreen()&&throwable.isSliced()) {
-                iterator.remove();
-                return true;
-            }
-            else if(throwable.hasMovedOffScreen()&&!throwable.isSliced()){
+           if (throwable.hasMovedOffScreen() && !throwable.isSliced() && !(throwable instanceof Bomb)) {
                 iterator.remove();
                 return false;
-            }
-            else if(throwable.hasMovedOffScreen()&&throwable instanceof Bomb){
-                // todo : fix that shit
-                iterator.remove();
-                return true;
             }
         }
         return true;
@@ -121,7 +112,7 @@ public class Controller implements GameActions {
         for(int i=0;i<throwables.size();i++){
             if(x>throwables.get(i).getXlocation()&&x<throwables.get(i).getXlocation()+throwables.get(i).getImages()[0].getWidth()){
                 if(y>throwables.get(i).getYlocation()&&y<throwables.get(i).getYlocation()+throwables.get(i).getImages()[0].getHeight()){
-                    if(throwables.get(i).isSliced()==false){
+                    if (!throwables.get(i).isSliced()) {
                         throwables.get(i).setFalling(true);
                         throwables.get(i).setSliced(true);
                         controller.Score++;
