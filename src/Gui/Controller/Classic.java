@@ -63,7 +63,7 @@ public class Classic implements Initializable {
         AnimationTimer timer=new AnimationTimer() {
             @Override
             public void handle(long now) {
-                controller.drawAllThings(gc,controller.throwables,controller);
+                controller.drawAllThings(gc,controller);
                 if (!controller.removeUnwantedThrowable(controller.throwables))
                     controller.lives--;
                 if(controller.lives==0){
@@ -94,7 +94,7 @@ public class Classic implements Initializable {
                 canvas.setEffect(new GaussianBlur(-50));
                 AtomicInteger seconds= new AtomicInteger();
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
-                    controller.drawAllThings(gc,controller.throwables,controller);
+                    controller.drawAllThings(gc,controller);
                     seconds.getAndIncrement();
                     controller.getCountDown(gc,seconds);
                 }));

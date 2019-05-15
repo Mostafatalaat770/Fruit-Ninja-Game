@@ -93,7 +93,7 @@ public class Controller implements GameActions {
         return true;
     }
 
-    public void drawAllThings(GraphicsContext gc,ArrayList<GameObject> list,Controller controller){
+    public void drawAllThings(GraphicsContext gc,Controller controller){
         // Todo remove that damned paramiter (swidan, please)
         Image image = new Image("Resources/ConceptGreatWave1 (2).jpg",1280,720,false,false);
         gc.drawImage(image, 0, 0);
@@ -113,7 +113,7 @@ public class Controller implements GameActions {
         gc.fillText("best score: ",20,50);
 
 
-        for (GameObject gameObject : list) {
+        for (GameObject gameObject : controller.throwables) {
             gameObject.render(gc);
             gameObject.updatePosition();
         }
