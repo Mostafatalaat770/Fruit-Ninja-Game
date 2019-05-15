@@ -97,13 +97,7 @@ public class Classic implements Initializable {
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
                     controller.drawAllThings(gc,controller.throwables,controller);
                     seconds.getAndIncrement();
-                    gc.setFill(Color.ORANGE);
-                    gc.setStroke(Color.BLACK);
-                    gc.setLineWidth(5);
-                    Font theFont = Font.font("Gang Of Three", 200);
-                    gc.setFont(theFont);
-                    gc.fillText(String.valueOf(4-seconds.get()), 600, 350);
-                    gc.strokeText(String.valueOf(4-seconds.get()), 600, 350);
+                    controller.getCountDown(gc,seconds);
                 }));
                 resume.setCycleCount(4);
                 resume.play();

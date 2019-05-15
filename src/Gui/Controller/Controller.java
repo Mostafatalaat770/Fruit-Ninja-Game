@@ -14,6 +14,7 @@ import javafx.scene.text.Font;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Mostafa Talaat
@@ -93,6 +94,7 @@ public class Controller implements GameActions {
     }
 
     public void drawAllThings(GraphicsContext gc,ArrayList<GameObject> list,Controller controller){
+        // Todo remove that damned paramiter (swidan, please)
         Image image = new Image("Resources/ConceptGreatWave1 (2).jpg",1280,720,false,false);
         gc.drawImage(image, 0, 0);
         gc.setFill(Color.ORANGE);
@@ -140,6 +142,15 @@ public class Controller implements GameActions {
                 }
             }
         }
+    }
+    public void getCountDown(GraphicsContext gc, AtomicInteger seconds){
+        gc.setFill(Color.ORANGE);
+        gc.setStroke(Color.BLACK);
+        gc.setLineWidth(5);
+        Font theFont = Font.font("Gang Of Three", 200);
+        gc.setFont(theFont);
+        gc.fillText(String.valueOf(4-seconds.get()), 600, 350);
+        gc.strokeText(String.valueOf(4-seconds.get()), 600, 350);
     }
 
 
