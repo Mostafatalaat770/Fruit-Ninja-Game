@@ -47,16 +47,7 @@ public class Classic implements Initializable {
         timeline.play();
 
         Timeline clock= new Timeline(new KeyFrame(new Duration(1000), actionEvent1->{
-            controller.secs++;
-            if (controller.secs == 60) {
-                controller.secs = 0;
-                controller.mins++;
-            }
-            if (controller.secs % 30 == 0 && controller.difficulty < 3){
-                timeline.setRate(++controller.difficulty);
-            }
-
-
+            controller.updateTime_Difficulty(timeline);
         }));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
@@ -120,9 +111,6 @@ public class Classic implements Initializable {
                 reset.setVisible(false);
                 pause.setVisible(true);
                 canvas.setEffect(new GaussianBlur(-50));
-             //   timeline.play();
-               // timer.start();
-                //clock.play();
              controller.ResetGame();
                 AtomicInteger seconds= new AtomicInteger();
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
@@ -140,7 +128,6 @@ public class Classic implements Initializable {
                 });
 
             }
-                // todo : islam add reset method
 
         });
 
