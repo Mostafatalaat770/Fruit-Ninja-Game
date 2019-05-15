@@ -3,6 +3,8 @@ package Throwables;
 import Interfaces.GameObject;
 import javafx.scene.canvas.GraphicsContext;
 
+import java.util.Random;
+
 /**
  * @author Mostafa Talaat
  */
@@ -119,5 +121,7 @@ public abstract class Throwable implements GameObject {
         }else{
             y+=initialVelocity;
         }
+        if(x>100&&x<1180)
+       x+=fallingVelocity;
     }
 }
