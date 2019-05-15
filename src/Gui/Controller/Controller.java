@@ -7,6 +7,7 @@ import Interfaces.GameObject;
 import Throwables.Bombs.Bomb;
 import Throwables.Fruits.Fruit;
 import Throwables.Fruits.SpecialFruits.SpecialFruit;
+import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -72,12 +73,17 @@ public class Controller implements GameActions {
    }
     @Override
     public void ResetGame() {
-        throwables.clear();
-         Score = 0;
-         secs  =  0;
-         mins = 0;
-         lives=3;
-         difficulty = 1;
+      if(type.equals("classic")){
+          throwables.clear();
+          Score = 0;
+          secs  =  0;
+          mins = 0;
+          lives=3;
+          difficulty = 1;
+      }
+      else if(type.equals("arcade")){
+          // TODO: 15-May-19 acdade reseter 
+      }
     }
 
     @Override
@@ -168,7 +174,22 @@ public class Controller implements GameActions {
         gc.fillText(String.valueOf(4-seconds.get()), 600, 350);
         gc.strokeText(String.valueOf(4-seconds.get()), 600, 350);
     }
+    
+    public void updateTime_Difficulty(Timeline timeline){
+        if(type.equals("classic")){
+            secs++;
+            if (secs == 60) {
+                secs = 0;
+                mins++;
+            }
+            if (secs % 30 == 0 && difficulty < 3){
+                timeline.setRate(++difficulty);
+            }
+        }else if(type.equals("arcade")){
+            // TODO: arcade timer 
+        }
+        }
+    }
 
 
 
-}
