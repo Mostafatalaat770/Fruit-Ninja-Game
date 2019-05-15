@@ -74,11 +74,23 @@ public class Controller implements GameActions {
         Iterator<GameObject> iterator= throwables.iterator();
        while (iterator.hasNext()){
            GameObject throwable= iterator.next();
-           if (throwable.hasMovedOffScreen() && !throwable.isSliced() && !(throwable instanceof Bomb)) {
-                iterator.remove();
+           if(throwable.hasMovedOffScreen() && throwable.isSliced()){
+               iterator.remove();
+               System.out.println("removed");
+               return true;
+           }
+           else if (throwable.hasMovedOffScreen() && !throwable.isSliced() && !(throwable instanceof Bomb)) {
+               iterator.remove();
+               System.out.println("removed");
                 return false;
             }
+          else if(throwable.hasMovedOffScreen()){
+               iterator.remove();
+               System.out.println("removed");
+               return true;
+           }
         }
+
         return true;
     }
 

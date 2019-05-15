@@ -9,8 +9,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import org.w3c.dom.css.Rect;
 
+import java.awt.geom.Rectangle2D;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -29,9 +32,11 @@ public class Classic implements Initializable {
         gc.drawImage(image, 0, 0);
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(1500), actionEvent->{
-            for (int i = 0; i < controller.difficulty; i++) {
-
-                controller.throwables.add(controller.getRandomThrowable());
+            if(controller.throwables.size()<5) {
+                for (int i = 0; i < controller.difficulty; i++) {
+                    controller.throwables.add(controller.getRandomThrowable());
+                }
+                System.out.println(controller.throwables.size());
             }
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
