@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -26,6 +27,7 @@ public class Classic implements Initializable {
     @FXML private ImageView pause;
     @FXML private ImageView resume;
     @FXML private  ImageView reset;
+    @FXML private ImageView background;
     private GraphicsContext gc;
 
 
@@ -35,6 +37,7 @@ public class Classic implements Initializable {
         controller.lives = 3;
         resume.setVisible(false);
         reset.setVisible(false);
+        background.setImage(new Image("Resources/ConceptGreatWave1 (2).jpg"));
         gc=canvas.getGraphicsContext2D();
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
@@ -80,6 +83,7 @@ public class Classic implements Initializable {
             timer.stop();
             clock.stop();
             canvas.setEffect(new GaussianBlur(50));
+            background.setEffect(new GaussianBlur(50));
         });
 
         resume.setOnMouseClicked(event -> {
@@ -87,6 +91,7 @@ public class Classic implements Initializable {
                 resume.setVisible(false);
                 reset.setVisible(false);
                 canvas.setEffect(new GaussianBlur(-50));
+                background.setEffect(new GaussianBlur(-50));
                 AtomicInteger seconds= new AtomicInteger();
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
                     controller.drawAllThings(gc,controller);
@@ -111,7 +116,9 @@ public class Classic implements Initializable {
                 reset.setVisible(false);
                 pause.setVisible(true);
                 canvas.setEffect(new GaussianBlur(-50));
-             controller.ResetGame();
+                background.setEffect(new GaussianBlur(-50));
+
+                controller.ResetGame();
                 AtomicInteger seconds= new AtomicInteger();
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
                     controller.drawAllThings(gc,controller);

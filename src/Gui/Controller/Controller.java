@@ -70,7 +70,7 @@ public class Controller implements GameActions {
           difficulty = 1;
       }
       else if(type.equals("arcade")){
-          // TODO: 15-May-19 acdade reseter 
+          // TODO: 15-May-19 acdade reseter
       }
     }
 
@@ -106,8 +106,7 @@ public class Controller implements GameActions {
 
     public void drawAllThings(GraphicsContext gc,Controller controller){
         // Todo remove that damned paramiter (swidan, please)
-        Image image = new Image("Resources/ConceptGreatWave1 (2).jpg",1280,720,false,false);
-        gc.drawImage(image, 0, 0);
+        gc.clearRect(0,0,1280,720);
         gc.setFill(Color.ORANGE);
         gc.setLineWidth(2);
         Font theFont = Font.font("Gang Of Three", 30);
