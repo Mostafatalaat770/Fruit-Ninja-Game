@@ -18,23 +18,30 @@ import java.util.Random;
 public class ObjectCreator {
     public GameObject createObject(int flag) {
         Random random= new Random();
+        int x =0;
+        switch (random.nextInt(2)){
+            case 0: x=random.nextInt(5+random.nextInt(5));
+            break;
+            case 1: x=-random.nextInt(5+random.nextInt(5));
+            break;
+        }
         switch (flag) {
             case 0:
-                return new Apple(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, 100, false, false, false);
+                return new Apple(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, x, false, false, false);
             case 1:
-                return new Banana(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, 100, false, false, false);
+                return new Banana(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, x, false, false, false);
             case 2:
-                return new Melon(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, 100, false, false, false);
+                return new Melon(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, x, false, false, false);
             case 3:
-                return new Orange(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, 100, false, false, false);
+                return new Orange(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, x, false, false, false);
             case 4:
-                return new MagicBeans(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, 100, false, false, false);
+                return new MagicBeans(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, x, false, false, false);
             case 5:
-                return new FreezeBanana(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, 100, false, false, false);
+                return new FreezeBanana(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, x, false, false, false);
             case 6:
-                return new DangerousBomb(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, 100, false, false, false);
+                return new DangerousBomb(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, x, false, false, false);
             case 7:
-                return new FatalBomb(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, 100, false, false, false);
+                return new FatalBomb(100+random.nextDouble()*1080, 720, 100+200*random.nextDouble(), 10, x, false, false, false);
         }
         return null;
     }
