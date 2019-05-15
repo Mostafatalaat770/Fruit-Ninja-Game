@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -21,10 +20,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Classic implements Initializable {
    private Controller controller= new Controller();
     @FXML private Canvas canvas ;
-    @FXML ImageView pause;
-    @FXML ImageView resume;
+    @FXML private ImageView pause;
+    @FXML private ImageView resume;
+    @FXML private  ImageView reset;
     private GraphicsContext gc;
-    private Image image = new Image("Resources/ConceptGreatWave1 (2).jpg",1280,720,false,false);
 
 
     @Override
@@ -32,8 +31,8 @@ public class Classic implements Initializable {
         controller.type = "classic";
         controller.lives = 3;
         resume.setVisible(false);
+        reset.setVisible(false);
         gc=canvas.getGraphicsContext2D();
-        gc.drawImage(image, 0, 0);
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
             if(controller.throwables.size()<5) {
@@ -82,6 +81,7 @@ public class Classic implements Initializable {
         pause.setOnMouseClicked(event -> {
             pause.setVisible(false);
             resume.setVisible(true);
+            reset.setVisible(true);
             timeline.stop();
             timer.stop();
             clock.stop();
@@ -91,6 +91,7 @@ public class Classic implements Initializable {
         resume.setOnMouseClicked(event -> {
             if(resume.isVisible()){
                 resume.setVisible(false);
+                reset.setVisible(false);
                 canvas.setEffect(new GaussianBlur(-50));
                 AtomicInteger seconds= new AtomicInteger();
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
@@ -107,6 +108,19 @@ public class Classic implements Initializable {
                     clock.play();
                 });
 
+            }
+        });
+
+        reset.setOnMouseClicked(event -> {
+            if(reset.isVisible()){
+                resume.setVisible(false);
+                reset.setVisible(false);
+                pause.setVisible(true);
+                canvas.setEffect(new GaussianBlur(-50));
+                timeline.play();
+                timer.start();
+                clock.play();
+                // todo : islam add reset method
             }
         });
 
