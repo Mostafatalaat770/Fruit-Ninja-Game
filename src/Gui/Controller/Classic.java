@@ -58,10 +58,6 @@ public class Classic implements Initializable {
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
 
-//        canvas.setOnMouseMoved(event -> {
-//
-//
-//        });
 
         AnimationTimer timer=new AnimationTimer() {
             @Override
