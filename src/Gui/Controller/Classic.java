@@ -120,17 +120,28 @@ public class Classic implements Initializable {
                 reset.setVisible(false);
                 pause.setVisible(true);
                 canvas.setEffect(new GaussianBlur(-50));
-                timeline.play();
-                timer.start();
-                clock.play();
-                Main main = new Main();
-                try {
-                    main.getClassic(event);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                // todo : islam add reset method
+             //   timeline.play();
+               // timer.start();
+                //clock.play();
+             controller.ResetGame();
+                AtomicInteger seconds= new AtomicInteger();
+                Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
+                    controller.drawAllThings(gc,controller);
+                    seconds.getAndIncrement();
+                    controller.getCountDown(gc,seconds);
+                }));
+                resume.setCycleCount(4);
+                resume.play();
+                resume.setOnFinished(event1 -> {
+                    pause.setVisible(true);
+                    timeline.play();
+                    timer.start();
+                    clock.play();
+                });
+
             }
+                // todo : islam add reset method
+
         });
 
 

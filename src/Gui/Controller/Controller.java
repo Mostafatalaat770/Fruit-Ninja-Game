@@ -60,7 +60,12 @@ public class Controller implements GameActions {
 
     @Override
     public void ResetGame() {
-
+        throwables.clear();
+         Score = 0;
+         secs  =  0;
+         mins = 0;
+         lives=3;
+         difficulty = 1;
     }
 
     @Override
