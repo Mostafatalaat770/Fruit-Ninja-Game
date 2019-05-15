@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane fx:id="ClassicPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.Classic">
    <children>
       <Canvas fx:id="canvas" height="720.0" onMouseMoved="#handleMove" width="1280.0" />
+      <ImageView fx:id="pause" fitHeight="60.0" fitWidth="55.0" layoutX="14.0" layoutY="650.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/pause.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="resume" fitHeight="274.0" fitWidth="163.0" layoutX="559.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/resume.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
