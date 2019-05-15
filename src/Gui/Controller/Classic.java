@@ -9,10 +9,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import org.w3c.dom.css.Rect;
 
+import java.awt.event.ActionEvent;
 import java.awt.geom.Rectangle2D;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,11 +34,9 @@ public class Classic implements Initializable {
         gc=canvas.getGraphicsContext2D();
         gc.drawImage(image, 0, 0);
 
-        Timeline timeline = new Timeline(new KeyFrame(new Duration(1500), actionEvent->{
+        Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
             if(controller.throwables.size()<5) {
-                for (int i = 0; i < controller.difficulty; i++) {
-                    controller.throwables.add(controller.getRandomThrowable());
-                }
+                controller.throwables.add(controller.getRandomThrowable());
                 System.out.println(controller.throwables.size());
             }
         }));
@@ -48,21 +49,19 @@ public class Classic implements Initializable {
                 controller.secs = 0;
                 controller.mins++;
             }
-            if (controller.secs % 30 == 0 && controller.difficulty < 3)
-                ++controller.difficulty;
+            if (controller.secs % 30 == 0 && controller.difficulty < 3){
+                timeline.setRate(++controller.difficulty);
+            }
 
 
         }));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
 
-        canvas.setOnMouseMoved(event -> {
-            if(controller.isSliced(controller.throwables,event.getSceneX(),event.getSceneY(),controller)) {
-                System.out.println("cut");
-                // todo: cut
-            }
-
-        });
+//        canvas.setOnMouseMoved(event -> {
+//
+//
+//        });
 
         AnimationTimer timer=new AnimationTimer() {
             @Override
@@ -83,6 +82,14 @@ public class Classic implements Initializable {
         };
         timer.start();
 
+
+    }
+
+    public void handleMove(MouseEvent event){
+        if(controller.isSliced(controller.throwables,event.getSceneX(),event.getSceneY(),controller)) {
+            System.out.println("cut");
+            // todo: cut
+        }
 
     }
 

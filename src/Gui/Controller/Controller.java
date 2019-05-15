@@ -65,7 +65,7 @@ public class Controller implements GameActions {
     public GameObject getRandomThrowable() {
         ObjectCreator objectCreator = new ObjectCreator();
         Random rand = new Random();
-        int numberOfThrowables = 7; // number of supported throwables - 1 *starting from 0*
+        int numberOfThrowables = 8; // number of supported throwables - 1 *starting from 0*
         return objectCreator.createObject(rand.nextInt(numberOfThrowables));
     }
 
@@ -103,7 +103,7 @@ public class Controller implements GameActions {
         gc.setFont(theFont);
         gc.fillText("score: " + controller.Score , 20, 30);
         gc.fillText(controller.mins+" : "+controller.secs,1180,30);
-        if(controller.lives!=0)
+        if(controller.type.equals("classic"))
         {
             gc.fillText("lives: "+controller.lives,1150,70);
         }
