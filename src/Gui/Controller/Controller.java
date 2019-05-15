@@ -1,5 +1,6 @@
 package Gui.Controller;
 
+import Gui.Main;
 import Interfaces.Factory.ObjectCreator;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
@@ -29,6 +30,7 @@ public class Controller implements GameActions {
     int lives;
     int difficulty = 1;
     String type;
+    int luckyStrike=1;
 
     public static Controller getInstance() {
         return ourInstance;
@@ -58,7 +60,17 @@ public class Controller implements GameActions {
     public void loadGame() {
 
     }
-
+   int getrandom()
+   {
+       if(luckyStrike<2)
+       { luckyStrike++;
+         luckyStrike%=3;
+      return (int)Math.random()%4;
+       }
+       luckyStrike++;
+       luckyStrike%=3;
+       return (int)Math.random()%8;
+   }
     @Override
     public void ResetGame() {
       if(type.equals("classic")){
@@ -78,8 +90,7 @@ public class Controller implements GameActions {
     public GameObject getRandomThrowable() {
         ObjectCreator objectCreator = new ObjectCreator();
         Random rand = new Random();
-        int numberOfThrowables = 8; // number of supported throwables - 1 *starting from 0*
-        return objectCreator.createObject(rand.nextInt(numberOfThrowables));
+        return objectCreator.createObject(getrandom());
     }
 
     @Override
