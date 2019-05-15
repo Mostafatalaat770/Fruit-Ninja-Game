@@ -12,8 +12,7 @@ import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
+
 import javafx.util.Duration;
 import java.net.URL;
 import java.util.ResourceBundle;
