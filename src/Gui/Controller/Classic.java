@@ -41,8 +41,9 @@ public class Classic implements Initializable {
         gc=canvas.getGraphicsContext2D();
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
-            if(controller.throwables.size()<5) {
+            if(controller.throwables.size()<3) {
                 controller.throwables.add(controller.getRandomThrowable());
+                System.out.println("created");
             }
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -54,6 +55,9 @@ public class Classic implements Initializable {
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
 
+        canvas.setOnMouseMoved(event -> {
+            controller.slice(event.getSceneX(),event.getSceneY());
+        });
 
         AnimationTimer timer=new AnimationTimer() {
             @Override
@@ -83,6 +87,7 @@ public class Classic implements Initializable {
             clock.stop();
             canvas.setEffect(new GaussianBlur(50));
             background.setEffect(new GaussianBlur(50));
+            System.out.println(controller.throwables);
         });
 
         resume.setOnMouseClicked(event -> {
@@ -139,9 +144,8 @@ public class Classic implements Initializable {
 
 
     }
-    @FXML public void handleMove(MouseEvent event){
-        controller.slice(event.getSceneX(),event.getSceneY());
-    }
+
+
 
 }
 

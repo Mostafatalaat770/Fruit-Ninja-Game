@@ -22,12 +22,12 @@ public abstract class Throwable implements GameObject {
 
     public Throwable() {
         Random random=new Random();
-        startPos=100+random.nextDouble()*980;
-        x=startPos;
+        startPos=200+random.nextDouble()*680;
         y=720;
-        endPos=startPos+200;//-200+random.nextInt(400);
+        x=startPos;
+        endPos=startPos+200;
         midPoint=(startPos+endPos)/2;
-        maxHeight=500;
+        maxHeight=400+200*random.nextDouble();
         q=-startPos-endPos;
         p=startPos*endPos;
         a=maxHeight/((midPoint*midPoint)+(q*midPoint)+(p));
@@ -67,14 +67,21 @@ public abstract class Throwable implements GameObject {
 
     @Override
     public Boolean hasMovedOffScreen(){
-        if(x==endPos)
-        {
-            movedOffScreen=true;
-            return true;
-        }
-        else
-            return false;
-    }
+       if(!movedOffScreen){
+           if(x>=endPos)
+           {
+               movedOffScreen=true;
+               System.out.println("is offscreen");
+
+               return true;
+           }
+           else
+               return false;
+       }
+       else {
+           return true;
+       }
+       }
 
     public Boolean isFalling() {
         return falling;
@@ -119,33 +126,12 @@ public abstract class Throwable implements GameObject {
 
     @Override
     public void updatePosition(){
-//        double newPos= y-initialVelocity;
-//        if(falling==false){
-//            if(newPos<maxHeight){
-//                falling=true;
-//                y+=initialVelocity;
-//            }
-//            else{
-//                y-=initialVelocity;
-//            }
-//        }else{
-//            y+=initialVelocity;
-//        }
-//        if(x>100&&x<1080)
-//       x+=fallingVelocity;
-//        if (x==200){
-//            falling=true;
-//            System.out.println("max height achieved");
-//        }
-//        double q= -100-300;
-//        double p=100*300;
-//        double a= maxHeight/((200*200)+(q*200)+p);
-//        y= -(a*x*x+a*q*x+a*p)+720;
-//        x+=2;
+//
         if(x==midPoint){
             falling=true;
         }
         y=720 - (a*x*x+a*q*x+a*p);
-        x+=2;
+
+            x+=2;
    }
 }
