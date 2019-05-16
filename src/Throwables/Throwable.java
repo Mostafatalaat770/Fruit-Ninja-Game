@@ -1,5 +1,6 @@
 package Throwables;
 
+import Gui.Controller.Controller;
 import Interfaces.GameObject;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -71,7 +72,6 @@ public abstract class Throwable implements GameObject {
            if(x>=endPos)
            {
                movedOffScreen=true;
-               System.out.println("is offscreen");
 
                return true;
            }
@@ -133,5 +133,9 @@ public abstract class Throwable implements GameObject {
         y=720 - (a*x*x+a*q*x+a*p);
 
             x+=2;
+   }
+   @Override
+    public void getEffect(int score,int lives, int secs){
+       // TODO: 17-May-19 mostafa
    }
 }

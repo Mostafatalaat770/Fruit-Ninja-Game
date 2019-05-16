@@ -1,5 +1,6 @@
 package Throwables.Fruits.SpecialFruits;
 
+import Gui.Controller.Controller;
 import javafx.scene.image.Image;
 
 /**
@@ -23,5 +24,10 @@ public class FreezeBanana extends SpecialFruit {
         images[0]= new Image("Resources/Freeze_Banana.png");
         images[1]= new Image("Resources/Freeze_Banana.png");
         return images;
+    }
+
+    public void getEffect(int score,int lives, int secs){
+        // TODO: 17-May-19 mostafa
+        secs+=10;
     }
 }

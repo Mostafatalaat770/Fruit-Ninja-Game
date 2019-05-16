@@ -19,8 +19,13 @@ public class Apple extends Fruit {
         images[1]= new Image("Resources/Green_Apple.png",75,75,true,true);
         return images;
     }
+    @Override
+    public void getEffect(int score,int lives, int secs){
+        score++;
+        // TODO: 17-May-19 mostafa
 
 
+    }
 
 
 }

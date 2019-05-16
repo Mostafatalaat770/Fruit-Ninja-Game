@@ -19,4 +19,11 @@ public class Banana extends Fruit {
         images[1]= new Image("Resources/Banana.png");
         return images;
     }
+
+    public void getEffect(int score,int lives, int secs){
+        // TODO: 17-May-19 mostafa
+
+        score++;
+
+    }
 }

@@ -43,7 +43,6 @@ public class Classic implements Initializable {
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
             if(controller.throwables.size()<3) {
                 controller.throwables.add(controller.getRandomThrowable());
-                System.out.println("created");
             }
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -87,7 +86,6 @@ public class Classic implements Initializable {
             clock.stop();
             canvas.setEffect(new GaussianBlur(50));
             background.setEffect(new GaussianBlur(50));
-            System.out.println(controller.throwables);
         });
 
         resume.setOnMouseClicked(event -> {
