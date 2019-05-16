@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     public void getArcade(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Classic.fxml"));  //TODO change classic.fxml to arcade.fxml when you make one
+        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Arcade.fxml"));  
         Scene arcadeScene = new Scene(root, 1270, 720);
         Stage arcadeWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         arcadeWindow.setScene(arcadeScene);
@@ -30,9 +30,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root1 = FXMLLoader.load(getClass().getResource("FxmlFiles/StartScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/StartScene.fxml"));
         primaryStage.setTitle("Fruits Ninja");
-        primaryStage.setScene(new Scene(root1, 1270, 720));
+        primaryStage.setScene(new Scene(root, 1270, 720));
         primaryStage.show();
     }
 
