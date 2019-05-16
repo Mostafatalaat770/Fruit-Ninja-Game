@@ -26,7 +26,7 @@ public class Controller implements GameActions {
     public int secs = 0;
     public int mins = 0;
     public int lives;
-    public int difficulty = 1;
+    public double difficulty = 1;
     public String type;
     public String username;
     public int luckyStrike = 1;

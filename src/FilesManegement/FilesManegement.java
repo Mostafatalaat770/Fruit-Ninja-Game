@@ -73,7 +73,7 @@ public class FilesManegement {
         levelElement.addContent(parent);
 
         parent = new Element("difficulty");
-        parent.setText(Integer.toString(controller.difficulty));
+        parent.setText(Double.toString(controller.difficulty));
         levelElement.addContent(parent);
 
         parent = new Element("scores");
