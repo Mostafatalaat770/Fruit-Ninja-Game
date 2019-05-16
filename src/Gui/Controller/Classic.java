@@ -1,6 +1,5 @@
 package Gui.Controller;
 
-import Gui.Main;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -12,11 +11,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 import javafx.scene.input.MouseEvent;
-
 import javafx.util.Duration;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -134,11 +131,9 @@ public class Classic implements Initializable {
 
 
     }
-
-    public void handleMove(MouseEvent event){
+    @FXML public void handleMove(MouseEvent event){
         controller.slice(event.getSceneX(),event.getSceneY());
-
-        }
+    }
 
 }
 
