@@ -11,9 +11,10 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+
+import javax.xml.soap.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -25,6 +26,8 @@ public class Classic implements Initializable {
     @FXML private ImageView resume;
     @FXML private  ImageView reset;
     @FXML private ImageView background;
+    @FXML private javafx.scene.text.Text gameOver;
+    @FXML private javafx.scene.text.Text score;
     private GraphicsContext gc;
 
 
@@ -60,6 +63,11 @@ public class Classic implements Initializable {
                 if(controller.gameOver()){
                     timeline.stop();
                     clock.stop();
+                    canvas.setEffect(new GaussianBlur(50));
+                    background.setEffect(new GaussianBlur(50));
+                    gameOver.setText("game over");
+                    score.setText("score: "+controller.score);
+                    pause.setVisible(false);
                 }
 
             }
