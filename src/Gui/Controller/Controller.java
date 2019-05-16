@@ -6,6 +6,7 @@ import Interfaces.GameObject;
 import Throwables.Bombs.Bomb;
 import Throwables.Fruits.Fruit;
 import Throwables.Fruits.SpecialFruits.SpecialFruit;
+import javafx.animation.AnimationTimer;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -86,23 +87,20 @@ public class Controller implements GameActions {
     }
 
     @Override
-    public boolean removeUnwantedThrowable(ArrayList<GameObject> throwables) {
+    public void removeUnwantedThrowable() {
         Iterator<GameObject> iterator = throwables.iterator();
         while (iterator.hasNext()) {
             GameObject throwable = iterator.next();
             if (throwable.hasMovedOffScreen() && throwable.isSliced()) {
                 iterator.remove();
-                return true;
             } else if (throwable.hasMovedOffScreen() && !throwable.isSliced() && !(throwable instanceof Bomb)) {
                 iterator.remove();
-                return false;
+                lives--;
             } else if (throwable.hasMovedOffScreen()) {
                 iterator.remove();
-                return true;
             }
         }
 
-        return true;
     }
 
     public void drawAllThings(GraphicsContext gc, Controller controller) {
@@ -129,7 +127,7 @@ public class Controller implements GameActions {
         }
     }
 
-    public void slice(ArrayList<GameObject> throwables, double x, double y, Controller controller) {
+    public void slice(double x, double y) {
         for (GameObject throwable : throwables) {
             if (x > throwable.getXlocation() && x < throwable.getXlocation() + throwable.getImages()[0].getWidth()) {
                 if (y > throwable.getYlocation() && y < throwable.getYlocation() + throwable.getImages()[0].getHeight()) {
@@ -137,7 +135,7 @@ public class Controller implements GameActions {
                         throwable.setFalling(true);
                         throwable.setSliced(true);
                         if (throwable instanceof Fruit) {
-                            controller.Score++;
+                            Score++;
                             // todo slice sound
                         }
                         if (throwable instanceof Bomb) {
@@ -177,6 +175,20 @@ public class Controller implements GameActions {
         } else if (type.equals("arcade")) {
             // TODO: arcade timer 
         }
+    }
+
+    public boolean gameOver(){
+        if(type.equals("classic")){
+            if(lives==0){
+                return true;
+                // todo: game over scene
+            }
+        }
+        else if(type.equals("arcade")){
+            // TODO: 16-May-19 arcade condition to stop
+
+        }
+        return false;
     }
 }
 
