@@ -62,6 +62,9 @@ public class Controller implements GameActions {
 
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
     public int getRandom() {
         Random rand = new Random();
         luckyStrike %= 3;

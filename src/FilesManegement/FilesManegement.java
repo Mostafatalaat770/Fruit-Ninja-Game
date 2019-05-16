@@ -163,8 +163,8 @@ public class FilesManegement {
         xmlOutput.output(doc, new FileWriter(file + "/" + controller.type + ".txt"));
     }
 
-    public void load(Controller controller, String username, String type) throws JDOMException, IOException {
-        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Saves" + File.separator + username + File.separator + type + ".txt");
+    public void load(Controller controller, String type) throws JDOMException, IOException {
+        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Saves" + File.separator + controller.username + File.separator + type + ".txt");
         SAXBuilder saxBuilder = new SAXBuilder();
         Document document = saxBuilder.build(inputFile);
         Element classElement = document.getRootElement();
@@ -212,7 +212,7 @@ public class FilesManegement {
         }
     }
 
-    public void saveHighScore(Controller controller) throws IOException {
+    public void saveHighestScore(Controller controller) throws IOException {
         Element levelElement = new Element("highestScore");
         levelElement.setText(Integer.toString(controller.highestScore));
         Document doc = new Document(levelElement);
@@ -226,8 +226,8 @@ public class FilesManegement {
         xmlOutput.output(doc, new FileWriter(file + "/highestScore.txt"));
     }
 
-    public void loadHighScore(Controller controller) throws JDOMException, IOException {
-        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/LeaderBoards" + File.separator + "highScore.txt");
+    public void loadHighestScore(Controller controller) throws JDOMException, IOException {
+        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/LeaderBoards" + File.separator + "highestScore.txt");
         SAXBuilder saxBuilder = new SAXBuilder();
         Document document = saxBuilder.build(inputFile);
         controller.highestScore = Integer.parseInt(document.getRootElement().getText());
