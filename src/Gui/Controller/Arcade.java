@@ -32,6 +32,7 @@ public class Arcade implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		controller.type = "arcade";
+		controller.mins = 1;
 		resume.setVisible(false);
         reset.setVisible(false);
         background.setImage(new Image("Resources/ConceptGreatWave1 (2).jpg"));
