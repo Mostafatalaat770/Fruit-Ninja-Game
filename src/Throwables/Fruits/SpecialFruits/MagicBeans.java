@@ -8,8 +8,8 @@ import javafx.scene.image.Image;
 public class MagicBeans extends SpecialFruit {
 
 
-    public MagicBeans(double x, double y, double maxHeight, int initialVelocity, int fallingVelocity, boolean falling, boolean sliced, boolean movedOffScreen) {
-        super(x, y, maxHeight, initialVelocity, fallingVelocity, falling, sliced, movedOffScreen);
+    public MagicBeans() {
+        super();
     }
 
     @Override

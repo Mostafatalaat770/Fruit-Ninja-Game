@@ -90,7 +90,7 @@ public class Controller implements GameActions {
     @Override
     public GameObject getRandomThrowable() {
         ObjectCreator objectCreator = new ObjectCreator();
-        return objectCreator.createObject(getRandom());
+        return objectCreator.createObject(0);
     }
 
     @Override

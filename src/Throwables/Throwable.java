@@ -12,21 +12,28 @@ public abstract class Throwable implements GameObject {
     private double x;
     private double y;
     private double maxHeight;
-    private int initialVelocity;
-    private int fallingVelocity;
-    private boolean falling = false;
-    private boolean sliced = false;
-    private boolean movedOffScreen = false;
+    private double startPos;
+    private double midPoint;
+    private double endPos;
+    private double a,q,p;
+    private boolean falling ;
+    private boolean sliced ;
+    private boolean movedOffScreen ;
 
-    public Throwable(double x, double y, double maxHeight, int initialVelocity, int fallingVelocity, boolean falling, boolean sliced, boolean movedOffScreen) {
-        this.x = x;
-        this.y = y;
-        this.maxHeight = maxHeight;
-        this.initialVelocity = initialVelocity;
-        this.fallingVelocity = fallingVelocity;
-        this.falling = falling;
-        this.sliced = sliced;
-        this.movedOffScreen = movedOffScreen;
+    public Throwable() {
+        Random random=new Random();
+        startPos=100+random.nextDouble()*980;
+        x=startPos;
+        y=720;
+        endPos=startPos-200+random.nextInt(400);
+        midPoint=(startPos+endPos)/2;
+        maxHeight=100+100*random.nextDouble();
+        q=-startPos-endPos;
+        p=startPos*endPos;
+        a=maxHeight/((midPoint*midPoint)+(q*midPoint)+(p));
+        falling=false;
+        sliced=false;
+        movedOffScreen=false;
     }
 
     @Override
@@ -46,12 +53,12 @@ public abstract class Throwable implements GameObject {
 
     @Override
     public int getInitialVelocity() {
-        return initialVelocity;
+        return 0;
     }
 
     @Override
     public int getFallingVelocity() {
-        return fallingVelocity;
+        return 0;
     }
     @Override
     public Boolean isSliced() {
@@ -60,7 +67,7 @@ public abstract class Throwable implements GameObject {
 
     @Override
     public Boolean hasMovedOffScreen(){
-        if(falling==true&&y>=720)
+        if(x==endPos)
             return true;
         else
             return false;
@@ -109,19 +116,35 @@ public abstract class Throwable implements GameObject {
 
     @Override
     public void updatePosition(){
-        double newPos= y-initialVelocity;
-        if(falling==false){
-            if(newPos<maxHeight){
-                falling=true;
-                y+=initialVelocity;
-            }
-            else{
-                y-=initialVelocity;
-            }
-        }else{
-            y+=initialVelocity;
+//        double newPos= y-initialVelocity;
+//        if(falling==false){
+//            if(newPos<maxHeight){
+//                falling=true;
+//                y+=initialVelocity;
+//            }
+//            else{
+//                y-=initialVelocity;
+//            }
+//        }else{
+//            y+=initialVelocity;
+//        }
+//        if(x>100&&x<1080)
+//       x+=fallingVelocity;
+//        if (x==200){
+//            falling=true;
+//            System.out.println("max height achieved");
+//        }
+//        double q= -100-300;
+//        double p=100*300;
+//        double a= maxHeight/((200*200)+(q*200)+p);
+//        y= -(a*x*x+a*q*x+a*p)+720;
+//        x+=2;
+        if(x==midPoint){
+            falling=true;
+             System.out.println(" max height reached");
         }
-        if(x>100&&x<1080)
-       x+=fallingVelocity;
-    }
+        double temp= a*x*x+a*q*x+a*p;
+        y=720-(2*temp);
+        x+=1;
+   }
 }
