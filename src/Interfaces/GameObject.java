@@ -1,5 +1,6 @@
 package Interfaces;
 
+import Gui.Controller.Controller;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -81,5 +82,17 @@ public interface GameObject {
      * updates the movment of any fruit
      */
     void updatePosition();
+
+    /**
+     *
+     * @param score
+     * @param lives
+     * @param secs
+     *
+     * changes the controller's effects
+     *
+     */
+    void getEffect(int score,int lives, int secs);
+    // TODO: 17-May-19 mostafa
 
 }

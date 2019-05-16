@@ -1,5 +1,6 @@
 package Throwables.Bombs;
 
+import Gui.Controller.Controller;
 import javafx.scene.image.Image;
 
 /**
@@ -23,5 +24,10 @@ public class FatalBomb extends Bomb {
         images[0]= new Image("Resources/Bomb.png");
         images[1]= new Image("Resources/Bomb.png");
         return images;
+    }
+    public void getEffect(int score,int lives, int secs){
+        // TODO: 17-May-19 mostafa
+
+        lives=0;
     }
 }

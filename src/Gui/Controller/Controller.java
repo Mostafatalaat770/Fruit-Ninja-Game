@@ -23,10 +23,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Controller implements GameActions {
     private static Controller ourInstance = new Controller();
     public ArrayList<GameObject> throwables = new ArrayList<>();
-    int score = 0;
-    int secs = 0;
+    public int score = 0;
+    public int secs = 0;
     int mins = 0;
-    int lives;
+    public int lives;
     double difficulty = 1;
     String type;
     int luckyStrike = 1;
@@ -99,15 +99,12 @@ public class Controller implements GameActions {
         while (iterator.hasNext()) {
             GameObject throwable = iterator.next();
             if (throwable.hasMovedOffScreen() && throwable.isSliced()) {
-                System.out.println("removed");
                 iterator.remove();
             } else if (throwable.hasMovedOffScreen() && !throwable.isSliced() && !(throwable instanceof Bomb)) {
                 iterator.remove();
                 lives--;
-                System.out.println("removed");
             } else if (throwable.hasMovedOffScreen()) {
                 iterator.remove();
-                System.out.println("removed");
             }
         }
 
@@ -139,28 +136,15 @@ public class Controller implements GameActions {
 
     public void slice(double x, double y) {
         for (GameObject throwable : throwables) {
-            if (x > throwable.getXlocation() && x < throwable.getXlocation() + throwable.getImages()[0].getWidth()) {
-                if (y > throwable.getYlocation() && y < throwable.getYlocation() + throwable.getImages()[0].getHeight()) {
+            if (x > throwable.getXlocation() && x < throwable.getXlocation() + throwable.getImages()[0].getWidth()&&y > throwable.getYlocation() && y < throwable.getYlocation() + throwable.getImages()[0].getHeight()) {
+
                     if (!throwable.isSliced()) {
                         throwable.setSliced(true);
-                        if (throwable instanceof Fruit) {
-                            score++;
-                            // todo slice sound
-                        }
-                        if (throwable instanceof Bomb) {
-                            // todo : special effects
-                            // todo slice sound (bomb)
-
-                        }
-                        if (throwable instanceof SpecialFruit) {
-                            //todo : special effects
-                            // todo slice sound (special fruit)
-
-                        }
+                        throwable.getEffect(score,lives,secs);
                     }
                 }
             }
-        }
+
     }
 
     public void getCountDown(GraphicsContext gc, AtomicInteger seconds) {
@@ -176,14 +160,13 @@ public class Controller implements GameActions {
     public void updateTime_Difficulty(Timeline timeline) {
     	if(type.equals("classic")) {
             secs++;
-            if (secs == 60) {
-                secs = 0;
+            if (secs >= 60) {
+                secs -=60;
                 mins++;
             }
             if (secs % 20 == 0&& difficulty<2) {
                 difficulty+=0.5;
                 timeline.setRate(difficulty);
-                System.out.println("difficulty updated :"+difficulty);
             }
     	}
     	else if(type.equals("arcade")) {
@@ -196,7 +179,6 @@ public class Controller implements GameActions {
             if (secs % 10 == 0) {
                 difficulty+=0.2;
                 timeline.setRate(difficulty);
-                System.out.println("difficulty updated :"+difficulty);
 
             }
     	}
@@ -205,16 +187,12 @@ public class Controller implements GameActions {
 
     public boolean gameOver(){
         if(type.equals("classic")){
-            if(lives==0){
-                return true;
-                // todo: game over scene
-            }
+            // todo: game over scene
+            return lives == 0;
         }
         else if(type.equals("arcade")){
-        	if(mins==0 && secs==0) {
-        		return true;
-        	// todo: game over scene
-        	}
+            // todo: game over scene
+            return mins == 0 && secs == 0;
         }
         return false;
     }

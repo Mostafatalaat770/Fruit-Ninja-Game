@@ -15,7 +15,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
 public class Arcade implements Initializable {
@@ -41,7 +40,6 @@ public class Arcade implements Initializable {
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
             if(controller.throwables.size()<3) {
                 controller.throwables.add(controller.getRandomThrowable());
-                System.out.println(controller.throwables.size());
             }
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
