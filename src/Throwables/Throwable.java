@@ -121,7 +121,7 @@ public abstract class Throwable implements GameObject {
         }else{
             y+=initialVelocity;
         }
-        if(x>100&&x<1180)
+        if(x>100&&x<1080)
        x+=fallingVelocity;
     }
 }

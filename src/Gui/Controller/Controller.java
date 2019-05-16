@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Controller implements GameActions {
     private static Controller ourInstance = new Controller();
     public ArrayList<GameObject> throwables = new ArrayList<>();
-    private int Score = 0;
+    int score = 0;
     int secs = 0;
     int mins = 0;
     int lives;
@@ -70,7 +70,7 @@ public class Controller implements GameActions {
     public void ResetGame() {
         if (type.equals("classic")) {
             throwables.clear();
-            Score = 0;
+            score = 0;
             secs = 0;
             mins = 0;
             lives = 3;
@@ -110,7 +110,7 @@ public class Controller implements GameActions {
         gc.setLineWidth(2);
         Font theFont = Font.font("Gang Of Three", 30);
         gc.setFont(theFont);
-        gc.fillText("score: " + controller.Score, 20, 30);
+        gc.fillText("score: " + controller.score, 20, 30);
         gc.fillText(controller.mins + " : " + controller.secs, 1180, 30);
         if (controller.type.equals("classic")) {
             gc.fillText("lives: " + controller.lives, 1150, 70);
@@ -135,16 +135,18 @@ public class Controller implements GameActions {
                         throwable.setFalling(true);
                         throwable.setSliced(true);
                         if (throwable instanceof Fruit) {
-                            Score++;
+                            score++;
                             // todo slice sound
                         }
                         if (throwable instanceof Bomb) {
                             // todo : special effects
                             // todo slice sound (bomb)
+
                         }
                         if (throwable instanceof SpecialFruit) {
                             //todo : special effects
                             // todo slice sound (special fruit)
+
                         }
                     }
                 }
