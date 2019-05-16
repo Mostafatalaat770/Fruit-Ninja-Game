@@ -43,7 +43,6 @@ public class Classic implements Initializable {
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
             if(controller.throwables.size()<5) {
                 controller.throwables.add(controller.getRandomThrowable());
-                System.out.println(controller.throwables.size());
             }
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -60,15 +59,10 @@ public class Classic implements Initializable {
             @Override
             public void handle(long now) {
                 controller.drawAllThings(gc,controller);
-                if (!controller.removeUnwantedThrowable(controller.throwables))
-                    controller.lives--;
-                if(controller.lives==0){
+                controller.removeUnwantedThrowable();
+                if(controller.gameOver()){
                     timeline.stop();
                     clock.stop();
-                    // todo: game over scene
-                    System.out.println("GAME OVER");
-
-
                 }
 
             }
@@ -142,7 +136,7 @@ public class Classic implements Initializable {
     }
 
     public void handleMove(MouseEvent event){
-        controller.slice(controller.throwables,event.getSceneX(),event.getSceneY(),controller);
+        controller.slice(event.getSceneX(),event.getSceneY());
 
         }
 

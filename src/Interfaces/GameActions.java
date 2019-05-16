@@ -43,7 +43,7 @@ public interface GameActions {
     /**
      * removes any out of screen throwable from the array list
      */
-    boolean removeUnwantedThrowable(ArrayList<GameObject> throwables);
+    void removeUnwantedThrowable();
     /**
      *  adds a random throwable to the scene to be drawn
      */
