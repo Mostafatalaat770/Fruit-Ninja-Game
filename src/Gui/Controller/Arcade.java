@@ -25,6 +25,8 @@ public class Arcade implements Initializable {
     @FXML private ImageView resume;
     @FXML private  ImageView reset;
     @FXML private ImageView background;
+    @FXML private javafx.scene.text.Text gameOver;
+    @FXML private javafx.scene.text.Text score;
     private GraphicsContext gc;
 
 	@Override
@@ -58,9 +60,13 @@ public class Arcade implements Initializable {
                 controller.removeUnwantedThrowable();
                               
                 if(controller.gameOver()) {
-                	timeline.stop();
-                	clock.stop();
-                	System.out.println("Game Over!!!");
+                    timeline.stop();
+                    clock.stop();
+                    canvas.setEffect(new GaussianBlur(50));
+                    background.setEffect(new GaussianBlur(50));
+                    gameOver.setText("game over");
+                    score.setText("score: "+controller.score);
+                    pause.setVisible(false);
                 }
 
             }

@@ -5,6 +5,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 <AnchorPane fx:id="ArcadePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.Arcade">
    <children>
       <ImageView fx:id="background" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" />
@@ -17,12 +19,22 @@
       <ImageView fx:id="resume" fitHeight="274.0" fitWidth="163.0" layoutX="559.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Resources/resume.png" />
-         </image>
+      </image>
       </ImageView>
       <ImageView fx:id="reset" fitHeight="274.0" fitWidth="163.0" layoutX="368.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Resources/reset.png" />
          </image>
       </ImageView>
+      <Text fx:id="gameOver" fill="ORANGE" layoutX="391.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="Gang of Three" size="96.0" />
+         </font>
+      </Text>
+      <Text fx:id="score" fill="ORANGE" layoutX="391.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="Gang of Three" size="96.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
