@@ -39,13 +39,17 @@ public class Arcade implements Initializable {
         gc=canvas.getGraphicsContext2D();
         
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
-            if(controller.throwables.size()<5) {
+            if(controller.throwables.size()<3) {
                 controller.throwables.add(controller.getRandomThrowable());
                 System.out.println(controller.throwables.size());
             }
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+
+        canvas.setOnMouseMoved(event -> {
+            controller.slice(event.getSceneX(),event.getSceneY());
+        });
 
         Timeline clock= new Timeline(new KeyFrame(new Duration(1000), actionEvent1->{
             controller.updateTime_Difficulty(timeline);
@@ -140,10 +144,6 @@ public class Arcade implements Initializable {
 		
 				
 	}
-	
-	public void handleMove(MouseEvent event){
-        controller.slice(event.getSceneX(),event.getSceneY());
 
-        }
 	
 }

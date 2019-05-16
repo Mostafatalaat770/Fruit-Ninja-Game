@@ -27,7 +27,7 @@ public class Controller implements GameActions {
     int secs = 0;
     int mins = 0;
     int lives;
-    int difficulty = 1;
+    double difficulty = 1;
     String type;
     int luckyStrike = 1;
 
@@ -99,12 +99,15 @@ public class Controller implements GameActions {
         while (iterator.hasNext()) {
             GameObject throwable = iterator.next();
             if (throwable.hasMovedOffScreen() && throwable.isSliced()) {
+                System.out.println("removed");
                 iterator.remove();
             } else if (throwable.hasMovedOffScreen() && !throwable.isSliced() && !(throwable instanceof Bomb)) {
                 iterator.remove();
                 lives--;
+                System.out.println("removed");
             } else if (throwable.hasMovedOffScreen()) {
                 iterator.remove();
+                System.out.println("removed");
             }
         }
 
@@ -139,7 +142,6 @@ public class Controller implements GameActions {
             if (x > throwable.getXlocation() && x < throwable.getXlocation() + throwable.getImages()[0].getWidth()) {
                 if (y > throwable.getYlocation() && y < throwable.getYlocation() + throwable.getImages()[0].getHeight()) {
                     if (!throwable.isSliced()) {
-                        throwable.setFalling(true);
                         throwable.setSliced(true);
                         if (throwable instanceof Fruit) {
                             score++;
@@ -178,7 +180,7 @@ public class Controller implements GameActions {
                 secs = 0;
                 mins++;
             }
-            if (secs % 10 == 0) {
+            if (secs % 20 == 0&& difficulty<2) {
                 difficulty+=0.5;
                 timeline.setRate(difficulty);
                 System.out.println("difficulty updated :"+difficulty);
@@ -192,7 +194,7 @@ public class Controller implements GameActions {
             }
             secs--;
             if (secs % 10 == 0) {
-                difficulty+=0.5;
+                difficulty+=0.2;
                 timeline.setRate(difficulty);
                 System.out.println("difficulty updated :"+difficulty);
 
