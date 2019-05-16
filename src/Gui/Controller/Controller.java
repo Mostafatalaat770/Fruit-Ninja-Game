@@ -4,9 +4,6 @@ import Interfaces.Factory.ObjectCreator;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
 import Throwables.Bombs.Bomb;
-import Throwables.Fruits.Fruit;
-import Throwables.Fruits.SpecialFruits.SpecialFruit;
-import javafx.animation.AnimationTimer;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -24,12 +21,15 @@ public class Controller implements GameActions {
     private static Controller ourInstance = new Controller();
     public ArrayList<GameObject> throwables = new ArrayList<>();
     public int score = 0;
+    public int personalHighscore = 0;
+    public int highestScore = 0;
     public int secs = 0;
-    int mins = 0;
+    public int mins = 0;
     public int lives;
-    double difficulty = 1;
-    String type;
-    int luckyStrike = 1;
+    public int difficulty = 1;
+    public String type;
+    public String username;
+    public int luckyStrike = 1;
 
     public static Controller getInstance() {
         return ourInstance;
