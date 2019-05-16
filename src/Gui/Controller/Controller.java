@@ -178,8 +178,10 @@ public class Controller implements GameActions {
                 secs = 0;
                 mins++;
             }
-            if (secs % 30 == 0 && difficulty < 3) {
-                timeline.setRate(++difficulty);
+            if (secs % 10 == 0) {
+                difficulty+=0.5;
+                timeline.setRate(difficulty);
+                System.out.println("difficulty updated :"+difficulty);
             }
     	}
     	else if(type.equals("arcade")) {
@@ -189,8 +191,11 @@ public class Controller implements GameActions {
                 mins--;
             }
             secs--;
-            if (secs % 30 == 0 && difficulty < 3) {
-                timeline.setRate(++difficulty);
+            if (secs % 10 == 0) {
+                difficulty+=0.5;
+                timeline.setRate(difficulty);
+                System.out.println("difficulty updated :"+difficulty);
+
             }
     	}
         
@@ -208,7 +213,6 @@ public class Controller implements GameActions {
         		return true;
         	// todo: game over scene
         	}
-
         }
         return false;
     }
