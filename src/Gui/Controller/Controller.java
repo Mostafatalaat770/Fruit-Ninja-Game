@@ -68,12 +68,22 @@ public class Controller implements GameActions {
 
     @Override
     public void ResetGame() {
+    	if(type.equals("classic")) {
             throwables.clear();
             score = 0;
             secs = 0;
             mins = 0;
             lives = 3;
             difficulty = 1;
+    	}
+    	else if(type.equals("arcade")) {
+    		throwables.clear();
+            score = 0;
+            secs = 0;
+            mins = 1;
+            lives = 3;
+            difficulty = 1;
+    	}
         
     }
 
@@ -162,6 +172,7 @@ public class Controller implements GameActions {
     }
 
     public void updateTime_Difficulty(Timeline timeline) {
+    	if(type.equals("classic")) {
             secs++;
             if (secs == 60) {
                 secs = 0;
@@ -170,6 +181,18 @@ public class Controller implements GameActions {
             if (secs % 30 == 0 && difficulty < 3) {
                 timeline.setRate(++difficulty);
             }
+    	}
+    	else if(type.equals("arcade")) {
+    		
+            if (secs == 0) {
+                secs = 60;
+                mins--;
+            }
+            secs--;
+            if (secs % 30 == 0 && difficulty < 3) {
+                timeline.setRate(++difficulty);
+            }
+    	}
         
     }
 
@@ -181,7 +204,7 @@ public class Controller implements GameActions {
             }
         }
         else if(type.equals("arcade")){
-        	if(mins>0) {
+        	if(mins==0 && secs==0) {
         		return true;
         	// todo: game over scene
         	}
