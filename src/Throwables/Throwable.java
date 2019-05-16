@@ -1,6 +1,5 @@
 package Throwables;
 
-import Gui.Controller.Controller;
 import Interfaces.GameObject;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -97,6 +96,66 @@ public abstract class Throwable implements GameObject {
 
     public void setMovedOffScreen(boolean movedOffScreen) {
         this.movedOffScreen = movedOffScreen;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public void setMaxHeight(double maxHeight) {
+        this.maxHeight = maxHeight;
+    }
+
+    public double getStartPos() {
+        return startPos;
+    }
+
+    public void setStartPos(double startPos) {
+        this.startPos = startPos;
+    }
+
+    public double getMidPoint() {
+        return midPoint;
+    }
+
+    public void setMidPoint(double midPoint) {
+        this.midPoint = midPoint;
+    }
+
+    public double getEndPos() {
+        return endPos;
+    }
+
+    public void setEndPos(double endPos) {
+        this.endPos = endPos;
+    }
+
+    public double getA() {
+        return a;
+    }
+
+    public void setA(double a) {
+        this.a = a;
+    }
+
+    public double getQ() {
+        return q;
+    }
+
+    public void setQ(double q) {
+        this.q = q;
+    }
+
+    public double getP() {
+        return p;
+    }
+
+    public void setP(double p) {
+        this.p = p;
     }
 
     @Override
