@@ -52,6 +52,35 @@ public interface GameObject {
 
     void setMovedOffScreen(boolean movedOffScreen);
 
+    void setX(double x);
+
+    void setY(double y);
+
+    void setMaxHeight(double maxHeight);
+
+    double getStartPos();
+
+    void setStartPos(double startPos);
+
+    double getMidPoint();
+
+    void setMidPoint(double midPoint);
+
+    double getEndPos();
+
+    void setEndPos(double endPos);
+
+    double getA();
+
+    void setA(double a);
+
+    double getQ();
+
+    void setQ(double q);
+
+    double getP();
+
+    void setP(double p);
 
     /**
      * it is used to move the object on the screen
