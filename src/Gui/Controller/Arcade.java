@@ -55,13 +55,12 @@ public class Arcade implements Initializable {
             @Override
             public void handle(long now) {
                 controller.drawAllThings(gc,controller);
-                controller.removeUnwantedThrowable(controller.throwables);
+                controller.removeUnwantedThrowable();
                               
-                if(controller.mins>0) {
+                if(controller.gameOver()) {
                 	timeline.stop();
                 	clock.stop();
-                	// todo: game over scene
-                	System.out.println("GAME OVER!!!");
+                	System.out.println("Game Over!!!");
                 }
 
             }
@@ -136,7 +135,7 @@ public class Arcade implements Initializable {
 	}
 	
 	public void handleMove(MouseEvent event){
-        controller.slice(controller.throwables,event.getSceneX(),event.getSceneY(),controller);
+        controller.slice(event.getSceneX(),event.getSceneY());
 
         }
 	

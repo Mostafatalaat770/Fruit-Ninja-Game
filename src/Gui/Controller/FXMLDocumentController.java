@@ -140,7 +140,13 @@ public class FXMLDocumentController implements Initializable {
            transition9.play();
            transition10.play();
            transition7.setOnFinished((event1) -> {
-               //TODO: close this scene and open the arcade mode scene
+        	   Main main = new Main();
+				try {
+					main.getArcade(event);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
            });
            System.out.println("Arcade mode activated");
        });
