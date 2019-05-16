@@ -25,9 +25,9 @@ public abstract class Throwable implements GameObject {
         startPos=100+random.nextDouble()*980;
         x=startPos;
         y=720;
-        endPos=startPos-200+random.nextInt(400);
+        endPos=startPos+200;//-200+random.nextInt(400);
         midPoint=(startPos+endPos)/2;
-        maxHeight=100+100*random.nextDouble();
+        maxHeight=500;
         q=-startPos-endPos;
         p=startPos*endPos;
         a=maxHeight/((midPoint*midPoint)+(q*midPoint)+(p));
@@ -68,7 +68,10 @@ public abstract class Throwable implements GameObject {
     @Override
     public Boolean hasMovedOffScreen(){
         if(x==endPos)
+        {
+            movedOffScreen=true;
             return true;
+        }
         else
             return false;
     }
@@ -141,10 +144,8 @@ public abstract class Throwable implements GameObject {
 //        x+=2;
         if(x==midPoint){
             falling=true;
-             System.out.println(" max height reached");
         }
-        double temp= a*x*x+a*q*x+a*p;
-        y=720-(2*temp);
-        x+=1;
+        y=720 - (a*x*x+a*q*x+a*p);
+        x+=2;
    }
 }
