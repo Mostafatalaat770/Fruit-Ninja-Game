@@ -11,10 +11,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
-import javax.xml.soap.Text;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -34,7 +32,7 @@ public class Classic implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         controller.type = "classic";
-        controller.lives = 3;
+        Controller.lives = 3;
         resume.setVisible(false);
         reset.setVisible(false);
         background.setImage(new Image("Resources/ConceptGreatWave1 (2).jpg"));
@@ -61,7 +59,7 @@ public class Classic implements Initializable {
         AnimationTimer timer=new AnimationTimer() {
             @Override
             public void handle(long now) {
-                controller.drawAllThings(gc,controller);
+                controller.drawAllThings(gc);
                 controller.removeUnwantedThrowable();
                 if(controller.gameOver()){
                     timeline.stop();
@@ -69,7 +67,7 @@ public class Classic implements Initializable {
                     canvas.setEffect(new GaussianBlur(50));
                     background.setEffect(new GaussianBlur(50));
                     gameOver.setText("game over");
-                    score.setText("score: "+controller.score);
+                    score.setText("score: " + Controller.score);
                     pause.setVisible(false);
                 }
 
@@ -96,7 +94,7 @@ public class Classic implements Initializable {
                 background.setEffect(new GaussianBlur(-50));
                 AtomicInteger seconds= new AtomicInteger();
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
-                    controller.drawAllThings(gc,controller);
+                    controller.drawAllThings(gc);
                     seconds.getAndIncrement();
                     controller.getCountDown(gc,seconds);
                 }));
@@ -123,7 +121,7 @@ public class Classic implements Initializable {
                 controller.ResetGame();
                 AtomicInteger seconds= new AtomicInteger();
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
-                    controller.drawAllThings(gc,controller);
+                    controller.drawAllThings(gc);
                     seconds.getAndIncrement();
                     controller.getCountDown(gc,seconds);
                 }));

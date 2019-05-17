@@ -1,9 +1,5 @@
 package Gui.Controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -16,6 +12,10 @@ import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Arcade implements Initializable {
 	private Controller controller= new Controller();
@@ -59,7 +59,7 @@ public class Arcade implements Initializable {
         AnimationTimer timer=new AnimationTimer() {
             @Override
             public void handle(long now) {
-                controller.drawAllThings(gc,controller);
+                controller.drawAllThings(gc);
                 controller.removeUnwantedThrowable();
                               
                 if(controller.gameOver()) {
@@ -68,7 +68,7 @@ public class Arcade implements Initializable {
                     canvas.setEffect(new GaussianBlur(50));
                     background.setEffect(new GaussianBlur(50));
                     gameOver.setText("game over");
-                    score.setText("score: "+controller.score);
+                    score.setText("score: " + Controller.score);
                     pause.setVisible(false);
                 }
 
@@ -96,7 +96,7 @@ public class Arcade implements Initializable {
                 background.setEffect(new GaussianBlur(-50));
                 AtomicInteger seconds= new AtomicInteger();
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
-                    controller.drawAllThings(gc,controller);
+                    controller.drawAllThings(gc);
                     seconds.getAndIncrement();
                     controller.getCountDown(gc,seconds);
                 }));
@@ -123,7 +123,7 @@ public class Arcade implements Initializable {
                 controller.ResetGame();
                 AtomicInteger seconds= new AtomicInteger();
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
-                    controller.drawAllThings(gc,controller);
+                    controller.drawAllThings(gc);
                     seconds.getAndIncrement();
                     controller.getCountDown(gc,seconds);
                 }));
