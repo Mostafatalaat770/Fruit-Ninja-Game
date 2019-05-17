@@ -125,10 +125,6 @@ public class Controller implements GameActions {
         if (type.equals("classic")) {
             gc.fillText("lives: " + lives, 1150, 70);
         }
-        Font theFont2 = Font.font("Gang Of Three", 15);
-        gc.setFont(theFont2);
-        gc.setFill(Color.GRAY);
-        gc.fillText("best score: ", 20, 50);
 
 
         for (GameObject gameObject : throwables) {

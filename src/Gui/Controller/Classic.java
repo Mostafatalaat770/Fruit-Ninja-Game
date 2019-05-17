@@ -26,11 +26,16 @@ public class Classic implements Initializable {
     @FXML private ImageView background;
     @FXML private javafx.scene.text.Text gameOver;
     @FXML private javafx.scene.text.Text score;
+    @FXML private javafx.scene.text.Text bestScore;
+    @FXML private javafx.scene.text.Text alltimeBestScore;
+
     private GraphicsContext gc;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        bestScore.setText("best score:"+controller.personalHighscore);
+        alltimeBestScore.setText("alltime best score:"+controller.highestScore);
         controller.type = "classic";
         Controller.lives = 3;
         resume.setVisible(false);

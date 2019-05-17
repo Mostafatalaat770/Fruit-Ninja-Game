@@ -10,7 +10,7 @@
 <AnchorPane fx:id="ClassicPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.Classic">
    <children>
       <ImageView fx:id="background" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" />
-      <Canvas fx:id="canvas" height="720.0" layoutX="1.0"  width="1280.0" />
+      <Canvas fx:id="canvas" height="720.0" layoutX="1.0" width="1280.0" />
       <ImageView fx:id="pause" fitHeight="60.0" fitWidth="55.0" layoutX="14.0" layoutY="650.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Resources/pause.png" />
@@ -36,5 +36,13 @@
             <Font name="Gang of Three" size="96.0" />
          </font>
       </Text>
+      <Text fx:id="bestScore" fill="GREY" layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="best score:" wrappingWidth="93.61279296875">
+         <font>
+            <Font name="Gang of Three" size="15.0" />
+         </font></Text>
+      <Text fx:id="alltimeBestScore" fill="GREY" layoutX="14.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="alltime best score:" wrappingWidth="163.0">
+         <font>
+            <Font name="Gang of Three" size="15.0" />
+         </font></Text>
    </children>
 </AnchorPane>

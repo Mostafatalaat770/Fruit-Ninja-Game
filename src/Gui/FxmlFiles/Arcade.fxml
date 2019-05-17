@@ -36,5 +36,13 @@
             <Font name="Gang of Three" size="96.0" />
          </font>
       </Text>
+      <Text fx:id="bestScore" fill="GREY" layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="best score:" wrappingWidth="93.61279296875">
+         <font>
+            <Font name="Gang of Three" size="15.0" />
+         </font></Text>
+      <Text fx:id="alltimeBestScore" fill="GREY" layoutX="14.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="alltime best score:" wrappingWidth="163.0">
+         <font>
+            <Font name="Gang of Three" size="15.0" />
+         </font></Text>
    </children>
 </AnchorPane>
