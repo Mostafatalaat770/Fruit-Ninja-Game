@@ -11,28 +11,18 @@ public class MagicBeans extends SpecialFruit {
 
     public MagicBeans() {
         super();
+        super.setImg1(new Image("Resources/Magic_Bean.png", 75, 75, true, true));
+        super.setImg2(new Image("Resources/Magic_Bean.png", 75, 75, true, true));
     }
 
     @Override
     public void slice() {
-        super.slice();
+        if (Controller.lives > 2) {
+            Controller.score += 25;
+        } else {
+            Controller.lives++;
+        }
+        setSliced(true);
     }
 
-    @Override
-    public Image[] getImages() {
-        Image[] images= new Image[2];
-        images[0]= new Image("Resources/Magic_Bean.png",75,75,true,true);
-        images[1]= new Image("Resources/Magic_Bean.png",75,75,true,true);
-        return images;
-    }
-    public void getEffect(int score,int lives, int secs){
-        // TODO: 17-May-19 mostafa
-
-        if(lives>2){
-            score+=25;
-        }
-        else {
-            lives++;
-        }
-    }
 }
