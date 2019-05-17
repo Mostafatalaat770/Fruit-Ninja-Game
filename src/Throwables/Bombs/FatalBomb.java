@@ -1,6 +1,8 @@
 package Throwables.Bombs;
 
 import javafx.scene.image.Image;
+import Gui.Controller.Controller;
+
 
 /**
  * @author Mostafa Talaat
@@ -16,7 +18,8 @@ public class FatalBomb extends Bomb {
 
     @Override
     public void slice() {
-        super.slice();
+        Controller.lives=0;
+        setSliced(true);
     }
 
 }

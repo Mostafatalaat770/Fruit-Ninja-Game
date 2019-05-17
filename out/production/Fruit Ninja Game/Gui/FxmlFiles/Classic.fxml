@@ -36,5 +36,26 @@
             <Font name="Gang of Three" size="96.0" />
          </font>
       </Text>
+      <Text fx:id="gameScore" fill="ORANGE" layoutX="14.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="score:" wrappingWidth="194.6708984375">
+         <font>
+            <Font name="Gang of Three" size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="bestScore" fill="GREY" layoutX="14.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="your best score:" wrappingWidth="194.6708984375">
+         <font>
+            <Font name="Gang of Three" size="15.0" />
+         </font>
+      </Text>
+      <Text fx:id="alltimeBestScore" fill="GREY" layoutX="14.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="alltime best score:" wrappingWidth="194.6708984375">
+         <font>
+            <Font name="Gang of Three" size="15.0" />
+         </font>
+      </Text>
+
+      <Text fx:id="lives" fill="ORANGE" layoutX="1071.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lives:" wrappingWidth="194.6708984375">
+         <font>
+            <Font name="Gang of Three" size="30.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
