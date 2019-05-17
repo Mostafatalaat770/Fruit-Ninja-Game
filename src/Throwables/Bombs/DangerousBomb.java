@@ -17,7 +17,8 @@ public class DangerousBomb extends Bomb {
 
     @Override
     public void slice(Controller controller) {
-        super.slice(controller);
+        controller.score-=10;
+        setSliced(true);
     }
 
 }
