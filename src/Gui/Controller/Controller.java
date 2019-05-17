@@ -193,6 +193,7 @@ public class Controller implements GameActions {
     }
 
     public boolean gameOver() {
+
         if (type.equals("classic")) {
             // todo: game over scene
             return lives == 0;

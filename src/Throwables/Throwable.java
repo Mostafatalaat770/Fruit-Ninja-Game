@@ -206,7 +206,7 @@ public abstract class Throwable implements GameObject {
         if(x==midPoint){
             falling=true;
         }
-        y=720 - (a*x*x+a*q*x+a*p);
+        y=720- (a*x*x+a*q*x+a*p);
 
             x+=2;
    }

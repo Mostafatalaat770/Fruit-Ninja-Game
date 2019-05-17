@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Arcade implements Initializable {
-	private Controller controller= new Controller();
+	private Controller controller= Controller.getInstance();
     @FXML private Canvas canvas ;
     @FXML private ImageView pause;
     @FXML private ImageView resume;
@@ -29,14 +29,11 @@ public class Arcade implements Initializable {
     @FXML private javafx.scene.text.Text bestScore;
     @FXML private javafx.scene.text.Text alltimeBestScore;
     private GraphicsContext gc;
-
+  boolean stoping= true ;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
         bestScore.setText("best score:"+controller.personalHighscore);
         alltimeBestScore.setText("alltime best score:"+controller.highestScore);
-		controller.type = "arcade";
-		controller.mins = 1;
-		controller.difficulty=2.5;
 		resume.setVisible(false);
         reset.setVisible(false);
         background.setImage(new Image("Resources/ConceptGreatWave1 (2).jpg"));
@@ -51,7 +48,8 @@ public class Arcade implements Initializable {
         timeline.play();
 
         canvas.setOnMouseMoved(event -> {
-            controller.slice(event.getSceneX(),event.getSceneY());
+            if(stoping)
+                controller.slice(event.getSceneX(),event.getSceneY());
         });
 
         Timeline clock= new Timeline(new KeyFrame(new Duration(1000), actionEvent1->{
@@ -68,6 +66,7 @@ public class Arcade implements Initializable {
                 controller.removeUnwantedThrowable();
                               
                 if(controller.gameOver()) {
+                    stoping=true ;
                     timeline.stop();
                     clock.stop();
                     canvas.setEffect(new GaussianBlur(50));
@@ -83,6 +82,7 @@ public class Arcade implements Initializable {
         
         
         pause.setOnMouseClicked(event -> {
+            stoping=false;
             pause.setVisible(false);
             resume.setVisible(true);
             reset.setVisible(true);
@@ -95,6 +95,7 @@ public class Arcade implements Initializable {
 
         resume.setOnMouseClicked(event -> {
             if(resume.isVisible()){
+                stoping= true;
                 resume.setVisible(false);
                 reset.setVisible(false);
                 canvas.setEffect(new GaussianBlur(-50));
@@ -119,6 +120,7 @@ public class Arcade implements Initializable {
 
         reset.setOnMouseClicked(event -> {
             if(reset.isVisible()){
+                stoping=true;
                 resume.setVisible(false);
                 reset.setVisible(false);
                 pause.setVisible(true);

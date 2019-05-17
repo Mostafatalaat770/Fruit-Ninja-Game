@@ -28,7 +28,7 @@ public class Classic implements Initializable {
     @FXML private javafx.scene.text.Text score;
     @FXML private javafx.scene.text.Text bestScore;
     @FXML private javafx.scene.text.Text alltimeBestScore;
-
+    public boolean stopall =true;
     private GraphicsContext gc;
 
 
@@ -36,8 +36,6 @@ public class Classic implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         bestScore.setText("best score:"+controller.personalHighscore);
         alltimeBestScore.setText("alltime best score:"+controller.highestScore);
-        controller.type = "classic";
-        controller.lives = 3;
         resume.setVisible(false);
         reset.setVisible(false);
         background.setImage(new Image("Resources/ConceptGreatWave1 (2).jpg"));
@@ -58,15 +56,18 @@ public class Classic implements Initializable {
         clock.play();
 
         canvas.setOnMouseMoved(event -> {
+            if(stopall)
             controller.slice(event.getSceneX(),event.getSceneY());
         });
 
         AnimationTimer timer=new AnimationTimer() {
             @Override
             public void handle(long now) {
+                if(stopall)
                 controller.drawAllThings(gc);
                 controller.removeUnwantedThrowable();
                 if(controller.gameOver()){
+                    stopall =false;
                     timeline.stop();
                     clock.stop();
                     canvas.setEffect(new GaussianBlur(50));
@@ -81,6 +82,7 @@ public class Classic implements Initializable {
         timer.start();
 
         pause.setOnMouseClicked(event -> {
+            stopall=false;
             pause.setVisible(false);
             resume.setVisible(true);
             reset.setVisible(true);
@@ -93,6 +95,7 @@ public class Classic implements Initializable {
 
         resume.setOnMouseClicked(event -> {
             if(resume.isVisible()){
+                stopall=true;
                 resume.setVisible(false);
                 reset.setVisible(false);
                 canvas.setEffect(new GaussianBlur(-50));
@@ -117,6 +120,7 @@ public class Classic implements Initializable {
 
         reset.setOnMouseClicked(event -> {
             if(reset.isVisible()){
+                stopall=true;
                 resume.setVisible(false);
                 reset.setVisible(false);
                 pause.setVisible(true);
