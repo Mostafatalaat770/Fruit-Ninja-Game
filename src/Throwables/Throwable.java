@@ -1,7 +1,9 @@
 package Throwables;
 
+import Gui.Controller.Controller;
 import Interfaces.GameObject;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 import java.util.Random;
 
@@ -18,7 +20,9 @@ public abstract class Throwable implements GameObject {
     private double a,q,p;
     private boolean falling ;
     private boolean sliced ;
-    private boolean movedOffScreen ;
+    private boolean movedOffScreen;
+    private Image img1;
+    private Image img2;
 
     public Throwable() {
         Random random=new Random();
@@ -158,9 +162,26 @@ public abstract class Throwable implements GameObject {
         this.p = p;
     }
 
+    public Image getImg1() {
+        return img1;
+    }
+
+    public void setImg1(Image img1) {
+        this.img1 = img1;
+    }
+
+    public Image getImg2() {
+        return img2;
+    }
+
+    public void setImg2(Image img2) {
+        this.img2 = img2;
+    }
+
     @Override
     public void slice() {
-
+        sliced = true;
+        Controller.score++;
     }
 
     @Override
@@ -168,17 +189,13 @@ public abstract class Throwable implements GameObject {
 
     }
 
-    @Override
-    public javafx.scene.image.Image[] getImages() {
-        return new javafx.scene.image.Image[0];
-    }
 
     @Override
     public void render(GraphicsContext gc) {
         if (isSliced())
-            gc.drawImage(getImages()[1], x, y);
+            gc.drawImage(img2, x, y);
         else
-            gc.drawImage(getImages()[0], x, y);
+            gc.drawImage(img1, x, y);
 
     }
 
@@ -192,9 +209,5 @@ public abstract class Throwable implements GameObject {
         y=720 - (a*x*x+a*q*x+a*p);
 
             x+=2;
-   }
-   @Override
-    public void getEffect(int score,int lives, int secs){
-       // TODO: 17-May-19 mostafa
    }
 }
