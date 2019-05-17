@@ -3,12 +3,14 @@ package Gui.Controller;
 import Interfaces.Factory.ObjectCreator;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
+import Interfaces.Memento.Files;
 import Throwables.Bombs.Bomb;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -20,16 +22,18 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Controller implements GameActions {
     private static Controller ourInstance = new Controller();
     public ArrayList<GameObject> throwables = new ArrayList<>();
-    public static int score = 0;
+    public int score = 0;
     public int personalHighscore = 0;
     public int highestScore = 0;
-    public static int secs = 0;
+    public int secs = 0;
     public int mins = 0;
-    public static int lives;
+    public int lives;
     public double difficulty = 1;
     public String type;
     public String username;
     public int luckyStrike = 1;
+
+    public Files files = new Files();
 
     public static Controller getInstance() {
         return ourInstance;
@@ -51,8 +55,9 @@ public class Controller implements GameActions {
     }
 
     @Override
-    public void saveGame() {
-
+    public void saveGame() throws IOException {
+        files.saveState(getInstance());
+        files.saveGame();
     }
 
     @Override
@@ -142,7 +147,7 @@ public class Controller implements GameActions {
             if (x > throwable.getXlocation() && x < throwable.getXlocation() + throwable.getImg1().getWidth() && y > throwable.getYlocation() && y < throwable.getYlocation() + throwable.getImg1().getHeight()) {
 
                 if (!throwable.isSliced()) {
-                    throwable.slice();
+                    throwable.slice(getInstance());
                 }
             }
         }

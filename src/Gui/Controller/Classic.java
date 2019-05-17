@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Classic implements Initializable {
-   private Controller controller= new Controller();
+    private Controller controller = Controller.getInstance();
     @FXML private Canvas canvas ;
     @FXML private ImageView pause;
     @FXML private ImageView resume;
@@ -32,7 +32,7 @@ public class Classic implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         controller.type = "classic";
-        Controller.lives = 3;
+        controller.lives = 3;
         resume.setVisible(false);
         reset.setVisible(false);
         background.setImage(new Image("Resources/ConceptGreatWave1 (2).jpg"));
@@ -67,7 +67,7 @@ public class Classic implements Initializable {
                     canvas.setEffect(new GaussianBlur(50));
                     background.setEffect(new GaussianBlur(50));
                     gameOver.setText("game over");
-                    score.setText("score: " + Controller.score);
+                    score.setText("score: " + controller.score);
                     pause.setVisible(false);
                 }
 

@@ -16,8 +16,8 @@ public class FreezeBanana extends SpecialFruit {
     }
 
     @Override
-    public void slice() {
-        Controller.secs += 10;
+    public void slice(Controller controller) {
+        controller.secs += 10;
         setSliced(true);
     }
 

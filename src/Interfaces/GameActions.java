@@ -1,6 +1,6 @@
 package Interfaces;
 
-import java.util.ArrayList;
+import java.io.IOException;
 
 public interface GameActions {
     /**
@@ -23,7 +23,7 @@ public interface GameActions {
     /**
      * saves the current state of the game
      */
-    void saveGame();
+    void saveGame() throws IOException;
 
     /**
      * loads the last saved state of the game

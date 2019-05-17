@@ -1,5 +1,6 @@
 package Interfaces;
 
+import Gui.Controller.Controller;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -41,8 +42,9 @@ public interface GameObject {
 
     /**
      * it is used to slice the object
+     * @param controller
      */
-    void slice();
+    void slice(Controller controller);
 
     Boolean isFalling();
 

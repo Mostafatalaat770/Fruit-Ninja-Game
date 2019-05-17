@@ -68,7 +68,7 @@ public class Arcade implements Initializable {
                     canvas.setEffect(new GaussianBlur(50));
                     background.setEffect(new GaussianBlur(50));
                     gameOver.setText("game over");
-                    score.setText("score: " + Controller.score);
+                    score.setText("score: " + controller.score);
                     pause.setVisible(false);
                 }
 
