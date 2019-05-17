@@ -1,6 +1,5 @@
 package Interfaces;
 
-import Gui.Controller.Controller;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
