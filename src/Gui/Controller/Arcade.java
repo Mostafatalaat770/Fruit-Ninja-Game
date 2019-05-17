@@ -36,13 +36,14 @@ public class Arcade implements Initializable {
         alltimeBestScore.setText("alltime best score:"+controller.highestScore);
 		controller.type = "arcade";
 		controller.mins = 1;
+		controller.difficulty=2.5;
 		resume.setVisible(false);
         reset.setVisible(false);
         background.setImage(new Image("Resources/ConceptGreatWave1 (2).jpg"));
         gc=canvas.getGraphicsContext2D();
         
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
-            if(controller.throwables.size()<3) {
+            if(controller.throwables.size()<6) {
                 controller.throwables.add(controller.getRandomThrowable());
             }
         }));

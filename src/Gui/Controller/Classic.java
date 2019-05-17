@@ -44,7 +44,7 @@ public class Classic implements Initializable {
         gc=canvas.getGraphicsContext2D();
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
-            if(controller.throwables.size()<3) {
+            if(controller.throwables.size()<6) {
                 controller.throwables.add(controller.getRandomThrowable());
             }
         }));

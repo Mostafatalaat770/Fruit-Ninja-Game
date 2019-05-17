@@ -162,7 +162,7 @@ public class Controller implements GameActions {
                 secs -= 60;
                 mins++;
             }
-            if (secs % 20 == 0 && difficulty < 2) {
+            if (secs % 20 == 0 && difficulty < 3) {
                 difficulty += 0.5;
                 timeline.setRate(difficulty);
             }
