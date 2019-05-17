@@ -82,6 +82,13 @@ public interface GameObject {
 
     void setP(double p);
 
+    Image getImg1();
+
+    void setImg1(Image img1);
+
+    Image getImg2();
+
+    void setImg2(Image img2);
     /**
      * it is used to move the object on the screen
      *
@@ -90,12 +97,6 @@ public interface GameObject {
      *              fruit object.
      */
     void move(double time);
-
-    /**
-     * @return at least two images of the object, one when it is
-     * sliced and one when it is not.
-     */
-    Image[] getImages();
 
     /**
      * @return the type of game object
@@ -111,16 +112,6 @@ public interface GameObject {
      */
     void updatePosition();
 
-    /**
-     *
-     * @param score
-     * @param lives
-     * @param secs
-     *
-     * changes the controller's effects
-     *
-     */
-    void getEffect(int score,int lives, int secs);
     // TODO: 17-May-19 mostafa
 
 }
