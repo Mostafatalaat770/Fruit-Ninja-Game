@@ -1,8 +1,7 @@
 package Throwables.Bombs;
 
-import javafx.scene.image.Image;
 import Gui.Controller.Controller;
-
+import javafx.scene.image.Image;
 
 /**
  * @author Mostafa Talaat
@@ -17,8 +16,8 @@ public class DangerousBomb extends Bomb {
     }
 
     @Override
-    public void slice() {
-        Controller.score-=10;
+    public void slice(Controller controller) {
+        controller.score-=10;
         setSliced(true);
     }
 

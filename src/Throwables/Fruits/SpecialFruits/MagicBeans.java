@@ -16,11 +16,11 @@ public class MagicBeans extends SpecialFruit {
     }
 
     @Override
-    public void slice() {
-        if (Controller.lives > 2) {
-            Controller.score += 25;
+    public void slice(Controller controller) {
+        if (controller.lives > 2) {
+            controller.score += 25;
         } else {
-            Controller.lives++;
+            controller.lives++;
         }
         setSliced(true);
     }

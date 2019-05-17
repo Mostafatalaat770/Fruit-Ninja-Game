@@ -82,6 +82,7 @@ public class FilesManegement {
         levelElement.addContent(parent);
 
         parent = new Element("time");
+        levelElement.addContent(parent);
         Element child = new Element("mins");
         child.setText(Integer.toString(controller.mins));
         parent.addContent(child);
@@ -89,69 +90,92 @@ public class FilesManegement {
         child.setText(Integer.toString(controller.secs));
         parent.addContent(child);
 
-        parent = new Element("fruits");
+
+        Element superParent = new Element("fruits");
+        String type = "";
         for (GameObject throwable : controller.throwables) {
             if (throwable instanceof Apple) {
-                parent.addContent("apple");
+                type = "apple";
             }
             if (throwable instanceof Banana) {
-                parent.addContent("banana");
+                type = "banana";
             }
             if (throwable instanceof Orange) {
-                parent.addContent("orange");
+                type = "orange";
             }
             if (throwable instanceof Melon) {
-                parent.addContent("melon");
+                type = "melon";
             }
             if (throwable instanceof FreezeBanana) {
-                parent.addContent("freezeBanana");
+                type = "freezeBanana";
+
             }
             if (throwable instanceof MagicBeans) {
-                parent.addContent("magicBeans");
+                type = "magicBeans";
+
             }
             if (throwable instanceof DangerousBomb) {
-                parent.addContent("dangerousBomb");
+                type = "dangerousBomb";
+
             }
             if (throwable instanceof FatalBomb) {
-                parent.addContent("fatalBomb");
+                type = "fatalBomb";
+
             }
+            parent = new Element(type);
+            superParent.addContent(parent);
+
+
             child = new Element("x");
             child.setText(Double.toString(throwable.getXlocation()));
+            parent.addContent(child);
 
             child = new Element("y");
             child.setText(Double.toString(throwable.getYlocation()));
+            parent.addContent(child);
 
             child = new Element("maxHeight");
             child.setText(Double.toString(throwable.getMaxHeight()));
+            parent.addContent(child);
 
             child = new Element("startPos");
             child.setText(Double.toString(throwable.getStartPos()));
+            parent.addContent(child);
 
             child = new Element("midPoint");
             child.setText(Double.toString(throwable.getMidPoint()));
+            parent.addContent(child);
 
             child = new Element("endPos");
             child.setText(Double.toString(throwable.getEndPos()));
+            parent.addContent(child);
+
             child = new Element("a");
             child.setText(Double.toString(throwable.getA()));
+            parent.addContent(child);
 
             child = new Element("p");
             child.setText(Double.toString(throwable.getP()));
+            parent.addContent(child);
 
             child = new Element("q");
             child.setText(Double.toString(throwable.getQ()));
+            parent.addContent(child);
 
             child = new Element("falling");
             child.setText(Boolean.toString(throwable.isFalling()));
+            parent.addContent(child);
+
             child = new Element("sliced");
             child.setText(Boolean.toString(throwable.isSliced()));
+            parent.addContent(child);
+
 
             child = new Element("movedOffScreen");
             child.setText(Boolean.toString(throwable.hasMovedOffScreen()));
-
             parent.addContent(child);
         }
-        levelElement.addContent(parent);
+        levelElement.addContent(superParent);
 
         XMLOutputter xmlOutput = new XMLOutputter();
 

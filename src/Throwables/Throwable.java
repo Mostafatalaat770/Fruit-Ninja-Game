@@ -179,9 +179,9 @@ public abstract class Throwable implements GameObject {
     }
 
     @Override
-    public void slice() {
+    public void slice(Controller controller) {
         sliced = true;
-        Controller.score++;
+        controller.score++;
     }
 
     @Override
