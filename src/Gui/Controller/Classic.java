@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -24,6 +25,7 @@ public class Classic implements Initializable {
     @FXML private ImageView resume;
     @FXML private  ImageView reset;
     @FXML private ImageView background;
+    @FXML private ImageView save;
     @FXML private javafx.scene.text.Text gameOver;
     @FXML private javafx.scene.text.Text score;
     @FXML private javafx.scene.text.Text bestScore;
@@ -38,6 +40,7 @@ public class Classic implements Initializable {
         alltimeBestScore.setText("alltime best score:"+controller.highestScore);
         resume.setVisible(false);
         reset.setVisible(false);
+        save.setVisible(false);
         background.setImage(new Image("Resources/ConceptGreatWave1 (2).jpg"));
         gc=canvas.getGraphicsContext2D();
 
@@ -86,6 +89,7 @@ public class Classic implements Initializable {
             pause.setVisible(false);
             resume.setVisible(true);
             reset.setVisible(true);
+            save.setVisible(true);
             timeline.stop();
             timer.stop();
             clock.stop();
@@ -98,6 +102,7 @@ public class Classic implements Initializable {
                 stopall=true;
                 resume.setVisible(false);
                 reset.setVisible(false);
+                save.setVisible(false);
                 canvas.setEffect(new GaussianBlur(-50));
                 background.setEffect(new GaussianBlur(-50));
                 AtomicInteger seconds= new AtomicInteger();
@@ -123,6 +128,7 @@ public class Classic implements Initializable {
                 stopall=true;
                 resume.setVisible(false);
                 reset.setVisible(false);
+                save.setVisible(false);
                 pause.setVisible(true);
                 canvas.setEffect(new GaussianBlur(-50));
                 background.setEffect(new GaussianBlur(-50));
@@ -147,7 +153,17 @@ public class Classic implements Initializable {
 
         });
 
+        save.setOnMouseClicked(event -> {
+            if(save.isVisible())
+            {
+                try {
+                    controller.saveGame();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
+        });
     }
 
 

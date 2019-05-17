@@ -44,5 +44,10 @@
          <font>
             <Font name="Gang of Three" size="15.0" />
          </font></Text>
+      <ImageView fx:id="save" fitHeight="274.0" fitWidth="163.0" layoutX="738.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/save.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
