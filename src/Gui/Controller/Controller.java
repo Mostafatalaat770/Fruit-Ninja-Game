@@ -1,6 +1,8 @@
 package Gui.Controller;
 
-import Interfaces.Factory.ObjectCreator;
+import Interfaces.Factory.ArcadeMode;
+import Interfaces.Factory.ClassicMode;
+import Interfaces.Factory.Strategy;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
 import Interfaces.Memento.Files;
@@ -13,7 +15,6 @@ import javafx.scene.text.Font;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -69,11 +70,6 @@ public class Controller implements GameActions {
         this.username = username;
     }
 
-    public int getRandom() {
-        Random rand = new Random();
-        luckyStrike %= 3;
-        return (luckyStrike++ < 2 ? rand.nextInt(8) % 4 : rand.nextInt(8) % 8);
-    }
 
     @Override
     public void ResetGame() {
@@ -97,8 +93,17 @@ public class Controller implements GameActions {
 
     @Override
     public GameObject getRandomThrowable() {
-        ObjectCreator objectCreator = new ObjectCreator();
-        return objectCreator.createObject(getRandom());
+        Strategy game = null;
+        switch (type) {
+            case "classic":
+                game = new Strategy(new ClassicMode());
+                break;
+            case "arcade":
+                game = new Strategy(new ArcadeMode());
+                break;
+        }
+        assert game != null;
+        return game.create(getInstance());
     }
 
     @Override
