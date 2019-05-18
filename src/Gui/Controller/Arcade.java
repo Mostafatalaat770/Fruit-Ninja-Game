@@ -99,7 +99,6 @@ public class Arcade implements Initializable {
 
         resume.setOnMouseClicked(event -> {
             if(resume.isVisible()){
-                stoping= true;
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
@@ -118,6 +117,7 @@ public class Arcade implements Initializable {
                     timeline.play();
                     timer.start();
                     clock.play();
+                    stoping= true;
                 });
 
             }
@@ -125,7 +125,6 @@ public class Arcade implements Initializable {
 
         reset.setOnMouseClicked(event -> {
             if(reset.isVisible()){
-                stoping=true;
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
@@ -147,6 +146,7 @@ public class Arcade implements Initializable {
                     timeline.play();
                     timer.start();
                     clock.play();
+                    stoping=true;
                 });
 
             }

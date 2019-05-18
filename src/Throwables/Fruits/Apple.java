@@ -10,7 +10,7 @@ public class Apple extends Fruit {
 
     public Apple() {
         super();
-        super.setImg1(new Image("Resources/Green_Apple.png", 75, 75, true, true));
+        super.setImg1(new Image("Resources/Green_Apple.png", 60, 60, true, true));
         super.setImg2(new Image("Resources/SlicedGreenApple.png", 75, 75, true, true));
     }
 

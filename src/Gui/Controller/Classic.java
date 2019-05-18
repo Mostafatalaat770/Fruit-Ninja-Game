@@ -99,7 +99,7 @@ public class Classic implements Initializable {
 
         resume.setOnMouseClicked(event -> {
             if(resume.isVisible()){
-                stopall=true;
+
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
@@ -118,6 +118,7 @@ public class Classic implements Initializable {
                     timeline.play();
                     timer.start();
                     clock.play();
+                    stopall=true;
                 });
 
             }
@@ -125,7 +126,7 @@ public class Classic implements Initializable {
 
         reset.setOnMouseClicked(event -> {
             if(reset.isVisible()){
-                stopall=true;
+
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
@@ -147,6 +148,7 @@ public class Classic implements Initializable {
                     timeline.play();
                     timer.start();
                     clock.play();
+                    stopall=true;
                 });
 
             }
@@ -162,6 +164,7 @@ public class Classic implements Initializable {
                     e.printStackTrace();
                 }
             }
+
 
         });
     }
