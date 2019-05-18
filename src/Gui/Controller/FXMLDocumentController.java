@@ -12,6 +12,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Gui.Main;
+import com.jfoenix.controls.JFXButton;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +27,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -40,22 +42,18 @@ public class FXMLDocumentController implements Initializable {
     private Label label;
 
     private ImageView img;
-    @FXML
-    private ImageView classic_img;
-    @FXML
-    private ImageView arcade_img;
-    @FXML
-    private ImageView exit_img;
-    @FXML
-    private AnchorPane anchor;
-    @FXML
-    private ImageView slicedmelon_right;
-    @FXML
-    private ImageView slicedmelon_left;
-    @FXML
-    private ImageView slicedbanana_bottom;
-    @FXML
-    private ImageView slicedbanana_top;
+    @FXML private ImageView classic_img;
+    @FXML private ImageView arcade_img;
+    @FXML private ImageView exit_img;
+    @FXML private AnchorPane anchor;
+    @FXML private ImageView slicedmelon_right;
+    @FXML private ImageView slicedmelon_left;
+    @FXML private ImageView slicedbanana_bottom;
+    @FXML private ImageView slicedbanana_top;
+    @FXML private JFXButton loadClassic;
+    @FXML private JFXButton loadArcade;
+    @FXML private JFXButton load;
+
 
     Controller controller = Controller.getInstance();
 
@@ -165,6 +163,42 @@ public class FXMLDocumentController implements Initializable {
            if(result.get() == ButtonType.OK)
               Platform.exit();
        });
+
+       loadClassic.setOnMouseClicked(event -> {
+           Main main = new Main();
+           try {
+               controller.type = "classic";
+               controller.lives = 3;
+               main.getClassic(event);
+           } catch (IOException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+           }
+       });
+
+       loadArcade.setOnMouseClicked(event -> {
+           Main main = new Main();
+           try {
+               controller.mins = 1;
+               controller.difficulty=2.5;
+               controller.type = "arcade";
+               main.getArcade(event);
+           } catch (IOException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+           }
+       });
     }
+
+    public void loadButton(){
+        TranslateTransition classic=new TranslateTransition(new Duration(1000),loadClassic);
+        TranslateTransition arcade= new TranslateTransition(new Duration(1000),loadArcade);
+        arcade.setByX(270);
+        classic.setByX(180);
+        classic.play();
+        arcade.play();
+        arcade.setOnFinished(event -> {load.setDisable(true); });
+    }
+
 
 }
