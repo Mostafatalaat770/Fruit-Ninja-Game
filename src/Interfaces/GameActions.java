@@ -1,5 +1,7 @@
 package Interfaces;
 
+import org.jdom2.JDOMException;
+
 import java.io.IOException;
 
 public interface GameActions {
@@ -28,7 +30,7 @@ public interface GameActions {
     /**
      * loads the last saved state of the game
      */
-    void loadGame();
+    void loadGame() throws JDOMException, IOException;
 
     /**
      * resets the game to its initial state
