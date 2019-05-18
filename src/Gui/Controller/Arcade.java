@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -60,29 +61,33 @@ public class Arcade implements Initializable {
 
         Timeline clock= new Timeline(new KeyFrame(new Duration(1000), actionEvent1->{
             controller.updateTime_Difficulty(timeline);
+           controller.freezeCountDown();
         }));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
 
 
         AnimationTimer timer=new AnimationTimer() {
+            long last=0;
             @Override
             public void handle(long now) {
-                controller.drawAllThings(gc);
-                controller.removeUnwantedThrowable();
-                              
-                if(controller.gameOver()) {
-                    stoping=true ;
-                    timeline.stop();
-                    clock.stop();
-                    canvas.setEffect(new GaussianBlur(50));
-                    background.setEffect(new GaussianBlur(50));
-                    gameOver.setText("game over");
-                    score.setText("score: " + controller.score);
-                    pause.setVisible(false);
-                    back.setVisible(true);
-                }
+               if(now - last>=controller.frameRate){
+                   controller.drawAllThings(gc);
+                   controller.removeUnwantedThrowable();
 
+                   if(controller.gameOver()) {
+                       stoping=true ;
+                       timeline.stop();
+                       clock.stop();
+                       canvas.setEffect(new GaussianBlur(50));
+                       background.setEffect(new GaussianBlur(50));
+                       gameOver.setText("game over");
+                       score.setText("score: " + controller.score);
+                       pause.setVisible(false);
+                       back.setVisible(true);
+                   }
+                        last=now;
+               }
             }
         };
         timer.start();

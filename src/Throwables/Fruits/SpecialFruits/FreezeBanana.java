@@ -1,7 +1,10 @@
 package Throwables.Fruits.SpecialFruits;
 
 import Gui.Controller.Controller;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.image.Image;
+import javafx.util.Duration;
 
 /**
  * @author Mostafa Talaat
@@ -17,8 +20,10 @@ public class FreezeBanana extends SpecialFruit {
 
     @Override
     public void slice(Controller controller) {
-        controller.secs += 10;
+        controller.frameRate=25000000;
+        controller.secs += 5;
         setSliced(true);
+
     }
 
 }
