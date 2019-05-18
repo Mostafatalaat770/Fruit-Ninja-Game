@@ -11,10 +11,11 @@ import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.util.Pair;
+import org.jdom2.JDOMException;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -36,7 +37,8 @@ public class Controller implements GameActions {
     public int freezeTimer=0;
     public int luckyStrike = 1;
     public int fatalBombRateControl = 0;
-
+    public Map<String, Pair<Integer, String>> leaderBoard = new HashMap<>();
+    public List<Integer> scores = new ArrayList<>();
     public Files files = new Files();
 
     public static Controller getInstance() {
@@ -65,8 +67,8 @@ public class Controller implements GameActions {
     }
 
     @Override
-    public void loadGame() {
-
+    public void loadGame() throws JDOMException, IOException {
+        files.load(getInstance(), type);
     }
 
     public void setUsername(String username) {
@@ -88,8 +90,8 @@ public class Controller implements GameActions {
             score = 0;
             secs = 0;
             mins = 1;
-            lives = 3;
-            difficulty = 1;
+            lives = 0;
+            difficulty = 2.5;
         }
 
     }
