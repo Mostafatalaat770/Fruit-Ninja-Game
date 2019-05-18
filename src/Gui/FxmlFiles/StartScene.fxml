@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
-
-<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="741.0" prefWidth="1301.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.FXMLDocumentController">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity"
+           minHeight="-Infinity" minWidth="-Infinity" prefHeight="741.0" prefWidth="1301.0"
+           xmlns="http://javafx.com/javafx/8" fx:controller="Gui.Controller.FXMLDocumentController">
    <children>
       <ImageView fitHeight="751.0" fitWidth="1287.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -24,7 +20,8 @@
                   <Image url="@../../Resources/Banana-bottom.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="classic_img" fitHeight="106.0" fitWidth="113.0" layoutX="62.0" layoutY="530.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="classic_img" fitHeight="110.0" fitWidth="110.0" layoutX="70.0" layoutY="540.0"
+                       pickOnBounds="true" preserveRatio="true">
                <effect>
                   <Glow />
                </effect>
@@ -32,7 +29,8 @@
                   <Image url="@../../Resources/Classic.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="arcade_img" fitHeight="117.0" fitWidth="123.0" layoutX="241.0" layoutY="530.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="arcade_img" fitHeight="110.0" fitWidth="110.0" layoutX="220.0" layoutY="540.0"
+                       pickOnBounds="true" preserveRatio="true">
                <effect>
                   <Glow />
                </effect>
@@ -40,7 +38,8 @@
                   <Image url="@../../Resources/Arcade.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="exit_img" fitHeight="117.0" fitWidth="85.0" layoutX="1120.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 40;">
+            <ImageView fx:id="exit_img" fitHeight="108.0" fitWidth="110.0" layoutX="1120.0" layoutY="540.0"
+                       pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 40;">
                <effect>
                   <Glow />
                </effect>

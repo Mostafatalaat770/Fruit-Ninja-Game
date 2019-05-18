@@ -35,6 +35,7 @@ public class Controller implements GameActions {
     public long frameRate=15000000;
     public int freezeTimer=0;
     public int luckyStrike = 1;
+    public int fatalBombRateControl = 0;
 
     public Files files = new Files();
 
