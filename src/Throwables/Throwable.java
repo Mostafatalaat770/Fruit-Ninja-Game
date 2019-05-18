@@ -188,6 +188,14 @@ public abstract class Throwable implements GameObject {
         this.p = p;
     }
 
+    public boolean isLeftToRight() {
+        return leftToRight;
+    }
+
+    public void setLeftToRight(boolean leftToRight) {
+        this.leftToRight = leftToRight;
+    }
+
     public Image getImg1() {
         return img1;
     }

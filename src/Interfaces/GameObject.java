@@ -42,6 +42,7 @@ public interface GameObject {
 
     /**
      * it is used to slice the object
+     *
      * @param controller
      */
     void slice(Controller controller);
@@ -91,6 +92,11 @@ public interface GameObject {
     Image getImg2();
 
     void setImg2(Image img2);
+
+    boolean isLeftToRight();
+
+    void setLeftToRight(boolean leftToRight);
+
     /**
      * it is used to move the object on the screen
      *
@@ -109,6 +115,7 @@ public interface GameObject {
      * used to render the image on the canvas
      */
     void render(GraphicsContext gc);
+
     /**
      * updates the movment of any fruit
      */
