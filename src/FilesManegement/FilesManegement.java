@@ -170,6 +170,10 @@ public class FilesManegement {
             child.setText(Boolean.toString(throwable.isSliced()));
             parent.addContent(child);
 
+            child = new Element("leftToRight");
+            child.setText(Boolean.toString(throwable.isLeftToRight()));
+            parent.addContent(child);
+
 
             child = new Element("movedOffScreen");
             child.setText(Boolean.toString(throwable.hasMovedOffScreen()));
@@ -194,7 +198,7 @@ public class FilesManegement {
         Element classElement = document.getRootElement();
 
         controller.lives = Integer.parseInt(classElement.getChild("lives").getText());
-        controller.difficulty = Integer.parseInt(classElement.getChild("difficulty").getText());
+        controller.difficulty = Double.parseDouble(classElement.getChild("difficulty").getText());
 
         controller.score = Integer.parseInt(classElement.getChild("scores").getChild("score").getText());
         controller.personalHighscore = Integer.parseInt(classElement.getChild("scores").getChild("personalHighscore").getText());
@@ -203,7 +207,7 @@ public class FilesManegement {
 
         controller.secs = Integer.parseInt(classElement.getChild("time").getChild("secs").getText());
 
-        List<Element> childs = classElement.getChildren("fruits");
+        List<Element> childs = classElement.getChild("fruits").getChildren();
         for (int i = 0; i < childs.size(); i++) {
             Element child = childs.get(i);
             double x = Double.parseDouble(child.getChild("x").getText());
@@ -217,6 +221,7 @@ public class FilesManegement {
             double q = Double.parseDouble(child.getChild("q").getText());
             boolean falling = Boolean.parseBoolean(child.getChild("falling").getText());
             boolean sliced = Boolean.parseBoolean(child.getChild("sliced").getText());
+            boolean leftToRight = Boolean.parseBoolean(child.getChild("leftToRight").getText());
             boolean movedOffScreen = Boolean.parseBoolean(child.getChild("movedOffScreen").getText());
             GameObject object = createObject(child.getName());
 
@@ -231,14 +236,18 @@ public class FilesManegement {
             object.setQ(q);
             object.setFalling(falling);
             object.setSliced(sliced);
+            object.setLeftToRight(leftToRight);
             object.setMovedOffScreen(movedOffScreen);
             controller.throwables.add(object);
         }
     }
 
-    public void saveHighestScore(Controller controller) throws IOException {
-        Element levelElement = new Element("highestScore");
-        levelElement.setText(Integer.toString(controller.highestScore));
+    public void saveLeaderBoard(Controller controller) throws IOException {
+        Element levelElement = new Element("leaderBoard");
+//        Collections.sort(controller.scores);
+//        for (int i = 0; i <controller.scores.size() ; i++) {
+//                Element child = new Element(controller.leaderBoard.get())
+//        }
         Document doc = new Document(levelElement);
         XMLOutputter xmlOutput = new XMLOutputter();
 
@@ -250,7 +259,7 @@ public class FilesManegement {
         xmlOutput.output(doc, new FileWriter(file + "/highestScore.txt"));
     }
 
-    public void loadHighestScore(Controller controller) throws JDOMException, IOException {
+    public void loadLeaderBoard(Controller controller) throws JDOMException, IOException {
         File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/LeaderBoards" + File.separator + "highestScore.txt");
         SAXBuilder saxBuilder = new SAXBuilder();
         Document document = saxBuilder.build(inputFile);
