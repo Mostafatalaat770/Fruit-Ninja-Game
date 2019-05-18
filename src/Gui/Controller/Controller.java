@@ -127,7 +127,6 @@ public class Controller implements GameActions {
         // Todo remove that damned paramiter (swidan, please)
         gc.clearRect(0, 0, 1280, 720);
         gc.setFill(Color.ORANGE);
-        gc.setLineWidth(2);
         Font theFont = Font.font("Gang Of Three", 30);
         gc.setFont(theFont);
         gc.fillText("score: " + score, 20, 30);

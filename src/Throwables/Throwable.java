@@ -21,15 +21,25 @@ public abstract class Throwable implements GameObject {
     private boolean falling ;
     private boolean sliced ;
     private boolean movedOffScreen;
+    private boolean leftToRight;
     private Image img1;
     private Image img2;
 
     public Throwable() {
         Random random=new Random();
         startPos=200+random.nextDouble()*680;
-        y=720;
-        x=startPos;
         endPos=startPos+200;
+        switch (random.nextInt(2)){
+            case 0:
+                leftToRight=true;
+                x=startPos;
+            break;
+            case 1:
+                leftToRight=false;
+                x=endPos;
+            break;
+        }
+        y=720;
         midPoint=(startPos+endPos)/2;
         maxHeight=400+200*random.nextDouble();
         q=-startPos-endPos;
@@ -71,18 +81,34 @@ public abstract class Throwable implements GameObject {
 
     @Override
     public Boolean hasMovedOffScreen(){
-       if(!movedOffScreen){
-           if(x>=endPos)
-           {
-               movedOffScreen=true;
+       if(leftToRight){
+           if(!movedOffScreen){
+               if(x>=endPos)
+               {
+                   movedOffScreen=true;
 
+                   return true;
+               }
+               else
+                   return false;
+           }
+           else {
                return true;
            }
-           else
-               return false;
-       }
-       else {
-           return true;
+       }else {
+           if(!movedOffScreen){
+               if(x<=startPos)
+               {
+                   movedOffScreen=true;
+
+                   return true;
+               }
+               else
+                   return false;
+           }
+           else {
+               return true;
+           }
        }
        }
 
@@ -208,6 +234,11 @@ public abstract class Throwable implements GameObject {
         }
         y=720- (a*x*x+a*q*x+a*p);
 
-            x+=2;
+           if(leftToRight){
+               x+=2;
+           }
+           else {
+               x-=2;
+           }
    }
 }

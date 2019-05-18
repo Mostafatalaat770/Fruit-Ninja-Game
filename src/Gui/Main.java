@@ -28,6 +28,16 @@ public class Main extends Application {
         classicWindow.show();
     }
 
+    public void getMainMenu(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/StartScene.fxml"));
+        Scene classicScene = new Scene(root, 1270, 720);
+        Stage classicWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        classicWindow.setScene(classicScene);
+        classicWindow.show();
+    }
+
+
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/StartScene.fxml"));

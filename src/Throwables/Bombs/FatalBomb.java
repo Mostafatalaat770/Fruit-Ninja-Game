@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
  */
 public class FatalBomb extends Bomb {
 
+    // TODO: 18-May-19 the bomb thingie every 6 fruit (mosta)
 
     public FatalBomb() {
         super();

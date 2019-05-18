@@ -1,5 +1,6 @@
 package Gui.Controller;
 
+import Gui.Main;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -26,6 +27,7 @@ public class Arcade implements Initializable {
     @FXML private  ImageView reset;
     @FXML private ImageView background;
     @FXML private ImageView save;
+    @FXML private ImageView back;
     @FXML private javafx.scene.text.Text gameOver;
     @FXML private javafx.scene.text.Text score;
     @FXML private javafx.scene.text.Text bestScore;
@@ -39,6 +41,7 @@ public class Arcade implements Initializable {
 		resume.setVisible(false);
         reset.setVisible(false);
         save.setVisible(false);
+        back.setVisible(false);
         background.setImage(new Image("Resources/ConceptGreatWave1 (2).jpg"));
         gc=canvas.getGraphicsContext2D();
         
@@ -77,6 +80,7 @@ public class Arcade implements Initializable {
                     gameOver.setText("game over");
                     score.setText("score: " + controller.score);
                     pause.setVisible(false);
+                    back.setVisible(true);
                 }
 
             }
@@ -90,6 +94,7 @@ public class Arcade implements Initializable {
             resume.setVisible(true);
             reset.setVisible(true);
             save.setVisible(true);
+            back.setVisible(true);
             timeline.stop();
             timer.stop();
             clock.stop();
@@ -102,6 +107,7 @@ public class Arcade implements Initializable {
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
+                back.setVisible(false);
                 canvas.setEffect(new GaussianBlur(-50));
                 background.setEffect(new GaussianBlur(-50));
                 AtomicInteger seconds= new AtomicInteger();
@@ -128,6 +134,7 @@ public class Arcade implements Initializable {
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
+                back.setVisible(false);
                 pause.setVisible(true);
                 canvas.setEffect(new GaussianBlur(-50));
                 background.setEffect(new GaussianBlur(-50));
@@ -164,8 +171,23 @@ public class Arcade implements Initializable {
             }
 
         });
+        back.setOnMouseClicked(event -> {
+            if(back.isVisible()){
+                controller.ResetGame();
+                timeline.stop();
+                timer.stop();
+                clock.stop();
+                Main main = new Main();
+                try {
+                    main.getMainMenu(event);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
     }
-		
+
 				
 }
 

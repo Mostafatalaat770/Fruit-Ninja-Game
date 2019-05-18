@@ -49,5 +49,10 @@
             <Image url="@../../Resources/save.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="back" fitHeight="60.0" fitWidth="55.0" layoutX="1211.0" layoutY="650.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

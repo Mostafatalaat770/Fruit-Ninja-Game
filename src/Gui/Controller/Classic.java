@@ -1,16 +1,24 @@
 package Gui.Controller;
 
+import Gui.Main;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -26,6 +34,7 @@ public class Classic implements Initializable {
     @FXML private  ImageView reset;
     @FXML private ImageView background;
     @FXML private ImageView save;
+    @FXML private ImageView back;
     @FXML private javafx.scene.text.Text gameOver;
     @FXML private javafx.scene.text.Text score;
     @FXML private javafx.scene.text.Text bestScore;
@@ -39,6 +48,7 @@ public class Classic implements Initializable {
         bestScore.setText("best score:"+controller.personalHighscore);
         alltimeBestScore.setText("alltime best score:"+controller.highestScore);
         resume.setVisible(false);
+        back.setVisible(false);
         reset.setVisible(false);
         save.setVisible(false);
         background.setImage(new Image("Resources/ConceptGreatWave1 (2).jpg"));
@@ -78,6 +88,7 @@ public class Classic implements Initializable {
                     gameOver.setText("game over");
                     score.setText("score: " + controller.score);
                     pause.setVisible(false);
+                    back.setVisible(true);
                 }
 
             }
@@ -90,6 +101,7 @@ public class Classic implements Initializable {
             resume.setVisible(true);
             reset.setVisible(true);
             save.setVisible(true);
+            back.setVisible(true);
             timeline.stop();
             timer.stop();
             clock.stop();
@@ -103,6 +115,7 @@ public class Classic implements Initializable {
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
+                back.setVisible(false);
                 canvas.setEffect(new GaussianBlur(-50));
                 background.setEffect(new GaussianBlur(-50));
                 AtomicInteger seconds= new AtomicInteger();
@@ -130,6 +143,7 @@ public class Classic implements Initializable {
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
+                back.setVisible(false);
                 pause.setVisible(true);
                 canvas.setEffect(new GaussianBlur(-50));
                 background.setEffect(new GaussianBlur(-50));
@@ -160,15 +174,32 @@ public class Classic implements Initializable {
             {
                 try {
                     controller.saveGame();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
             }
 
 
         });
-    }
 
+        back.setOnMouseClicked(event -> {
+            if(back.isVisible()){
+                controller.ResetGame();
+                timeline.stop();
+                timer.stop();
+                clock.stop();
+                Main main = new Main();
+                try {
+                    main.getMainMenu(event);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
 
 }
