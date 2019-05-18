@@ -27,6 +27,6 @@ public class Files {
 
     public void load(Controller controller, String type) throws JDOMException, IOException {
         filesManegement.load(controller, type);
-        filesManegement.loadHighestScore(controller);
+       // filesManegement.loadHighestScore(controller);
     }
 }

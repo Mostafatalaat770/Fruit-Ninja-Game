@@ -47,6 +47,7 @@ public class MainMenu implements Initializable {
     @FXML private JFXButton loadClassic;
     @FXML private JFXButton loadArcade;
     @FXML private JFXButton load;
+    @FXML private JFXButton options;
 
 
     Controller controller = Controller.getInstance();
@@ -176,6 +177,16 @@ public class MainMenu implements Initializable {
                controller.loadGame();
                main.getArcade(event);
            } catch (IOException | JDOMException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+           }
+       });
+
+       options.setOnMouseClicked(event -> {
+           Main main = new Main();
+           try {
+               main.getOptions(event);
+           } catch (IOException e) {
                // TODO Auto-generated catch block
                e.printStackTrace();
            }

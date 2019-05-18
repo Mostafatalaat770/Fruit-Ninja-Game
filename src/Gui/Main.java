@@ -19,6 +19,13 @@ public class Main extends Application {
         arcadeWindow.setScene(arcadeScene);
         arcadeWindow.show();
     }
+    public void getOptions(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Options.fxml"));
+        Scene arcadeScene = new Scene(root, 1270, 720);
+        Stage arcadeWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        arcadeWindow.setScene(arcadeScene);
+        arcadeWindow.show();
+    }
 
     public void getClassic(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Classic.fxml"));
@@ -29,7 +36,7 @@ public class Main extends Application {
     }
 
     public void getMainMenu(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/StartScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/MainMenu.fxml"));
         Scene classicScene = new Scene(root, 1270, 720);
         Stage classicWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         classicWindow.setScene(classicScene);
@@ -40,7 +47,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/StartScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/MainMenu.fxml"));
         primaryStage.setTitle("Fruits Ninja");
         primaryStage.setScene(new Scene(root, 1270, 720));
         primaryStage.show();
