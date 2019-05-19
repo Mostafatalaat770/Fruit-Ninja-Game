@@ -9,6 +9,7 @@ import Interfaces.Memento.Files;
 import Observer.Observer;
 import Observer.Subject;
 import Throwables.Bombs.Bomb;
+import Throwables.Bombs.DangerousBomb;
 import Throwables.Bombs.FatalBomb;
 import Throwables.Fruits.Fruit;
 import Throwables.Fruits.SpecialFruits.FreezeBanana;
@@ -172,6 +173,8 @@ public class Controller implements GameActions, Subject {
                     	playSound("pome-slice-1.wav", 0);
                     else if(throwable instanceof FatalBomb)
                     	playSound("Bomb-explode.wav", 0);
+                    else if(throwable instanceof DangerousBomb)
+                    	playSound("menu-Bomb.wav", 0);
                     else if(throwable instanceof FreezeBanana)
                     	playSound("Bonus-Banana-Freeze.wav", 0);
                     else if(throwable instanceof MagicBeans)

@@ -55,15 +55,14 @@ public class Arcade implements Initializable {
         
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
             if(controller.throwables.size()<6) {
-            /*	GameObject temp = controller.getRandomThrowable();
-                controller.throwables.add(temp);
-                if(temp instanceof Bomb)
-                	controller.playSound("Throw-bomb.wav", 0);
-                else
-                	controller.playSound("Throw-fruit.wav", 0);
-                	*/
+            
             	for(int i=0;i<1+random.nextInt(5);i++){
-                    controller.throwables.add(controller.getRandomThrowable());
+            		GameObject temp = controller.getRandomThrowable();
+                    controller.throwables.add(temp);
+                    if(temp instanceof Bomb)
+                    	controller.playSound("Throw-bomb.wav", 0);
+                    else
+                    	controller.playSound("Throw-fruit.wav", 0);
                 }
             }
         }));
