@@ -33,8 +33,8 @@ public class Controller implements GameActions {
     public double difficulty = 1;
     public String type;
     public String username;
-    public long frameRate=15000000;
     public int freezeTimer=0;
+    public boolean freezeEffect=false;
     public int luckyStrike = 1;
     public int fatalBombRateControl = 0;
     public Map<String, Pair<Integer, String>> leaderBoard = new HashMap<>();
@@ -209,11 +209,11 @@ public class Controller implements GameActions {
     }
 
     public void freezeCountDown(){
-        if(frameRate==25000000){
+        if(freezeEffect==true){
             freezeTimer++;
             if(freezeTimer==5){
                 freezeTimer=0;
-                frameRate=15000000;
+                freezeEffect=false;
             }
 
         }

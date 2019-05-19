@@ -20,7 +20,7 @@ public class FreezeBanana extends SpecialFruit {
 
     @Override
     public void slice(Controller controller) {
-        controller.frameRate=25000000;
+        controller.freezeEffect=true;
         controller.secs += 5;
         setSliced(true);
 

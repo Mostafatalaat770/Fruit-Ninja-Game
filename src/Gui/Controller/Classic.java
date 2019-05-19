@@ -51,7 +51,7 @@ public class Classic implements Initializable {
         back.setVisible(false);
         reset.setVisible(false);
         save.setVisible(false);
-        background.setImage(new Image("Resources/wallpaper1.jpg"));
+        background.setImage(new Image("Resources/wallpaper3.png"));
         gc=canvas.getGraphicsContext2D();
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{

@@ -17,7 +17,7 @@
       </ImageView>
       <AnchorPane prefHeight="720.0" prefWidth="1280.0">
          <children>
-            <AnchorPane layoutX="65.0" layoutY="28.0" prefHeight="653.0" prefWidth="714.0" style="-fx-background-color: orange; -fx-background-radius: 20;">
+            <AnchorPane layoutX="63.0" layoutY="28.0" prefHeight="653.0" prefWidth="714.0" style="-fx-background-color: orange; -fx-background-radius: 20;">
                <children>
                   <Text layoutX="163.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="please select a wallpaper">
                      <font>
@@ -31,6 +31,11 @@
                   <ImageView fx:id="wallpaper1" fitHeight="133.0" fitWidth="213.0" layoutX="35.0" layoutY="80.0" onMouseClicked="#wall1Press" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Resources/wallpaper1.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="wallpaper3" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="354.0" onMouseClicked="#wall3Press" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/wallpaper3.png" />
                      </image>
                   </ImageView>
                </children></AnchorPane>

@@ -68,10 +68,8 @@ public class Arcade implements Initializable {
 
 
         AnimationTimer timer=new AnimationTimer() {
-            long last=0;
             @Override
             public void handle(long now) {
-               if(now - last>=controller.frameRate){
                    controller.drawAllThings(gc);
                    controller.removeUnwantedThrowable();
 
@@ -86,9 +84,8 @@ public class Arcade implements Initializable {
                        pause.setVisible(false);
                        back.setVisible(true);
                    }
-                        last=now;
                }
-            }
+
         };
         timer.start();
         

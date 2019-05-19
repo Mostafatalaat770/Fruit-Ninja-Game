@@ -24,6 +24,7 @@ public abstract class Throwable implements GameObject {
     private boolean leftToRight;
     private Image img1;
     private Image img2;
+    Controller controller=Controller.getInstance();
 
     public Throwable() {
         Random random=new Random();
@@ -242,11 +243,20 @@ public abstract class Throwable implements GameObject {
         }
         y=720- (a*x*x+a*q*x+a*p);
 
-           if(leftToRight){
-               x+=2;
-           }
-           else {
-               x-=2;
-           }
+         if(controller.freezeEffect){
+             if(leftToRight){
+                 x+=0.5;
+             }
+             else {
+                 x-=0.5;
+             }
+         }else {
+             if(leftToRight){
+                 x+=2;
+             }
+             else {
+                 x-=2;
+             }
+         }
    }
 }
