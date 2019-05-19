@@ -6,6 +6,8 @@ import Interfaces.Factory.Strategy;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
 import Interfaces.Memento.Files;
+import Observer.Observer;
+import Observer.Subject;
 import Throwables.Bombs.Bomb;
 import Throwables.Bombs.FatalBomb;
 import Throwables.Fruits.Fruit;
@@ -18,22 +20,22 @@ import javafx.scene.text.Font;
 import javafx.util.Pair;
 import org.jdom2.JDOMException;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
 /**
  * @author Mostafa Talaat
  */
-public class Controller implements GameActions {
+public class Controller implements GameActions, Subject {
     private static Controller ourInstance = new Controller();
     public ArrayList<GameObject> throwables = new ArrayList<>();
+    ArrayList<Observer> observers= new ArrayList<Observer>();
     public int score = 0;
     public int personalHighscore = 0;
     public int highestScore = 0;
@@ -165,6 +167,7 @@ public class Controller implements GameActions {
 
                 if (!throwable.isSliced()) {
                     throwable.slice(getInstance());
+                    notifyallobservers();
                     if(throwable instanceof Fruit)
                     	playSound("pome-slice-1.wav", 0);
                     else if(throwable instanceof FatalBomb)
@@ -253,6 +256,25 @@ public class Controller implements GameActions {
 		return clip;
 		
     }
+
+
+    @Override
+    public void register(Observer O) {
+  observers.add(O);
+    }
+
+    @Override
+    public void unregister(Observer O) {
+  observers.remove(O);
+    }
+
+    @Override
+    public void notifyallobservers() {
+int size= observers.size();
+while(size-->0)
+    observers.get(size).update();
+    }
+
 }
 
 
