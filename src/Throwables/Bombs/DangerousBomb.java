@@ -22,7 +22,7 @@ public class DangerousBomb extends Bomb {
     }
        @Override
        public void update() {
-           if (!super.isSliced()) {
+           if (super.isSliced()) {
                if (controller.score > 9)
                    controller.score -= 10;
                else
