@@ -38,6 +38,11 @@
                         <Image url="@../../Resources/wallpaper3.png" />
                      </image>
                   </ImageView>
+                  <ImageView fx:id="wallpaper4" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="492.0" onMouseClicked="#wall4Press" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/wallpaper4.png" />
+                     </image>
+                  </ImageView>
                </children></AnchorPane>
             <JFXToggleButton fx:id="soundToggle" layoutX="944.0" layoutY="326.0" text="sound" toggleColor="ORANGE" toggleLineColor="#999999" unToggleColor="ORANGE">
                <font>

@@ -6,19 +6,12 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -39,7 +32,7 @@ public class Classic implements Initializable {
     @FXML private javafx.scene.text.Text score;
     @FXML private javafx.scene.text.Text bestScore;
     @FXML private javafx.scene.text.Text alltimeBestScore;
-    public boolean stopall =true;
+    private boolean stopAll =true;
     private GraphicsContext gc;
 
 
@@ -51,7 +44,7 @@ public class Classic implements Initializable {
         back.setVisible(false);
         reset.setVisible(false);
         save.setVisible(false);
-        background.setImage(new Image("Resources/wallpaper3.png"));
+        background.setImage(new Image("Resources/wallpaper4.png"));
         gc=canvas.getGraphicsContext2D();
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
@@ -69,18 +62,17 @@ public class Classic implements Initializable {
         clock.play();
 
         canvas.setOnMouseMoved(event -> {
-            if(stopall)
+            if(stopAll)
             controller.slice(event.getSceneX(),event.getSceneY());
         });
 
         AnimationTimer timer=new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if(stopall)
                 controller.drawAllThings(gc);
                 controller.removeUnwantedThrowable();
                 if(controller.gameOver()){
-                    stopall =false;
+                    stopAll =false;
                     timeline.stop();
                     clock.stop();
                     canvas.setEffect(new GaussianBlur(50));
@@ -96,7 +88,7 @@ public class Classic implements Initializable {
         timer.start();
 
         pause.setOnMouseClicked(event -> {
-            stopall=false;
+            stopAll =false;
             pause.setVisible(false);
             resume.setVisible(true);
             reset.setVisible(true);
@@ -131,7 +123,7 @@ public class Classic implements Initializable {
                     timeline.play();
                     timer.start();
                     clock.play();
-                    stopall=true;
+                    stopAll =true;
                 });
 
             }
@@ -162,7 +154,7 @@ public class Classic implements Initializable {
                     timeline.play();
                     timer.start();
                     clock.play();
-                    stopall=true;
+                    stopAll =true;
                 });
 
             }

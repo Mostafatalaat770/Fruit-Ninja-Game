@@ -53,4 +53,10 @@ public class Options implements Initializable {
         System.out.println(3);
 
     }
+
+    public void wall4Press(){
+        // TODO: 19-May-19 set this wallpaper in both gameplays
+        System.out.println(4);
+
+    }
 }

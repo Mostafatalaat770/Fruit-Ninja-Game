@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,6 +16,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -33,8 +33,10 @@ public class Arcade implements Initializable {
     @FXML private javafx.scene.text.Text score;
     @FXML private javafx.scene.text.Text bestScore;
     @FXML private javafx.scene.text.Text alltimeBestScore;
+    private boolean stopAll = true ;
     private GraphicsContext gc;
-  boolean stoping= true ;
+    private Random random= new Random();
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
         bestScore.setText("best score:"+controller.personalHighscore);
@@ -48,14 +50,16 @@ public class Arcade implements Initializable {
         
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
             if(controller.throwables.size()<6) {
-                controller.throwables.add(controller.getRandomThrowable());
+                for(int i=0;i<1+random.nextInt(5);i++){
+                    controller.throwables.add(controller.getRandomThrowable());
+                }
             }
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
         canvas.setOnMouseMoved(event -> {
-            if(stoping)
+            if(stopAll)
                 controller.slice(event.getSceneX(),event.getSceneY());
         });
 
@@ -74,7 +78,7 @@ public class Arcade implements Initializable {
                    controller.removeUnwantedThrowable();
 
                    if(controller.gameOver()) {
-                       stoping=true ;
+                       stopAll =true ;
                        timeline.stop();
                        clock.stop();
                        canvas.setEffect(new GaussianBlur(50));
@@ -91,7 +95,7 @@ public class Arcade implements Initializable {
         
         
         pause.setOnMouseClicked(event -> {
-            stoping=false;
+            stopAll =false;
             pause.setVisible(false);
             resume.setVisible(true);
             reset.setVisible(true);
@@ -125,7 +129,7 @@ public class Arcade implements Initializable {
                     timeline.play();
                     timer.start();
                     clock.play();
-                    stoping= true;
+                    stopAll = true;
                 });
 
             }
@@ -155,7 +159,7 @@ public class Arcade implements Initializable {
                     timeline.play();
                     timer.start();
                     clock.play();
-                    stoping=true;
+                    stopAll =true;
                 });
 
             }
