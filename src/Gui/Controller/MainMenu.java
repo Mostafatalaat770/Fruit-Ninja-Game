@@ -27,6 +27,8 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javax.sound.sampled.Clip;
+
 /**
  *
  * @author LENOVO
@@ -101,6 +103,8 @@ public class MainMenu implements Initializable {
 
         TranslateTransition transition10 = new TranslateTransition(Duration.millis(300), slicedbanana_bottom);
         transition10.setByX(-5);
+        
+        Clip gameStart = controller.playSound("game-start.wav", Clip.LOOP_CONTINUOUSLY);
 
 
 
@@ -112,6 +116,8 @@ public class MainMenu implements Initializable {
            transition4.play();
            transition5.play();
            transition6.play();
+           gameStart.stop();
+           controller.playSound("pome-slice-1.wav", 0);
            transition3.setOnFinished((event1) -> {
         	   Main main = new Main();
 				try {
@@ -136,6 +142,8 @@ public class MainMenu implements Initializable {
            transition8.play();
            transition9.play();
            transition10.play();
+           gameStart.stop();
+           controller.playSound("pome-slice-1.wav", 0);
            transition7.setOnFinished((event1) -> {
         	   Main main = new Main();
 				try {
@@ -151,14 +159,24 @@ public class MainMenu implements Initializable {
        });
 
        exit_img.setOnMouseExited((event) -> {
+    	   gameStart.stop();
+    	   Clip gameStart1 = gameStart;
+    	   controller.playSound("menu-bomb.wav", 0);
            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
            alert.setHeaderText("Are you sure you want to exit?");
            Optional<ButtonType> result = alert.showAndWait();
            if(result.get() == ButtonType.OK)
               Platform.exit();
+           else {
+        	   gameStart1.loop(Clip.LOOP_CONTINUOUSLY);
+        	   gameStart1.start();
+        	   
+           }
        });
 
        loadClassic.setOnMouseClicked(event -> {
+    	   gameStart.stop();
+    	   controller.playSound("Next-screen-button.wav", 0);
            Main main = new Main();
            try {
                controller.type = "classic";
@@ -171,6 +189,8 @@ public class MainMenu implements Initializable {
        });
 
        loadArcade.setOnMouseClicked(event -> {
+    	   gameStart.stop();
+    	   controller.playSound("Next-screen-button.wav", 0);
            Main main = new Main();
            try {
                controller.type = "arcade";
@@ -183,6 +203,8 @@ public class MainMenu implements Initializable {
        });
 
        options.setOnMouseClicked(event -> {
+    	   gameStart.stop();
+    	   controller.playSound("Next-screen-button.wav", 0);
            Main main = new Main();
            try {
                main.getOptions(event);
@@ -194,6 +216,7 @@ public class MainMenu implements Initializable {
     }
 
     public void loadButton(){
+    	controller.playSound("Next-screen-button.wav", 0);
         TranslateTransition classic=new TranslateTransition(new Duration(1000),loadClassic);
         TranslateTransition arcade= new TranslateTransition(new Duration(1000),loadArcade);
         arcade.setByX(270);

@@ -1,6 +1,8 @@
 package Gui.Controller;
 
 import Gui.Main;
+import Interfaces.GameObject;
+import Throwables.Bombs.Bomb;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -18,6 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class Classic implements Initializable {
     private Controller controller = Controller.getInstance();
@@ -44,12 +47,17 @@ public class Classic implements Initializable {
         back.setVisible(false);
         reset.setVisible(false);
         save.setVisible(false);
-        background.setImage(new Image("Resources/wallpaper4.png"));
+        background.setImage(new Image("Resources/wallpaper4.jpg"));
         gc=canvas.getGraphicsContext2D();
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
             if(controller.throwables.size()<6) {
-                controller.throwables.add(controller.getRandomThrowable());
+            	GameObject temp = controller.getRandomThrowable();
+                controller.throwables.add(temp);
+                if(temp instanceof Bomb)
+                	controller.playSound("Throw-bomb.wav", 0);
+                else
+                	controller.playSound("Throw-fruit.wav", 0);
             }
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
@@ -69,6 +77,7 @@ public class Classic implements Initializable {
         AnimationTimer timer=new AnimationTimer() {
             @Override
             public void handle(long now) {
+               
                 controller.drawAllThings(gc);
                 controller.removeUnwantedThrowable();
                 if(controller.gameOver()){
@@ -88,7 +97,8 @@ public class Classic implements Initializable {
         timer.start();
 
         pause.setOnMouseClicked(event -> {
-            stopAll =false;
+        	controller.playSound("pause.wav", 0);
+            stopAll=false;
             pause.setVisible(false);
             resume.setVisible(true);
             reset.setVisible(true);
@@ -103,7 +113,7 @@ public class Classic implements Initializable {
 
         resume.setOnMouseClicked(event -> {
             if(resume.isVisible()){
-
+            	controller.playSound("Unpause.wav", 0);
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
@@ -123,7 +133,7 @@ public class Classic implements Initializable {
                     timeline.play();
                     timer.start();
                     clock.play();
-                    stopAll =true;
+                    stopAll=true;
                 });
 
             }
@@ -131,7 +141,7 @@ public class Classic implements Initializable {
 
         reset.setOnMouseClicked(event -> {
             if(reset.isVisible()){
-
+            	controller.playSound("Unpause.wav", 0);
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
@@ -154,7 +164,7 @@ public class Classic implements Initializable {
                     timeline.play();
                     timer.start();
                     clock.play();
-                    stopAll =true;
+                    stopAll=true;
                 });
 
             }
@@ -164,6 +174,7 @@ public class Classic implements Initializable {
         save.setOnMouseClicked(event -> {
             if(save.isVisible())
             {
+            	controller.playSound("Next-screen-button.wav", 0);
                 try {
                     controller.saveGame();
 
@@ -178,6 +189,7 @@ public class Classic implements Initializable {
 
         back.setOnMouseClicked(event -> {
             if(back.isVisible()){
+            	controller.playSound("Next-screen-button.wav", 0);
                 controller.ResetGame();
                 timeline.stop();
                 timer.stop();

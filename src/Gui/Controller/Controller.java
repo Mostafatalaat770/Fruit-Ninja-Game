@@ -7,6 +7,10 @@ import Interfaces.GameActions;
 import Interfaces.GameObject;
 import Interfaces.Memento.Files;
 import Throwables.Bombs.Bomb;
+import Throwables.Bombs.FatalBomb;
+import Throwables.Fruits.Fruit;
+import Throwables.Fruits.SpecialFruits.FreezeBanana;
+import Throwables.Fruits.SpecialFruits.MagicBeans;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -14,9 +18,15 @@ import javafx.scene.text.Font;
 import javafx.util.Pair;
 import org.jdom2.JDOMException;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  * @author Mostafa Talaat
@@ -33,8 +43,8 @@ public class Controller implements GameActions {
     public double difficulty = 1;
     public String type;
     public String username;
+    public long frameRate=15000000;
     public int freezeTimer=0;
-    public boolean freezeEffect=false;
     public int luckyStrike = 1;
     public int fatalBombRateControl = 0;
     public Map<String, Pair<Integer, String>> leaderBoard = new HashMap<>();
@@ -153,6 +163,14 @@ public class Controller implements GameActions {
 
                 if (!throwable.isSliced()) {
                     throwable.slice(getInstance());
+                    if(throwable instanceof Fruit)
+                    	playSound("pome-slice-1.wav", 0);
+                    else if(throwable instanceof FatalBomb)
+                    	playSound("Bomb-explode.wav", 0);
+                    else if(throwable instanceof FreezeBanana)
+                    	playSound("Bonus-Banana-Freeze.wav", 0);
+                    else if(throwable instanceof MagicBeans)
+                    	playSound("extra-life.wav", 0);
                 }
             }
         }
@@ -209,14 +227,31 @@ public class Controller implements GameActions {
     }
 
     public void freezeCountDown(){
-        if(freezeEffect==true){
+        if(frameRate==25000000){
             freezeTimer++;
             if(freezeTimer==5){
                 freezeTimer=0;
-                freezeEffect=false;
+                frameRate=15000000;
             }
 
         }
+    }
+    
+    public Clip playSound(String filename, int i) {
+    	File music = new File(filename);
+        Clip clip = null;
+		try {
+			clip = AudioSystem.getClip();
+			clip.open(AudioSystem.getAudioInputStream(music));
+	        clip.loop(i);
+	        clip.start();
+		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		
+		}
+		return clip;
+		
     }
 }
 
