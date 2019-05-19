@@ -94,7 +94,7 @@ public class Arcade implements Initializable {
                 		   Clip clip = controller.playSound("time-up.wav", 0);
                 		   timeup = true;
                 	   }
-                       stopAll=true ;
+                       stopAll=false ;
                        timeline.stop();
                        clock.stop();
                        canvas.setEffect(new GaussianBlur(50));

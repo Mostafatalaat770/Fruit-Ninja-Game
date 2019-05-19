@@ -104,7 +104,7 @@ public class MainMenu implements Initializable {
         TranslateTransition transition10 = new TranslateTransition(Duration.millis(300), slicedbanana_bottom);
         transition10.setByX(-5);
         
-        Clip gameStart = controller.playSound("game-start.wav", Clip.LOOP_CONTINUOUSLY);
+        Clip gameStart = controller.playSound("Game-start.wav", Clip.LOOP_CONTINUOUSLY);
 
 
 
