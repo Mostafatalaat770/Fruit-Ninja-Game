@@ -17,17 +17,17 @@ public class DangerousBomb extends Bomb {
 
     @Override
     public void slice(Controller controller) {
+        setSliced(true);
 
     }
        @Override
-       public void update()
-       {
-           if(controller.score>9)
-           controller.score-=10;
-       else
-           controller.score=0;
-           setSliced(true);
-
+       public void update() {
+           if (!super.isSliced()) {
+               if (controller.score > 9)
+                   controller.score -= 10;
+               else
+                   controller.score = 0;
+               controller.unregister(this);
+           }
        }
-
 }

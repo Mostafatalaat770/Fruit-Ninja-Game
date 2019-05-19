@@ -216,14 +216,14 @@ public abstract class Throwable implements GameObject, Observer {
 
     @Override
     public void slice(Controller controller) {
-
+        sliced = true;
     }
     @Override
     public void update()
-    {sliced = true;
+    {  if(sliced) {
         controller.score++;
         controller.unregister(this);
-    }
+    }}
 
 
     @Override
