@@ -77,17 +77,15 @@ public class Arcade implements Initializable {
 
         Timeline clock= new Timeline(new KeyFrame(new Duration(1000), actionEvent1->{
             controller.updateTime_Difficulty(timeline);
-           controller.freezeCountDown();
+            controller.freezeCountDown();
         }));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
 
 
         AnimationTimer timer=new AnimationTimer() {
-            long last=0;
             @Override
             public void handle(long now) {
-               if(now - last>=controller.frameRate){
                    controller.drawAllThings(gc);
                    controller.removeUnwantedThrowable();
 
@@ -106,8 +104,7 @@ public class Arcade implements Initializable {
                        pause.setVisible(false);
                        back.setVisible(true);
                    }
-                        last=now;
-               }
+
             }
         };
         timer.start();

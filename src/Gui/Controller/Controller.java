@@ -43,8 +43,8 @@ public class Controller implements GameActions {
     public double difficulty = 1;
     public String type;
     public String username;
-    public long frameRate=15000000;
     public int freezeTimer=0;
+    public boolean freezeEffect=false;
     public int luckyStrike = 1;
     public int fatalBombRateControl = 0;
     public Map<String, Pair<Integer, String>> leaderBoard = new HashMap<>();
@@ -102,6 +102,8 @@ public class Controller implements GameActions {
             mins = 1;
             lives = 0;
             difficulty = 2.5;
+            freezeEffect=false;
+            freezeTimer=0;
         }
 
     }
@@ -217,21 +219,19 @@ public class Controller implements GameActions {
     public boolean gameOver() {
 
         if (type.equals("classic")) {
-            // todo: game over scene
             return lives == 0;
         } else if (type.equals("arcade")) {
-            // todo: game over scene
             return mins == 0 && secs == 0;
         }
         return false;
     }
 
     public void freezeCountDown(){
-        if(frameRate==25000000){
+        if(freezeEffect==true){
             freezeTimer++;
             if(freezeTimer==5){
                 freezeTimer=0;
-                frameRate=15000000;
+                freezeEffect=false;
             }
 
         }
