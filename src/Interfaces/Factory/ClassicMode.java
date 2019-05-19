@@ -18,13 +18,10 @@ public class ClassicMode implements ObjectCreator {
     Random rand = new Random();
 
     public GameObject create(Controller controller) {
-        if (++controller.fatalBombRateControl % 7 == 0) {
-            controller.fatalBombRateControl = 0;
-            return new FatalBomb();
-        }
-        controller.luckyStrike %= 3;
 
-        int flag = controller.luckyStrike++ < 2 ? rand.nextInt(5) % 4 : rand.nextInt(5) % 5;
+        controller.luckyStrike = rand.nextInt()%3;
+
+        int flag = controller.luckyStrike < 1 ? rand.nextInt(4) % 4 : rand.nextInt(6) % 6;
 
         switch (flag) {
             case 0:
@@ -37,6 +34,9 @@ public class ClassicMode implements ObjectCreator {
                 return new Orange();
             case 4:
                 return new MagicBeans();
+            case 5 :
+                return  new FatalBomb();
+
         }
         return null;
     }
