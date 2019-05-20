@@ -5,8 +5,6 @@ import Interfaces.Factory.ClassicMode;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
 import Interfaces.Memento.Files;
-import Interfaces.Strategy.Arcade;
-import Interfaces.Strategy.Classic;
 import Interfaces.Strategy.Strategy;
 import Observer.Observer;
 import Throwables.Bombs.Bomb;
@@ -38,7 +36,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Controller implements GameActions {
     private static Controller ourInstance = new Controller();
     public ArrayList<GameObject> throwables = new ArrayList<>();
-    ArrayList<Observer> observers= new ArrayList<Observer>();
+    public Strategy players = null;
     public int score = 0;
     public int personalHighscore = 0;
     public int highestScore = 0;
@@ -53,7 +51,7 @@ public class Controller implements GameActions {
     public int fatalBombRateControl = 0;
     public UsersDB usersDB = UsersDB.getInstance();
     public Files files = new Files();
-    Strategy players = null;
+    ArrayList<Observer> observers = new ArrayList<Observer>();
 
     public static Controller getInstance() {
         return ourInstance;
@@ -82,8 +80,7 @@ public class Controller implements GameActions {
 
     @Override
     public void loadGame() throws JDOMException, IOException {
-        //files.load(getInstance(), type);
-
+        files.loadGame(getInstance(), type);
     }
 
     public void loadPlayers() throws JDOMException, IOException {
@@ -99,6 +96,9 @@ public class Controller implements GameActions {
             mins = 0;
             lives = 3;
             difficulty = 1;
+            fatalBombRateControl = 0;
+            personalHighscore = usersDB.getPlayer().getScore();
+            highestScore = players.getHighScore();
         } else if (type.equals("arcade")) {
             throwables.clear();
             score = 0;
@@ -108,27 +108,14 @@ public class Controller implements GameActions {
             difficulty = 2.5;
             freezeEffect = false;
             freezeTimer = 0;
-            fatalBombRateControl = 0;
+            personalHighscore = usersDB.getPlayer().getScore();
+            highestScore = players.getHighScore();
         }
 
     }
 
     public void setUser(String username) {
-
         usersDB.setPlayer(username);
-        switch (type) {
-            case "classic":
-                players = new Strategy(new Classic());
-                personalHighscore = usersDB.getPlayer().getClassicScore();
-                highestScore = players.getHighScore();
-                break;
-            case "arcade":
-                players = new Strategy(new Arcade());
-                personalHighscore = usersDB.getPlayer().getArcadeScore();
-                highestScore = players.getHighScore();
-                break;
-        }
-        assert players != null;
     }
 
     @Override
@@ -180,8 +167,6 @@ public class Controller implements GameActions {
         gc.fillText("all time best: " + highestScore, 20, 70);
 
 
-
-
         for (GameObject gameObject : throwables) {
             gameObject.render(gc);
             gameObject.updatePosition();
@@ -195,16 +180,16 @@ public class Controller implements GameActions {
                 if (!throwable.isSliced()) {
                     throwable.slice(getInstance());
                     notifyallobservers();
-                    if(throwable instanceof Fruit)
-                    	playSound("pome-slice-1.wav", 0);
-                    else if(throwable instanceof FatalBomb)
-                    	playSound("Bomb-explode.wav", 0);
-                    else if(throwable instanceof DangerousBomb)
-                    	playSound("menu-Bomb.wav", 0);
-                    else if(throwable instanceof FreezeBanana)
-                    	playSound("Bonus-Banana-Freeze.wav", 0);
-                    else if(throwable instanceof MagicBeans)
-                    	playSound("extra-life.wav", 0);
+                    if (throwable instanceof Fruit)
+                        playSound("pome-slice-1.wav", 0);
+                    else if (throwable instanceof FatalBomb)
+                        playSound("Bomb-explode.wav", 0);
+                    else if (throwable instanceof DangerousBomb)
+                        playSound("menu-Bomb.wav", 0);
+                    else if (throwable instanceof FreezeBanana)
+                        playSound("Bonus-Banana-Freeze.wav", 0);
+                    else if (throwable instanceof MagicBeans)
+                        playSound("extra-life.wav", 0);
                 }
             }
         }
@@ -249,16 +234,9 @@ public class Controller implements GameActions {
     }
 
     public void updateScore() {
-        if (type.equals("arcade")) {
-            if (players.validate(score)) {
-                usersDB.getPlayer().setArcadeScore(score);
-                personalHighscore = score;
-            }
-        } else if (type.equals("classic")) {
-            if (players.validate(score)) {
-                usersDB.getPlayer().setClassicScore(score);
-                personalHighscore = score;
-            }
+        if (players.validate(score)) {
+            usersDB.getPlayer().setScore(score);
+            personalHighscore = usersDB.getPlayer().getScore();
         }
         if (highestScore < personalHighscore) {
             highestScore = personalHighscore;
@@ -304,19 +282,18 @@ public class Controller implements GameActions {
     }
 
 
-
     public void register(Observer O) {
-  observers.add(O);
+        observers.add(O);
     }
 
     public void unregister(Observer O) {
-  observers.remove(O);
+        observers.remove(O);
     }
 
     public void notifyallobservers() {
-int size= observers.size();
-while(size-->0)
-    observers.get(size).update();
+        int size = observers.size();
+        while (size-- > 0)
+            observers.get(size).update();
     }
 
 }

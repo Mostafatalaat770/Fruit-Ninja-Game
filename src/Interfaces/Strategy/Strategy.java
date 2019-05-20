@@ -34,4 +34,7 @@ public class Strategy {
         return dataBase.validate(score);
     }
 
+    public DataBase getDataBase() {
+        return dataBase;
+    }
 }

@@ -7,6 +7,9 @@ package Gui.Controller;
 
 
 import Gui.Main;
+import Interfaces.Strategy.Arcade;
+import Interfaces.Strategy.Classic;
+import Interfaces.Strategy.Strategy;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
@@ -124,13 +127,13 @@ public class MainMenu implements Initializable {
                     controller.loadPlayers();
                     controller.type = "classic";
                     controller.setUser("musty");
+                    controller.players = new Strategy(new Classic());
                     controller.ResetGame();
                     main.getClassic(event);
                 } catch (IOException | JDOMException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
 
            });
            System.out.println("Classic mode activated");
@@ -149,12 +152,11 @@ public class MainMenu implements Initializable {
            transition7.setOnFinished((event1) -> {
         	   Main main = new Main();
 				try {
-                    controller.loadPlayers();
                     controller.type = "arcade";
-                    controller.setUser("musty");
+                    controller.players = new Strategy(new Arcade());
                     controller.ResetGame();
                     main.getArcade(event);
-                } catch (IOException | JDOMException e) {
+                } catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

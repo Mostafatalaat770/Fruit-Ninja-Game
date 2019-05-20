@@ -1,9 +1,12 @@
 package UsersDB;
 
+import Gui.Controller.Controller;
+
 /**
  * @author Mostafa Talaat
  */
 public class Player {
+
     private String username;
     private int arcadeScore;
     private int classicScore;
@@ -33,4 +36,24 @@ public class Player {
     public void setClassicScore(int classicScore) {
         this.classicScore = classicScore;
     }
+
+    public int getScore() {
+        Controller controller = Controller.getInstance();
+        if (controller.players.getDataBase() instanceof Interfaces.Strategy.Arcade) {
+            return arcadeScore;
+        } else if (controller.players.getDataBase() instanceof Interfaces.Strategy.Classic) {
+            return classicScore;
+        }
+        return 0;
+    }
+
+    public void setScore(int score) {
+        Controller controller = Controller.getInstance();
+        if (controller.players.getDataBase() instanceof Interfaces.Strategy.Arcade) {
+            arcadeScore = score;
+        } else if (controller.players.getDataBase() instanceof Interfaces.Strategy.Classic) {
+            classicScore = score;
+        }
+    }
+
 }
