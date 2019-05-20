@@ -10,6 +10,7 @@ import Throwables.Fruits.Melon;
 import Throwables.Fruits.Orange;
 import Throwables.Fruits.SpecialFruits.FreezeBanana;
 import Throwables.Fruits.SpecialFruits.MagicBeans;
+import UsersDB.Player;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -183,7 +184,7 @@ public class FilesManegement {
 
         XMLOutputter xmlOutput = new XMLOutputter();
 
-        File file = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Saves" + File.separator + controller.username + "/");
+        File file = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Saves" + File.separator + controller.usersDB.getPlayer().getUsername() + "/");
         if (file.mkdirs()) {
             file.createNewFile();
         }
@@ -192,7 +193,7 @@ public class FilesManegement {
     }
 
     public void load(Controller controller, String type) throws JDOMException, IOException {
-        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Saves" + File.separator + controller.username + File.separator + type + ".txt");
+        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Saves" + File.separator + controller.usersDB.getPlayer().getUsername() + File.separator + type + ".txt");
         SAXBuilder saxBuilder = new SAXBuilder();
         Document document = saxBuilder.build(inputFile);
         Element classElement = document.getRootElement();
@@ -244,11 +245,24 @@ public class FilesManegement {
 
     public void saveLeaderBoard(Controller controller) throws IOException {
         Element levelElement = new Element("leaderBoard");
-//        Collections.sort(controller.scores);
-//        for (int i = 0; i <controller.scores.size() ; i++) {
-//                Element child = new Element(controller.leaderBoard.get())
-//        }
         Document doc = new Document(levelElement);
+        controller.usersDB.sort();
+        Element parent;
+        Element child;
+        Player player;
+        for (int i = 0; i < controller.usersDB.getPlayers().size(); i++) {
+            player = controller.usersDB.getPlayers().get(i);
+            parent = new Element(Integer.toString(i));
+
+            child = new Element("name");
+            child.setText(player.getUsername());
+            parent.addContent(child);
+
+            child = new Element("score");
+            child.setText(Integer.toString(player.getScore()));
+            parent.addContent(child);
+        }
+
         XMLOutputter xmlOutput = new XMLOutputter();
 
         File file = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/LeaderBoards");
@@ -256,13 +270,18 @@ public class FilesManegement {
             file.createNewFile();
         }
         xmlOutput.setFormat(Format.getPrettyFormat());
-        xmlOutput.output(doc, new FileWriter(file + "/highestScore.txt"));
+        xmlOutput.output(doc, new FileWriter(file + "/leaderboards.txt"));
     }
 
     public void loadLeaderBoard(Controller controller) throws JDOMException, IOException {
-        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/LeaderBoards" + File.separator + "highestScore.txt");
+        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/LeaderBoards" + File.separator + "leaderboards.txt");
         SAXBuilder saxBuilder = new SAXBuilder();
         Document document = saxBuilder.build(inputFile);
-        controller.highestScore = Integer.parseInt(document.getRootElement().getText());
+
+        List<Element> childs = document.getRootElement().getChildren();
+
+        for (Element child : childs) {
+            controller.usersDB.addUser(child.getChildText("name"), Integer.parseInt(child.getChildText("score")));
+        }
     }
 }
