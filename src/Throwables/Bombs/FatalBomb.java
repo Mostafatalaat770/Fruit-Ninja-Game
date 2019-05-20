@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
  */
 public class FatalBomb extends Bomb {
 
+    Controller controller=Controller.getInstance();
     public FatalBomb() {
         super();
         super.setImg1(new Image("Resources/Bomb.png", 75, 75, true, true));
@@ -16,8 +17,13 @@ public class FatalBomb extends Bomb {
 
     @Override
     public void slice(Controller controller) {
-        controller.lives = 0;
         setSliced(true);
-    }
 
+    }
+    @Override
+    public void update()
+    { if(isSliced())
+        controller.lives = 0;
+        controller.unregister(this);
+    }
 }

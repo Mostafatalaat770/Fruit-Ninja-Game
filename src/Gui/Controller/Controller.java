@@ -6,7 +6,10 @@ import Interfaces.Factory.Strategy;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
 import Interfaces.Memento.Files;
+import Observer.Observer;
+import Observer.Subject;
 import Throwables.Bombs.Bomb;
+import Throwables.Bombs.DangerousBomb;
 import Throwables.Bombs.FatalBomb;
 import Throwables.Fruits.Fruit;
 import Throwables.Fruits.SpecialFruits.FreezeBanana;
@@ -16,6 +19,7 @@ import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.util.Pair;
 import org.jdom2.JDOMException;
 
 import javax.sound.sampled.AudioSystem;
@@ -24,8 +28,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -34,6 +37,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Controller implements GameActions {
     private static Controller ourInstance = new Controller();
     public ArrayList<GameObject> throwables = new ArrayList<>();
+    ArrayList<Observer> observers= new ArrayList<Observer>();
     public int score = 0;
     public int personalHighscore = 0;
     public int highestScore = 0;
@@ -103,7 +107,7 @@ public class Controller implements GameActions {
     }
 
     public void setUser(String username) {
-        usersDB.setPlayer("username");
+        usersDB.setPlayer(username);
         personalHighscore = usersDB.getPlayer().getScore();
         highestScore = usersDB.getHighestScore();
     }
@@ -165,14 +169,17 @@ public class Controller implements GameActions {
 
                 if (!throwable.isSliced()) {
                     throwable.slice(getInstance());
-                    if (throwable instanceof Fruit)
-                        playSound("pome-slice-1.wav", 0);
-                    else if (throwable instanceof FatalBomb)
-                        playSound("Bomb-explode.wav", 0);
-                    else if (throwable instanceof FreezeBanana)
-                        playSound("Bonus-Banana-Freeze.wav", 0);
-                    else if (throwable instanceof MagicBeans)
-                        playSound("extra-life.wav", 0);
+                    notifyallobservers();
+                    if(throwable instanceof Fruit)
+                    	playSound("pome-slice-1.wav", 0);
+                    else if(throwable instanceof FatalBomb)
+                    	playSound("Bomb-explode.wav", 0);
+                    else if(throwable instanceof DangerousBomb)
+                    	playSound("menu-Bomb.wav", 0);
+                    else if(throwable instanceof FreezeBanana)
+                    	playSound("Bonus-Banana-Freeze.wav", 0);
+                    else if(throwable instanceof MagicBeans)
+                    	playSound("extra-life.wav", 0);
                 }
             }
         }
@@ -263,6 +270,25 @@ public class Controller implements GameActions {
         return clip;
 
     }
+
+
+    @Override
+    public void register(Observer O) {
+  observers.add(O);
+    }
+
+    @Override
+    public void unregister(Observer O) {
+  observers.remove(O);
+    }
+
+    @Override
+    public void notifyallobservers() {
+int size= observers.size();
+while(size-->0)
+    observers.get(size).update();
+    }
+
 }
 
 

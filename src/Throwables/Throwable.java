@@ -4,13 +4,13 @@ import Gui.Controller.Controller;
 import Interfaces.GameObject;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-
+import Observer.Observer;
 import java.util.Random;
 
 /**
  * @author Mostafa Talaat
  */
-public abstract class Throwable implements GameObject {
+public abstract class Throwable implements GameObject, Observer {
     private double x;
     private double y;
     private double maxHeight;
@@ -27,6 +27,7 @@ public abstract class Throwable implements GameObject {
     Controller controller=Controller.getInstance();
 
     public Throwable() {
+        controller.register(this);
         Random random=new Random();
         startPos=200+random.nextDouble()*680;
         endPos=startPos+200;
@@ -216,8 +217,14 @@ public abstract class Throwable implements GameObject {
     @Override
     public void slice(Controller controller) {
         sliced = true;
-        controller.score++;
     }
+    @Override
+    public void update()
+    {  if(sliced) {
+        controller.score++;
+        controller.unregister(this);
+    }}
+
 
     @Override
     public void move(double time) {
