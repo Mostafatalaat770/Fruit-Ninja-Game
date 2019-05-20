@@ -2,12 +2,13 @@ package Gui.Controller;
 
 import Interfaces.Factory.ArcadeMode;
 import Interfaces.Factory.ClassicMode;
-import Interfaces.Factory.Strategy;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
 import Interfaces.Memento.Files;
+import Interfaces.Strategy.Arcade;
+import Interfaces.Strategy.Classic;
+import Interfaces.Strategy.Strategy;
 import Observer.Observer;
-import Observer.Subject;
 import Throwables.Bombs.Bomb;
 import Throwables.Bombs.DangerousBomb;
 import Throwables.Bombs.FatalBomb;
@@ -19,7 +20,6 @@ import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.util.Pair;
 import org.jdom2.JDOMException;
 
 import javax.sound.sampled.AudioSystem;
@@ -28,7 +28,8 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -52,6 +53,7 @@ public class Controller implements GameActions {
     public int fatalBombRateControl = 0;
     public UsersDB usersDB = UsersDB.getInstance();
     public Files files = new Files();
+    Strategy players = null;
 
     public static Controller getInstance() {
         return ourInstance;
@@ -80,7 +82,12 @@ public class Controller implements GameActions {
 
     @Override
     public void loadGame() throws JDOMException, IOException {
-        files.load(getInstance(), type);
+        //files.load(getInstance(), type);
+
+    }
+
+    public void loadPlayers() throws JDOMException, IOException {
+        files.loadPlayers(getInstance());
     }
 
     @Override
@@ -107,9 +114,21 @@ public class Controller implements GameActions {
     }
 
     public void setUser(String username) {
+
         usersDB.setPlayer(username);
-        personalHighscore = usersDB.getPlayer().getScore();
-        highestScore = usersDB.getHighestScore();
+        switch (type) {
+            case "classic":
+                players = new Strategy(new Classic());
+                personalHighscore = usersDB.getPlayer().getClassicScore();
+                highestScore = players.getHighScore();
+                break;
+            case "arcade":
+                players = new Strategy(new Arcade());
+                personalHighscore = usersDB.getPlayer().getArcadeScore();
+                highestScore = players.getHighScore();
+                break;
+        }
+        assert players != null;
     }
 
     @Override
@@ -230,9 +249,16 @@ public class Controller implements GameActions {
     }
 
     public void updateScore() {
-        if (usersDB.validateScore(score)) {
-            usersDB.getPlayer().setScore(score);
-            personalHighscore = score;
+        if (type.equals("arcade")) {
+            if (players.validate(score)) {
+                usersDB.getPlayer().setArcadeScore(score);
+                personalHighscore = score;
+            }
+        } else if (type.equals("classic")) {
+            if (players.validate(score)) {
+                usersDB.getPlayer().setClassicScore(score);
+                personalHighscore = score;
+            }
         }
         if (highestScore < personalHighscore) {
             highestScore = personalHighscore;

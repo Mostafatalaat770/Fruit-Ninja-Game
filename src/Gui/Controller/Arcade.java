@@ -16,13 +16,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
+import javax.sound.sampled.Clip;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import javax.sound.sampled.Clip;
 
 public class Arcade implements Initializable {
 	private Controller controller= Controller.getInstance();
@@ -98,6 +97,7 @@ public class Arcade implements Initializable {
                        score.setText("score: " + controller.score);
                        pause.setVisible(false);
                        back.setVisible(true);
+                       controller.updateScore();
                    }
 
             }

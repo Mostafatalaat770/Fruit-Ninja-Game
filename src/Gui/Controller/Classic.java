@@ -100,6 +100,7 @@ public class Classic implements Initializable {
                     score.setText("score: " + controller.score);
                     pause.setVisible(false);
                     back.setVisible(true);
+                    controller.updateScore();
                 }
 
             }

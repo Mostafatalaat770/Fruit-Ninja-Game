@@ -22,12 +22,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import org.jdom2.JDOMException;
 
+import javax.sound.sampled.Clip;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import javax.sound.sampled.Clip;
 
 /**
  *
@@ -122,10 +121,12 @@ public class MainMenu implements Initializable {
            transition3.setOnFinished((event1) -> {
         	   Main main = new Main();
 				try {
+                    controller.loadPlayers();
                     controller.type = "classic";
+                    controller.setUser("musty");
                     controller.ResetGame();
                     main.getClassic(event);
-				} catch (IOException e) {
+                } catch (IOException | JDOMException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -148,10 +149,12 @@ public class MainMenu implements Initializable {
            transition7.setOnFinished((event1) -> {
         	   Main main = new Main();
 				try {
+                    controller.loadPlayers();
                     controller.type = "arcade";
+                    controller.setUser("musty");
                     controller.ResetGame();
                     main.getArcade(event);
-				} catch (IOException e) {
+                } catch (IOException | JDOMException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
