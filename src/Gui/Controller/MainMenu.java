@@ -50,6 +50,7 @@ public class MainMenu implements Initializable {
     @FXML private JFXButton loadArcade;
     @FXML private JFXButton load;
     @FXML private JFXButton options;
+    @FXML private JFXButton leaderboard;
 
 
     Controller controller = Controller.getInstance();
@@ -208,6 +209,18 @@ public class MainMenu implements Initializable {
            Main main = new Main();
            try {
                main.getOptions(event);
+           } catch (IOException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+           }
+       });
+
+       leaderboard.setOnMouseClicked(event -> {
+           gameStart.stop();
+           controller.playSound("Next-screen-button.wav", 0);
+           Main main = new Main();
+           try {
+               main.getLeaderboard(event);
            } catch (IOException e) {
                // TODO Auto-generated catch block
                e.printStackTrace();

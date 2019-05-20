@@ -272,17 +272,15 @@ public class Controller implements GameActions {
     }
 
 
-    @Override
+
     public void register(Observer O) {
   observers.add(O);
     }
 
-    @Override
     public void unregister(Observer O) {
   observers.remove(O);
     }
 
-    @Override
     public void notifyallobservers() {
 int size= observers.size();
 while(size-->0)

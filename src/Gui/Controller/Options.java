@@ -17,14 +17,12 @@ public class Options implements Initializable {
     @FXML private JFXToggleButton soundToggle; // TODO: 19-May-19 bta3 el moseeqa dah
     @FXML private ImageView wallpaper1;
     @FXML private ImageView wallpaper2;
-    @FXML private ImageView background;
     @FXML private ImageView back;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        background.setEffect(new GaussianBlur(50));
         back.setOnMouseClicked(event -> {
             Main main = new Main();
             try {

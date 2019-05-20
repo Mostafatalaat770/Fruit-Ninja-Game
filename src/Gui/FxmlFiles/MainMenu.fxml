@@ -61,22 +61,27 @@
                   <Image url="@../../Resources/Banana-top.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="loadArcade" layoutX="71.0" layoutY="39.0" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="arcade">
+            <JFXButton fx:id="loadArcade" buttonType="RAISED" layoutX="71.0" layoutY="39.0" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="arcade">
                <font>
                   <Font name="Gang of Three" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="loadClassic" layoutX="71.0" layoutY="39.0" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="classic">
+            <JFXButton fx:id="loadClassic" buttonType="RAISED" layoutX="71.0" layoutY="39.0" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="classic">
                <font>
                   <Font name="Gang of Three" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="load" layoutX="71.0" layoutY="35.0" onAction="#loadButton" prefHeight="43.0" prefWidth="163.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="LOAD GAME">
+            <JFXButton fx:id="load" buttonType="RAISED" layoutX="71.0" layoutY="35.0" onAction="#loadButton" prefHeight="43.0" prefWidth="163.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="LOAD GAME">
                <font>
                   <Font name="Gang of Three" size="22.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="options" layoutX="1095.0" layoutY="35.0" prefHeight="43.0" prefWidth="110.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="options">
+            <JFXButton fx:id="options" buttonType="RAISED" layoutX="1095.0" layoutY="35.0" prefHeight="43.0" prefWidth="110.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="options">
+               <font>
+                  <Font name="Gang of Three" size="22.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="leaderboard" buttonType="RAISED" layoutX="900.0" layoutY="35.0" prefHeight="43.0" prefWidth="180.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="leaderboard">
                <font>
                   <Font name="Gang of Three" size="22.0" />
                </font>
