@@ -2,7 +2,6 @@ package Interfaces.Factory;
 
 import Gui.Controller.Controller;
 import Interfaces.GameObject;
-import Throwables.Bombs.DangerousBomb;
 import Throwables.Fruits.Apple;
 import Throwables.Fruits.Banana;
 import Throwables.Fruits.Melon;
@@ -19,8 +18,8 @@ public class ArcadeMode implements ObjectCreator {
 
     public GameObject create(Controller controller) {
 
-        controller.luckyStrike = rand.nextInt()%3;
-        int flag = controller.luckyStrike < 1 ? rand.nextInt(5) % 4 : rand.nextInt(6) % 6;
+        controller.luckyStrike %= 3;
+        int flag = controller.luckyStrike++ < 2 ? rand.nextInt(5) % 4 : rand.nextInt(5) % 5;
         switch (flag) {
             case 0:
                 return new Apple();
@@ -32,8 +31,6 @@ public class ArcadeMode implements ObjectCreator {
                 return new Orange();
             case 4:
                 return new FreezeBanana();
-            case 5 :
-                return  new DangerousBomb();
 
         }
         return null;

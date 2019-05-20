@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
  * @author Mostafa Talaat
  */
 public class DangerousBomb extends Bomb {
- Controller controller = Controller.getInstance();
+
 
     public DangerousBomb() {
         super();
@@ -17,17 +17,8 @@ public class DangerousBomb extends Bomb {
 
     @Override
     public void slice(Controller controller) {
+        controller.score -= 10;
         setSliced(true);
-
     }
-       @Override
-       public void update() {
-           if (super.isSliced()) {
-               if (controller.score > 9)
-                   controller.score -= 10;
-               else
-                   controller.score = 0;
-               controller.unregister(this);
-           }
-       }
+
 }
