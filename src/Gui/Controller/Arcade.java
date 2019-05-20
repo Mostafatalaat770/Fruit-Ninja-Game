@@ -35,8 +35,6 @@ public class Arcade implements Initializable {
     @FXML private ImageView back;
     @FXML private javafx.scene.text.Text gameOver;
     @FXML private javafx.scene.text.Text score;
-    @FXML private javafx.scene.text.Text bestScore;
-    @FXML private javafx.scene.text.Text alltimeBestScore;
     private boolean stopAll = true ;
     private GraphicsContext gc;
   boolean timeup = false;
@@ -44,8 +42,6 @@ public class Arcade implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-        bestScore.setText("best score:"+controller.personalHighscore);
-        alltimeBestScore.setText("alltime best score:"+controller.highestScore);
 		resume.setVisible(false);
         reset.setVisible(false);
         save.setVisible(false);

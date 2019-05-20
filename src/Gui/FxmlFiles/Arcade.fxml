@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.Font?>
-<AnchorPane fx:id="ArcadePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.Arcade">
+
+<AnchorPane fx:id="ArcadePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.Arcade">
    <children>
       <ImageView fx:id="background" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" />
       <Canvas fx:id="canvas" height="720.0" layoutX="1.0" width="1280.0" />
@@ -36,14 +41,6 @@
             <Font name="Gang of Three" size="96.0" />
          </font>
       </Text>
-      <Text fx:id="bestScore" fill="GREY" layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="best score:" wrappingWidth="93.61279296875">
-         <font>
-            <Font name="Gang of Three" size="15.0" />
-         </font></Text>
-      <Text fx:id="alltimeBestScore" fill="GREY" layoutX="14.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="alltime best score:" wrappingWidth="163.0">
-         <font>
-            <Font name="Gang of Three" size="15.0" />
-         </font></Text>
       <ImageView fx:id="save" fitHeight="274.0" fitWidth="163.0" layoutX="738.0" layoutY="280.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Resources/save.png" />

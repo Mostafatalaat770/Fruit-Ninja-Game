@@ -259,10 +259,10 @@ public abstract class Throwable implements GameObject, Observer {
              }
          }else {
              if(leftToRight){
-                 x+=2;
+                 x+=1.8;
              }
              else {
-                 x-=2;
+                 x-=1.8;
              }
          }
    }
