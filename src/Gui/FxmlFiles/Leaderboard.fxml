@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -23,12 +24,10 @@
          <children>
             <AnchorPane layoutX="165.0" layoutY="41.0" prefHeight="638.0" prefWidth="950.0" style="-fx-background-color: orange; -fx-background-radius: 20;">
                <children>
-                  <JFXListView fx:id="leaderboardClassic" cellHorizontalMargin="1.0" layoutX="80.0" layoutY="155.0" prefHeight="429.0" prefWidth="292.0" />
                   <Text layoutX="226.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="score leaderboard">
                      <font>
                         <Font name="Gang of Three" size="52.0" />
                      </font></Text>
-                  <JFXListView fx:id="leaderboardArcade" cellHorizontalMargin="1.0" layoutX="579.0" layoutY="155.0" prefHeight="429.0" prefWidth="292.0" />
                   <Text layoutX="630.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="arcade">
                      <font>
                         <Font name="Gang of Three" size="52.0" />
@@ -39,6 +38,18 @@
                         <Font name="Gang of Three" size="52.0" />
                      </font>
                   </Text>
+                  <TableView fx:id="leaderboardClassic" layoutX="103.0" layoutY="154.0" prefHeight="452.0" prefWidth="246.0">
+                    <columns>
+                      <TableColumn fx:id="usernameClassic" editable="false" prefWidth="163.0" sortable="false" text="username" />
+                      <TableColumn fx:id="scoreClassic" editable="false" minWidth="0.0" prefWidth="81.0" sortable="false" text="score" />
+                    </columns>
+                  </TableView>
+                  <TableView fx:id="leaderboardArcade" layoutX="601.0" layoutY="154.0" prefHeight="452.0" prefWidth="246.0">
+                     <columns>
+                        <TableColumn fx:id="usernameArcade" editable="false" prefWidth="163.0" sortable="false" text="username" />
+                        <TableColumn fx:id="scoreArcade" editable="false" minWidth="0.0" prefWidth="81.0" sortable="false" text="score" />
+                     </columns>
+                  </TableView>
                </children>
             </AnchorPane>
             <ImageView fx:id="back" fitHeight="111.0" fitWidth="86.0" layoutX="1145.0" layoutY="595.0" pickOnBounds="true" preserveRatio="true">

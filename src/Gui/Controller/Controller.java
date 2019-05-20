@@ -176,8 +176,8 @@ public class Controller implements GameActions {
         }
         Font theFont1 = Font.font("Gang Of Three", 15);
         gc.setFont(theFont1);
-        gc.fillText("best score: " + personalHighscore, 20, 50);
-        gc.fillText("all time best score: " + highestScore, 20, 70);
+        gc.fillText("best: " + personalHighscore, 20, 50);
+        gc.fillText("all time best: " + highestScore, 20, 70);
 
 
 
