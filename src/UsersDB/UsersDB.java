@@ -1,7 +1,11 @@
 package UsersDB;
 
+import FilesManegement.FilesManegement;
+import Gui.Controller.Controller;
+import org.jdom2.JDOMException;
+
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,35 +32,22 @@ public class UsersDB {
         }
     }
 
-    public boolean validateScore(int score) {
-        return player.getScore() < score;
-    }
 
-    public void sort() {
-        for (int i = 0; i < players.size(); i++) {
-            for (int j = 0; j < i - 1; j++) {
-                if (players.get(j).getScore() < players.get(j + 1).getScore()) {
-                    Collections.swap(players, j, j + 1);
-                }
-            }
-        }
-    }
-
-    public int getHighestScore() {
-        int max = 0;
-        for (Player player : players) {
-            if (player.getScore() > max) {
-                max = player.getScore();
-            }
-        }
-        return max;
-    }
-
-    public void addUser(String username, int score) {
-        players.add(new Player(username, score));
+    public static void main(String[] args) throws IOException, JDOMException {
+        Controller controller = Controller.getInstance();
+        FilesManegement filesManegement = FilesManegement.getInstance();
+        controller.usersDB.addUser("musty", 100, 0);
+        controller.usersDB.addUser("swi", 23, 1);
+        controller.usersDB.addUser("3dma", 242, 100);
+        filesManegement.savePlayers(controller);
+        System.out.println("we5o");
     }
 
     public List<Player> getPlayers() {
         return players;
+    }
+
+    public void addUser(String username, int arcadeScore, int classicScore) {
+        players.add(new Player(username, arcadeScore, classicScore));
     }
 }
