@@ -2,6 +2,9 @@ package Interfaces.Memento;
 
 import FilesManegement.FilesManegement;
 import Gui.Controller.Controller;
+import Interfaces.Factory.ArcadeMode;
+import Interfaces.Factory.ClassicMode;
+import Interfaces.Strategy.Strategy;
 import org.jdom2.JDOMException;
 
 import java.io.IOException;
@@ -20,13 +23,18 @@ public class Files {
         careTaker.add(originator.saveStateToMemento());
     }
 
-    public void saveGame() throws IOException {
+    public void saveGame(Controller controller) throws IOException {
         originator.getStateFromMemento(careTaker.get(0));
-        filesManegement.save(originator.getState());
+        filesManegement.saveGame(controller);
     }
 
-    public void loadGame(Controller controller, String type) throws JDOMException, IOException {
-        filesManegement.load(controller, type);
+    public void loadGame(Controller controller) throws JDOMException, IOException {
+        filesManegement.loadGame(controller);
+        if (controller.type.equals("arcade")) {
+            controller.gameMode = new Strategy(new ArcadeMode());
+        } else if (controller.type.equals("classic")) {
+            controller.gameMode = new Strategy(new ClassicMode());
+        }
     }
 
     public void loadPlayers(Controller controller) throws JDOMException, IOException {

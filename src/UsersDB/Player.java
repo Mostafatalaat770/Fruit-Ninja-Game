@@ -1,6 +1,8 @@
 package UsersDB;
 
 import Gui.Controller.Controller;
+import Interfaces.Factory.ArcadeMode;
+import Interfaces.Factory.ClassicMode;
 
 /**
  * @author Mostafa Talaat
@@ -39,9 +41,9 @@ public class Player {
 
     public int getScore() {
         Controller controller = Controller.getInstance();
-        if (controller.players.getDataBase() instanceof Interfaces.Strategy.Arcade) {
+        if (controller.gameMode.getGameMode() instanceof ArcadeMode) {
             return arcadeScore;
-        } else if (controller.players.getDataBase() instanceof Interfaces.Strategy.Classic) {
+        } else if (controller.gameMode.getGameMode() instanceof ClassicMode) {
             return classicScore;
         }
         return 0;
@@ -49,9 +51,9 @@ public class Player {
 
     public void setScore(int score) {
         Controller controller = Controller.getInstance();
-        if (controller.players.getDataBase() instanceof Interfaces.Strategy.Arcade) {
+        if (controller.gameMode.getGameMode() instanceof ArcadeMode) {
             arcadeScore = score;
-        } else if (controller.players.getDataBase() instanceof Interfaces.Strategy.Classic) {
+        } else if (controller.gameMode.getGameMode() instanceof ClassicMode) {
             classicScore = score;
         }
     }
