@@ -2,6 +2,7 @@ package Interfaces.Factory;
 
 import Gui.Controller.Controller;
 import Interfaces.GameObject;
+import Interfaces.Strategy.ObjectCreator;
 import Throwables.Bombs.FatalBomb;
 import Throwables.Fruits.Apple;
 import Throwables.Fruits.Banana;
