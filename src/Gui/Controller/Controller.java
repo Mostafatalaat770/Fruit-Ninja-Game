@@ -173,23 +173,13 @@ public class Controller implements GameActions {
         }
     }
 
-    public void slice(double x, double y) {
+    public void slice(double x, double y) throws InterruptedException {
         for (GameObject throwable : throwables) {
             if (x > throwable.getXlocation() && x < throwable.getXlocation() + throwable.getImg1().getWidth() && y > throwable.getYlocation() && y < throwable.getYlocation() + throwable.getImg1().getHeight()) {
 
                 if (!throwable.isSliced()) {
                     throwable.slice(getInstance());
                     notifyallobservers();
-                    if (throwable instanceof Fruit)
-                        playSound("pome-slice-1.wav", 0);
-                    else if (throwable instanceof FatalBomb)
-                        playSound("Bomb-explode.wav", 0);
-                    else if (throwable instanceof DangerousBomb)
-                        playSound("menu-Bomb.wav", 0);
-                    else if (throwable instanceof FreezeBanana)
-                        playSound("Bonus-Banana-Freeze.wav", 0);
-                    else if (throwable instanceof MagicBeans)
-                        playSound("extra-life.wav", 0);
                 }
             }
         }

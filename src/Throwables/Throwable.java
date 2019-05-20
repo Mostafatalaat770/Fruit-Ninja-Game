@@ -215,7 +215,7 @@ public abstract class Throwable implements GameObject, Observer {
     }
 
     @Override
-    public void slice(Controller controller) {
+    public void slice(Controller controller) throws InterruptedException {
         sliced = true;
     }
     @Override

@@ -44,8 +44,9 @@ public interface GameObject {
      * it is used to slice the object
      *
      * @param controller
+     * @throws InterruptedException 
      */
-    void slice(Controller controller);
+    void slice(Controller controller) throws InterruptedException;
 
     Boolean isFalling();
 

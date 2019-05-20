@@ -22,6 +22,7 @@ public class FreezeBanana extends SpecialFruit {
     public void slice(Controller controller) {
         controller.freezeEffect=true;
         controller.secs += 5;
+        controller.playSound("Bonus-Banana-Freeze.wav", 0);
         setSliced(true);
 
     }

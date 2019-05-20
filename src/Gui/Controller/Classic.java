@@ -22,6 +22,8 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import javax.sound.sampled.Clip;
+
 
 public class Classic implements Initializable {
     private Controller controller = Controller.getInstance();
@@ -35,12 +37,14 @@ public class Classic implements Initializable {
     @FXML private javafx.scene.text.Text gameOver;
     @FXML private javafx.scene.text.Text score;
     private boolean stopAll =true;
+    private boolean isGameOver = false;
     private GraphicsContext gc;
     private Random random= new Random();
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    	Clip gameStart = controller.playSound("Game-start.wav", 0);
         resume.setVisible(false);
         back.setVisible(false);
         reset.setVisible(false);
@@ -81,7 +85,12 @@ public class Classic implements Initializable {
 
         canvas.setOnMouseMoved(event -> {
             if(stopAll)
-            controller.slice(event.getSceneX(),event.getSceneY());
+				try {
+					controller.slice(event.getSceneX(),event.getSceneY());
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
         });
 
         AnimationTimer timer=new AnimationTimer() {
@@ -91,6 +100,10 @@ public class Classic implements Initializable {
                 controller.drawAllThings(gc);
                 controller.removeUnwantedThrowable();
                 if(controller.gameOver()){
+                	if(!isGameOver) {
+                		controller.playSound("Game-over.wav", 0);
+                		isGameOver = true;
+                	}
                     stopAll =false;
                     timeline.stop();
                     clock.stop();

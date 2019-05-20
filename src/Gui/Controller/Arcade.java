@@ -41,6 +41,7 @@ public class Arcade implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		Clip gameStart = controller.playSound("Game-start.wav", 0);
 		resume.setVisible(false);
         reset.setVisible(false);
         save.setVisible(false);
@@ -66,7 +67,12 @@ public class Arcade implements Initializable {
 
         canvas.setOnMouseMoved(event -> {
             if(stopAll)
-                controller.slice(event.getSceneX(),event.getSceneY());
+				try {
+					controller.slice(event.getSceneX(),event.getSceneY());
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
         });
 
         Timeline clock= new Timeline(new KeyFrame(new Duration(1000), actionEvent1->{
@@ -85,7 +91,14 @@ public class Arcade implements Initializable {
 
                    if(controller.gameOver()) {
                 	   if(!timeup) {
-                		   Clip clip = controller.playSound("time-up.wav", 0);
+                		   Clip time = controller.playSound("time-up.wav", 0);
+                		   try {
+   							Thread.sleep(time.getMicrosecondLength()/3000);
+   						} catch (InterruptedException e) {
+   							// TODO Auto-generated catch block
+   							e.printStackTrace();
+   						}
+                   		   controller.playSound("Game-over.wav", 0);
                 		   timeup = true;
                 	   }
                        stopAll=false ;

@@ -18,7 +18,7 @@ public class DangerousBomb extends Bomb {
     @Override
     public void slice(Controller controller) {
         setSliced(true);
-
+        controller.playSound("menu-bomb.wav", 0);
     }
 
     @Override

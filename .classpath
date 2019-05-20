@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="E:/jfoenix library/JFoenix-master/jfoenix-0.0.0-SNAPSHOT-retrolambda.jar"/>
+	<classpathentry kind="lib" path="E:/jdom library/jdom2-2.0.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
