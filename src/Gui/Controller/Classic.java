@@ -18,6 +18,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -37,6 +38,7 @@ public class Classic implements Initializable {
     @FXML private javafx.scene.text.Text alltimeBestScore;
     private boolean stopAll =true;
     private GraphicsContext gc;
+    private Random random= new Random();
 
 
     @Override
@@ -52,12 +54,24 @@ public class Classic implements Initializable {
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
             if(controller.throwables.size()<6) {
-            	GameObject temp = controller.getRandomThrowable();
+            if(controller.difficulty>1){
+                for (int i=0;i<1+random.nextInt(3);i++){
+                    GameObject temp = controller.getRandomThrowable();
+                    controller.throwables.add(temp);
+                    if(temp instanceof Bomb)
+                        controller.playSound("Throw-bomb.wav", 0);
+                    else
+                        controller.playSound("Throw-fruit.wav", 0);
+                }
+            }
+            else{
+                GameObject temp = controller.getRandomThrowable();
                 controller.throwables.add(temp);
                 if(temp instanceof Bomb)
-                	controller.playSound("Throw-bomb.wav", 0);
+                    controller.playSound("Throw-bomb.wav", 0);
                 else
-                	controller.playSound("Throw-fruit.wav", 0);
+                    controller.playSound("Throw-fruit.wav", 0);
+            }
             }
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
