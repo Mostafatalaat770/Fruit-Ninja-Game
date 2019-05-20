@@ -25,8 +25,15 @@ public class Files {
         filesManegement.save(originator.getState());
     }
 
-    public void load(Controller controller, String type) throws JDOMException, IOException {
+    public void loadGame(Controller controller, String type) throws JDOMException, IOException {
         filesManegement.load(controller, type);
-        //filesManegement.loadHighestScore(controller);
+    }
+
+    public void loadPlayers(Controller controller) throws JDOMException, IOException {
+        filesManegement.loadPlayers(controller);
+    }
+
+    public void savePlayers(Controller controller) throws IOException {
+        filesManegement.savePlayers(controller);
     }
 }
