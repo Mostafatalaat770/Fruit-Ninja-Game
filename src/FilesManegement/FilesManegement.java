@@ -64,7 +64,7 @@ public class FilesManegement {
         return object;
     }
 
-    public void save(Controller controller) throws IOException {
+    public void saveGame(Controller controller) throws IOException {
 
         Element levelElement = new Element(controller.type);
         Document doc = new Document(levelElement);
@@ -192,8 +192,8 @@ public class FilesManegement {
         xmlOutput.output(doc, new FileWriter(file + "/" + controller.type + ".txt"));
     }
 
-    public void load(Controller controller, String type) throws JDOMException, IOException {
-        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Saves" + File.separator + controller.usersDB.getPlayer().getUsername() + File.separator + type + ".txt");
+    public void loadGame(Controller controller) throws JDOMException, IOException {
+        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Saves" + File.separator + controller.usersDB.getPlayer().getUsername() + File.separator + controller.type + ".txt");
         SAXBuilder saxBuilder = new SAXBuilder();
         Document document = saxBuilder.build(inputFile);
         Element classElement = document.getRootElement();

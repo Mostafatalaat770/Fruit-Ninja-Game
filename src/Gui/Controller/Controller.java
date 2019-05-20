@@ -1,7 +1,5 @@
 package Gui.Controller;
 
-import Interfaces.Factory.ArcadeMode;
-import Interfaces.Factory.ClassicMode;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
 import Interfaces.Memento.Files;
@@ -36,7 +34,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Controller implements GameActions {
     private static Controller ourInstance = new Controller();
     public ArrayList<GameObject> throwables = new ArrayList<>();
-    public Strategy players = null;
+    public Strategy gameMode = null;
     public int score = 0;
     public int personalHighscore = 0;
     public int highestScore = 0;
@@ -75,12 +73,12 @@ public class Controller implements GameActions {
     @Override
     public void saveGame() throws IOException {
         files.saveState(getInstance());
-        files.saveGame();
+        files.saveGame(getInstance());
     }
 
     @Override
     public void loadGame() throws JDOMException, IOException {
-        files.loadGame(getInstance(), type);
+        files.loadGame(getInstance());
     }
 
     public void loadPlayers() throws JDOMException, IOException {
@@ -90,27 +88,25 @@ public class Controller implements GameActions {
     @Override
     public void ResetGame() {
         if (type.equals("classic")) {
-            throwables.clear();
-            score = 0;
-            secs = 0;
             mins = 0;
             lives = 3;
             difficulty = 1;
             fatalBombRateControl = 0;
-            personalHighscore = usersDB.getPlayer().getScore();
-            highestScore = players.getHighScore();
+
         } else if (type.equals("arcade")) {
-            throwables.clear();
-            score = 0;
-            secs = 0;
+
             mins = 1;
             lives = 0;
             difficulty = 2.5;
             freezeEffect = false;
             freezeTimer = 0;
-            personalHighscore = usersDB.getPlayer().getScore();
-            highestScore = players.getHighScore();
         }
+
+        throwables.clear();
+        score = 0;
+        secs = 0;
+        personalHighscore = usersDB.getPlayer().getScore();
+        highestScore = gameMode.getHighScore();
 
     }
 
@@ -120,17 +116,7 @@ public class Controller implements GameActions {
 
     @Override
     public GameObject getRandomThrowable() {
-        Strategy game = null;
-        switch (type) {
-            case "classic":
-                game = new Strategy(new ClassicMode());
-                break;
-            case "arcade":
-                game = new Strategy(new ArcadeMode());
-                break;
-        }
-        assert game != null;
-        return game.create(getInstance());
+        return gameMode.createObject();
     }
 
     @Override
@@ -224,7 +210,7 @@ public class Controller implements GameActions {
     }
 
     public void updateScore() {
-        if (players.validate(score)) {
+        if (gameMode.validate(score)) {
             usersDB.getPlayer().setScore(score);
             personalHighscore = usersDB.getPlayer().getScore();
         }

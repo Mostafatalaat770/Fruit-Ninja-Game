@@ -2,8 +2,8 @@ package Gui.Controller;
 
 
 import Gui.Main;
-import Interfaces.Strategy.Arcade;
-import Interfaces.Strategy.Classic;
+import Interfaces.Factory.ArcadeMode;
+import Interfaces.Factory.ClassicMode;
 import Interfaces.Strategy.Strategy;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,14 +29,14 @@ public class Leaderboard implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        controller.players=new Strategy(new Classic());
-        controller.players.sort();
+        controller.gameMode = new Strategy(new ClassicMode());
+        controller.gameMode.sort();
         for (int i=0;i<controller.usersDB.getPlayers().size();i++){
             leaderboardClassic.getItems().add(new PlayerLeaderboard(controller.usersDB.getPlayers().get(i).getUsername(),controller.usersDB.getPlayers().get(i).getClassicScore()));
         }
 
-        controller.players=new Strategy(new Arcade());
-        controller.players.sort();
+        controller.gameMode = new Strategy(new ArcadeMode());
+        controller.gameMode.sort();
         for (int i=0;i<controller.usersDB.getPlayers().size();i++){
             leaderboardArcade.getItems().add(new PlayerLeaderboard(controller.usersDB.getPlayers().get(i).getUsername(),controller.usersDB.getPlayers().get(i).getArcadeScore()));
         }

@@ -7,8 +7,8 @@ package Gui.Controller;
 
 
 import Gui.Main;
-import Interfaces.Strategy.Arcade;
-import Interfaces.Strategy.Classic;
+import Interfaces.Factory.ArcadeMode;
+import Interfaces.Factory.ClassicMode;
 import Interfaces.Strategy.Strategy;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.RotateTransition;
@@ -127,7 +127,7 @@ public class MainMenu implements Initializable {
                     controller.loadPlayers();
                     controller.type = "classic";
                     controller.setUser("musty");
-                    controller.players = new Strategy(new Classic());
+                    controller.gameMode = new Strategy(new ClassicMode());
                     controller.ResetGame();
                     main.getClassic(event);
                 } catch (IOException | JDOMException e) {
@@ -153,7 +153,7 @@ public class MainMenu implements Initializable {
         	   Main main = new Main();
 				try {
                     controller.type = "arcade";
-                    controller.players = new Strategy(new Arcade());
+                    controller.gameMode = new Strategy(new ArcadeMode());
                     controller.ResetGame();
                     main.getArcade(event);
                 } catch (IOException e) {
