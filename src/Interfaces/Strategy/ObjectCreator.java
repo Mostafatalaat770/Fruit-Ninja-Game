@@ -1,4 +1,4 @@
-package Interfaces.Factory;
+package Interfaces.Strategy;
 
 import Gui.Controller.Controller;
 import Interfaces.GameObject;
