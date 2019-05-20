@@ -1,40 +1,35 @@
 package Interfaces.Strategy;
 
-import Gui.Controller.Controller;
 import Interfaces.GameObject;
 
 /**
  * @author Mostafa Talaat
  */
 public class Strategy {
-    private ObjectCreator objectCreator;
-    private DataBase dataBase;
+    private GameMode gameMode;
 
-    public Strategy(ObjectCreator objectCreator) {
-        this.objectCreator = objectCreator;
+
+    public Strategy(GameMode gameMode) {
+        this.gameMode = gameMode;
     }
 
-    public Strategy(DataBase dataBase) {
-        this.dataBase = dataBase;
-    }
-
-    public GameObject create(Controller controller) {
-        return objectCreator.create(controller);
+    public GameObject createObject() {
+        return gameMode.createObject();
     }
 
     public void sort() {
-        dataBase.sort();
+        gameMode.sort();
     }
 
     public int getHighScore() {
-        return dataBase.getHighScore();
+        return gameMode.getHighScore();
     }
 
     public boolean validate(int score) {
-        return dataBase.validate(score);
+        return gameMode.validate(score);
     }
 
-    public DataBase getDataBase() {
-        return dataBase;
+    public GameMode getGameMode() {
+        return gameMode;
     }
 }
