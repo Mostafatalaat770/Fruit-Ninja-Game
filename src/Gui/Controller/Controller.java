@@ -11,22 +11,22 @@ import Throwables.Bombs.FatalBomb;
 import Throwables.Fruits.Fruit;
 import Throwables.Fruits.SpecialFruits.FreezeBanana;
 import Throwables.Fruits.SpecialFruits.MagicBeans;
+import UsersDB.UsersDB;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.util.Pair;
 import org.jdom2.JDOMException;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author Mostafa Talaat
@@ -42,13 +42,11 @@ public class Controller implements GameActions {
     public int lives;
     public double difficulty = 1;
     public String type;
-    public String username;
-    public int freezeTimer=0;
-    public boolean freezeEffect=false;
+    public int freezeTimer = 0;
+    public boolean freezeEffect = false;
     public int luckyStrike = 1;
     public int fatalBombRateControl = 0;
-    public Map<String, Pair<Integer, String>> leaderBoard = new HashMap<>();
-    public List<Integer> scores = new ArrayList<>();
+    public UsersDB usersDB = UsersDB.getInstance();
     public Files files = new Files();
 
     public static Controller getInstance() {
@@ -81,11 +79,6 @@ public class Controller implements GameActions {
         files.load(getInstance(), type);
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-
     @Override
     public void ResetGame() {
         if (type.equals("classic")) {
@@ -102,10 +95,17 @@ public class Controller implements GameActions {
             mins = 1;
             lives = 0;
             difficulty = 2.5;
-            freezeEffect=false;
-            freezeTimer=0;
+            freezeEffect = false;
+            freezeTimer = 0;
+            fatalBombRateControl = 0;
         }
 
+    }
+
+    public void setUser(String username) {
+        usersDB.setPlayer("username");
+        personalHighscore = usersDB.getPlayer().getScore();
+        highestScore = usersDB.getHighestScore();
     }
 
     @Override
@@ -165,14 +165,14 @@ public class Controller implements GameActions {
 
                 if (!throwable.isSliced()) {
                     throwable.slice(getInstance());
-                    if(throwable instanceof Fruit)
-                    	playSound("pome-slice-1.wav", 0);
-                    else if(throwable instanceof FatalBomb)
-                    	playSound("Bomb-explode.wav", 0);
-                    else if(throwable instanceof FreezeBanana)
-                    	playSound("Bonus-Banana-Freeze.wav", 0);
-                    else if(throwable instanceof MagicBeans)
-                    	playSound("extra-life.wav", 0);
+                    if (throwable instanceof Fruit)
+                        playSound("pome-slice-1.wav", 0);
+                    else if (throwable instanceof FatalBomb)
+                        playSound("Bomb-explode.wav", 0);
+                    else if (throwable instanceof FreezeBanana)
+                        playSound("Bonus-Banana-Freeze.wav", 0);
+                    else if (throwable instanceof MagicBeans)
+                        playSound("extra-life.wav", 0);
                 }
             }
         }
@@ -216,6 +216,16 @@ public class Controller implements GameActions {
 
     }
 
+    public void updateScore() {
+        if (usersDB.validateScore(score)) {
+            usersDB.getPlayer().setScore(score);
+            personalHighscore = score;
+        }
+        if (highestScore < personalHighscore) {
+            highestScore = personalHighscore;
+        }
+    }
+
     public boolean gameOver() {
 
         if (type.equals("classic")) {
@@ -226,32 +236,32 @@ public class Controller implements GameActions {
         return false;
     }
 
-    public void freezeCountDown(){
-        if(freezeEffect==true){
+    public void freezeCountDown() {
+        if (freezeEffect == true) {
             freezeTimer++;
-            if(freezeTimer==5){
-                freezeTimer=0;
-                freezeEffect=false;
+            if (freezeTimer == 5) {
+                freezeTimer = 0;
+                freezeEffect = false;
             }
 
         }
     }
-    
+
     public Clip playSound(String filename, int i) {
-    	File music = new File(filename);
+        File music = new File(filename);
         Clip clip = null;
-		try {
-			clip = AudioSystem.getClip();
-			clip.open(AudioSystem.getAudioInputStream(music));
-	        clip.loop(i);
-	        clip.start();
-		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		
-		}
-		return clip;
-		
+        try {
+            clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(music));
+            clip.loop(i);
+            clip.start();
+        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+
+        }
+        return clip;
+
     }
 }
 
