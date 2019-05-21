@@ -133,13 +133,11 @@ public class MainMenu implements Initializable {
            		transition3.setOnFinished((event1) -> {
            			Main main = new Main();
 					try {
-                    	controller.loadPlayers();
                     	controller.type = "classic";
-                    	controller.setUser("musty");
                     	controller.gameMode = new Strategy(new ClassicMode());
                     	controller.ResetGame();
                     	main.getClassic(event);
-                	} catch (IOException | JDOMException e) {
+                    } catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
