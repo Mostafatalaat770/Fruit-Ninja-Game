@@ -63,7 +63,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/UserScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Profiles.fxml"));
         primaryStage.setTitle("Fruits Ninja");
         primaryStage.setScene(new Scene(root, 1270, 720));
         primaryStage.show();
