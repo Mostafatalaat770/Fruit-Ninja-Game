@@ -38,6 +38,7 @@ import java.util.ResourceBundle;
 public class MainMenu implements Initializable {
 
     private Label label;
+    private boolean selected = false;
 
     private ImageView img;
     @FXML private ImageView classic_img;
@@ -112,56 +113,60 @@ public class MainMenu implements Initializable {
 
 
        classic_img.setOnMouseExited((event) -> {
-           classic_img.setVisible(false);
-           slicedmelon_left.setVisible(true);
-           slicedmelon_right.setVisible(true);
-           transition3.play();
-           transition4.play();
-           transition5.play();
-           transition6.play();
-           gameStart.stop();
-           controller.playSound("pome-slice-1.wav", 0);
-           transition3.setOnFinished((event1) -> {
-        	   Main main = new Main();
-				try {
-                    controller.loadPlayers();
-                    controller.type = "classic";
-                    controller.setUser("musty");
-                    controller.gameMode = new Strategy(new ClassicMode());
-                    controller.ResetGame();
-                    main.getClassic(event);
-                } catch (IOException | JDOMException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+    	   if(!selected) {
+    		   selected = true;
+    		   	classic_img.setVisible(false);
+           		slicedmelon_left.setVisible(true);
+           		slicedmelon_right.setVisible(true);
+           		transition3.play();
+           		transition4.play();
+           		transition5.play();
+           		transition6.play();
+           		gameStart.stop();
+           		controller.playSound("pome-slice-1.wav", 0);
+           		transition3.setOnFinished((event1) -> {
+           			Main main = new Main();
+					try {
+                    	controller.loadPlayers();
+                    	controller.type = "classic";
+                    	controller.setUser("musty");
+                    	controller.gameMode = new Strategy(new ClassicMode());
+                    	controller.ResetGame();
+                    	main.getClassic(event);
+                	} catch (IOException | JDOMException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
-           });
-           System.out.println("Classic mode activated");
+           		});
+    	   }
        });
 
        arcade_img.setOnMouseExited((event) -> {
-           arcade_img.setVisible(false);
-           slicedbanana_bottom.setVisible(true);
-           slicedbanana_top.setVisible(true);
-           transition7.play();
-           transition8.play();
-           transition9.play();
-           transition10.play();
-           gameStart.stop();
-           controller.playSound("pome-slice-1.wav", 0);
-           transition7.setOnFinished((event1) -> {
-        	   Main main = new Main();
-				try {
-                    controller.type = "arcade";
-                    controller.gameMode = new Strategy(new ArcadeMode());
-                    controller.ResetGame();
-                    main.getArcade(event);
-                } catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-           });
-           System.out.println("Arcade mode activated");
+    	   if(!selected) {
+    		   selected = true;
+    		   arcade_img.setVisible(false);
+    		   slicedbanana_bottom.setVisible(true);
+    		   slicedbanana_top.setVisible(true);
+    		   transition7.play();
+    		   transition8.play();
+    		   transition9.play();
+    		   transition10.play();
+    		   gameStart.stop();
+    		   controller.playSound("pome-slice-1.wav", 0);
+    		   transition7.setOnFinished((event1) -> {
+    			   Main main = new Main();
+    			   try {
+    				   controller.type = "arcade";
+    				   controller.gameMode = new Strategy(new ArcadeMode());
+    				   controller.ResetGame();
+    				   main.getArcade(event);
+    			   } catch (IOException e) {
+    				   // TODO Auto-generated catch block
+    				   e.printStackTrace();
+    			   }
+    		   });
+    	   }
        });
 
        exit_img.setOnMouseExited((event) -> {
