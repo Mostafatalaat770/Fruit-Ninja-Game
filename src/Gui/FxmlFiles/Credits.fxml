@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<StackPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.Credits">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/mainWallpaper.jpg" />
+         </image>
+         <effect>
+            <GaussianBlur radius="50.0" />
+         </effect>
+      </ImageView>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <AnchorPane layoutX="452.0" prefHeight="720.0" prefWidth="377.0" style="-fx-background-color: orange; -fx-background-radius: 20;">
+               <children>
+                  <Canvas fx:id="canvas" height="720.0" width="378.0" />
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="back" fitHeight="65.0" fitWidth="78.0" layoutX="1184.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/back.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

@@ -12,7 +12,7 @@ Controller controller = Controller.getInstance();
     public MagicBeans() {
         super();
         super.setImg1(new Image("Resources/Magic_Bean.png", 75, 75, true, true));
-        super.setImg2(new Image("file:Sliced_Magic_Bean.png", 75, 75, true, true));
+        super.setImg2(new Image("Resources/Sliced_Magic_Bean.png", 75, 75, true, true));
     }
 
     @Override

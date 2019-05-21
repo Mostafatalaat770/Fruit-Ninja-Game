@@ -58,6 +58,13 @@ public class Main extends Application {
         classicWindow.setScene(classicScene);
         classicWindow.show();
     }
+    public void getCredits(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Credits.fxml"));
+        Scene classicScene = new Scene(root, 1270, 720);
+        Stage classicWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        classicWindow.setScene(classicScene);
+        classicWindow.show();
+    }
 
 
 

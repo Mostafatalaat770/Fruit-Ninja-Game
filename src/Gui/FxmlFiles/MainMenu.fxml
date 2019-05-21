@@ -22,7 +22,7 @@
                   <Image url="@../../Resources/Banana-bottom.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="classic_img" fitHeight="110.0" fitWidth="110.0" layoutX="70.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="classic_img" fitHeight="110.0" fitWidth="110.0" layoutX="68.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
                <effect>
                   <Glow />
                </effect>
@@ -38,7 +38,7 @@
                   <Image url="@../../Resources/Arcade.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="exit_img" fitHeight="108.0" fitWidth="110.0" layoutX="1120.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 40;">
+            <ImageView fx:id="exit_img" fitHeight="108.0" fitWidth="110.0" layoutX="1120.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 40;">
                <effect>
                   <Glow />
                </effect>
