@@ -12,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -110,7 +109,11 @@ public class Arcade implements Initializable {
                        score.setText("score: " + controller.score);
                        pause.setVisible(false);
                        back.setVisible(true);
-                       controller.updateScore();
+                       try {
+                           controller.savePlayers();
+                       } catch (IOException e) {
+                           e.printStackTrace();
+                       }
                    }
 
             }

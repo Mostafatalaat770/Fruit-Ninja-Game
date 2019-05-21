@@ -12,17 +12,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
+import javax.sound.sampled.Clip;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import javax.sound.sampled.Clip;
 
 
 public class Classic implements Initializable {
@@ -113,7 +111,11 @@ public class Classic implements Initializable {
                     score.setText("score: " + controller.score);
                     pause.setVisible(false);
                     back.setVisible(true);
-                    controller.updateScore();
+                    try {
+                        controller.savePlayers();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
 
             }
