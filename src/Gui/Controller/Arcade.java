@@ -46,7 +46,7 @@ public class Arcade implements Initializable {
         reset.setVisible(false);
         save.setVisible(false);
         back.setVisible(false);
-        background.setImage(new Image("Resources/wallpaper2.jpg"));
+        background.setImage(controller.background);
         gc=canvas.getGraphicsContext2D();
         
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{

@@ -1,31 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.UserScene">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/mainWallpaper.jpg" />
+         </image>
+         <effect>
+            <GaussianBlur radius="50.0" />
+         </effect>
+      </ImageView>
+      <AnchorPane prefHeight="1280.0" prefWidth="1280.0">
          <children>
-            <AnchorPane prefHeight="720.0" prefWidth="1280.0">
+            <AnchorPane layoutX="55.0" layoutY="61.0" prefHeight="598.0" prefWidth="486.0" style="-fx-background-color: orange; -fx-background-radius: 20;">
                <children>
-                  <ImageView fx:id="Load" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Resources/mainWallpaper.jpg" />
-                     </image>
-                  </ImageView>
-                  <JFXComboBox fx:id="usernamecombooo" layoutX="125.0" layoutY="461.0" prefHeight="31.0" prefWidth="104.0" promptText="usernamecombobox" />
-                  <JFXButton fx:id="loadbutton" layoutX="145.0" layoutY="588.0" text="Button" />
-                  <ComboBox fx:id="usernamecombobox" layoutX="98.0" layoutY="413.0" prefWidth="150.0" />
-                  <Button layoutX="141.0" layoutY="533.0" mnemonicParsing="false" text="Button" />
-                  <ComboBox fx:id="gamecombobox" layoutX="1029.0" layoutY="518.0" prefWidth="150.0" />
-                  <Button fx:id="savebutton" layoutX="1072.0" layoutY="606.0" mnemonicParsing="false" text="Button" />
-               </children>
-            </AnchorPane>
+                  <JFXButton fx:id="logIn" layoutX="205.0" layoutY="438.0" mnemonicParsing="false" style="-fx-background-color: ff6337;" text="log in">
+                     <font>
+                        <Font name="Gang of Three" size="18.0" />
+                     </font></JFXButton>
+                  <Text layoutX="121.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="welcome back!">
+                     <font>
+                        <Font name="Gang of Three" size="34.0" />
+                     </font>
+                  </Text>
+                  <JFXComboBox fx:id="usernameCombobox" layoutX="168.0" layoutY="346.0" prefWidth="150.0" promptText="usernames" />
+               </children></AnchorPane>
+            <AnchorPane layoutX="730.0" layoutY="61.0" prefHeight="598.0" prefWidth="486.0" style="-fx-background-color: orange; -fx-background-radius: 20;">
+               <children>
+                  <JFXButton fx:id="signUp" layoutX="200.0" layoutY="432.0" mnemonicParsing="false" style="-fx-background-color: ff6337;" text="sign up">
+                     <font>
+                        <Font name="Gang of Three" size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <Text layoutX="90.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="are you new here?">
+                     <font>
+                        <Font name="Gang of Three" size="34.0" />
+                     </font>
+                  </Text>
+                  <JFXTextField fx:id="usernameTextField" layoutX="147.0" layoutY="326.0" promptText="username">
+                     <font>
+                        <Font name="Gang of Three" size="18.0" />
+                     </font>
+                  </JFXTextField>
+               </children></AnchorPane>
          </children>
       </AnchorPane>
    </children>

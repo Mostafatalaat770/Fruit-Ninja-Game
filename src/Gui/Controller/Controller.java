@@ -14,6 +14,7 @@ import Throwables.Fruits.SpecialFruits.MagicBeans;
 import UsersDB.UsersDB;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import org.jdom2.JDOMException;
@@ -51,6 +52,8 @@ public class Controller implements GameActions {
     public UsersDB usersDB = UsersDB.getInstance();
     public Files files = new Files();
     ArrayList<Observer> observers = new ArrayList<Observer>();
+    boolean sound= true;
+    Image background= new Image("Resources/wallpaper1.jpg");
 
     public static Controller getInstance() {
         return ourInstance;
@@ -225,7 +228,7 @@ public class Controller implements GameActions {
     public boolean gameOver() {
 
         if (type.equals("classic")) {
-            return lives == 0;
+            return lives <= 0;
         } else if (type.equals("arcade")) {
             return mins == 0 && secs == 0;
         }
@@ -246,16 +249,19 @@ public class Controller implements GameActions {
     public Clip playSound(String filename, int i) {
         File music = new File(filename);
         Clip clip = null;
-        try {
-            clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(music));
-            clip.loop(i);
-            clip.start();
-        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
 
-        }
+           try {
+               clip = AudioSystem.getClip();
+               if(sound)
+               clip.open(AudioSystem.getAudioInputStream(music));
+               clip.loop(i);
+               clip.start();
+           } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
+               // TODO Auto-generated catch block
+               e1.printStackTrace();
+
+           }
+
         return clip;
 
     }

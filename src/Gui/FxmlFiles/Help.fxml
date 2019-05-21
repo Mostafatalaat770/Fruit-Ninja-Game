@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.Help">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Resources/mainWallpaper.jpg" />
+         </image>
+         <effect>
+            <GaussianBlur radius="50.0" />
+         </effect>
+      </ImageView>
+      <AnchorPane prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <AnchorPane layoutX="148.0" layoutY="58.0" prefHeight="605.0" prefWidth="984.0" style="-fx-background-color: orange; -fx-background-radius: 20;">
+               <children>
+                  <ImageView fitHeight="78.0" fitWidth="50.0" layoutX="21.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/Banana.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="92.0" fitWidth="69.0" layoutX="52.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/Watermelon.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="51.0" fitWidth="42.0" layoutX="100.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/Green_Apple.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="69.0" fitWidth="61.0" layoutX="44.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/Bomb.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="69.0" fitWidth="61.0" layoutX="44.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/-10_Bomb.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="69.0" fitWidth="61.0" layoutX="41.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/Magic_Bean.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="69.0" fitWidth="61.0" layoutX="492.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Resources/Freeze_Banana.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="186.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="fruits: cut to increase score by 1" wrappingWidth="235.24853515625">
+                     <font>
+                        <Font name="Gang of Three" size="24.0" />
+                     </font></Text>
+                  <Text layoutX="186.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Red bomb: instant game over (classic only)" wrappingWidth="277.24853515625">
+                     <font>
+                        <Font name="Gang of Three" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="186.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="purple bomb: decrease score by 10 (arcade only)" wrappingWidth="306.24853515625">
+                     <font>
+                        <Font name="Gang of Three" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="186.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="magic bean: adds an extra life, if lives are 3 increases score by 25 (classic only)" wrappingWidth="306.24853515625">
+                     <font>
+                        <Font name="Gang of Three" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="576.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="freeze banana: slows down time for 5 secons. doesn't stack up (arcade only)" wrappingWidth="306.24853515625">
+                     <font>
+                        <Font name="Gang of Three" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="609.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="more fruits coming soon!!" wrappingWidth="306.24853515625">
+                     <font>
+                        <Font name="Gang of Three" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="back" fitHeight="69.0" fitWidth="69.0" layoutX="1158.0" layoutY="593.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/back.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

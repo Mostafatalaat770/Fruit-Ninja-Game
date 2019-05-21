@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
@@ -27,36 +28,41 @@
                      <font>
                         <Font name="Gang of Three" size="29.0" />
                      </font></Text>
-                  <ImageView fx:id="wallpaper2" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="219.0" onMouseClicked="#wall2Press" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="wallpaper2" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Resources/wallpaper2.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="wallpaper1" fitHeight="133.0" fitWidth="213.0" layoutX="35.0" layoutY="80.0" onMouseClicked="#wall1Press" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="wallpaper1" fitHeight="133.0" fitWidth="213.0" layoutX="35.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Resources/wallpaper1.jpg" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="wallpaper3" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="354.0" onMouseClicked="#wall3Press" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="wallpaper3" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Resources/wallpaper3.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="wallpaper4" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="492.0" onMouseClicked="#wall4Press" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="wallpaper4" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Resources/wallpaper4.png" />
                      </image>
                   </ImageView>
                </children></AnchorPane>
-            <JFXToggleButton fx:id="soundToggle" layoutX="944.0" layoutY="326.0" text="sound" toggleColor="ORANGE" toggleLineColor="#999999" unToggleColor="ORANGE">
+            <JFXToggleButton fx:id="soundToggle" layoutX="944.0" layoutY="326.0" text="sound" toggleColor="ORANGE" toggleLineColor="#1ca4b9" unToggleColor="ORANGE">
                <font>
                   <Font name="Gang of Three" size="34.0" />
                </font></JFXToggleButton>
-            <ImageView fx:id="back" fitHeight="72.0" fitWidth="74.0" layoutX="1143.0" layoutY="609.0"  pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="back" fitHeight="72.0" fitWidth="74.0" layoutX="1143.0" layoutY="609.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Resources/back.png" />
                </image>
             </ImageView>
+            <JFXButton fx:id="help" buttonType="RAISED" layoutX="1090.0" layoutY="28.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="127.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="help?">
+               <font>
+                  <Font name="Gang of Three" size="21.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>
