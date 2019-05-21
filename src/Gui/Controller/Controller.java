@@ -130,8 +130,7 @@ public class Controller implements GameActions {
                 iterator.remove();
             } else if (throwable.hasMovedOffScreen() && !throwable.isSliced() && !(throwable instanceof Bomb)) {
                 iterator.remove();
-                //if(lives>0)
-
+                if(lives>0)
                 lives--;
             } else if (throwable.hasMovedOffScreen()) {
                 iterator.remove();
