@@ -108,7 +108,11 @@ public class MainMenu implements Initializable {
         TranslateTransition transition10 = new TranslateTransition(Duration.millis(300), slicedbanana_bottom);
         transition10.setByX(-5);
         
-        Clip gameStart = controller.playSound("main-theme.wav", Clip.LOOP_CONTINUOUSLY);
+        
+        controller.gameStart.loop(Clip.LOOP_CONTINUOUSLY);
+ 	    controller.gameStart.start();
+       
+
 
 
 
@@ -122,7 +126,7 @@ public class MainMenu implements Initializable {
            		transition4.play();
            		transition5.play();
            		transition6.play();
-           		gameStart.stop();
+           		controller.gameStart.stop();
            		controller.playSound("pome-slice-1.wav", 0);
            		transition3.setOnFinished((event1) -> {
            			Main main = new Main();
@@ -152,7 +156,7 @@ public class MainMenu implements Initializable {
     		   transition8.play();
     		   transition9.play();
     		   transition10.play();
-    		   gameStart.stop();
+    		   controller.gameStart.stop();
     		   controller.playSound("pome-slice-1.wav", 0);
     		   transition7.setOnFinished((event1) -> {
     			   Main main = new Main();
@@ -170,8 +174,7 @@ public class MainMenu implements Initializable {
        });
 
        exit_img.setOnMouseExited((event) -> {
-    	   gameStart.stop();
-    	   Clip gameStart1 = gameStart;
+    	   controller.gameStart.stop();
     	   controller.playSound("menu-bomb.wav", 0);
            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
            alert.setHeaderText("Are you sure you want to exit?");
@@ -179,14 +182,13 @@ public class MainMenu implements Initializable {
            if(result.get() == ButtonType.OK)
               Platform.exit();
            else {
-        	   gameStart1.loop(Clip.LOOP_CONTINUOUSLY);
-        	   gameStart1.start();
-        	   
+        	   controller.gameStart.loop(Clip.LOOP_CONTINUOUSLY);
+        	   controller.gameStart.start();
            }
        });
 
        loadClassic.setOnMouseClicked(event -> {
-    	   gameStart.stop();
+    	   controller.gameStart.stop();
     	   controller.playSound("Next-screen-button.wav", 0);
            Main main = new Main();
            try {
@@ -200,7 +202,7 @@ public class MainMenu implements Initializable {
        });
 
        loadArcade.setOnMouseClicked(event -> {
-    	   gameStart.stop();
+    	   controller.gameStart.stop();
     	   controller.playSound("Next-screen-button.wav", 0);
            Main main = new Main();
            try {
@@ -214,7 +216,6 @@ public class MainMenu implements Initializable {
        });
 
        options.setOnMouseClicked(event -> {
-    	   gameStart.stop();
     	   controller.playSound("Next-screen-button.wav", 0);
            Main main = new Main();
            try {
@@ -226,7 +227,6 @@ public class MainMenu implements Initializable {
        });
 
        leaderboard.setOnMouseClicked(event -> {
-           gameStart.stop();
            controller.playSound("Next-screen-button.wav", 0);
            Main main = new Main();
            try {
