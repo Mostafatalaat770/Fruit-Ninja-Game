@@ -1,5 +1,8 @@
 package Gui.Controller;
 
+import Interfaces.Command.Command;
+import Interfaces.Command.Invoker;
+import Interfaces.Command.Sound;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
 import Interfaces.Memento.Files;
@@ -9,6 +12,7 @@ import Throwables.Bombs.Bomb;
 import UsersDB.UsersDB;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -47,11 +51,11 @@ public class Controller implements GameActions {
     public int fatalBombRateControl = 0;
     public UsersDB usersDB = UsersDB.getInstance();
     public Files files = new Files();
-    boolean sound= true;
+    public boolean sound = true;
     public Clip gameStart = playSound("main-theme.wav", Clip.LOOP_CONTINUOUSLY);
     ArrayList<Observer> observers = new ArrayList<Observer>();
-    Image background= new Image("Resources/wallpaper1.jpg");
-
+    public Invoker invoker = new Invoker();
+    Image background = new Image("Resources/wallpaper1.jpg", 1270, 720, true, true);
     public static Controller getInstance() {
         return ourInstance;
     }
@@ -292,6 +296,11 @@ public class Controller implements GameActions {
 
     }
 
+    public void toggleSound(ToggleButton toggleButton) {
+        Command toggleSound = new Sound();
+        invoker.setCommand(toggleSound);
+        invoker.execute(toggleButton);
+    }
 
     public void register(Observer O) {
         observers.add(O);

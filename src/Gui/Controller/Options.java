@@ -12,8 +12,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javax.sound.sampled.Clip;
-
 public class Options implements Initializable {
 
     Controller controller=Controller.getInstance();
@@ -33,17 +31,11 @@ public class Options implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         soundToggle.setSelected(controller.sound);
-        soundToggle.setOnMouseClicked(event -> {
-            controller.sound=soundToggle.isSelected();
-            controller.gameStart.loop(Clip.LOOP_CONTINUOUSLY);
-            if(controller.sound) 
-                controller.gameStart.start();
-            else
-            	controller.gameStart.stop();
-        });
+        soundToggle.setOnMouseClicked(event -> controller.toggleSound(soundToggle));
+
         back.setOnMouseClicked(event -> {
-            controller.sound=soundToggle.isSelected();
             controller.playSound("Next-screen-button.wav", 0);
             Main main = new Main();
             try {
