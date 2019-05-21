@@ -1,10 +1,5 @@
 package UsersDB;
 
-import FilesManegement.FilesManegement;
-import Gui.Controller.Controller;
-import org.jdom2.JDOMException;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,22 +27,20 @@ public class UsersDB {
         }
     }
 
-
-    public static void main(String[] args) throws IOException, JDOMException {
-        Controller controller = Controller.getInstance();
-        FilesManegement filesManegement = FilesManegement.getInstance();
-        controller.usersDB.addUser("musty", 100, 0);
-        controller.usersDB.addUser("swi", 23, 1);
-        controller.usersDB.addUser("3dma", 242, 100);
-        filesManegement.savePlayers(controller);
-        System.out.println("we5o");
-    }
-
     public List<Player> getPlayers() {
         return players;
     }
 
     public void addUser(String username, int arcadeScore, int classicScore) {
         players.add(new Player(username, arcadeScore, classicScore));
+    }
+
+    public boolean verify(String username) {
+        for (Player player : players) {
+            if (player.getUsername().equals(username)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
