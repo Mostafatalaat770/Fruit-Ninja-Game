@@ -88,22 +88,22 @@ public class Options implements Initializable {
 
         wallpaper5.setOnMouseClicked(event -> {
             controller.background=new Image("Resources/wallpaper5.png");
-            controller.playSound("equip-new-wallpaper.wav",0);
+            controller.playSound("equip wallpaper", 0);
         });
 
         wallpaper6.setOnMouseClicked(event -> {
             controller.background=new Image("Resources/wallpaper6.png");
-            controller.playSound("equip-new-wallpaper.wav",0);
+            controller.playSound("equip wallpaper", 0);
         });
 
         wallpaper7.setOnMouseClicked(event -> {
             controller.background=new Image("Resources/wallpaper7.png");
-            controller.playSound("equip-new-wallpaper.wav",0);
+            controller.playSound("equip wallpaper", 0);
         });
 
         wallpaper8.setOnMouseClicked(event -> {
             controller.background=new Image("Resources/wallpaper8.png");
-            controller.playSound("equip-new-wallpaper.wav",0);
+            controller.playSound("equip wallpaper", 0);
         });
     }
 }
