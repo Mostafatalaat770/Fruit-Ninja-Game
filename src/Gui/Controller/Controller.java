@@ -18,7 +18,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -247,12 +246,11 @@ public class Controller implements GameActions {
     }
 
     public Clip playSound(String filename, int i) {
-    		File music = new File(filename);
-    		Clip clip = null;
 
-    		try {
+        Clip clip = null;
+        try {
     			clip = AudioSystem.getClip();
-            	   clip.open(AudioSystem.getAudioInputStream(music));
+            clip.open(AudioSystem.getAudioInputStream(this.getClass().getResource("/" + filename)));
                    clip.loop(i);
                    if(sound) 
                 	   clip.start();
