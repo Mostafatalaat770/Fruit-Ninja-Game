@@ -41,9 +41,9 @@ public class Controller implements GameActions {
     public String type;
     public int freezeTimer = 0;
     public boolean freezeEffect = false;
-    public int comboChecker=0;
-    public int comboTimer=0;
-    public boolean comboEffect=false;
+    public int comboChecker = 0;
+    public int comboTimer = 0;
+    public boolean comboEffect = false;
     public int luckyStrike = 1;
     public int fatalBombRateControl = 0;
     public UsersDB usersDB = UsersDB.getInstance();
@@ -53,6 +53,9 @@ public class Controller implements GameActions {
     public Clip gameStart = playSound("main theme", Clip.LOOP_CONTINUOUSLY);
     ArrayList<Observer> observers = new ArrayList<Observer>();
     Image background = new Image("Resources/wallpaper1.jpg", 1270, 720, true, true);
+    public boolean personalScorePassed = false;
+    public boolean highestScorePassed = false;
+
     public static Controller getInstance() {
         return ourInstance;
     }
@@ -135,8 +138,8 @@ public class Controller implements GameActions {
                 iterator.remove();
             } else if (throwable.hasMovedOffScreen() && !throwable.isSliced() && !(throwable instanceof Bomb)) {
                 iterator.remove();
-                if(lives>0)
-                lives--;
+                if (lives > 0)
+                    lives--;
             } else if (throwable.hasMovedOffScreen()) {
                 iterator.remove();
             }
@@ -172,10 +175,10 @@ public class Controller implements GameActions {
             if (x > throwable.getXlocation() && x < throwable.getXlocation() + throwable.getImg1().getWidth() && y > throwable.getYlocation() && y < throwable.getYlocation() + throwable.getImg1().getHeight()) {
 
                 if (!throwable.isSliced()) {
-                    if (comboEffect==false){
-                        comboEffect=true;
+                    if (comboEffect == false) {
+                        comboEffect = true;
                     }
-                    if(comboEffect==true){
+                    if (comboEffect == true) {
                         comboChecker++;
                     }
                     throwable.slice(getInstance());
@@ -226,10 +229,18 @@ public class Controller implements GameActions {
 
     public void updateScore() {
         if (gameMode.validate(score)) {
+            if (!personalScorePassed) {
+                personalScorePassed = true;
+                playSound("high score", 0);
+            }
             usersDB.getPlayer().setScore(score);
             personalHighscore = usersDB.getPlayer().getScore();
         }
         if (highestScore < personalHighscore) {
+            if (!highestScorePassed) {
+                highestScorePassed = true;
+                playSound("high score", 0);
+            }
             highestScore = personalHighscore;
         }
     }
@@ -260,17 +271,18 @@ public class Controller implements GameActions {
         invoker.setCommand(playSound);
         return invoker.playSound(type, duration, getInstance());
     }
-    public void comboCountdown(){
+
+    public void comboCountdown() {
         if (comboEffect == true) {
             comboTimer++;
-            if(comboTimer==1){
-                if(comboChecker>2){
+            if (comboTimer == 1) {
+                if (comboChecker > 2) {
                     // TODO: 21-May-19 add combo sound
-                    score+=comboChecker;
+                    score += comboChecker;
                 }
-                comboChecker=0;
-                comboTimer=0;
-                comboEffect=false;
+                comboChecker = 0;
+                comboTimer = 0;
+                comboEffect = false;
 
             }
         }
