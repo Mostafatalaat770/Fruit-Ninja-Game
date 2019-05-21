@@ -11,7 +11,7 @@ import javafx.util.Duration;
  */
 public class FreezeBanana extends SpecialFruit {
 
-
+Controller controller = Controller.getInstance();
     public FreezeBanana() {
         super();
         super.setImg1(new Image("Resources/Freeze_Banana.png", 75, 75, true, true));
@@ -25,6 +25,15 @@ public class FreezeBanana extends SpecialFruit {
         controller.playSound("Bonus-Banana-Freeze.wav", 0);
         setSliced(true);
 
+    }
+    @Override
+    public void update()
+    {  if(super.isSliced()) {
+        controller.score++;
+        controller.unregister(this);
+    }
+    else if(hasMovedOffScreen())
+        controller.unregister(this);
     }
 
 }

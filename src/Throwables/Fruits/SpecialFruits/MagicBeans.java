@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
  * @author Mostafa Talaat
  */
 public class MagicBeans extends SpecialFruit {
-
+Controller controller = Controller.getInstance();
 
     public MagicBeans() {
         super();
@@ -17,6 +17,12 @@ public class MagicBeans extends SpecialFruit {
 
     @Override
     public void slice(Controller controller) {
+
+        setSliced(true);
+    }
+    @Override
+    public void update()
+    {  if(isSliced()){
         if (controller.lives > 2) {
             controller.score += 25;
             controller.playSound("pome-slice-1.wav", 0);
@@ -24,7 +30,10 @@ public class MagicBeans extends SpecialFruit {
             controller.lives++;
             controller.playSound("extra-life.wav", 0);
         }
-        setSliced(true);
+        controller.unregister(this);
+    }
+    else if(hasMovedOffScreen())
+        controller.unregister(this);
     }
 
 }

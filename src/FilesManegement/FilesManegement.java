@@ -21,6 +21,7 @@ import org.jdom2.output.XMLOutputter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.Clock;
 import java.util.List;
 
 /**
@@ -269,7 +270,7 @@ public class FilesManegement {
 
         XMLOutputter xmlOutput = new XMLOutputter();
 
-        File file = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Players");
+            File file = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Players");
         if (file.mkdirs()) {
             file.createNewFile();
         }
@@ -280,6 +281,8 @@ public class FilesManegement {
     public void loadPlayers(Controller controller) throws JDOMException, IOException {
         File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Players" + File.separator + "players.txt");
         SAXBuilder saxBuilder = new SAXBuilder();
+        System.out.println(inputFile.toString());
+
         Document document = saxBuilder.build(inputFile);
 
         List<Element> childs = document.getRootElement().getChildren();

@@ -223,7 +223,10 @@ public abstract class Throwable implements GameObject, Observer {
     {  if(sliced) {
         controller.score++;
         controller.unregister(this);
-    }}
+    }
+    else if(hasMovedOffScreen())
+        controller.unregister(this);
+    }
 
 
     @Override

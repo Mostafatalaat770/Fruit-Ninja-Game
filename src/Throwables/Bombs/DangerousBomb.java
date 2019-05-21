@@ -23,11 +23,15 @@ public class DangerousBomb extends Bomb {
 
     @Override
     public void update() {
-        if (super.isSliced()) {
+        if (isSliced()) {
             if (controller.score > 9)
                 controller.score -= 10;
             else
                 controller.score = 0;
+            controller.unregister(this);
+        }
+        else if(hasMovedOffScreen())
+        {
             controller.unregister(this);
         }
     }

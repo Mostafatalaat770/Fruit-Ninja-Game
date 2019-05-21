@@ -26,8 +26,11 @@ public class FatalBomb extends Bomb {
 
     @Override
     public void update() {
-        if (isSliced())
+        if (isSliced()) {
             controller.lives = 0;
-        controller.unregister(this);
+            controller.unregister(this);
+        }
+        if(hasMovedOffScreen())
+            controller.unregister(this);
     }
 }

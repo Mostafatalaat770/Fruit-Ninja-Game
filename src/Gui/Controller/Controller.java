@@ -24,6 +24,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
+import java.time.Clock;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -83,6 +84,7 @@ public class Controller implements GameActions {
 
     public void loadPlayers() throws JDOMException, IOException {
         files.loadPlayers(getInstance());
+
     }
 
     @Override
@@ -128,6 +130,8 @@ public class Controller implements GameActions {
                 iterator.remove();
             } else if (throwable.hasMovedOffScreen() && !throwable.isSliced() && !(throwable instanceof Bomb)) {
                 iterator.remove();
+                //if(lives>0)
+
                 lives--;
             } else if (throwable.hasMovedOffScreen()) {
                 iterator.remove();
