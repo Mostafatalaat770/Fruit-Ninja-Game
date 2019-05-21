@@ -20,7 +20,7 @@
             <GaussianBlur radius="50.0" />
          </effect>
       </ImageView>
-      <AnchorPane prefHeight="720.0" prefWidth="1280.0">
+      <AnchorPane  prefHeight="720.0" prefWidth="1280.0">
          <children>
             <AnchorPane layoutX="63.0" layoutY="28.0" prefHeight="653.0" prefWidth="714.0" style="-fx-background-color: orange; -fx-background-radius: 20;">
                <children>
@@ -59,6 +59,11 @@
                </image>
             </ImageView>
             <JFXButton fx:id="help" buttonType="RAISED" layoutX="1090.0" layoutY="28.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="127.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="help?">
+               <font>
+                  <Font name="Gang of Three" size="21.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="credits" buttonType="RAISED" layoutX="936.0" layoutY="28.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="127.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="credits">
                <font>
                   <Font name="Gang of Three" size="21.0" />
                </font>

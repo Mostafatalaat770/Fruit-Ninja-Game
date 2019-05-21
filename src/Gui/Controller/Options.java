@@ -26,6 +26,7 @@ public class Options implements Initializable {
     @FXML private ImageView wallpaper4;
     @FXML private ImageView back;
     @FXML private Button help;
+    @FXML private Button credits;
 
 
     @Override
@@ -57,6 +58,17 @@ public class Options implements Initializable {
             Main main = new Main();
             try {
                 main.getHelp(event);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        });
+
+        credits.setOnMouseClicked(event -> {
+            controller.playSound("Next-screen-button.wav", 0);
+            Main main = new Main();
+            try {
+                main.getCredits(event);
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
