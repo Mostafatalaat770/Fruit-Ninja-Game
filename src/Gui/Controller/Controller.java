@@ -6,11 +6,6 @@ import Interfaces.Memento.Files;
 import Interfaces.Strategy.Strategy;
 import Observer.Observer;
 import Throwables.Bombs.Bomb;
-import Throwables.Bombs.DangerousBomb;
-import Throwables.Bombs.FatalBomb;
-import Throwables.Fruits.Fruit;
-import Throwables.Fruits.SpecialFruits.FreezeBanana;
-import Throwables.Fruits.SpecialFruits.MagicBeans;
 import UsersDB.UsersDB;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
@@ -25,7 +20,6 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
-import java.time.Clock;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -79,6 +73,10 @@ public class Controller implements GameActions {
     public void saveGame() throws IOException {
         files.saveState(getInstance());
         files.saveGame(getInstance());
+    }
+
+    public void savePlayers() throws IOException {
+        files.savePlayers(getInstance());
     }
 
     @Override
@@ -173,6 +171,7 @@ public class Controller implements GameActions {
                 if (!throwable.isSliced()) {
                     throwable.slice(getInstance());
                     notifyallobservers();
+                    updateScore();
                 }
             }
         }
