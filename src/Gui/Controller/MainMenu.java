@@ -197,6 +197,7 @@ public class MainMenu implements Initializable {
            Main main = new Main();
            try {
                controller.type = "classic";
+               controller.gameMode = new Strategy(new ClassicMode());
                controller.loadGame();
                main.getClassic(event);
            } catch (IOException | JDOMException e) {
@@ -211,6 +212,7 @@ public class MainMenu implements Initializable {
            Main main = new Main();
            try {
                controller.type = "arcade";
+               controller.gameMode = new Strategy(new ArcadeMode());
                controller.loadGame();
                main.getArcade(event);
            } catch (IOException | JDOMException e) {
