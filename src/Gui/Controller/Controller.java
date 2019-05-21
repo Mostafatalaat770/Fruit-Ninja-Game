@@ -50,6 +50,7 @@ public class Controller implements GameActions {
     public int fatalBombRateControl = 0;
     public UsersDB usersDB = UsersDB.getInstance();
     public Files files = new Files();
+    public Clip gameStart = playSound("main-theme.wav", Clip.LOOP_CONTINUOUSLY);
     ArrayList<Observer> observers = new ArrayList<Observer>();
 
     public static Controller getInstance() {
