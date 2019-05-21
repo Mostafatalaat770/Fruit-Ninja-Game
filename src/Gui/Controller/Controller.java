@@ -88,6 +88,12 @@ public class Controller implements GameActions {
     @Override
     public void loadGame() throws JDOMException, IOException {
         files.loadGame(getInstance());
+        comboChecker = 0;
+        comboEffect = false;
+        comboTimer = 0;
+        personalHighscore = usersDB.getPlayer().getScore();
+        highestScore = gameMode.getHighScore();
+
     }
 
     public void loadPlayers() throws JDOMException, IOException {
@@ -115,6 +121,9 @@ public class Controller implements GameActions {
         throwables.clear();
         score = 0;
         secs = 0;
+        comboChecker = 0;
+        comboEffect = false;
+        comboTimer = 0;
         personalHighscore = usersDB.getPlayer().getScore();
         highestScore = gameMode.getHighScore();
 
