@@ -44,7 +44,7 @@ public class Credits implements Initializable {
                 gc.fillText("-mostafa talaat-", 15, y.get() + 125);
                 gc.fillText("-seif amr-", 15, y.get() + 150);
                 gc.fillText("special thanks to:",15,y.get()+200);
-                gc.fillText("-Dr. Mervat mekhaeil-",55,y.get()+225);
+                gc.fillText("-Dr. Mervat mikhail-",50,y.get()+225);
                 gc.fillText("all the teaching committee",15,y.get()+250);
                 gc.fillText("piazza.com",15,y.get()+275);
                 gc.fillText("stack over flow",15,y.get()+300);

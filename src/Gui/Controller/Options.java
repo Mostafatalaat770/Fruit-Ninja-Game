@@ -1,12 +1,10 @@
 package Gui.Controller;
 
 import Gui.Main;
-import com.jfoenix.controls.JFXToggleButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -24,6 +22,10 @@ public class Options implements Initializable {
     @FXML private ImageView wallpaper2;
     @FXML private ImageView wallpaper3;
     @FXML private ImageView wallpaper4;
+    @FXML private ImageView wallpaper5;
+    @FXML private ImageView wallpaper6;
+    @FXML private ImageView wallpaper7;
+    @FXML private ImageView wallpaper8;
     @FXML private ImageView back;
     @FXML private Button help;
     @FXML private Button credits;
@@ -89,6 +91,26 @@ public class Options implements Initializable {
         });
         wallpaper4.setOnMouseClicked(event -> {
             controller.background=new Image("Resources/wallpaper4.png");
+            controller.playSound("equip-new-wallpaper.wav",0);
+        });
+
+        wallpaper5.setOnMouseClicked(event -> {
+            controller.background=new Image("Resources/wallpaper5.png");
+            controller.playSound("equip-new-wallpaper.wav",0);
+        });
+
+        wallpaper6.setOnMouseClicked(event -> {
+            controller.background=new Image("Resources/wallpaper6.png");
+            controller.playSound("equip-new-wallpaper.wav",0);
+        });
+
+        wallpaper7.setOnMouseClicked(event -> {
+            controller.background=new Image("Resources/wallpaper7.png");
+            controller.playSound("equip-new-wallpaper.wav",0);
+        });
+
+        wallpaper8.setOnMouseClicked(event -> {
+            controller.background=new Image("Resources/wallpaper8.png");
             controller.playSound("equip-new-wallpaper.wav",0);
         });
     }

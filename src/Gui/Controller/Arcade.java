@@ -40,6 +40,8 @@ public class Arcade implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+
 		Clip gameStart = controller.playSound("Game-start.wav", 0);
 		resume.setVisible(false);
         reset.setVisible(false);
@@ -77,6 +79,7 @@ public class Arcade implements Initializable {
         Timeline clock= new Timeline(new KeyFrame(new Duration(1000), actionEvent1->{
             controller.updateTime_Difficulty(timeline);
             controller.freezeCountDown();
+            controller.comboCountdown();
         }));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
@@ -174,7 +177,6 @@ public class Arcade implements Initializable {
                 pause.setVisible(true);
                 canvas.setEffect(new GaussianBlur(-50));
                 background.setEffect(new GaussianBlur(-50));
-
                 controller.ResetGame();
                 AtomicInteger seconds= new AtomicInteger();
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{

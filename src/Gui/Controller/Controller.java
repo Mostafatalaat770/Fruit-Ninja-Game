@@ -40,6 +40,9 @@ public class Controller implements GameActions {
     public String type;
     public int freezeTimer = 0;
     public boolean freezeEffect = false;
+    public int comboChecker=0;
+    public int comboTimer=0;
+    public boolean comboEffect=false;
     public int luckyStrike = 1;
     public int fatalBombRateControl = 0;
     public UsersDB usersDB = UsersDB.getInstance();
@@ -168,6 +171,12 @@ public class Controller implements GameActions {
             if (x > throwable.getXlocation() && x < throwable.getXlocation() + throwable.getImg1().getWidth() && y > throwable.getYlocation() && y < throwable.getYlocation() + throwable.getImg1().getHeight()) {
 
                 if (!throwable.isSliced()) {
+                    if (comboEffect==false){
+                        comboEffect=true;
+                    }
+                    if(comboEffect==true){
+                        comboChecker++;
+                    }
                     throwable.slice(getInstance());
                     notifyallobservers();
                     updateScore();
@@ -242,6 +251,22 @@ public class Controller implements GameActions {
                 freezeEffect = false;
             }
 
+        }
+    }
+
+    public void comboCountdown(){
+        if (comboEffect == true) {
+            comboTimer++;
+            if(comboTimer==1){
+                if(comboChecker>2){
+                    // TODO: 21-May-19 add combo sound 
+                    score+=comboChecker;
+                }
+                comboChecker=0;
+                comboTimer=0;
+                comboEffect=false;
+
+            }
         }
     }
 

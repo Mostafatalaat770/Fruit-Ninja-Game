@@ -77,6 +77,7 @@ public class Classic implements Initializable {
 
         Timeline clock= new Timeline(new KeyFrame(new Duration(1000), actionEvent1->{
             controller.updateTime_Difficulty(timeline);
+            controller.comboCountdown();
         }));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
