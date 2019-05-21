@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.sound.sampled.Clip;
+
 public class Options implements Initializable {
 
     Controller controller=Controller.getInstance();
@@ -31,6 +33,11 @@ public class Options implements Initializable {
         soundToggle.setSelected(controller.sound);
         soundToggle.setOnMouseClicked(event -> {
             controller.sound=soundToggle.isSelected();
+            controller.gameStart.loop(Clip.LOOP_CONTINUOUSLY);
+            if(controller.sound) 
+                controller.gameStart.start();
+            else
+            	controller.gameStart.stop();
         });
         back.setOnMouseClicked(event -> {
             controller.sound=soundToggle.isSelected();

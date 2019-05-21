@@ -108,9 +108,11 @@ public class MainMenu implements Initializable {
         TranslateTransition transition10 = new TranslateTransition(Duration.millis(300), slicedbanana_bottom);
         transition10.setByX(-5);
         
-        
         controller.gameStart.loop(Clip.LOOP_CONTINUOUSLY);
- 	    controller.gameStart.start();
+        if(controller.sound)
+        	controller.gameStart.start();
+        else
+        	controller.gameStart.stop();
        
 
 
@@ -183,7 +185,11 @@ public class MainMenu implements Initializable {
               Platform.exit();
            else {
         	   controller.gameStart.loop(Clip.LOOP_CONTINUOUSLY);
-        	   controller.gameStart.start();
+        	   if(controller.sound)
+        		   controller.gameStart.start();
+        	   else
+        		   controller.gameStart.stop();
+        	   
            }
        });
 

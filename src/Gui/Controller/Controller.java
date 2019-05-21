@@ -51,9 +51,9 @@ public class Controller implements GameActions {
     public int fatalBombRateControl = 0;
     public UsersDB usersDB = UsersDB.getInstance();
     public Files files = new Files();
+    boolean sound= true;
     public Clip gameStart = playSound("main-theme.wav", Clip.LOOP_CONTINUOUSLY);
     ArrayList<Observer> observers = new ArrayList<Observer>();
-    boolean sound= true;
     Image background= new Image("Resources/wallpaper1.jpg");
 
     public static Controller getInstance() {
@@ -248,22 +248,25 @@ public class Controller implements GameActions {
     }
 
     public Clip playSound(String filename, int i) {
-        File music = new File(filename);
-        Clip clip = null;
+    		File music = new File(filename);
+    		Clip clip = null;
 
-           try {
-               clip = AudioSystem.getClip();
-               if(sound)
-               clip.open(AudioSystem.getAudioInputStream(music));
-               clip.loop(i);
-               clip.start();
+    		try {
+    			clip = AudioSystem.getClip();
+            	   clip.open(AudioSystem.getAudioInputStream(music));
+                   clip.loop(i);
+                   if(sound) 
+                	   clip.start();
+                   else
+                	   clip.stop();
            } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
                // TODO Auto-generated catch block
                e1.printStackTrace();
 
            }
 
-        return clip;
+    		return clip;
+    	
 
     }
 
