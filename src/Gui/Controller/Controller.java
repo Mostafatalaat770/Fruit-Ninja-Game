@@ -18,10 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import org.jdom2.JDOMException;
 
-import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -52,9 +49,9 @@ public class Controller implements GameActions {
     public UsersDB usersDB = UsersDB.getInstance();
     public Files files = new Files();
     public boolean sound = true;
-    public Clip gameStart = playSound("main-theme.wav", Clip.LOOP_CONTINUOUSLY);
-    ArrayList<Observer> observers = new ArrayList<Observer>();
     public Invoker invoker = new Invoker();
+    public Clip gameStart = playSound("main theme", Clip.LOOP_CONTINUOUSLY);
+    ArrayList<Observer> observers = new ArrayList<Observer>();
     Image background = new Image("Resources/wallpaper1.jpg", 1270, 720, true, true);
     public static Controller getInstance() {
         return ourInstance;
@@ -258,12 +255,17 @@ public class Controller implements GameActions {
         }
     }
 
+    public Clip playSound(String type, int duration) {
+        Command playSound = new Sound();
+        invoker.setCommand(playSound);
+        return invoker.playSound(type, duration, getInstance());
+    }
     public void comboCountdown(){
         if (comboEffect == true) {
             comboTimer++;
             if(comboTimer==1){
                 if(comboChecker>2){
-                    // TODO: 21-May-19 add combo sound 
+                    // TODO: 21-May-19 add combo sound
                     score+=comboChecker;
                 }
                 comboChecker=0;
@@ -274,27 +276,6 @@ public class Controller implements GameActions {
         }
     }
 
-    public Clip playSound(String filename, int i) {
-
-        Clip clip = null;
-        try {
-    			clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(this.getClass().getResource("/" + filename)));
-                   clip.loop(i);
-                   if(sound) 
-                	   clip.start();
-                   else
-                	   clip.stop();
-           } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
-               // TODO Auto-generated catch block
-               e1.printStackTrace();
-
-           }
-
-    		return clip;
-    	
-
-    }
 
     public void toggleSound(ToggleButton toggleButton) {
         Command toggleSound = new Sound();

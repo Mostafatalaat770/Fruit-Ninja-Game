@@ -47,7 +47,7 @@ public class Leaderboard implements Initializable {
         scoreArcade.setCellValueFactory(new PropertyValueFactory<>("score"));
 
         back.setOnMouseClicked(event -> {
-            controller.playSound("Next-screen-button.wav", 0);
+            controller.playSound("press", 0);
             Main main = new Main();
             try {
                 main.getMainMenu(event);

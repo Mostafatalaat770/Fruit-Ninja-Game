@@ -1,9 +1,9 @@
 package Throwables.Bombs;
 
-import javax.sound.sampled.Clip;
-
 import Gui.Controller.Controller;
 import javafx.scene.image.Image;
+
+import javax.sound.sampled.Clip;
 
 /**
  * @author Mostafa Talaat
@@ -19,7 +19,7 @@ public class FatalBomb extends Bomb {
 
     @Override
     public void slice(Controller controller) throws InterruptedException {
-    	Clip fatal = controller.playSound("menu-bomb.wav", 0);
+        Clip fatal = controller.playSound("bomb explode", 0);
         setSliced(true);
         Thread.sleep(fatal.getMicrosecondLength()/3000);
     }

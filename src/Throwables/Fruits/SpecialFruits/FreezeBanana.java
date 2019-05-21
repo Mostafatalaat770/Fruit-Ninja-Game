@@ -1,10 +1,7 @@
 package Throwables.Fruits.SpecialFruits;
 
 import Gui.Controller.Controller;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.image.Image;
-import javafx.util.Duration;
 
 /**
  * @author Mostafa Talaat
@@ -22,7 +19,7 @@ Controller controller = Controller.getInstance();
     public void slice(Controller controller) {
         controller.freezeEffect=true;
         controller.secs += 5;
-        controller.playSound("Bonus-Banana-Freeze.wav", 0);
+        controller.playSound("freeze", 0);
         setSliced(true);
 
     }

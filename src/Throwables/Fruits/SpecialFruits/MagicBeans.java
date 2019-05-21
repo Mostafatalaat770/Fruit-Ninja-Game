@@ -25,10 +25,10 @@ Controller controller = Controller.getInstance();
     {  if(isSliced()){
         if (controller.lives > 2) {
             controller.score += 25;
-            controller.playSound("pome-slice-1.wav", 0);
+            controller.playSound("slice", 0);
         } else {
             controller.lives++;
-            controller.playSound("extra-life.wav", 0);
+            controller.playSound("extra life", 0);
         }
         controller.unregister(this);
     }

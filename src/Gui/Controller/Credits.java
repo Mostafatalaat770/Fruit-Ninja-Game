@@ -60,7 +60,7 @@ public class Credits implements Initializable {
 
        back.setOnMouseClicked(event -> {
            timer.stop();
-           controller.playSound("Next-screen-button.wav", 0);
+           controller.playSound("press", 0);
            Main main = new Main();
            try {
                main.getOptions(event);

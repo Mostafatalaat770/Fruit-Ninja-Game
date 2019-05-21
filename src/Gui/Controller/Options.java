@@ -36,7 +36,7 @@ public class Options implements Initializable {
         soundToggle.setOnMouseClicked(event -> controller.toggleSound(soundToggle));
 
         back.setOnMouseClicked(event -> {
-            controller.playSound("Next-screen-button.wav", 0);
+            controller.playSound("press", 0);
             Main main = new Main();
             try {
                 main.getMainMenu(event);
@@ -48,7 +48,7 @@ public class Options implements Initializable {
         });
 
         help.setOnMouseClicked(event -> {
-            controller.playSound("Next-screen-button.wav", 0);
+            controller.playSound("press", 0);
             Main main = new Main();
             try {
                 main.getHelp(event);
@@ -59,7 +59,7 @@ public class Options implements Initializable {
         });
 
         credits.setOnMouseClicked(event -> {
-            controller.playSound("Next-screen-button.wav", 0);
+            controller.playSound("press", 0);
             Main main = new Main();
             try {
                 main.getCredits(event);
@@ -71,19 +71,19 @@ public class Options implements Initializable {
 
         wallpaper1.setOnMouseClicked(event -> {
             controller.background=new Image("Resources/wallpaper1.jpg");
-            controller.playSound("equip-new-wallpaper.wav",0);
+            controller.playSound("equip wallpaper", 0);
         });
         wallpaper2.setOnMouseClicked(event -> {
             controller.background=new Image("Resources/wallpaper2.jpg");
-            controller.playSound("equip-new-wallpaper.wav",0);
+            controller.playSound("equip wallpaper", 0);
         });
         wallpaper3.setOnMouseClicked(event -> {
             controller.background=new Image("Resources/wallpaper3.png");
-            controller.playSound("equip-new-wallpaper.wav",0);
+            controller.playSound("equip wallpaper", 0);
         });
         wallpaper4.setOnMouseClicked(event -> {
             controller.background=new Image("Resources/wallpaper4.png");
-            controller.playSound("equip-new-wallpaper.wav",0);
+            controller.playSound("equip wallpaper", 0);
         });
 
         wallpaper5.setOnMouseClicked(event -> {

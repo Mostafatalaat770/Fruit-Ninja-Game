@@ -17,7 +17,7 @@ public class Help implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         back.setOnMouseClicked(event -> {
-            controller.playSound("Next-screen-button.wav", 0);
+            controller.playSound("press", 0);
             Main main = new Main();
             try {
                 main.getOptions(event);

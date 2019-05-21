@@ -14,7 +14,7 @@ public abstract class Fruit extends Throwables.Throwable {
     
     public void slice(Controller controller) throws InterruptedException {
     	super.slice(controller);
-    	controller.playSound("pome-slice-1.wav", 0);
+        controller.playSound("slice", 0);
 	}
 
 }

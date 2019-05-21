@@ -40,9 +40,7 @@ public class Arcade implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
-
-		Clip gameStart = controller.playSound("Game-start.wav", 0);
+        Clip gameStart = controller.playSound("start game", 0);
 		resume.setVisible(false);
         reset.setVisible(false);
         save.setVisible(false);
@@ -57,9 +55,9 @@ public class Arcade implements Initializable {
             		GameObject temp = controller.getRandomThrowable();
                     controller.throwables.add(temp);
                     if(temp instanceof Bomb)
-                    	controller.playSound("Throw-bomb.wav", 0);
+                        controller.playSound("throw bomb", 0);
                     else
-                    	controller.playSound("Throw-fruit.wav", 0);
+                        controller.playSound("throw fruit", 0);
                 }
             }
         }));
@@ -93,14 +91,14 @@ public class Arcade implements Initializable {
 
                    if(controller.gameOver()) {
                 	   if(!timeup) {
-                		   Clip time = controller.playSound("time-up.wav", 0);
+                           Clip time = controller.playSound("time's up", 0);
                 		   try {
    							Thread.sleep(time.getMicrosecondLength()/3000);
    						} catch (InterruptedException e) {
    							// TODO Auto-generated catch block
    							e.printStackTrace();
    						}
-                   		   controller.playSound("Game-over.wav", 0);
+                           controller.playSound("game over", 0);
                 		   timeup = true;
                 	   }
                        stopAll=false ;
@@ -125,7 +123,7 @@ public class Arcade implements Initializable {
         
         
         pause.setOnMouseClicked(event -> {
-        	controller.playSound("pause.wav", 0);
+            controller.playSound("pause", 0);
             stopAll=false;
             pause.setVisible(false);
             resume.setVisible(true);
@@ -141,7 +139,7 @@ public class Arcade implements Initializable {
 
         resume.setOnMouseClicked(event -> {
             if(resume.isVisible()){
-            	controller.playSound("Unpause.wav", 0);
+                controller.playSound("resume", 0);
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
@@ -169,7 +167,7 @@ public class Arcade implements Initializable {
 
         reset.setOnMouseClicked(event -> {
             if(reset.isVisible()){
-            	controller.playSound("Unpause.wav", 0);
+                controller.playSound("resume", 0);
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
@@ -177,6 +175,7 @@ public class Arcade implements Initializable {
                 pause.setVisible(true);
                 canvas.setEffect(new GaussianBlur(-50));
                 background.setEffect(new GaussianBlur(-50));
+
                 controller.ResetGame();
                 AtomicInteger seconds= new AtomicInteger();
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
@@ -201,7 +200,7 @@ public class Arcade implements Initializable {
         save.setOnMouseClicked(event -> {
             if(save.isVisible())
             {
-            	controller.playSound("Next-screen-button.wav", 0);
+                controller.playSound("press", 0);
                 try {
                     controller.saveGame();
                 } catch (IOException e) {
@@ -212,7 +211,7 @@ public class Arcade implements Initializable {
         });
         back.setOnMouseClicked(event -> {
             if(back.isVisible()){
-            	controller.playSound("Next-screen-button.wav", 0);
+                controller.playSound("press", 0);
                 controller.ResetGame();
                 timeline.stop();
                 timer.stop();

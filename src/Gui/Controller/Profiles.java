@@ -20,7 +20,7 @@ public class Profiles implements Initializable {
 @FXML private JFXTextField usernameTextField;
 @FXML private JFXButton logIn;
 @FXML private JFXButton signUp;
-private Controller controller=Controller.getInstance();
+    Controller controller = Controller.getInstance();
 ArrayList<String> names= new ArrayList<>();
 ObservableList<String> usernames= FXCollections.observableArrayList();
 
@@ -41,7 +41,7 @@ ObservableList<String> usernames= FXCollections.observableArrayList();
             if (usernameCombobox.getValue() != null) {
                 controller.setUser(usernameCombobox.getValue());//brings the chosen name
                 //goes to main screeen
-                controller.playSound("Next-screen-button.wav", 0);
+                controller.playSound("press", 0);
                 Main main = new Main();
                 try {
                     main.getMainMenu(event);
@@ -59,7 +59,7 @@ ObservableList<String> usernames= FXCollections.observableArrayList();
                 controller.usersDB.addUser(usernameTextField.getText(), 0, 0);
                 controller.usersDB.setPlayer(usernameTextField.getText());
                 // goes to main menu
-                controller.playSound("Next-screen-button.wav", 0);
+                controller.playSound("press", 0);
                 try {
                     controller.savePlayers();
                 } catch (IOException e) {

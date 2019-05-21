@@ -1,6 +1,9 @@
 package Interfaces.Command;
 
+import Gui.Controller.Controller;
 import javafx.scene.control.ToggleButton;
+
+import javax.sound.sampled.Clip;
 
 /**
  * @author Mostafa Talaat
@@ -14,5 +17,9 @@ public class Invoker {
 
     public void execute(ToggleButton toggleButton) {
         command.execute(toggleButton);
+    }
+
+    public Clip playSound(String type, int duration, Controller controller) {
+        return command.play(type, duration);
     }
 }
