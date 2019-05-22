@@ -15,7 +15,6 @@ import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-import javax.sound.sampled.Clip;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
@@ -42,7 +41,7 @@ public class Classic implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Clip gameStart = controller.playSound("start game", 0);
+        controller.playSound("start game", 0);
         resume.setVisible(false);
         back.setVisible(false);
         reset.setVisible(false);
@@ -87,7 +86,6 @@ public class Classic implements Initializable {
 				try {
 					controller.slice(event.getSceneX(),event.getSceneY());
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
         });
@@ -225,7 +223,6 @@ public class Classic implements Initializable {
                 try {
                     main.getMainMenu(event);
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }

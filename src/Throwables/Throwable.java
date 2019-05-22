@@ -2,9 +2,10 @@ package Throwables;
 
 import Gui.Controller.Controller;
 import Interfaces.GameObject;
+import Observer.Observer;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import Observer.Observer;
+
 import java.util.Random;
 
 /**
@@ -247,7 +248,6 @@ public abstract class Throwable implements GameObject, Observer {
 
     @Override
     public void updatePosition(){
-//
         if(x==midPoint){
             falling=true;
         }

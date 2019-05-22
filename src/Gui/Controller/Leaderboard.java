@@ -52,7 +52,6 @@ public class Leaderboard implements Initializable {
             try {
                 main.getMainMenu(event);
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         });

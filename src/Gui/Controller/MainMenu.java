@@ -14,7 +14,6 @@ import com.jfoenix.controls.JFXButton;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -58,11 +57,6 @@ public class MainMenu implements Initializable {
 
     Controller controller = Controller.getInstance();
 
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         RotateTransition transition = new RotateTransition(Duration.seconds(4), classic_img);
@@ -94,7 +88,6 @@ public class MainMenu implements Initializable {
 
         TranslateTransition transition6 = new TranslateTransition(Duration.millis(300), slicedmelon_left);
         transition6.setByX(-20);
-        //
 
         RotateTransition transition7 = new RotateTransition(Duration.millis(300), slicedbanana_top);
         transition7.setByAngle(90);
@@ -138,7 +131,6 @@ public class MainMenu implements Initializable {
                     	controller.ResetGame();
                     	main.getClassic(event);
                     } catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 
@@ -166,7 +158,6 @@ public class MainMenu implements Initializable {
     				   controller.ResetGame();
     				   main.getArcade(event);
     			   } catch (IOException e) {
-    				   // TODO Auto-generated catch block
     				   e.printStackTrace();
     			   }
     		   });
@@ -201,7 +192,6 @@ public class MainMenu implements Initializable {
                controller.loadGame();
                main.getClassic(event);
            } catch (IOException | JDOMException e) {
-               // TODO Auto-generated catch block
                e.printStackTrace();
            }
        });
@@ -238,7 +228,6 @@ public class MainMenu implements Initializable {
            try {
                main.getLeaderboard(event);
            } catch (IOException e) {
-               // TODO Auto-generated catch block
                e.printStackTrace();
            }
        });
@@ -252,7 +241,7 @@ public class MainMenu implements Initializable {
         classic.setByX(180);
         classic.play();
         arcade.play();
-        arcade.setOnFinished(event -> {load.setDisable(true); });
+        arcade.setOnFinished(event -> load.setDisable(true));
     }
 
 

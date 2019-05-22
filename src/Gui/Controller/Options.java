@@ -15,7 +15,8 @@ import java.util.ResourceBundle;
 public class Options implements Initializable {
 
     Controller controller=Controller.getInstance();
-    @FXML private ToggleButton soundToggle; // TODO: 19-May-19 bta3 el moseeqa dah
+    @FXML
+    private ToggleButton soundToggle;
     @FXML private ImageView wallpaper1;
     @FXML private ImageView wallpaper2;
     @FXML private ImageView wallpaper3;
@@ -41,7 +42,6 @@ public class Options implements Initializable {
             try {
                 main.getMainMenu(event);
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
@@ -53,7 +53,6 @@ public class Options implements Initializable {
             try {
                 main.getHelp(event);
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         });
@@ -64,7 +63,6 @@ public class Options implements Initializable {
             try {
                 main.getCredits(event);
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         });

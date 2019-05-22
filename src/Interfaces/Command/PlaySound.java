@@ -96,7 +96,6 @@ public class PlaySound implements Command {
             else
                 clip.stop();
         } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
 
         }

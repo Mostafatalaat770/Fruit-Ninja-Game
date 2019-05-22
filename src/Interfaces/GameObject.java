@@ -122,6 +122,4 @@ public interface GameObject {
      */
     void updatePosition();
 
-    // TODO: 17-May-19 mostafa
-
 }

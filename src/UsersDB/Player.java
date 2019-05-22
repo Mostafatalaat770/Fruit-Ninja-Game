@@ -27,16 +27,8 @@ public class Player {
         return arcadeScore;
     }
 
-    public void setArcadeScore(int arcadeScore) {
-        this.arcadeScore = arcadeScore;
-    }
-
     public int getClassicScore() {
         return classicScore;
-    }
-
-    public void setClassicScore(int classicScore) {
-        this.classicScore = classicScore;
     }
 
     public int getScore() {

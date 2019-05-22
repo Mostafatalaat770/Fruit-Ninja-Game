@@ -22,7 +22,6 @@ public class Help implements Initializable {
             try {
                 main.getOptions(event);
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         });

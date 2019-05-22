@@ -63,21 +63,6 @@ public class Controller implements GameActions {
     }
 
     @Override
-    public GameObject createGameObject() {
-        return null;
-    }
-
-    @Override
-    public void updateObjectsLocations() {
-
-    }
-
-    @Override
-    public void sliceObjects() {
-
-    }
-
-    @Override
     public void saveGame() throws IOException {
         files.saveState(getInstance());
         files.saveGame(getInstance());
@@ -161,7 +146,6 @@ public class Controller implements GameActions {
     }
 
     public void drawAllThings(GraphicsContext gc) {
-        // Todo remove that damned paramiter (swidan, please)
         gc.clearRect(0, 0, 1280, 720);
         gc.setFill(Color.ORANGE);
         Font theFont = Font.font("Gang Of Three", 30);
@@ -286,7 +270,7 @@ public class Controller implements GameActions {
     }
 
     public void comboCountdown() {
-        if (comboEffect == true) {
+        if (comboEffect) {
             comboTimer++;
             if (comboTimer == 1) {
                 if (comboChecker > 2) {

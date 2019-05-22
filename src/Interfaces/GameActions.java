@@ -5,22 +5,6 @@ import org.jdom2.JDOMException;
 import java.io.IOException;
 
 public interface GameActions {
-    /**
-     * @return created game object
-     */
-    GameObject createGameObject();
-
-    /**
-     * update moving objects locations
-     */
-    void updateObjectsLocations();
-
-    /**
-     * it is used to slice fruits located in your swiping region
-     * This method can take your swiping region as parameters (they
-     * depend on how you calculate it).
-     */
-    void sliceObjects();
 
     /**
      * saves the current state of the game

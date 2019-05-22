@@ -46,7 +46,6 @@ ObservableList<String> usernames= FXCollections.observableArrayList();
                 try {
                     main.getMainMenu(event);
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             } else {
@@ -69,7 +68,6 @@ ObservableList<String> usernames= FXCollections.observableArrayList();
                 try {
                     main.getMainMenu(event);
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             } else {
@@ -77,6 +75,4 @@ ObservableList<String> usernames= FXCollections.observableArrayList();
             }
         });
     }
-
-
 }

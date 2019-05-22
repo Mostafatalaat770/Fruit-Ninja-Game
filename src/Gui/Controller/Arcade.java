@@ -40,7 +40,7 @@ public class Arcade implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-        Clip gameStart = controller.playSound("start game", 0);
+        controller.playSound("start game", 0);
 		resume.setVisible(false);
         reset.setVisible(false);
         save.setVisible(false);
@@ -69,7 +69,6 @@ public class Arcade implements Initializable {
 				try {
 					controller.slice(event.getSceneX(),event.getSceneY());
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
         });
@@ -220,7 +219,6 @@ public class Arcade implements Initializable {
                 try {
                     main.getMainMenu(event);
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }

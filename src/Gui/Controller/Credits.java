@@ -38,24 +38,24 @@ public class Credits implements Initializable {
                 gc.setFont(theFont);
                 gc.fillText("Fruit ninja game", 85, y.get());
                 gc.fillText("made by:", 15, y.get() + 25);
-                gc.fillText("-abdelrahman zaghloul-", 15, y.get() + 50);
-                gc.fillText("-ahmed swidan-", 15, y.get() + 75);
-                gc.fillText("-islam tarek-", 15, y.get() + 100);
-                gc.fillText("-mostafa talaat-", 15, y.get() + 125);
-                gc.fillText("-seif amr-", 15, y.get() + 150);
-                gc.fillText("special thanks to:",15,y.get()+200);
-                gc.fillText("-Dr. Mervat mikhail-",50,y.get()+225);
+                gc.fillText("-Abdelrahman Zaghloul-", 15, y.get() + 50);
+                gc.fillText("-Ahmed Swidan-", 15, y.get() + 75);
+                gc.fillText("-Islam Tarek-", 15, y.get() + 100);
+                gc.fillText("-Mostafa Talaat-", 15, y.get() + 125);
+                gc.fillText("-Seif Amr-", 15, y.get() + 150);
+                gc.fillText("Special thanks to:", 15, y.get() + 200);
+                gc.fillText("-Dr. Mervat Mikhail-", 50, y.get() + 225);
                 gc.fillText("all the teaching committee",15,y.get()+250);
                 gc.fillText("piazza.com",15,y.get()+275);
-                gc.fillText("stack over flow",15,y.get()+300);
-                gc.fillText("the new boston",15,y.get()+325);
-                gc.fillText("tim buchalka",15,y.get()+350);
-                gc.fillText("special thanks to the\ngame testers:",15,y.get()+400);
-                gc.fillText("-youssef swidan-",15,y.get()+450);
-                gc.fillText("-mazen morsy-",15,y.get()+475);
-                gc.fillText("-ahmed essam-",15,y.get()+500);
-                gc.fillText("-ahmed talaat-",15,y.get()+525);
-                gc.fillText("all content used are\ncopyrights of halfbrick co.",15,y.get()+625);
+                gc.fillText("Stack Overflow", 15, y.get() + 300);
+                gc.fillText("The New Boston", 15, y.get() + 325);
+                gc.fillText("Tim Buchalka", 15, y.get() + 350);
+                gc.fillText("Special thanks to the\ngame testers:", 15, y.get() + 400);
+                gc.fillText("-Youssef Swidan-", 15, y.get() + 450);
+                gc.fillText("-Mazen Morsy-", 15, y.get() + 475);
+                gc.fillText("-Ahmed Essam-", 15, y.get() + 500);
+                gc.fillText("-Ahmed Talaat-", 15, y.get() + 525);
+                gc.fillText("All content used are\ncopyrights of Halfbrick co.", 15, y.get() + 625);
                 gc.fillText("programming 2 final\nproject",15,y.get()+700);
                 y.getAndDecrement();
             }
@@ -70,7 +70,6 @@ public class Credits implements Initializable {
            try {
                main.getOptions(event);
            } catch (IOException e) {
-               // TODO Auto-generated catch block
                e.printStackTrace();
            }
        });
