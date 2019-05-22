@@ -22,7 +22,7 @@ public class Credits implements Initializable {
     Canvas canvas;
     @FXML
     ImageView back;
-    GraphicsContext gc;
+    private GraphicsContext gc;
     Controller controller = Controller.getInstance();
 
     @Override

@@ -8,7 +8,7 @@ import javafx.scene.image.Image;
  */
 public class FreezeBanana extends SpecialFruit {
 
-Controller controller = Controller.getInstance();
+    private Controller controller = Controller.getInstance();
     public FreezeBanana() {
         super();
         super.setImg1(new Image("Resources/Freeze_Banana.png", 75, 75, true, true));

@@ -5,14 +5,14 @@ import Gui.Controller.Controller;
 /**
  * @author Mostafa Talaat
  */
-public class Memento {
+class Memento {
     private Controller state;
 
-    public Memento(Controller state) {
+    Memento(Controller state) {
         this.state = state;
     }
 
-    public Controller getState() {
+    Controller getState() {
         return state;
     }
 }

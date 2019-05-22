@@ -35,30 +35,29 @@ public class Controller implements GameActions {
     public Strategy gameMode = null;
     public int score = 0;
     public int personalHighscore = 0;
-    public int highestScore = 0;
+    private int highestScore = 0;
     public int secs = 0;
     public int mins = 0;
     public int lives;
     public double difficulty = 1;
     public String type;
-    public int freezeTimer = 0;
+    private int freezeTimer = 0;
     public boolean freezeEffect = false;
-    public int comboChecker = 0;
-    public int comboTimer = 0;
-    public boolean comboEffect = false;
+    private int comboChecker = 0;
+    private int comboTimer = 0;
+    private boolean comboEffect = false;
     public int luckyStrike = 1;
     public int fatalBombRateControl = 0;
     public UsersDB usersDB = UsersDB.getInstance();
-    public Files files = new Files();
+    private Files files = new Files();
     public boolean sound = true;
-    public Invoker invoker = new Invoker();
+    private Invoker invoker = new Invoker();
     public Clip gameStart = playSound("main theme", Clip.LOOP_CONTINUOUSLY);
-    ArrayList<Observer> observers = new ArrayList<Observer>();
+    private ArrayList<Observer> observers = new ArrayList<Observer>();
     Image background = new Image("Resources/wallpaper1.jpg", 1270, 720, true, true);
-    public boolean personalScorePassed = false;
-    public boolean highestScorePassed = false;
+    private boolean personalScorePassed = false;
+    private boolean highestScorePassed = false;
     private Random random=new Random();
-    public boolean touchFunctionality = false;
 
 
     public static Controller getInstance() {
@@ -71,7 +70,7 @@ public class Controller implements GameActions {
         files.saveGame(getInstance());
     }
 
-    public void savePlayers() throws IOException {
+    void savePlayers() throws IOException {
         files.savePlayers(getInstance());
     }
 
@@ -86,7 +85,7 @@ public class Controller implements GameActions {
 
     }
 
-    public void loadPlayers() throws JDOMException, IOException {
+    void loadPlayers() throws JDOMException, IOException {
         files.loadPlayers(getInstance());
 
     }
@@ -119,7 +118,7 @@ public class Controller implements GameActions {
 
     }
 
-    public void setUser(String username) {
+    void setUser(String username) {
         usersDB.setPlayer(username);
     }
 
@@ -148,7 +147,7 @@ public class Controller implements GameActions {
 
     }
 
-    public void drawAllThings(GraphicsContext gc) {
+    void drawAllThings(GraphicsContext gc) {
         gc.clearRect(0, 0, 1280, 720);
         gc.setFill(Color.ORANGE);
         Font theFont = Font.font("Gang Of Three", 30);
@@ -190,7 +189,7 @@ public class Controller implements GameActions {
 
     }
 
-    public void getCountDown(GraphicsContext gc, AtomicInteger seconds) {
+    void getCountDown(GraphicsContext gc, AtomicInteger seconds) {
         gc.setFill(Color.ORANGE);
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(5);
@@ -200,7 +199,7 @@ public class Controller implements GameActions {
         gc.strokeText(String.valueOf(4 - seconds.get()), 600, 350);
     }
 
-    public void updateTime_Difficulty(Timeline timeline) {
+    void updateTime_Difficulty(Timeline timeline) {
         if (type.equals("classic")) {
             secs++;
             if (secs >= 60) {
@@ -227,7 +226,7 @@ public class Controller implements GameActions {
 
     }
 
-    public void updateScore() {
+    private void updateScore() {
         if (gameMode.validate(score)) {
             if (!personalScorePassed) {
                 personalScorePassed = true;
@@ -245,7 +244,7 @@ public class Controller implements GameActions {
         }
     }
 
-    public boolean gameOver() {
+    boolean gameOver() {
 
         if (type.equals("classic")) {
             return lives <= 0;
@@ -255,8 +254,8 @@ public class Controller implements GameActions {
         return false;
     }
 
-    public void freezeCountDown() {
-        if (freezeEffect == true) {
+    void freezeCountDown() {
+        if (freezeEffect) {
             freezeTimer++;
             if (freezeTimer == 5) {
                 freezeTimer = 0;
@@ -272,7 +271,7 @@ public class Controller implements GameActions {
         return invoker.playSound(type, duration);
     }
 
-    public void comboCountdown() {
+    void comboCountdown() {
         if (comboEffect) {
             comboTimer++;
             if (comboTimer == 1) {
@@ -289,7 +288,7 @@ public class Controller implements GameActions {
     }
 
 
-    public void toggleSound(ToggleButton toggleButton) {
+    void toggleSound(ToggleButton toggleButton) {
         Command toggleSound = new ToggleSound();
         invoker.setCommand(toggleSound);
         invoker.execute(toggleButton);
@@ -303,13 +302,13 @@ public class Controller implements GameActions {
         observers.remove(O);
     }
 
-    public void notifyallobservers() {
+    private void notifyallobservers() {
         int size = observers.size();
         while (size-- > 0)
             observers.get(size).update();
     }
 
-    public void getThrowables(){
+    void getThrowables() {
       if(type.equals("arcade")){
           if(throwables.size()<6) {
 

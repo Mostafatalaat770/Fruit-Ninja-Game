@@ -6,7 +6,7 @@ package Throwables.Bombs;
 public abstract class Bomb extends Throwables.Throwable {
 
 
-    public Bomb() {
+    Bomb() {
         super();
     }
 }

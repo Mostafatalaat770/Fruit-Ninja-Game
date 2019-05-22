@@ -12,15 +12,15 @@ public class Originator {
         return state;
     }
 
-    public void setState(Controller state) {
+    void setState(Controller state) {
         this.state = state;
     }
 
-    public Memento saveStateToMemento() {
+    Memento saveStateToMemento() {
         return new Memento(state);
     }
 
-    public void getStateFromMemento(Memento memento) {
+    void getStateFromMemento(Memento memento) {
         state = memento.getState();
     }
 }

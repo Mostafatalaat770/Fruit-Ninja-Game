@@ -18,8 +18,8 @@ import java.util.Random;
  * @author Mostafa Talaat
  */
 public class ArcadeMode implements GameMode {
-    Random rand = new Random();
-    Controller controller = Controller.getInstance();
+    private Random rand = new Random();
+    private Controller controller = Controller.getInstance();
 
     public GameObject createObject() {
 

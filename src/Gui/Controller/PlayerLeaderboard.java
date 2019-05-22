@@ -1,8 +1,8 @@
 package Gui.Controller;
 
 public class PlayerLeaderboard {
-    String username;
-    int score;
+    private String username;
+    private int score;
 
 
 

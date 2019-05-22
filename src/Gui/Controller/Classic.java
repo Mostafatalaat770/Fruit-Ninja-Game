@@ -15,7 +15,6 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -34,8 +33,6 @@ public class Classic implements Initializable {
     private boolean stopAll =true;
     private boolean isGameOver = false;
     private GraphicsContext gc;
-    private Random random= new Random();
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

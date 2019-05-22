@@ -13,10 +13,10 @@ import java.io.IOException;
  * @author Mostafa Talaat
  */
 public class Files {
-    FilesManegement filesManegement = FilesManegement.getInstance();
+    private FilesManegement filesManegement = FilesManegement.getInstance();
 
-    Originator originator = new Originator();
-    CareTaker careTaker = new CareTaker();
+    private Originator originator = new Originator();
+    private CareTaker careTaker = new CareTaker();
 
     public void saveState(Controller controller) {
         originator.setState(controller);

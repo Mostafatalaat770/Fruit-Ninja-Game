@@ -25,7 +25,7 @@ public abstract class Throwable implements GameObject, Observer {
     private boolean leftToRight;
     private Image img1;
     private Image img2;
-    Controller controller=Controller.getInstance();
+    private Controller controller = Controller.getInstance();
 
     public Throwable() {
         controller.register(this);

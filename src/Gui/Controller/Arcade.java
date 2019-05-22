@@ -16,7 +16,6 @@ import javafx.util.Duration;
 import javax.sound.sampled.Clip;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -33,8 +32,7 @@ public class Arcade implements Initializable {
     @FXML private javafx.scene.text.Text score;
     private boolean stopAll = true ;
     private GraphicsContext gc;
-  boolean timeup = false;
-  private Random random= new Random();
+    private boolean timeup = false;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -82,7 +80,6 @@ public class Arcade implements Initializable {
                 		   try {
    							Thread.sleep(time.getMicrosecondLength()/3000);
    						} catch (InterruptedException e) {
-   							// TODO Auto-generated catch block
    							e.printStackTrace();
    						}
                            controller.playSound("game over", 0);

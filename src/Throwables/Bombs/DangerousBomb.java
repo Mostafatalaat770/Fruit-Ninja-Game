@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
  * @author Mostafa Talaat
  */
 public class DangerousBomb extends Bomb {
-    Controller controller = Controller.getInstance();
+    private Controller controller = Controller.getInstance();
 
     public DangerousBomb() {
         super();

@@ -10,7 +10,7 @@ import javax.sound.sampled.Clip;
  */
 public class FatalBomb extends Bomb {
 
-    Controller controller = Controller.getInstance();
+    private Controller controller = Controller.getInstance();
     public FatalBomb() {
         super();
         super.setImg1(new Image("Resources/Bomb.png", 75, 75, true, true));

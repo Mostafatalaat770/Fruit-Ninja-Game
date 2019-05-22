@@ -13,7 +13,7 @@ public class Player {
     private int arcadeScore;
     private int classicScore;
 
-    public Player(String username, int arcadeScore, int classicScore) {
+    Player(String username, int arcadeScore, int classicScore) {
         this.username = username;
         this.arcadeScore = arcadeScore;
         this.classicScore = classicScore;

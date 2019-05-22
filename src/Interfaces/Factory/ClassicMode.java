@@ -18,8 +18,8 @@ import java.util.Random;
  * @author Mostafa Talaat
  */
 public class ClassicMode implements GameMode {
-    Random rand = new Random();
-    Controller controller = Controller.getInstance();
+    private Random rand = new Random();
+    private Controller controller = Controller.getInstance();
 
     public GameObject createObject() {
         if (++controller.fatalBombRateControl % 7 == 0) {

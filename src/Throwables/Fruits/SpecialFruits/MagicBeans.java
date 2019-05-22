@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
  * @author Mostafa Talaat
  */
 public class MagicBeans extends SpecialFruit {
-Controller controller = Controller.getInstance();
+    private Controller controller = Controller.getInstance();
 
     public MagicBeans() {
         super();

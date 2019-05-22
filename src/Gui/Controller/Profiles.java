@@ -21,8 +21,8 @@ public class Profiles implements Initializable {
 @FXML private JFXButton logIn;
 @FXML private JFXButton signUp;
     Controller controller = Controller.getInstance();
-ArrayList<String> names= new ArrayList<>();
-ObservableList<String> usernames= FXCollections.observableArrayList();
+    private ArrayList<String> names = new ArrayList<>();
+    private ObservableList<String> usernames = FXCollections.observableArrayList();
 
 
     public void initialize(URL location, ResourceBundle resources) {
