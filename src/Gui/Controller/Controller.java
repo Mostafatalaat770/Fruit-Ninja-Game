@@ -56,6 +56,7 @@ public class Controller implements GameActions {
     public boolean personalScorePassed = false;
     public boolean highestScorePassed = false;
 
+
     public static Controller getInstance() {
         return ourInstance;
     }

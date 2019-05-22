@@ -50,8 +50,13 @@ public class Credits implements Initializable {
                 gc.fillText("stack over flow",15,y.get()+300);
                 gc.fillText("the new boston",15,y.get()+325);
                 gc.fillText("tim buchalka",15,y.get()+350);
-                gc.fillText("all content used are\ncopyrights of halfbrick co.",15,y.get()+450);
-                gc.fillText("programming 2 final\nproject",15,y.get()+550);
+                gc.fillText("special thanks to the\ngame testers:",15,y.get()+400);
+                gc.fillText("-youssef swidan-",15,y.get()+450);
+                gc.fillText("-mazen morsy-",15,y.get()+475);
+                gc.fillText("-ahmed essam-",15,y.get()+500);
+                gc.fillText("-ahmed talaat-",15,y.get()+525);
+                gc.fillText("all content used are\ncopyrights of halfbrick co.",15,y.get()+625);
+                gc.fillText("programming 2 final\nproject",15,y.get()+700);
                 y.getAndDecrement();
             }
         };
