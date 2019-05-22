@@ -46,7 +46,7 @@ public class Sound implements Command {
                 filename = "Game-over.wav";
                 break;
             case "pause":
-                filename = "pause.wav";
+                filename = "Pause.wav";
                 break;
             case "resume":
                 filename = "Unpause.wav";
