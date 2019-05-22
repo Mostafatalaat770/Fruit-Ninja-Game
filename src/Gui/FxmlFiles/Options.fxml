@@ -69,7 +69,7 @@
                      </image>
                   </ImageView>
                </children></AnchorPane>
-            <JFXToggleButton fx:id="soundToggle" layoutX="944.0" layoutY="326.0" text="sound" toggleColor="ORANGE" toggleLineColor="#1ca4b9" unToggleColor="ORANGE">
+            <JFXToggleButton fx:id="soundToggle" layoutX="944.0" layoutY="319.0" text="sound" toggleColor="ORANGE" toggleLineColor="#1ca4b9" unToggleColor="ORANGE">
                <font>
                   <Font name="Gang of Three" size="34.0" />
                </font></JFXToggleButton>

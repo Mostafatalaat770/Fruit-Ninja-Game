@@ -1,6 +1,6 @@
 package Gui.Controller;
 
-import Gui.Main;
+import Gui.SceneChanger;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -44,7 +44,7 @@ public class Credits implements Initializable {
                 gc.fillText("-Mostafa Talaat-", 15, y.get() + 125);
                 gc.fillText("-Seif Amr-", 15, y.get() + 150);
                 gc.fillText("Special thanks to:", 15, y.get() + 200);
-                gc.fillText("-Dr. Mervat Mikhail-", 50, y.get() + 225);
+                gc.fillText("-Dr. Mervat Mikhail-", 55, y.get() + 225);
                 gc.fillText("all the teaching committee",15,y.get()+250);
                 gc.fillText("piazza.com",15,y.get()+275);
                 gc.fillText("Stack Overflow", 15, y.get() + 300);
@@ -66,9 +66,9 @@ public class Credits implements Initializable {
        back.setOnMouseClicked(event -> {
            timer.stop();
            controller.playSound("press", 0);
-           Main main = new Main();
+           SceneChanger sceneChanger=new SceneChanger();
            try {
-               main.getOptions(event);
+               sceneChanger.getOptions(event);
            } catch (IOException e) {
                e.printStackTrace();
            }

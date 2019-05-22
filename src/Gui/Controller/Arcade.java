@@ -1,8 +1,6 @@
 package Gui.Controller;
 
-import Gui.Main;
-import Interfaces.GameObject;
-import Throwables.Bombs.Bomb;
+import Gui.SceneChanger;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -49,22 +47,12 @@ public class Arcade implements Initializable {
         gc=canvas.getGraphicsContext2D();
         
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
-            if(controller.throwables.size()<6) {
-            
-            	for(int i=0;i<1+random.nextInt(5);i++){
-            		GameObject temp = controller.getRandomThrowable();
-                    controller.throwables.add(temp);
-                    if(temp instanceof Bomb)
-                        controller.playSound("throw bomb", 0);
-                    else
-                        controller.playSound("throw fruit", 0);
-                }
-            }
+           controller.getThrowables();
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
-        canvas.setOnMouseMoved(event -> {
+        canvas.setOnMouseDragged(event -> {
             if(stopAll)
 				try {
 					controller.slice(event.getSceneX(),event.getSceneY());
@@ -215,9 +203,8 @@ public class Arcade implements Initializable {
                 timeline.stop();
                 timer.stop();
                 clock.stop();
-                Main main = new Main();
-                try {
-                    main.getMainMenu(event);
+SceneChanger sceneChanger=new SceneChanger();try {
+                    sceneChanger.getMainMenu(event);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

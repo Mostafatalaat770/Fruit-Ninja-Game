@@ -23,6 +23,7 @@ import javax.sound.sampled.Clip;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -56,6 +57,8 @@ public class Controller implements GameActions {
     Image background = new Image("Resources/wallpaper1.jpg", 1270, 720, true, true);
     public boolean personalScorePassed = false;
     public boolean highestScorePassed = false;
+    private Random random=new Random();
+    public boolean touchFunctionality = false;
 
 
     public static Controller getInstance() {
@@ -305,6 +308,44 @@ public class Controller implements GameActions {
         while (size-- > 0)
             observers.get(size).update();
     }
+
+    public void getThrowables(){
+      if(type.equals("arcade")){
+          if(throwables.size()<6) {
+
+              for(int i=0;i<1+random.nextInt(5);i++){
+                  GameObject temp = getRandomThrowable();
+                  throwables.add(temp);
+                  if(temp instanceof Bomb)
+                      playSound("throw bomb", 0);
+                  else
+                      playSound("throw fruit", 0);
+              }
+          }
+      }else if(type.equals("classic")) {
+          if(throwables.size()<6) {
+              if(difficulty>1){
+                  for (int i=0;i<1+random.nextInt(3);i++){
+                      GameObject temp = getRandomThrowable();
+                      throwables.add(temp);
+                      if(temp instanceof Bomb)
+                          playSound("throw bomb", 0);
+                      else
+                          playSound("throw fruit", 0);
+                  }
+              }
+              else{
+                  GameObject temp = getRandomThrowable();
+                  throwables.add(temp);
+                  if(temp instanceof Bomb)
+                      playSound("throw bomb", 0);
+                  else
+                      playSound("throw fruit", 0);
+              }
+          }
+      }
+    }
+
 
 }
 

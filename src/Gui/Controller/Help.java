@@ -1,6 +1,6 @@
 package Gui.Controller;
 
-import Gui.Main;
+import Gui.SceneChanger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
@@ -18,9 +18,9 @@ public class Help implements Initializable {
 
         back.setOnMouseClicked(event -> {
             controller.playSound("press", 0);
-            Main main = new Main();
+            SceneChanger sceneChanger=new SceneChanger();
             try {
-                main.getOptions(event);
+                sceneChanger.getOptions(event);
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -1,8 +1,6 @@
 package Gui.Controller;
 
-import Gui.Main;
-import Interfaces.GameObject;
-import Throwables.Bombs.Bomb;
+import Gui.SceneChanger;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -50,26 +48,7 @@ public class Classic implements Initializable {
         gc=canvas.getGraphicsContext2D();
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
-            if(controller.throwables.size()<6) {
-            if(controller.difficulty>1){
-                for (int i=0;i<1+random.nextInt(3);i++){
-                    GameObject temp = controller.getRandomThrowable();
-                    controller.throwables.add(temp);
-                    if(temp instanceof Bomb)
-                        controller.playSound("throw bomb", 0);
-                    else
-                        controller.playSound("throw fruit", 0);
-                }
-            }
-            else{
-                GameObject temp = controller.getRandomThrowable();
-                controller.throwables.add(temp);
-                if(temp instanceof Bomb)
-                    controller.playSound("throw bomb", 0);
-                else
-                    controller.playSound("throw fruit", 0);
-            }
-            }
+          controller.getThrowables();
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
@@ -81,7 +60,7 @@ public class Classic implements Initializable {
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
 
-        canvas.setOnMouseMoved(event -> {
+        canvas.setOnMouseDragged(event -> {
             if(stopAll)
 				try {
 					controller.slice(event.getSceneX(),event.getSceneY());
@@ -219,9 +198,9 @@ public class Classic implements Initializable {
                 timeline.stop();
                 timer.stop();
                 clock.stop();
-                Main main = new Main();
+                SceneChanger sceneChanger=new SceneChanger();
                 try {
-                    main.getMainMenu(event);
+                    sceneChanger.getMainMenu(event);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

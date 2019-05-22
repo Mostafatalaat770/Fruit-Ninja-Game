@@ -1,7 +1,7 @@
 package Gui.Controller;
 
 
-import Gui.Main;
+import Gui.SceneChanger;
 import Interfaces.Factory.ArcadeMode;
 import Interfaces.Factory.ClassicMode;
 import Interfaces.Strategy.Strategy;
@@ -48,9 +48,10 @@ public class Leaderboard implements Initializable {
 
         back.setOnMouseClicked(event -> {
             controller.playSound("press", 0);
-            Main main = new Main();
+            SceneChanger sceneChanger=new SceneChanger();
             try {
-                main.getMainMenu(event);
+
+                sceneChanger.getMainMenu(event);
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -1,6 +1,6 @@
 package Gui.Controller;
 
-import Gui.Main;
+import Gui.SceneChanger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,8 +15,7 @@ import java.util.ResourceBundle;
 public class Options implements Initializable {
 
     Controller controller=Controller.getInstance();
-    @FXML
-    private ToggleButton soundToggle;
+    @FXML private ToggleButton soundToggle;
     @FXML private ImageView wallpaper1;
     @FXML private ImageView wallpaper2;
     @FXML private ImageView wallpaper3;
@@ -38,9 +37,9 @@ public class Options implements Initializable {
 
         back.setOnMouseClicked(event -> {
             controller.playSound("press", 0);
-            Main main = new Main();
+            SceneChanger sceneChanger=new SceneChanger();
             try {
-                main.getMainMenu(event);
+                sceneChanger.getMainMenu(event);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -49,9 +48,9 @@ public class Options implements Initializable {
 
         help.setOnMouseClicked(event -> {
             controller.playSound("press", 0);
-            Main main = new Main();
+            SceneChanger sceneChanger=new SceneChanger();
             try {
-                main.getHelp(event);
+                sceneChanger.getHelp(event);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -59,9 +58,9 @@ public class Options implements Initializable {
 
         credits.setOnMouseClicked(event -> {
             controller.playSound("press", 0);
-            Main main = new Main();
+            SceneChanger sceneChanger=new SceneChanger();
             try {
-                main.getCredits(event);
+                sceneChanger.getCredits(event);
             } catch (IOException e) {
                 e.printStackTrace();
             }

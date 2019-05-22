@@ -1,6 +1,6 @@
 package Gui.Controller;
 
-import Gui.Main;
+import Gui.SceneChanger;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
@@ -42,9 +42,9 @@ ObservableList<String> usernames= FXCollections.observableArrayList();
                 controller.setUser(usernameCombobox.getValue());//brings the chosen name
                 //goes to main screeen
                 controller.playSound("press", 0);
-                Main main = new Main();
+                SceneChanger sceneChanger=new SceneChanger();
                 try {
-                    main.getMainMenu(event);
+                    sceneChanger.getMainMenu(event);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -64,9 +64,9 @@ ObservableList<String> usernames= FXCollections.observableArrayList();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Main main = new Main();
+                SceneChanger sceneChanger=new SceneChanger();
                 try {
-                    main.getMainMenu(event);
+                    sceneChanger.getMainMenu(event);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
