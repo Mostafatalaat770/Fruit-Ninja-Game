@@ -2,6 +2,7 @@ package FilesManegement;
 
 import Gui.Controller.Controller;
 import Interfaces.GameObject;
+import Observer.Observer;
 import Throwables.Bombs.DangerousBomb;
 import Throwables.Bombs.FatalBomb;
 import Throwables.Fruits.Apple;
@@ -21,7 +22,6 @@ import org.jdom2.output.XMLOutputter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.Clock;
 import java.util.List;
 
 /**
@@ -241,6 +241,9 @@ public class FilesManegement {
             object.setLeftToRight(leftToRight);
             object.setMovedOffScreen(movedOffScreen);
             controller.throwables.add(object);
+            if (object.isSliced()) {
+                controller.unregister((Observer) controller.throwables.get(controller.throwables.size() - 1));
+            }
         }
     }
 
