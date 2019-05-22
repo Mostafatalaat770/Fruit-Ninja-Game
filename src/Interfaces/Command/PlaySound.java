@@ -1,7 +1,6 @@
 package Interfaces.Command;
 
 import Gui.Controller.Controller;
-import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
 
 import javax.sound.sampled.AudioSystem;
@@ -13,27 +12,15 @@ import java.io.IOException;
 /**
  * @author Mostafa Talaat
  */
-public class Sound implements Command {
-    @FXML
-    Controller controller = Controller.getInstance();
-
-    public void toggleSound(ToggleButton soundToggle) {
-        controller.sound = soundToggle.isSelected();
-        controller.gameStart.loop(Clip.LOOP_CONTINUOUSLY);
-        if (controller.sound)
-            controller.gameStart.start();
-        else
-            controller.gameStart.stop();
-    }
-
+public class PlaySound implements Command {
     @Override
     public void execute(ToggleButton toggleButton) {
-        toggleSound(toggleButton);
 
     }
 
     @Override
     public Clip play(String type, int duration) {
+        Controller controller = Controller.getInstance();
         String filename = null;
         switch (type) {
             case "main theme":
@@ -86,6 +73,12 @@ public class Sound implements Command {
             case "slice":
                 filename = "pome-slice-1.wav";
                 break;
+            case "lose life":
+                filename = "gank.wav";
+                break;
+            case "combo":
+                filename = "Combo.wav";
+                break;
         }
         Clip clip = null;
         try {
@@ -109,4 +102,5 @@ public class Sound implements Command {
         }
         return clip;
     }
+
 }

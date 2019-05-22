@@ -1,6 +1,5 @@
 package Interfaces.Command;
 
-import Gui.Controller.Controller;
 import javafx.scene.control.ToggleButton;
 
 import javax.sound.sampled.Clip;
@@ -19,7 +18,7 @@ public class Invoker {
         command.execute(toggleButton);
     }
 
-    public Clip playSound(String type, int duration, Controller controller) {
+    public Clip playSound(String type, int duration) {
         return command.play(type, duration);
     }
 }

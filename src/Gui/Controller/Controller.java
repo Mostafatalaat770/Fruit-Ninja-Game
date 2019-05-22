@@ -2,7 +2,8 @@ package Gui.Controller;
 
 import Interfaces.Command.Command;
 import Interfaces.Command.Invoker;
-import Interfaces.Command.Sound;
+import Interfaces.Command.PlaySound;
+import Interfaces.Command.ToggleSound;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
 import Interfaces.Memento.Files;
@@ -148,8 +149,10 @@ public class Controller implements GameActions {
                 iterator.remove();
             } else if (throwable.hasMovedOffScreen() && !throwable.isSliced() && !(throwable instanceof Bomb)) {
                 iterator.remove();
-                if (lives > 0)
+                if (lives > 0) {
+                    playSound("lose life", 0);
                     lives--;
+                }
             } else if (throwable.hasMovedOffScreen()) {
                 iterator.remove();
             }
@@ -277,9 +280,9 @@ public class Controller implements GameActions {
     }
 
     public Clip playSound(String type, int duration) {
-        Command playSound = new Sound();
+        Command playSound = new PlaySound();
         invoker.setCommand(playSound);
-        return invoker.playSound(type, duration, getInstance());
+        return invoker.playSound(type, duration);
     }
 
     public void comboCountdown() {
@@ -287,7 +290,7 @@ public class Controller implements GameActions {
             comboTimer++;
             if (comboTimer == 1) {
                 if (comboChecker > 2) {
-                    // TODO: 21-May-19 add combo sound
+                    playSound("combo", 0);
                     score += comboChecker;
                 }
                 comboChecker = 0;
@@ -300,7 +303,7 @@ public class Controller implements GameActions {
 
 
     public void toggleSound(ToggleButton toggleButton) {
-        Command toggleSound = new Sound();
+        Command toggleSound = new ToggleSound();
         invoker.setCommand(toggleSound);
         invoker.execute(toggleButton);
     }
