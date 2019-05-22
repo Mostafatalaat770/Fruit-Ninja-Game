@@ -1,9 +1,11 @@
 package Gui;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -13,6 +15,8 @@ public class SceneChanger {
     public void getArcade(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Arcade.fxml"));
         Scene arcadeScene = new Scene(root, 1270, 720);
+        Image image = new Image("file:dot_PNG40.png"); 
+        arcadeScene.setCursor(new ImageCursor(image));
         Stage arcadeWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         arcadeWindow.setScene(arcadeScene);
         arcadeWindow.show();
@@ -28,6 +32,8 @@ public class SceneChanger {
     public void getClassic(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Classic.fxml"));
         Scene classicScene = new Scene(root, 1270, 720);
+        Image image = new Image("file:dot_PNG40.png"); 
+        classicScene.setCursor(new ImageCursor(image));
         Stage classicWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         classicWindow.setScene(classicScene);
         classicWindow.show();
