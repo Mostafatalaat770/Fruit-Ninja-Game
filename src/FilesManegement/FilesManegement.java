@@ -194,7 +194,7 @@ public class FilesManegement {
     }
 
     public void loadGame(Controller controller) throws JDOMException, IOException {
-        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Saves" + File.separator + controller.usersDB.getPlayer().getUsername() + File.separator + controller.type + ".txt");
+        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/players" + File.separator + controller.usersDB.getPlayer().getUsername() + File.separator + "Saves" + File.separator + controller.type + ".txt");
         SAXBuilder saxBuilder = new SAXBuilder();
         Document document = saxBuilder.build(inputFile);
         Element classElement = document.getRootElement();

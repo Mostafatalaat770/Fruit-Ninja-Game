@@ -15,7 +15,6 @@ import UsersDB.UsersDB;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import org.jdom2.JDOMException;
@@ -54,7 +53,6 @@ public class Controller implements GameActions {
     private Files files = new Files();
     private Invoker invoker = new Invoker();
     private ArrayList<Observer> observers = new ArrayList<Observer>();
-    Image background = new Image("Resources/wallpaper1.jpg", 1270, 720, true, true);
     private boolean personalScorePassed = false;
     private boolean highestScorePassed = false;
     private Random random=new Random();
@@ -121,7 +119,10 @@ public class Controller implements GameActions {
     void setUser(String username) throws JDOMException, IOException {
         usersDB.setPlayer(username);
         files.loadSettings(getInstance());
-        //TODO set booleans after load
+        if (!settings.getSounds().isMusic()) {
+            settings.getSounds().getMainTheme().stop();
+        }
+        settings.changeBackground(settings.getBackgrounds().getID());
     }
 
     @Override

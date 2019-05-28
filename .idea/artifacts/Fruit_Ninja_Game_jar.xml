@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Fruit Ninja Game:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Fruit_Ninja_Game_jar</output-path>
+    <root id="archive" name="Fruit Ninja Game.jar">
+      <element id="module-output" name="Fruit Ninja Game" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../River Crossing Game(with Ahmed Swidan, Abdelrahman Zaghlol)/libs/jdom-2.0.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../River Crossing Game(with Ahmed Swidan, Abdelrahman Zaghlol)/libs/jfoenix-8.0.8.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
