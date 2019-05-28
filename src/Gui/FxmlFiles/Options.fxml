@@ -7,91 +7,83 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.*?>
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.Options">
-   <children>
-      <ImageView fx:id="background" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-             <Image url="@/mainWallpaper.jpg"/>
-         </image>
-         <!--         <effect>-->
-         <!--            <GaussianBlur radius="50.0" />-->
-         <!--         </effect>-->
-      </ImageView>
-      <AnchorPane prefHeight="720.0" prefWidth="1280.0">
-         <children>
-            <AnchorPane layoutX="63.0" layoutY="28.0" prefHeight="653.0" prefWidth="714.0" style="-fx-background-color: orange; -fx-background-radius: 20;">
-               <children>
-                  <Text layoutX="163.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="please select a wallpaper">
-                     <font>
-                        <Font name="Gang of Three" size="29.0" />
-                     </font></Text>
-                  <ImageView fx:id="wallpaper2" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                         <Image url="@/wallpaper2.jpg"/>
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="wallpaper1" fitHeight="133.0" fitWidth="213.0" layoutX="35.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                         <Image url="@/wallpaper1.jpg"/>
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="wallpaper3" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                         <Image url="@/wallpaper3.png"/>
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="wallpaper4" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                         <Image url="@/wallpaper4.png"/>
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="wallpaper5" fitHeight="133.0" fitWidth="213.0" layoutX="445.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                         <Image url="@/wallpaper5.png"/>
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="wallpaper6" fitHeight="133.0" fitWidth="213.0" layoutX="445.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                         <Image url="@/wallpaper6.png"/>
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="wallpaper7" fitHeight="133.0" fitWidth="213.0" layoutX="445.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                         <Image url="@/wallpaper7.png"/>
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="wallpaper8" fitHeight="133.0" fitWidth="213.0" layoutX="445.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                         <Image url="@/wallpaper8.png"/>
-                     </image>
-                  </ImageView>
-               </children></AnchorPane>
-            <JFXToggleButton fx:id="soundToggle" layoutX="944.0" layoutY="319.0" text="Music" toggleColor="ORANGE"
-                             toggleLineColor="#1ca4b9" unToggleColor="ORANGE">
-               <font>
-                  <Font name="Gang of Three" size="34.0" />
-               </font></JFXToggleButton>
-            <ImageView fx:id="back" fitHeight="72.0" fitWidth="74.0" layoutX="1143.0" layoutY="609.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                   <Image url="@/back.png"/>
-               </image>
-            </ImageView>
-            <JFXButton fx:id="help" buttonType="RAISED" layoutX="1090.0" layoutY="28.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="127.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="help?">
-               <font>
-                  <Font name="Gang of Three" size="21.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="credits" buttonType="RAISED" layoutX="936.0" layoutY="28.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="127.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="credits">
-               <font>
-                  <Font name="Gang of Three" size="21.0" />
-               </font>
-            </JFXButton>
-            <JFXToggleButton fx:id="FXToggle" layoutX="944.0" layoutY="376.0" text="FX" textAlignment="CENTER"
-                             toggleColor="ORANGE" toggleLineColor="#1ca4b9" unToggleColor="ORANGE">
-               <font>
-                  <Font name="Gang of Three" size="34.0"/>
-               </font>
-            </JFXToggleButton>
-         </children>
+   <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+      <!--         <effect>-->
+      <!--            <GaussianBlur radius="50.0" />-->
+      <!--         </effect>-->
+      <Image url="@/mainWallpaper.jpg"/>
+   </ImageView>
+   <AnchorPane prefHeight="720.0" prefWidth="1280.0">
+      <AnchorPane layoutX="63.0" layoutY="28.0" prefHeight="653.0" prefWidth="714.0"
+                  style="-fx-background-color: orange; -fx-background-radius: 20;">
+         <Text fx:id="text1" layoutX="163.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0"
+               text="please select a wallpaper">
+            <font>
+               <Font name="Gang of Three" size="29.0"/>
+            </font>
+         </Text>
+         <ImageView fx:id="wallpaper2" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="219.0"
+                    pickOnBounds="true" preserveRatio="true">
+            <Image url="@/wallpaper2.jpg"/>
+         </ImageView>
+         <ImageView fx:id="wallpaper1" fitHeight="133.0" fitWidth="213.0" layoutX="35.0" layoutY="80.0"
+                    pickOnBounds="true" preserveRatio="true">
+            <Image url="@/wallpaper1.jpg"/>
+         </ImageView>
+         <ImageView fx:id="wallpaper3" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="354.0"
+                    pickOnBounds="true" preserveRatio="true">
+            <Image url="@/wallpaper3.png"/>
+         </ImageView>
+         <ImageView fx:id="wallpaper4" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="492.0"
+                    pickOnBounds="true" preserveRatio="true">
+            <Image url="@/wallpaper4.png"/>
+         </ImageView>
+         <ImageView fx:id="wallpaper5" fitHeight="133.0" fitWidth="213.0" layoutX="445.0" layoutY="80.0"
+                    pickOnBounds="true" preserveRatio="true">
+            <Image url="@/wallpaper5.png"/>
+         </ImageView>
+         <ImageView fx:id="wallpaper6" fitHeight="133.0" fitWidth="213.0" layoutX="445.0" layoutY="219.0"
+                    pickOnBounds="true" preserveRatio="true">
+            <Image url="@/wallpaper6.png"/>
+         </ImageView>
+         <ImageView fx:id="wallpaper7" fitHeight="133.0" fitWidth="213.0" layoutX="445.0" layoutY="354.0"
+                    pickOnBounds="true" preserveRatio="true">
+            <Image url="@/wallpaper7.png"/>
+         </ImageView>
+         <ImageView fx:id="wallpaper8" fitHeight="133.0" fitWidth="213.0" layoutX="445.0" layoutY="492.0"
+                    pickOnBounds="true" preserveRatio="true">
+            <Image url="@/wallpaper8.png"/>
+         </ImageView>
       </AnchorPane>
-   </children>
+      <JFXToggleButton fx:id="soundToggle" layoutX="944.0" layoutY="319.0" text="Music" toggleColor="ORANGE"
+                       toggleLineColor="#1ca4b9" unToggleColor="ORANGE">
+         <font>
+            <Font name="Gang of Three" size="34.0"/>
+         </font>
+      </JFXToggleButton>
+      <ImageView fx:id="back" fitHeight="72.0" fitWidth="74.0" layoutX="1143.0" layoutY="609.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@/back.png"/>
+      </ImageView>
+      <JFXButton fx:id="help" buttonType="RAISED" layoutX="1090.0" layoutY="28.0" mnemonicParsing="false"
+                 prefHeight="43.0" prefWidth="127.0" style="-fx-background-color: orange; -fx-background-radius: 200;"
+                 text="help?">
+         <font>
+            <Font name="Gang of Three" size="21.0"/>
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="credits" buttonType="RAISED" layoutX="936.0" layoutY="28.0" mnemonicParsing="false"
+                 prefHeight="43.0" prefWidth="127.0" style="-fx-background-color: orange; -fx-background-radius: 200;"
+                 text="credits">
+         <font>
+            <Font name="Gang of Three" size="21.0"/>
+         </font>
+      </JFXButton>
+      <JFXToggleButton fx:id="FXToggle" layoutX="944.0" layoutY="376.0" text="FX" textAlignment="CENTER"
+                       toggleColor="ORANGE" toggleLineColor="#1ca4b9" unToggleColor="ORANGE">
+         <font>
+            <Font name="Gang of Three" size="34.0"/>
+         </font>
+      </JFXToggleButton>
+   </AnchorPane>
 </StackPane>

@@ -6,85 +6,81 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.*?>
-<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.MainMenu">
-   <children>
-      <ImageView fitHeight="751.0" fitWidth="1287.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-             <Image url="@/mainWallpaper.jpg"/>
-         </image>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+           minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0"
+           xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="Gui.Controller.MainMenu">
+   <ImageView fitHeight="751.0" fitWidth="1287.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@/mainWallpaper.jpg"/>
+   </ImageView>
+   <AnchorPane fx:id="anchor" prefHeight="379.0" prefWidth="786.0">
+      <ImageView fx:id="slicedbanana_bottom" fitHeight="161.0" fitWidth="173.0" layoutX="201.0" layoutY="508.0"
+                 pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 50;" visible="false">
+         <Image url="@/Banana-bottom.png"/>
       </ImageView>
-      <AnchorPane fx:id="anchor" prefHeight="379.0" prefWidth="786.0">
-         <children>
-            <ImageView fx:id="slicedbanana_bottom" fitHeight="161.0" fitWidth="173.0" layoutX="201.0" layoutY="508.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 50;" visible="false">
-               <image>
-                   <Image url="@/Banana-bottom.png"/>
-               </image>
-            </ImageView>
-            <ImageView fx:id="classic_img" fitHeight="110.0" fitWidth="110.0" layoutX="68.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
-               <effect>
-                  <Glow />
-               </effect>
-               <image>
-                   <Image url="@/Classic.png"/>
-               </image>
-            </ImageView>
-            <ImageView fx:id="arcade_img" fitHeight="110.0" fitWidth="110.0" layoutX="220.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
-               <effect>
-                  <Glow />
-               </effect>
-               <image>
-                   <Image url="@/Arcade.png"/>
-               </image>
-            </ImageView>
-            <ImageView fx:id="exit_img" fitHeight="108.0" fitWidth="110.0" layoutX="1120.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 40;">
-               <effect>
-                  <Glow />
-               </effect>
-               <image>
-                   <Image url="@/Bomb.png"/>
-               </image>
-            </ImageView>
-            <ImageView fx:id="slicedmelon_right" fitHeight="64.0" fitWidth="79.0" layoutX="91.0" layoutY="551.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 50;" visible="false">
-               <image>
-                   <Image url="@/halfWatermelon.png"/>
-               </image>
-            </ImageView>
-            <ImageView fx:id="slicedmelon_left" fitHeight="64.0" fitWidth="79.0" layoutX="75.0" layoutY="551.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 230;" visible="false">
-               <image>
-                   <Image url="@/halfWatermelon.png"/>
-               </image>
-            </ImageView>
-            <ImageView fx:id="slicedbanana_top" fitHeight="188.0" fitWidth="185.0" layoutX="221.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 70;" visible="false">
-               <image>
-                   <Image url="@/Banana-top.png"/>
-               </image>
-            </ImageView>
-            <JFXButton fx:id="loadArcade" buttonType="RAISED" layoutX="71.0" layoutY="39.0" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="arcade">
-               <font>
-                  <Font name="Gang of Three" size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="loadClassic" buttonType="RAISED" layoutX="71.0" layoutY="39.0" prefHeight="35.0" prefWidth="84.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="classic">
-               <font>
-                  <Font name="Gang of Three" size="14.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="load" buttonType="RAISED" layoutX="71.0" layoutY="35.0" onAction="#loadButton" prefHeight="43.0" prefWidth="163.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="LOAD GAME">
-               <font>
-                  <Font name="Gang of Three" size="22.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="options" buttonType="RAISED" layoutX="1095.0" layoutY="35.0" prefHeight="43.0" prefWidth="110.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="options">
-               <font>
-                  <Font name="Gang of Three" size="22.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="leaderboard" buttonType="RAISED" layoutX="900.0" layoutY="35.0" prefHeight="43.0" prefWidth="180.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="leaderboard">
-               <font>
-                  <Font name="Gang of Three" size="22.0" />
-               </font>
-            </JFXButton>
-         </children>
-      </AnchorPane>
-   </children>
+      <ImageView fx:id="classic_img" fitHeight="110.0" fitWidth="110.0" layoutX="68.0" layoutY="540.0"
+                 pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <Glow/>
+         </effect>
+         <Image url="@/Classic.png"/>
+      </ImageView>
+      <ImageView fx:id="arcade_img" fitHeight="110.0" fitWidth="110.0" layoutX="220.0" layoutY="540.0"
+                 pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <Glow/>
+         </effect>
+         <Image url="@/Arcade.png"/>
+      </ImageView>
+      <ImageView fx:id="exit_img" fitHeight="108.0" fitWidth="110.0" layoutX="1120.0" layoutY="541.0"
+                 pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 40;">
+         <effect>
+            <Glow/>
+         </effect>
+         <Image url="@/Bomb.png"/>
+      </ImageView>
+      <ImageView fx:id="slicedmelon_right" fitHeight="64.0" fitWidth="79.0" layoutX="91.0" layoutY="551.0"
+                 pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 50;" visible="false">
+         <Image url="@/halfWatermelon.png"/>
+      </ImageView>
+      <ImageView fx:id="slicedmelon_left" fitHeight="64.0" fitWidth="79.0" layoutX="75.0" layoutY="551.0"
+                 pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 230;" visible="false">
+         <Image url="@/halfWatermelon.png"/>
+      </ImageView>
+      <ImageView fx:id="slicedbanana_top" fitHeight="188.0" fitWidth="185.0" layoutX="221.0" layoutY="491.0"
+                 pickOnBounds="true" preserveRatio="true" style="-fx-rotate: 70;" visible="false">
+         <Image url="@/Banana-top.png"/>
+      </ImageView>
+      <JFXButton fx:id="loadArcade" buttonType="RAISED" layoutX="71.0" layoutY="39.0" prefHeight="35.0"
+                 prefWidth="84.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="arcade">
+         <font>
+            <Font name="Gang of Three" size="14.0"/>
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="loadClassic" buttonType="RAISED" layoutX="71.0" layoutY="39.0" prefHeight="35.0"
+                 prefWidth="84.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="classic">
+         <font>
+            <Font name="Gang of Three" size="14.0"/>
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="load" buttonType="RAISED" layoutX="71.0" layoutY="35.0" onAction="#loadButton"
+                 prefHeight="43.0" prefWidth="163.0"
+                 style="-fx-background-color: orange; -fx-background-radius: 200;" text="LOAD GAME">
+         <font>
+            <Font name="Gang of Three" size="22.0"/>
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="options" buttonType="RAISED" layoutX="1095.0" layoutY="35.0" prefHeight="43.0"
+                 prefWidth="110.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="options">
+         <font>
+            <Font name="Gang of Three" size="22.0"/>
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="leaderboard" buttonType="RAISED" layoutX="900.0" layoutY="35.0" prefHeight="43.0"
+                 prefWidth="180.0" style="-fx-background-color: orange; -fx-background-radius: 200;"
+                 text="leaderboard">
+         <font>
+            <Font name="Gang of Three" size="22.0"/>
+         </font>
+      </JFXButton>
+   </AnchorPane>
 </StackPane>
