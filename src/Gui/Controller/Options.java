@@ -1,11 +1,11 @@
 package Gui.Controller;
 
 import Gui.SceneChanger;
+import com.jfoenix.controls.JFXToggleButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
@@ -16,6 +16,8 @@ public class Options implements Initializable {
 
     Controller controller=Controller.getInstance();
     @FXML private ToggleButton soundToggle;
+    @FXML
+    private JFXToggleButton FXToggle;
     @FXML private ImageView wallpaper1;
     @FXML private ImageView wallpaper2;
     @FXML private ImageView wallpaper3;
@@ -32,11 +34,18 @@ public class Options implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        soundToggle.setSelected(controller.sound);
+        soundToggle.setSelected(controller.settings.getSounds().isMusic());
+        FXToggle.setSelected(controller.settings.getSounds().isFx());
         soundToggle.setOnMouseClicked(event -> controller.toggleSound(soundToggle));
+        FXToggle.setOnMouseClicked(event -> controller.settings.getSounds().setFx(FXToggle.isSelected()));
 
         back.setOnMouseClicked(event -> {
             controller.playSound("press", 0);
+            try {
+                controller.saveSettings();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             SceneChanger sceneChanger=new SceneChanger();
             try {
                 sceneChanger.getMainMenu(event);
@@ -67,39 +76,39 @@ public class Options implements Initializable {
         });
 
         wallpaper1.setOnMouseClicked(event -> {
-            controller.background=new Image("Resources/wallpaper1.jpg");
+            controller.background = controller.settings.changeBackground(1);
             controller.playSound("equip wallpaper", 0);
         });
         wallpaper2.setOnMouseClicked(event -> {
-            controller.background=new Image("Resources/wallpaper2.jpg");
+            controller.background = controller.settings.changeBackground(2);
             controller.playSound("equip wallpaper", 0);
         });
         wallpaper3.setOnMouseClicked(event -> {
-            controller.background=new Image("Resources/wallpaper3.png");
+            controller.background = controller.settings.changeBackground(3);
             controller.playSound("equip wallpaper", 0);
         });
         wallpaper4.setOnMouseClicked(event -> {
-            controller.background=new Image("Resources/wallpaper4.png");
+            controller.background = controller.settings.changeBackground(4);
             controller.playSound("equip wallpaper", 0);
         });
 
         wallpaper5.setOnMouseClicked(event -> {
-            controller.background=new Image("Resources/wallpaper5.png");
+            controller.background = controller.settings.changeBackground(5);
             controller.playSound("equip wallpaper", 0);
         });
 
         wallpaper6.setOnMouseClicked(event -> {
-            controller.background=new Image("Resources/wallpaper6.png");
+            controller.background = controller.settings.changeBackground(6);
             controller.playSound("equip wallpaper", 0);
         });
 
         wallpaper7.setOnMouseClicked(event -> {
-            controller.background=new Image("Resources/wallpaper7.png");
+            controller.background = controller.settings.changeBackground(7);
             controller.playSound("equip wallpaper", 0);
         });
 
         wallpaper8.setOnMouseClicked(event -> {
-            controller.background=new Image("Resources/wallpaper8.png");
+            controller.background = controller.settings.changeBackground(8);
             controller.playSound("equip wallpaper", 0);
         });
     }

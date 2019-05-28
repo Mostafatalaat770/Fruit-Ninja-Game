@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import org.jdom2.JDOMException;
 
+import javax.sound.sampled.Clip;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class Profiles implements Initializable {
         } catch (JDOMException | IOException e) {
             e.printStackTrace();
         }
+        controller.playSound("main theme", Clip.LOOP_CONTINUOUSLY);
         for (int i=0;i<controller.usersDB.getPlayers().size();i++){
             names.add(controller.usersDB.getPlayers().get(i).getUsername());
         }
@@ -39,7 +41,11 @@ public class Profiles implements Initializable {
 
         logIn.setOnMouseClicked(event -> {
             if (usernameCombobox.getValue() != null) {
-                controller.setUser(usernameCombobox.getValue());//brings the chosen name
+                try {
+                    controller.setUser(usernameCombobox.getValue());//brings the chosen name
+                } catch (JDOMException | IOException e) {
+                    e.printStackTrace();
+                }
                 //goes to main screeen
                 controller.playSound("press", 0);
                 SceneChanger sceneChanger=new SceneChanger();
@@ -57,6 +63,10 @@ public class Profiles implements Initializable {
             if (controller.usersDB.verify(usernameTextField.getText())) {
                 controller.usersDB.addUser(usernameTextField.getText(), 0, 0);
                 controller.usersDB.setPlayer(usernameTextField.getText());
+                controller.settings.getSounds().setMusic(true);
+                controller.settings.getSounds().setFx(true);
+                controller.settings.changeBackground(1);
+
                 // goes to main menu
                 controller.playSound("press", 0);
                 try {

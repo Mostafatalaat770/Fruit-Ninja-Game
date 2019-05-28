@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -80,8 +79,8 @@ public class Classic implements Initializable {
                     stopAll =false;
                     timeline.stop();
                     clock.stop();
-                    canvas.setEffect(new GaussianBlur(50));
-                    background.setEffect(new GaussianBlur(50));
+//                    canvas.setEffect(new GaussianBlur(50));
+//                    background.setEffect(new GaussianBlur(50));
                     gameOver.setText("game over");
                     score.setText("score: " + controller.score);
                     pause.setVisible(false);
@@ -108,19 +107,19 @@ public class Classic implements Initializable {
             timeline.stop();
             timer.stop();
             clock.stop();
-            canvas.setEffect(new GaussianBlur(50));
-            background.setEffect(new GaussianBlur(50));
+//            canvas.setEffect(new GaussianBlur(50));
+//            background.setEffect(new GaussianBlur(50));
         });
 
         resume.setOnMouseClicked(event -> {
             if(resume.isVisible()){
-                controller.playSound("resume", 0);
+                controller.playSound("resumeMusic", 0);
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
                 back.setVisible(false);
-                canvas.setEffect(new GaussianBlur(-50));
-                background.setEffect(new GaussianBlur(-50));
+//                canvas.setEffect(new GaussianBlur(-50));
+//                background.setEffect(new GaussianBlur(-50));
                 AtomicInteger seconds= new AtomicInteger();
                 Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
                     controller.drawAllThings(gc);
@@ -142,14 +141,14 @@ public class Classic implements Initializable {
 
         reset.setOnMouseClicked(event -> {
             if(reset.isVisible()){
-                controller.playSound("resume", 0);
+                controller.playSound("resumeMusic", 0);
                 resume.setVisible(false);
                 reset.setVisible(false);
                 save.setVisible(false);
                 back.setVisible(false);
                 pause.setVisible(true);
-                canvas.setEffect(new GaussianBlur(-50));
-                background.setEffect(new GaussianBlur(-50));
+//                canvas.setEffect(new GaussianBlur(-50));
+//                background.setEffect(new GaussianBlur(-50));
 
                 controller.ResetGame();
                 AtomicInteger seconds= new AtomicInteger();
@@ -195,6 +194,7 @@ public class Classic implements Initializable {
                 timeline.stop();
                 timer.stop();
                 clock.stop();
+                controller.resumeMusic();
                 SceneChanger sceneChanger=new SceneChanger();
                 try {
                     sceneChanger.getMainMenu(event);

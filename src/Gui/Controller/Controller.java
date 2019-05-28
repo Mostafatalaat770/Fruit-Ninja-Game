@@ -3,12 +3,13 @@ package Gui.Controller;
 import Interfaces.Command.Command;
 import Interfaces.Command.Invoker;
 import Interfaces.Command.PlaySound;
-import Interfaces.Command.ToggleSound;
+import Interfaces.Command.ToggleMusic;
 import Interfaces.GameActions;
 import Interfaces.GameObject;
 import Interfaces.Memento.Files;
 import Interfaces.Strategy.Strategy;
 import Observer.Observer;
+import Settings.Settings;
 import Throwables.Bombs.Bomb;
 import UsersDB.UsersDB;
 import javafx.animation.Timeline;
@@ -32,6 +33,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Controller implements GameActions {
     private static Controller ourInstance = new Controller();
     public ArrayList<GameObject> throwables = new ArrayList<>();
+    public Settings settings = Settings.getInstance();
     public Strategy gameMode = null;
     public int score = 0;
     public int personalHighscore = 0;
@@ -50,9 +52,7 @@ public class Controller implements GameActions {
     public int fatalBombRateControl = 0;
     public UsersDB usersDB = UsersDB.getInstance();
     private Files files = new Files();
-    public boolean sound = true;
     private Invoker invoker = new Invoker();
-    public Clip gameStart = playSound("main theme", Clip.LOOP_CONTINUOUSLY);
     private ArrayList<Observer> observers = new ArrayList<Observer>();
     Image background = new Image("Resources/wallpaper1.jpg", 1270, 720, true, true);
     private boolean personalScorePassed = false;
@@ -118,8 +118,10 @@ public class Controller implements GameActions {
 
     }
 
-    void setUser(String username) {
+    void setUser(String username) throws JDOMException, IOException {
         usersDB.setPlayer(username);
+        files.loadSettings(getInstance());
+        //TODO set booleans after load
     }
 
     @Override
@@ -271,6 +273,12 @@ public class Controller implements GameActions {
         return invoker.playSound(type, duration);
     }
 
+    public void resumeMusic() {
+        Command playSound = new PlaySound();
+        invoker.setCommand(playSound);
+        invoker.resume();
+    }
+
     void comboCountdown() {
         if (comboEffect) {
             comboTimer++;
@@ -289,7 +297,7 @@ public class Controller implements GameActions {
 
 
     void toggleSound(ToggleButton toggleButton) {
-        Command toggleSound = new ToggleSound();
+        Command toggleSound = new ToggleMusic();
         invoker.setCommand(toggleSound);
         invoker.execute(toggleButton);
     }
@@ -346,6 +354,9 @@ public class Controller implements GameActions {
     }
 
 
+    public void saveSettings() throws IOException {
+        files.saveSettings(getInstance());
+    }
 }
 
 
