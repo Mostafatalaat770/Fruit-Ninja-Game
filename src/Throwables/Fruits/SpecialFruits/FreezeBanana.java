@@ -11,8 +11,8 @@ public class FreezeBanana extends SpecialFruit {
     private Controller controller = Controller.getInstance();
     public FreezeBanana() {
         super();
-        super.setImg1(new Image("Resources/Freeze_Banana.png", 75, 75, true, true));
-        super.setImg2(new Image("Resources/SlicedFreezeBanana.png", 75, 75, true, true));
+        super.setImg1(new Image(this.getClass().getResourceAsStream("/Freeze_Banana.png"), 75, 75, true, true));
+        super.setImg2(new Image(this.getClass().getResourceAsStream("/SlicedFreezeBanana.png"), 75, 75, true, true));
     }
 
     @Override
