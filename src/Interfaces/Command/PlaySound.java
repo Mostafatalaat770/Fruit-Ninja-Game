@@ -1,6 +1,7 @@
 package Interfaces.Command;
 
 import Gui.Controller.Controller;
+import Settings.Settings;
 import javafx.scene.control.ToggleButton;
 
 import javax.sound.sampled.AudioSystem;
@@ -35,7 +36,7 @@ public class PlaySound implements Command {
             case "pause":
                 filename = "Pause.wav";
                 break;
-            case "resume":
+            case "resumeMusic":
                 filename = "Unpause.wav";
                 break;
             case "press":
@@ -85,21 +86,36 @@ public class PlaySound implements Command {
             clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(this.getClass().getResource("/" + filename)));
             clip.loop(duration);
-            boolean sound;
-            if (controller == null) {
-                sound = true;
-            } else {
-                sound = controller.sound;
+
+            if (type.equals("main theme")) {
+                controller.settings.getSounds().setMainTheme(clip);
+                if (controller.settings.getSounds().isMusic()) {
+                    clip.start();
+                } else {
+                    clip.stop();
+                }
+                return clip;
             }
-            if (sound)
+
+            if (controller.settings.getSounds().isFx())
                 clip.start();
             else
                 clip.stop();
+
         } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e1) {
             e1.printStackTrace();
 
         }
         return clip;
+    }
+
+    public void resume() {
+
+        if (Settings.getInstance().getSounds().isMusic()) {
+            Settings.getInstance().getSounds().getMainTheme().start();
+        } else {
+            Settings.getInstance().getSounds().getMainTheme().stop();
+        }
     }
 
 }

@@ -21,4 +21,8 @@ public class Invoker {
     public Clip playSound(String type, int duration) {
         return command.play(type, duration);
     }
+
+    public void resume() {
+        command.resume();
+    }
 }
