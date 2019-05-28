@@ -9,28 +9,32 @@ import javax.sound.sampled.Clip;
 /**
  * @author Mostafa Talaat
  */
-public class ToggleSound implements Command {
+public class ToggleMusic implements Command {
     @FXML
     private
     Controller controller = Controller.getInstance();
 
-    private void toggleSound(ToggleButton soundToggle) {
-        controller.sound = soundToggle.isSelected();
-        controller.gameStart.loop(Clip.LOOP_CONTINUOUSLY);
-        if (controller.sound)
-            controller.gameStart.start();
+    private void toggleMusic(ToggleButton soundToggle) {
+        controller.settings.getSounds().setMusic(soundToggle.isSelected());
+        if (controller.settings.getSounds().isMusic())
+            controller.settings.getSounds().getMainTheme().start();
         else
-            controller.gameStart.stop();
+            controller.settings.getSounds().getMainTheme().stop();
     }
 
     @Override
     public void execute(ToggleButton toggleButton) {
-        toggleSound(toggleButton);
+        toggleMusic(toggleButton);
 
     }
 
     @Override
     public Clip play(String type, int duration) {
         return null;
+    }
+
+    @Override
+    public void resume() {
+
     }
 }

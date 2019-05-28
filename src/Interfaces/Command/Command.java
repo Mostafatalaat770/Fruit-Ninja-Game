@@ -11,4 +11,6 @@ public interface Command {
     void execute(ToggleButton toggleButton);
 
     Clip play(String type, int duration);
+
+    void resume();
 }
