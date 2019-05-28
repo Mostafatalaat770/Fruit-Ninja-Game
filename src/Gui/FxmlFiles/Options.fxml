@@ -10,7 +10,7 @@
    <children>
       <ImageView fx:id="background" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Resources/mainWallpaper.jpg" />
+             <Image url="@/mainWallpaper.jpg"/>
          </image>
          <!--         <effect>-->
          <!--            <GaussianBlur radius="50.0" />-->
@@ -26,42 +26,42 @@
                      </font></Text>
                   <ImageView fx:id="wallpaper2" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/wallpaper2.jpg" />
+                         <Image url="@/wallpaper2.jpg"/>
                      </image>
                   </ImageView>
                   <ImageView fx:id="wallpaper1" fitHeight="133.0" fitWidth="213.0" layoutX="35.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/wallpaper1.jpg" />
+                         <Image url="@/wallpaper1.jpg"/>
                      </image>
                   </ImageView>
                   <ImageView fx:id="wallpaper3" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/wallpaper3.png" />
+                         <Image url="@/wallpaper3.png"/>
                      </image>
                   </ImageView>
                   <ImageView fx:id="wallpaper4" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/wallpaper4.png" />
+                         <Image url="@/wallpaper4.png"/>
                      </image>
                   </ImageView>
                   <ImageView fx:id="wallpaper5" fitHeight="133.0" fitWidth="213.0" layoutX="445.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/wallpaper5.png" />
+                         <Image url="@/wallpaper5.png"/>
                      </image>
                   </ImageView>
                   <ImageView fx:id="wallpaper6" fitHeight="133.0" fitWidth="213.0" layoutX="445.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/wallpaper6.png" />
+                         <Image url="@/wallpaper6.png"/>
                      </image>
                   </ImageView>
                   <ImageView fx:id="wallpaper7" fitHeight="133.0" fitWidth="213.0" layoutX="445.0" layoutY="354.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/wallpaper7.png" />
+                         <Image url="@/wallpaper7.png"/>
                      </image>
                   </ImageView>
                   <ImageView fx:id="wallpaper8" fitHeight="133.0" fitWidth="213.0" layoutX="445.0" layoutY="492.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/wallpaper8.png" />
+                         <Image url="@/wallpaper8.png"/>
                      </image>
                   </ImageView>
                </children></AnchorPane>
@@ -72,7 +72,7 @@
                </font></JFXToggleButton>
             <ImageView fx:id="back" fitHeight="72.0" fitWidth="74.0" layoutX="1143.0" layoutY="609.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Resources/back.png" />
+                   <Image url="@/back.png"/>
                </image>
             </ImageView>
             <JFXButton fx:id="help" buttonType="RAISED" layoutX="1090.0" layoutY="28.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="127.0" style="-fx-background-color: orange; -fx-background-radius: 200;" text="help?">

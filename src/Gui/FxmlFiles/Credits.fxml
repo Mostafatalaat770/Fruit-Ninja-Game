@@ -10,7 +10,7 @@
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Resources/mainWallpaper.jpg" />
+             <Image url="@/mainWallpaper.jpg"/>
          </image>
           <!--         <effect>-->
           <!--            <GaussianBlur radius="50.0" />-->
@@ -25,7 +25,7 @@
             </AnchorPane>
             <ImageView fx:id="back" fitHeight="65.0" fitWidth="78.0" layoutX="1184.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Resources/back.png" />
+                   <Image url="@/back.png"/>
                </image>
             </ImageView>
          </children>

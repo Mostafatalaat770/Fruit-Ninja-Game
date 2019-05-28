@@ -11,8 +11,8 @@ public class MagicBeans extends SpecialFruit {
 
     public MagicBeans() {
         super();
-        super.setImg1(new Image("Resources/Magic_Bean.png", 75, 75, true, true));
-        super.setImg2(new Image("Resources/Sliced_Magic_Bean.png", 75, 75, true, true));
+        super.setImg1(new Image(this.getClass().getResourceAsStream("/Magic_Bean.png"), 75, 75, true, true));
+        super.setImg2(new Image(this.getClass().getResourceAsStream("/Sliced_Magic_Bean.png"), 75, 75, true, true));
     }
 
     @Override

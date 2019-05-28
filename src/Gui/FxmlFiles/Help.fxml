@@ -8,7 +8,7 @@
    <children>
       <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Resources/mainWallpaper.jpg" />
+             <Image url="@/mainWallpaper.jpg"/>
          </image>
           <!--         <effect>-->
           <!--            <GaussianBlur radius="50.0" />-->
@@ -20,37 +20,37 @@
                <children>
                   <ImageView fitHeight="78.0" fitWidth="50.0" layoutX="21.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/Banana.png" />
+                         <Image url="@/Banana.png"/>
                      </image>
                   </ImageView>
                   <ImageView fitHeight="92.0" fitWidth="69.0" layoutX="52.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/Watermelon.png" />
+                         <Image url="@/Watermelon.png"/>
                      </image>
                   </ImageView>
                   <ImageView fitHeight="51.0" fitWidth="42.0" layoutX="100.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/Green_Apple.png" />
+                         <Image url="@/Green_Apple.png"/>
                      </image>
                   </ImageView>
                   <ImageView fitHeight="69.0" fitWidth="61.0" layoutX="44.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/Bomb.png" />
+                         <Image url="@/Bomb.png"/>
                      </image>
                   </ImageView>
                   <ImageView fitHeight="69.0" fitWidth="61.0" layoutX="44.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/-10_Bomb.png" />
+                         <Image url="@/-10_Bomb.png"/>
                      </image>
                   </ImageView>
                   <ImageView fitHeight="69.0" fitWidth="61.0" layoutX="41.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/Magic_Bean.png" />
+                         <Image url="@/Magic_Bean.png"/>
                      </image>
                   </ImageView>
                   <ImageView fitHeight="69.0" fitWidth="61.0" layoutX="492.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/Freeze_Banana.png" />
+                         <Image url="@/Freeze_Banana.png"/>
                      </image>
                   </ImageView>
                   <Text layoutX="186.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="fruits: cut to increase score by 1" wrappingWidth="235.24853515625">
@@ -86,7 +86,7 @@
             </AnchorPane>
             <ImageView fx:id="back" fitHeight="69.0" fitWidth="69.0" layoutX="1158.0" layoutY="593.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Resources/back.png" />
+                   <Image url="@/back.png"/>
                </image>
             </ImageView>
          </children>

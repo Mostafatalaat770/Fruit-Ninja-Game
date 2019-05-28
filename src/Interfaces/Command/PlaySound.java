@@ -84,7 +84,7 @@ public class PlaySound implements Command {
         Clip clip = null;
         try {
             clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(this.getClass().getResource("/" + filename)));
+            clip.open(AudioSystem.getAudioInputStream(this.getClass().getResourceAsStream("/" + filename)));
             clip.loop(duration);
 
             if (type.equals("main theme")) {
