@@ -185,7 +185,7 @@ public class FilesManegement {
 
         XMLOutputter xmlOutput = new XMLOutputter();
 
-        File file = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Saves" + File.separator + controller.usersDB.getPlayer().getUsername() + "/");
+        File file = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/players" + File.separator + controller.usersDB.getPlayer().getUsername() + File.separator + "Saves");
         if (file.mkdirs()) {
             file.createNewFile();
         }
@@ -271,14 +271,45 @@ public class FilesManegement {
             doc.getRootElement().addContent(parent);
         }
 
+
         XMLOutputter xmlOutput = new XMLOutputter();
 
-            File file = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Players");
+        File file = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Players");
         if (file.mkdirs()) {
             file.createNewFile();
         }
         xmlOutput.setFormat(Format.getPrettyFormat());
         xmlOutput.output(doc, new FileWriter(file + "/players.txt"));
+
+        //--------------------------- Settings for selected user --------------------------//
+
+
+    }
+
+    public void saveSettings(Controller controller) throws IOException {
+        Element levelElement = new Element("Settings");
+        Document doc = new Document(levelElement);
+
+        Element child = new Element("music");
+        child.setText(Boolean.toString(controller.settings.getSounds().isMusic()));
+        levelElement.addContent(child);
+
+        child = new Element("fx");
+        child.setText(Boolean.toString(controller.settings.getSounds().isFx()));
+        levelElement.addContent(child);
+
+        child = new Element("background");
+        child.setText(Integer.toString(controller.settings.getBackgrounds().getID()));
+        levelElement.addContent(child);
+
+        XMLOutputter xmlOutput = new XMLOutputter();
+
+        File file = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Players" + File.separator + controller.usersDB.getPlayer().getUsername());
+        if (file.mkdirs()) {
+            file.createNewFile();
+        }
+        xmlOutput.setFormat(Format.getPrettyFormat());
+        xmlOutput.output(doc, new FileWriter(file + "/settings.txt"));
     }
 
     public void loadPlayers(Controller controller) throws JDOMException, IOException {
@@ -292,5 +323,16 @@ public class FilesManegement {
         for (Element child : childs) {
             controller.usersDB.addUser(child.getChildText("name"), Integer.parseInt(child.getChildText("arcadeScore")), Integer.parseInt(child.getChildText("classicScore")));
         }
+    }
+
+    public void loadSettings(Controller controller) throws JDOMException, IOException {
+        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Players" + File.separator + controller.usersDB.getPlayer().getUsername() + File.separator + "settings.txt");
+        SAXBuilder saxBuilder = new SAXBuilder();
+
+        Document document = saxBuilder.build(inputFile);
+
+        controller.settings.getSounds().setMusic(Boolean.parseBoolean(document.getRootElement().getChild("music").getText()));
+        controller.settings.getSounds().setFx(Boolean.parseBoolean(document.getRootElement().getChild("fx").getText()));
+        controller.settings.getBackgrounds().setID(Integer.parseInt(document.getRootElement().getChild("background").getText()));
     }
 }
