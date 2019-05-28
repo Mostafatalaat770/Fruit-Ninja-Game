@@ -34,8 +34,8 @@ public class Credits implements Initializable {
             public void handle(long now) {
                 gc.clearRect(0, 0, 1280, 720);
                 gc.setFill(Color.BLACK);
-                Font theFont = Font.font("Gang Of Three", 25);
-                gc.setFont(theFont);
+
+                gc.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 25));
                 gc.fillText("Fruit ninja game", 85, y.get());
                 gc.fillText("made by:", 15, y.get() + 25);
                 gc.fillText("-Abdelrahman Zaghloul-", 15, y.get() + 50);

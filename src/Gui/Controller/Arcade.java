@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import javax.sound.sampled.Clip;
@@ -44,6 +45,8 @@ public class Arcade implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        gameOver.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 90));
+        score.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 90));
         controller.playSound("start game", 0);
         resume.setVisible(false);
         reset.setVisible(false);
