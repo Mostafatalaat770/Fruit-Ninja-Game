@@ -2,23 +2,19 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXToggleButton?>
-<?import javafx.scene.effect.GaussianBlur?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
+<?import javafx.scene.text.*?>
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Gui.Controller.Options">
    <children>
       <ImageView fx:id="background" fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Resources/mainWallpaper.jpg" />
          </image>
-         <effect>
-            <GaussianBlur radius="50.0" />
-         </effect>
+         <!--         <effect>-->
+         <!--            <GaussianBlur radius="50.0" />-->
+         <!--         </effect>-->
       </ImageView>
       <AnchorPane prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -69,7 +65,8 @@
                      </image>
                   </ImageView>
                </children></AnchorPane>
-            <JFXToggleButton fx:id="soundToggle" layoutX="944.0" layoutY="319.0" text="sound" toggleColor="ORANGE" toggleLineColor="#1ca4b9" unToggleColor="ORANGE">
+            <JFXToggleButton fx:id="soundToggle" layoutX="944.0" layoutY="319.0" text="Music" toggleColor="ORANGE"
+                             toggleLineColor="#1ca4b9" unToggleColor="ORANGE">
                <font>
                   <Font name="Gang of Three" size="34.0" />
                </font></JFXToggleButton>
@@ -88,6 +85,12 @@
                   <Font name="Gang of Three" size="21.0" />
                </font>
             </JFXButton>
+            <JFXToggleButton fx:id="FXToggle" layoutX="944.0" layoutY="376.0" text="FX" textAlignment="CENTER"
+                             toggleColor="ORANGE" toggleLineColor="#1ca4b9" unToggleColor="ORANGE">
+               <font>
+                  <Font name="Gang of Three" size="34.0"/>
+               </font>
+            </JFXToggleButton>
          </children>
       </AnchorPane>
    </children>
