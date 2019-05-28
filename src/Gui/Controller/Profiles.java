@@ -8,6 +8,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import org.jdom2.JDOMException;
 
 import javax.sound.sampled.Clip;
@@ -17,7 +19,11 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class Profiles implements Initializable {
-@FXML private ComboBox<String> usernameCombobox;
+    public Text text1;
+    public Text text2;
+    public Text comboBoxText;
+    @FXML
+    private ComboBox<String> usernameCombobox;
 @FXML private JFXTextField usernameTextField;
 @FXML private JFXButton logIn;
 @FXML private JFXButton signUp;
@@ -27,6 +33,13 @@ public class Profiles implements Initializable {
 
 
     public void initialize(URL location, ResourceBundle resources) {
+
+        logIn.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 18));
+        signUp.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 18));
+        usernameTextField.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 18));
+        comboBoxText.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 18));
+        text1.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 34));
+        text2.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 34));
         try {
             controller.loadPlayers();
         } catch (JDOMException | IOException e) {

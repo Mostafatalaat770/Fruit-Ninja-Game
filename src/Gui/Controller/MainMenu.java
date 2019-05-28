@@ -21,6 +21,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 import org.jdom2.JDOMException;
 
@@ -59,6 +60,11 @@ public class MainMenu implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        loadClassic.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 14));
+        loadArcade.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 14));
+        load.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 14));
+        leaderboard.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 14));
+        options.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 14));
         RotateTransition transition = new RotateTransition(Duration.seconds(4), classic_img);
         transition.setAutoReverse(true);
         transition.setByAngle(360);

@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -14,6 +16,7 @@ import java.util.ResourceBundle;
 
 public class Options implements Initializable {
 
+    public Text text1;
     Controller controller=Controller.getInstance();
     @FXML private ToggleButton soundToggle;
     @FXML
@@ -33,7 +36,9 @@ public class Options implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        help.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 20));
+        credits.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 20));
+        text1.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 29));
         soundToggle.setSelected(controller.settings.getSounds().isMusic());
         FXToggle.setSelected(controller.settings.getSounds().isFx());
         soundToggle.setOnMouseClicked(event -> controller.toggleSound(soundToggle));

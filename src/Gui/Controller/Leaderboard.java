@@ -11,6 +11,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +20,9 @@ import java.util.ResourceBundle;
 
 public class Leaderboard implements Initializable {
 
+    public Text text2;
+    public Text text1;
+    public Text text3;
     @FXML private TableView<PlayerLeaderboard> leaderboardClassic;
     @FXML private TableView<PlayerLeaderboard> leaderboardArcade;
     @FXML private TableColumn<PlayerLeaderboard,String> usernameClassic;
@@ -29,6 +34,10 @@ public class Leaderboard implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        text1.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 50));
+        text2.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 50));
+        text3.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 50));
+
         controller.gameMode = new Strategy(new ClassicMode());
         controller.gameMode.sort();
         for (int i=0;i<controller.usersDB.getPlayers().size();i++){
