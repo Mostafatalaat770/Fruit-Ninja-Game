@@ -76,39 +76,39 @@ public class Options implements Initializable {
         });
 
         wallpaper1.setOnMouseClicked(event -> {
-            controller.background = controller.settings.changeBackground(1);
+            controller.settings.changeBackground(1);
             controller.playSound("equip wallpaper", 0);
         });
         wallpaper2.setOnMouseClicked(event -> {
-            controller.background = controller.settings.changeBackground(2);
+            controller.settings.changeBackground(2);
             controller.playSound("equip wallpaper", 0);
         });
         wallpaper3.setOnMouseClicked(event -> {
-            controller.background = controller.settings.changeBackground(3);
+            controller.settings.changeBackground(3);
             controller.playSound("equip wallpaper", 0);
         });
         wallpaper4.setOnMouseClicked(event -> {
-            controller.background = controller.settings.changeBackground(4);
+            controller.settings.changeBackground(4);
             controller.playSound("equip wallpaper", 0);
         });
 
         wallpaper5.setOnMouseClicked(event -> {
-            controller.background = controller.settings.changeBackground(5);
+            controller.settings.changeBackground(5);
             controller.playSound("equip wallpaper", 0);
         });
 
         wallpaper6.setOnMouseClicked(event -> {
-            controller.background = controller.settings.changeBackground(6);
+            controller.settings.changeBackground(6);
             controller.playSound("equip wallpaper", 0);
         });
 
         wallpaper7.setOnMouseClicked(event -> {
-            controller.background = controller.settings.changeBackground(7);
+            controller.settings.changeBackground(7);
             controller.playSound("equip wallpaper", 0);
         });
 
         wallpaper8.setOnMouseClicked(event -> {
-            controller.background = controller.settings.changeBackground(8);
+            controller.settings.changeBackground(8);
             controller.playSound("equip wallpaper", 0);
         });
     }

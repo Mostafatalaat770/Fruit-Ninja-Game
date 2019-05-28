@@ -40,7 +40,7 @@ public class Classic implements Initializable {
         back.setVisible(false);
         reset.setVisible(false);
         save.setVisible(false);
-        background.setImage(controller.background);
+        background.setImage(controller.settings.getBackgrounds().getBackground());
         gc=canvas.getGraphicsContext2D();
 
         Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
