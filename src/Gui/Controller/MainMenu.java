@@ -100,13 +100,6 @@ public class MainMenu implements Initializable {
 
         TranslateTransition transition10 = new TranslateTransition(Duration.millis(300), slicedbanana_bottom);
         transition10.setByX(-5);
-        
-        controller.gameStart.loop(Clip.LOOP_CONTINUOUSLY);
-        if(controller.sound)
-        	controller.gameStart.start();
-        else
-        	controller.gameStart.stop();
-       
 
 
 
@@ -121,7 +114,7 @@ public class MainMenu implements Initializable {
            		transition4.play();
            		transition5.play();
            		transition6.play();
-           		controller.gameStart.stop();
+               controller.settings.getSounds().getMainTheme().stop();
                controller.playSound("slice", 0);
            		transition3.setOnFinished((event1) -> {
                     SceneChanger sceneChanger=new SceneChanger();
@@ -148,7 +141,7 @@ public class MainMenu implements Initializable {
     		   transition8.play();
     		   transition9.play();
     		   transition10.play();
-    		   controller.gameStart.stop();
+               controller.settings.getSounds().getMainTheme().stop();
                controller.playSound("slice", 0);
     		   transition7.setOnFinished((event1) -> {
                    SceneChanger sceneChanger=new SceneChanger();
@@ -165,7 +158,7 @@ public class MainMenu implements Initializable {
        });
 
        exit_img.setOnMouseExited((event) -> {
-    	   controller.gameStart.stop();
+           controller.settings.getSounds().getMainTheme().stop();
            controller.playSound("exit", 0);
            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
            alert.setHeaderText("Are you sure you want to exit?");
@@ -173,17 +166,17 @@ public class MainMenu implements Initializable {
            if(result.get() == ButtonType.OK)
               Platform.exit();
            else {
-        	   controller.gameStart.loop(Clip.LOOP_CONTINUOUSLY);
-        	   if(controller.sound)
-        		   controller.gameStart.start();
+               controller.settings.getSounds().getMainTheme().loop(Clip.LOOP_CONTINUOUSLY);
+               if (controller.settings.getSounds().isMusic())
+                   controller.settings.getSounds().getMainTheme().start();
         	   else
-        		   controller.gameStart.stop();
+                   controller.settings.getSounds().getMainTheme().stop();
         	   
            }
        });
 
        loadClassic.setOnMouseClicked(event -> {
-    	   controller.gameStart.stop();
+           controller.settings.getSounds().getMainTheme().stop();
            controller.playSound("press", 0);
            SceneChanger sceneChanger=new SceneChanger();
            try {
@@ -197,7 +190,7 @@ public class MainMenu implements Initializable {
        });
 
        loadArcade.setOnMouseClicked(event -> {
-    	   controller.gameStart.stop();
+           controller.settings.getSounds().getMainTheme().stop();
            controller.playSound("press", 0);
            SceneChanger sceneChanger=new SceneChanger();
            try {
