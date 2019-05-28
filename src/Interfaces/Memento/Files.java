@@ -44,4 +44,12 @@ public class Files {
     public void savePlayers(Controller controller) throws IOException {
         filesManegement.savePlayers(controller);
     }
+
+    public void loadSettings(Controller controller) throws JDOMException, IOException {
+        filesManegement.loadSettings(controller);
+    }
+
+    public void saveSettings(Controller controller) throws IOException {
+        filesManegement.saveSettings(controller);
+    }
 }
