@@ -22,7 +22,7 @@ public class SceneChanger {
         arcadeWindow.show();
     }
     public void getOptions(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Options.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Settings.fxml"));
         Scene arcadeScene = new Scene(root, 1270, 720);
         Stage arcadeWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         arcadeWindow.setScene(arcadeScene);
