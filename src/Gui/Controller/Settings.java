@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Options implements Initializable {
+public class Settings implements Initializable {
 
     public Text text1;
     final Controller controller = Controller.getInstance();
