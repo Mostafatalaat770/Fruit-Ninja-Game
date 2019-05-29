@@ -52,8 +52,21 @@ public class Options implements Initializable {
                 e.printStackTrace();
             }
             SceneChanger sceneChanger=new SceneChanger();
+
             try {
-                sceneChanger.getMainMenu(event);
+                if (controller.inGame) {
+                    switch (controller.type) {
+                        case "classic":
+                            sceneChanger.getClassic(event);
+                            break;
+
+                        case "arcade":
+                            sceneChanger.getArcade(event);
+                            break;
+                    }
+                } else {
+                    sceneChanger.getMainMenu(event);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

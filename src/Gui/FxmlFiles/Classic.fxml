@@ -12,15 +12,15 @@
    <Canvas fx:id="canvas" height="720.0" layoutX="1.0" width="1280.0"/>
    <ImageView fx:id="pause" fitHeight="72.0" fitWidth="74.0" layoutX="60.0" layoutY="600.0" pickOnBounds="true"
               preserveRatio="true">
-       <Image url="@/PauseButton.png"/>
+      <Image url="@/PauseButton.png"/>
    </ImageView>
-   <ImageView fx:id="resume" fitHeight="274.0" fitWidth="163.0" layoutX="559.0" layoutY="278.0" pickOnBounds="true"
+   <ImageView fx:id="resume" fitHeight="274.0" fitWidth="163.0" layoutX="436.0" layoutY="278.0" pickOnBounds="true"
               preserveRatio="true">
-       <Image url="@/ResumeButton.png"/>
+      <Image url="@/ResumeButton.png"/>
    </ImageView>
-   <ImageView fx:id="reset" fitHeight="274.0" fitWidth="163.0" layoutX="368.0" layoutY="278.0" pickOnBounds="true"
+   <ImageView fx:id="reset" fitHeight="274.0" fitWidth="163.0" layoutX="245.0" layoutY="278.0" pickOnBounds="true"
               preserveRatio="true">
-       <Image url="@/ResetButton.png"/>
+      <Image url="@/ResetButton.png"/>
    </ImageView>
    <Text fx:id="gameOver" fill="ORANGE" layoutX="391.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0">
       <font>
@@ -32,12 +32,16 @@
          <Font name="Gang of Three" size="96.0"/>
       </font>
    </Text>
-   <ImageView fx:id="save" fitHeight="274.0" fitWidth="163.0" layoutX="738.0" layoutY="280.0" pickOnBounds="true"
+   <ImageView fx:id="save" fitHeight="274.0" fitWidth="163.0" layoutX="628.0" layoutY="280.0" pickOnBounds="true"
               preserveRatio="true">
-       <Image url="@/SaveButton.png"/>
+      <Image url="@/SaveButton.png"/>
    </ImageView>
    <ImageView fx:id="back" fitHeight="72.0" fitWidth="74.0" layoutX="1130.0" layoutY="600.0" pickOnBounds="true"
               preserveRatio="true">
-       <Image url="@/BackButton.png"/>
+      <Image url="@/BackButton.png"/>
+   </ImageView>
+   <ImageView fx:id="settings" fitHeight="274.0" fitWidth="163.0" layoutX="833.0" layoutY="280.0" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@/SettingsButton.png"/>
    </ImageView>
 </AnchorPane>
