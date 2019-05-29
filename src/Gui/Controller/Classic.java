@@ -20,6 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Classic implements Initializable {
+    public ImageView settings;
     private Controller controller = Controller.getInstance();
     @FXML private Canvas canvas ;
     @FXML private ImageView pause;
@@ -76,7 +77,8 @@ public class Classic implements Initializable {
                 	if(!isGameOver) {
                         controller.playSound("game over", 0);
                 		isGameOver = true;
-                	}
+                        controller.inGame = false; // for in-game button functionality
+                    }
                     stopAll =false;
                     timeline.stop();
                     clock.stop();
@@ -105,6 +107,7 @@ public class Classic implements Initializable {
             reset.setVisible(true);
             save.setVisible(true);
             back.setVisible(true);
+            settings.setVisible(true);
             timeline.stop();
             timer.stop();
             clock.stop();
@@ -119,6 +122,7 @@ public class Classic implements Initializable {
                 reset.setVisible(false);
                 save.setVisible(false);
                 back.setVisible(false);
+                settings.setVisible(false);
 //                canvas.setEffect(new GaussianBlur(-50));
 //                background.setEffect(new GaussianBlur(-50));
                 AtomicInteger seconds= new AtomicInteger();
@@ -147,6 +151,7 @@ public class Classic implements Initializable {
                 reset.setVisible(false);
                 save.setVisible(false);
                 back.setVisible(false);
+                settings.setVisible(false);
                 pause.setVisible(true);
 //                canvas.setEffect(new GaussianBlur(-50));
 //                background.setEffect(new GaussianBlur(-50));
@@ -188,9 +193,27 @@ public class Classic implements Initializable {
 
         });
 
+        settings.setOnMouseClicked(event -> {
+            if (settings.isVisible()) {
+                controller.playSound("press", 0);
+                timeline.stop();
+                timer.stop();
+                clock.stop();
+                controller.inGame = true;
+                SceneChanger sceneChanger = new SceneChanger();
+                try {
+                    sceneChanger.getOptions(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
+
         back.setOnMouseClicked(event -> {
             if(back.isVisible()){
                 controller.playSound("press", 0);
+                controller.inGame = false;
                 controller.ResetGame();
                 timeline.stop();
                 timer.stop();
