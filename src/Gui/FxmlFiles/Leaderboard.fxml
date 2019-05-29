@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.*?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-           minWidth="-Infinity"
-           prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+           minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
            fx:controller="Gui.Controller.Leaderboard">
    <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
       <!--         <effect>-->
@@ -17,7 +16,7 @@
       <Image url="@/mainWallpaper.jpg"/>
    </ImageView>
    <AnchorPane prefHeight="200.0" prefWidth="200.0">
-      <AnchorPane layoutX="165.0" layoutY="41.0" prefHeight="638.0" prefWidth="950.0"
+      <AnchorPane layoutX="165.0" layoutY="29.0" prefHeight="650.0" prefWidth="950.0"
                   style="-fx-background-color: orange; -fx-background-radius: 20;">
          <Text fx:id="text3" layoutX="226.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0"
                text="score leaderboard">
@@ -30,14 +29,12 @@
                <Font name="Gang of Three" size="52.0"/>
             </font>
          </Text>
-         <Text fx:id="text2" layoutX="131.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0"
-               text="classic">
+         <Text fx:id="text2" layoutX="131.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="classic">
             <font>
                <Font name="Gang of Three" size="52.0"/>
             </font>
          </Text>
-         <TableView fx:id="leaderboardClassic" layoutX="103.0" layoutY="154.0" prefHeight="452.0"
-                    prefWidth="246.0">
+         <TableView fx:id="leaderboardClassic" layoutX="103.0" layoutY="154.0" prefHeight="452.0" prefWidth="246.0">
             <columns>
                <TableColumn fx:id="usernameClassic" editable="false" prefWidth="163.0" sortable="false"
                             text="username"/>
@@ -45,18 +42,16 @@
                             text="score"/>
             </columns>
          </TableView>
-         <TableView fx:id="leaderboardArcade" layoutX="601.0" layoutY="154.0" prefHeight="452.0"
-                    prefWidth="246.0">
+         <TableView fx:id="leaderboardArcade" layoutX="601.0" layoutY="154.0" prefHeight="452.0" prefWidth="246.0">
             <columns>
-               <TableColumn fx:id="usernameArcade" editable="false" prefWidth="163.0" sortable="false"
-                            text="username"/>
+               <TableColumn fx:id="usernameArcade" editable="false" prefWidth="163.0" sortable="false" text="username"/>
                <TableColumn fx:id="scoreArcade" editable="false" minWidth="0.0" prefWidth="81.0" sortable="false"
                             text="score"/>
             </columns>
          </TableView>
       </AnchorPane>
-      <ImageView fx:id="back" fitHeight="111.0" fitWidth="86.0" layoutX="1145.0" layoutY="595.0"
-                 pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="back" fitHeight="72.0" fitWidth="74.0" layoutX="1130.0" layoutY="600.0" pickOnBounds="true"
+                 preserveRatio="true">
          <Image url="@/back.png"/>
       </ImageView>
    </AnchorPane>

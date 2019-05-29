@@ -18,37 +18,37 @@
         <Image url="@/mainWallpaper.jpg"/>
     </ImageView>
     <AnchorPane prefHeight="1280.0" prefWidth="1280.0">
-        <AnchorPane layoutX="55.0" layoutY="61.0" prefHeight="598.0" prefWidth="486.0"
+        <AnchorPane layoutX="65.0" layoutY="61.0" prefHeight="598.0" prefWidth="486.0"
                     style="-fx-background-color: orange; -fx-background-radius: 20;">
-            <JFXButton fx:id="logIn" layoutX="205.0" layoutY="438.0" mnemonicParsing="false"
+            <JFXButton fx:id="logIn" layoutX="205.0" layoutY="435.0" mnemonicParsing="false"
                        style="-fx-background-color: ff6337;" text="log in">
                 <font>
                     <Font name="Gang of Three" size="18.0"/>
                 </font>
             </JFXButton>
-            <Text fx:id="text1" layoutX="121.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0"
+            <Text fx:id="text1" layoutX="121.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0"
                   text="welcome back!">
                 <font>
                     <Font name="Gang of Three" size="34.0"/>
                 </font>
             </Text>
-            <JFXComboBox fx:id="usernameCombobox" layoutX="168.0" layoutY="346.0" prefWidth="150.0"/>
+            <JFXComboBox fx:id="usernameCombobox" layoutX="168.0" layoutY="360.0" prefWidth="150.0"/>
         </AnchorPane>
-        <AnchorPane layoutX="730.0" layoutY="61.0" prefHeight="598.0" prefWidth="486.0"
+        <AnchorPane layoutX="723.0" layoutY="61.0" prefHeight="598.0" prefWidth="486.0"
                     style="-fx-background-color: orange; -fx-background-radius: 20;">
-            <JFXButton fx:id="signUp" layoutX="200.0" layoutY="432.0" mnemonicParsing="false"
+            <JFXButton fx:id="signUp" layoutX="200.0" layoutY="435.0" mnemonicParsing="false"
                        style="-fx-background-color: ff6337;" text="sign up">
                 <font>
                     <Font name="Gang of Three" size="18.0"/>
                 </font>
             </JFXButton>
-            <Text fx:id="text2" layoutX="90.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0"
+            <Text fx:id="text2" layoutX="90.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0"
                   text="are you new here?">
                 <font>
                     <Font name="Gang of Three" size="34.0"/>
                 </font>
             </Text>
-            <JFXTextField fx:id="usernameTextField" layoutX="147.0" layoutY="326.0" promptText="username">
+            <JFXTextField fx:id="usernameTextField" layoutX="166.0" layoutY="360.0" promptText="username">
                 <font>
                     <Font name="Gang of Three" size="18.0"/>
                 </font>
