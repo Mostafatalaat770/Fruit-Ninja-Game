@@ -41,7 +41,7 @@ public class Arcade implements Initializable {
     private javafx.scene.text.Text score;
     private boolean stopAll = true;
     private GraphicsContext gc;
-    private boolean timeup = false;
+    private boolean timesUp = false;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,9 +55,7 @@ public class Arcade implements Initializable {
         background.setImage(controller.settings.getBackgrounds().getBackground());
         gc = canvas.getGraphicsContext2D();
 
-        Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent -> {
-            controller.getThrowables();
-        }));
+        Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent -> controller.getThrowables()));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
@@ -86,7 +84,7 @@ public class Arcade implements Initializable {
                 controller.removeUnwantedThrowable();
 
                 if (controller.gameOver()) {
-                    if (!timeup) {
+                    if (!timesUp) {
                         Clip time = controller.playSound("time's up", 0);
                         try {
                             Thread.sleep(time.getMicrosecondLength() / 3000);
@@ -94,7 +92,7 @@ public class Arcade implements Initializable {
                             e.printStackTrace();
                         }
                         controller.playSound("game over", 0);
-                        timeup = true;
+                        timesUp = true;
                     }
                     stopAll = false;
                     timeline.stop();
@@ -142,7 +140,7 @@ public class Arcade implements Initializable {
 //                canvas.setEffect(new GaussianBlur(-50));
 //                background.setEffect(new GaussianBlur(-50));
                 AtomicInteger seconds = new AtomicInteger();
-                Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent -> {
+                Timeline resume = new Timeline(new KeyFrame(new Duration(500), actionEvent -> {
                     controller.drawAllThings(gc);
                     seconds.getAndIncrement();
                     controller.getCountDown(gc, seconds);
@@ -173,7 +171,7 @@ public class Arcade implements Initializable {
 
                 controller.ResetGame();
                 AtomicInteger seconds = new AtomicInteger();
-                Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent -> {
+                Timeline resume = new Timeline(new KeyFrame(new Duration(500), actionEvent -> {
                     controller.drawAllThings(gc);
                     seconds.getAndIncrement();
                     controller.getCountDown(gc, seconds);

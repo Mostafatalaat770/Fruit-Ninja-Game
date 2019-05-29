@@ -23,7 +23,7 @@ public class Credits implements Initializable {
     @FXML
     ImageView back;
     private GraphicsContext gc;
-    Controller controller = Controller.getInstance();
+    final Controller controller = Controller.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

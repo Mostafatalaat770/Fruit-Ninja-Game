@@ -13,23 +13,22 @@
       <!--         <effect>-->
       <!--            <GaussianBlur radius="50.0" />-->
       <!--         </effect>-->
-      <Image url="@/mainWallpaper.jpg"/>
+      <Image url="@/MainMenuBackground.jpg"/>
    </ImageView>
    <AnchorPane prefHeight="200.0" prefWidth="200.0">
       <AnchorPane layoutX="165.0" layoutY="29.0" prefHeight="650.0" prefWidth="950.0"
                   style="-fx-background-color: orange; -fx-background-radius: 20;">
-         <Text fx:id="text3" layoutX="226.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0"
-               text="score leaderboard">
+         <Text fx:id="text3" layoutX="319.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Leaderboards">
             <font>
                <Font name="Gang of Three" size="52.0"/>
             </font>
          </Text>
-         <Text fx:id="text1" layoutX="630.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="arcade">
+         <Text fx:id="text1" layoutX="638.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="arcade">
             <font>
                <Font name="Gang of Three" size="52.0"/>
             </font>
          </Text>
-         <Text fx:id="text2" layoutX="131.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="classic">
+         <Text fx:id="text2" layoutX="134.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="classic">
             <font>
                <Font name="Gang of Three" size="52.0"/>
             </font>
@@ -52,7 +51,7 @@
       </AnchorPane>
       <ImageView fx:id="back" fitHeight="72.0" fitWidth="74.0" layoutX="1130.0" layoutY="600.0" pickOnBounds="true"
                  preserveRatio="true">
-         <Image url="@/back.png"/>
+         <Image url="@/BackButton.png"/>
       </ImageView>
    </AnchorPane>
 </StackPane>

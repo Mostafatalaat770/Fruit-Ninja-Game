@@ -46,9 +46,7 @@ public class Classic implements Initializable {
         background.setImage(controller.settings.getBackgrounds().getBackground());
         gc=canvas.getGraphicsContext2D();
 
-        Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent->{
-          controller.getThrowables();
-        }));
+        Timeline timeline = new Timeline(new KeyFrame(new Duration(2000), actionEvent -> controller.getThrowables()));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
@@ -124,7 +122,7 @@ public class Classic implements Initializable {
 //                canvas.setEffect(new GaussianBlur(-50));
 //                background.setEffect(new GaussianBlur(-50));
                 AtomicInteger seconds= new AtomicInteger();
-                Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
+                Timeline resume = new Timeline(new KeyFrame(new Duration(500), actionEvent -> {
                     controller.drawAllThings(gc);
                     seconds.getAndIncrement();
                     controller.getCountDown(gc,seconds);
@@ -155,7 +153,7 @@ public class Classic implements Initializable {
 
                 controller.ResetGame();
                 AtomicInteger seconds= new AtomicInteger();
-                Timeline resume = new Timeline(new KeyFrame(new Duration(500), acttionEvent->{
+                Timeline resume = new Timeline(new KeyFrame(new Duration(500), actionEvent -> {
                     controller.drawAllThings(gc);
                     seconds.getAndIncrement();
                     controller.getCountDown(gc,seconds);

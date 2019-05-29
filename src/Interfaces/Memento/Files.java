@@ -1,6 +1,6 @@
 package Interfaces.Memento;
 
-import FilesManegement.FilesManegement;
+import FilesManegement.FilesManagement;
 import Gui.Controller.Controller;
 import Interfaces.Factory.ArcadeMode;
 import Interfaces.Factory.ClassicMode;
@@ -13,10 +13,10 @@ import java.io.IOException;
  * @author Mostafa Talaat
  */
 public class Files {
-    private FilesManegement filesManegement = FilesManegement.getInstance();
+    private final FilesManagement filesManagement = FilesManagement.getInstance();
 
-    private Originator originator = new Originator();
-    private CareTaker careTaker = new CareTaker();
+    private final Originator originator = new Originator();
+    private final CareTaker careTaker = new CareTaker();
 
     public void saveState(Controller controller) {
         originator.setState(controller);
@@ -25,11 +25,11 @@ public class Files {
 
     public void saveGame(Controller controller) throws IOException {
         originator.getStateFromMemento(careTaker.get(0));
-        filesManegement.saveGame(controller);
+        filesManagement.saveGame(controller);
     }
 
     public void loadGame(Controller controller) throws JDOMException, IOException {
-        filesManegement.loadGame(controller);
+        filesManagement.loadGame(controller);
         if (controller.type.equals("arcade")) {
             controller.gameMode = new Strategy(new ArcadeMode());
         } else if (controller.type.equals("classic")) {
@@ -38,18 +38,18 @@ public class Files {
     }
 
     public void loadPlayers(Controller controller) throws JDOMException, IOException {
-        filesManegement.loadPlayers(controller);
+        filesManagement.loadPlayers(controller);
     }
 
     public void savePlayers(Controller controller) throws IOException {
-        filesManegement.savePlayers(controller);
+        filesManagement.savePlayers(controller);
     }
 
     public void loadSettings(Controller controller) throws JDOMException, IOException {
-        filesManegement.loadSettings(controller);
+        filesManagement.loadSettings(controller);
     }
 
     public void saveSettings(Controller controller) throws IOException {
-        filesManegement.saveSettings(controller);
+        filesManagement.saveSettings(controller);
     }
 }

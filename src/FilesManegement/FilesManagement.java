@@ -27,14 +27,14 @@ import java.util.List;
 /**
  * @author Mostafa Talaat
  */
-public class FilesManegement {
-    private static FilesManegement ourInstance = new FilesManegement();
+public class FilesManagement {
+    private static final FilesManagement ourInstance = new FilesManagement();
 
-    public static FilesManegement getInstance() {
+    public static FilesManagement getInstance() {
         return ourInstance;
     }
 
-    public GameObject createObject(String type) {
+    private GameObject createObject(String type) {
         GameObject object = null;
         switch (type) {
             case "apple":
@@ -80,7 +80,7 @@ public class FilesManegement {
 
         parent = new Element("scores");
         parent.addContent(new Element("score").setText(Integer.toString(controller.score)));
-        parent.addContent(new Element("personalHighscore").setText(Integer.toString(controller.personalHighscore)));
+        parent.addContent(new Element("personalHighScore").setText(Integer.toString(controller.personalHighScore)));
         levelElement.addContent(parent);
 
         parent = new Element("time");
@@ -129,11 +129,11 @@ public class FilesManegement {
 
 
             child = new Element("x");
-            child.setText(Double.toString(throwable.getXlocation()));
+            child.setText(Double.toString(throwable.getLocationX()));
             parent.addContent(child);
 
             child = new Element("y");
-            child.setText(Double.toString(throwable.getYlocation()));
+            child.setText(Double.toString(throwable.getLocationY()));
             parent.addContent(child);
 
             child = new Element("maxHeight");
@@ -203,15 +203,14 @@ public class FilesManegement {
         controller.difficulty = Double.parseDouble(classElement.getChild("difficulty").getText());
 
         controller.score = Integer.parseInt(classElement.getChild("scores").getChild("score").getText());
-        controller.personalHighscore = Integer.parseInt(classElement.getChild("scores").getChild("personalHighscore").getText());
+        controller.personalHighScore = Integer.parseInt(classElement.getChild("scores").getChild("personalHighScore").getText());
 
         controller.mins = Integer.parseInt(classElement.getChild("time").getChild("mins").getText());
 
         controller.secs = Integer.parseInt(classElement.getChild("time").getChild("secs").getText());
 
-        List<Element> childs = classElement.getChild("fruits").getChildren();
-        for (int i = 0; i < childs.size(); i++) {
-            Element child = childs.get(i);
+        List<Element> children = classElement.getChild("fruits").getChildren();
+        for (Element child : children) {
             double x = Double.parseDouble(child.getChild("x").getText());
             double y = Double.parseDouble(child.getChild("y").getText());
             double maxHeight = Double.parseDouble(child.getChild("maxHeight").getText());
@@ -318,9 +317,9 @@ public class FilesManegement {
 
         Document document = saxBuilder.build(inputFile);
 
-        List<Element> childs = document.getRootElement().getChildren();
+        List<Element> children = document.getRootElement().getChildren();
 
-        for (Element child : childs) {
+        for (Element child : children) {
             controller.usersDB.addUser(child.getChildText("name"), Integer.parseInt(child.getChildText("arcadeScore")), Integer.parseInt(child.getChildText("classicScore")));
         }
     }

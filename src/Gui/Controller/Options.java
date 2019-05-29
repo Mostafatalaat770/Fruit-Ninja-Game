@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 public class Options implements Initializable {
 
     public Text text1;
-    Controller controller=Controller.getInstance();
+    final Controller controller = Controller.getInstance();
     @FXML private ToggleButton soundToggle;
     @FXML
     private JFXToggleButton FXToggle;

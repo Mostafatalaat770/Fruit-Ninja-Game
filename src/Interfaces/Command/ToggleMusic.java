@@ -11,7 +11,7 @@ import javax.sound.sampled.Clip;
  */
 public class ToggleMusic implements Command {
     @FXML
-    private
+    private final
     Controller controller = Controller.getInstance();
 
     private void toggleMusic(ToggleButton soundToggle) {

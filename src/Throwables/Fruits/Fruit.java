@@ -8,7 +8,7 @@ import Gui.Controller.Controller;
 public abstract class Fruit extends Throwables.Throwable {
 
 
-    public Fruit() {
+    Fruit() {
         super();
     }
     

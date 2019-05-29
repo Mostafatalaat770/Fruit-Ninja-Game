@@ -30,7 +30,7 @@ public class Leaderboard implements Initializable {
     @FXML private TableColumn<PlayerLeaderboard,Integer> scoreClassic;
     @FXML private TableColumn<PlayerLeaderboard,Integer> scoreArcade;
     @FXML ImageView back;
-    Controller controller= Controller.getInstance();
+    final Controller controller = Controller.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

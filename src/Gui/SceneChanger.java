@@ -15,7 +15,7 @@ public class SceneChanger {
     public void getArcade(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Arcade.fxml"));
         Scene arcadeScene = new Scene(root, 1270, 720);
-        Image image = new Image(this.getClass().getResourceAsStream("/dot_PNG40.png"));
+        Image image = new Image(this.getClass().getResourceAsStream("/Cursor1.png"));
         arcadeScene.setCursor(new ImageCursor(image));
         Stage arcadeWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         arcadeWindow.setScene(arcadeScene);
@@ -32,7 +32,7 @@ public class SceneChanger {
     public void getClassic(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Classic.fxml"));
         Scene classicScene = new Scene(root, 1270, 720);
-        Image image = new Image(this.getClass().getResourceAsStream("/dot_PNG40.png"));
+        Image image = new Image(this.getClass().getResourceAsStream("/Cursor1.png"));
         classicScene.setCursor(new ImageCursor(image));
         Stage classicWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
         classicWindow.setScene(classicScene);

@@ -11,7 +11,7 @@
       <!--         <effect>-->
       <!--            <GaussianBlur radius="50.0" />-->
       <!--         </effect>-->
-      <Image url="@/mainWallpaper.jpg"/>
+       <Image url="@/MainMenuBackground.jpg"/>
    </ImageView>
    <AnchorPane prefHeight="200.0" prefWidth="200.0">
       <AnchorPane layoutX="465.0" layoutY="35.0" prefHeight="650.0" prefWidth="350.0"
@@ -20,7 +20,7 @@
       </AnchorPane>
       <ImageView fx:id="back" fitHeight="72.0" fitWidth="74.0" layoutX="1130.0" layoutY="600.0" pickOnBounds="true"
                  preserveRatio="true">
-         <Image url="@/back.png"/>
+          <Image url="@/BackButton.png"/>
       </ImageView>
    </AnchorPane>
 </StackPane>

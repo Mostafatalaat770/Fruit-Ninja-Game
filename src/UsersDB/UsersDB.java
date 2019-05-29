@@ -7,9 +7,9 @@ import java.util.List;
  * @author Mostafa Talaat
  */
 public class UsersDB {
-    private static UsersDB instance = new UsersDB();
+    private static final UsersDB instance = new UsersDB();
     private Player player;
-    private List<Player> players = new ArrayList<>();
+    private final List<Player> players = new ArrayList<>();
 
     public static UsersDB getInstance() {
         return instance;

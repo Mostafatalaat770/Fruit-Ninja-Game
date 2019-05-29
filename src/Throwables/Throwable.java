@@ -25,9 +25,9 @@ public abstract class Throwable implements GameObject, Observer {
     private boolean leftToRight;
     private Image img1;
     private Image img2;
-    private Controller controller = Controller.getInstance();
+    private final Controller controller = Controller.getInstance();
 
-    public Throwable() {
+    protected Throwable() {
         controller.register(this);
         Random random=new Random();
         startPos=200+random.nextDouble()*680;
@@ -54,12 +54,12 @@ public abstract class Throwable implements GameObject, Observer {
     }
 
     @Override
-    public double getXlocation() {
+    public double getLocationX() {
         return x;
     }
 
     @Override
-    public double getYlocation() {
+    public double getLocationY() {
         return y;
     }
 
@@ -68,15 +68,6 @@ public abstract class Throwable implements GameObject, Observer {
         return maxHeight;
     }
 
-    @Override
-    public int getInitialVelocity() {
-        return 0;
-    }
-
-    @Override
-    public int getFallingVelocity() {
-        return 0;
-    }
     @Override
     public Boolean isSliced() {
         return sliced;
@@ -207,10 +198,6 @@ public abstract class Throwable implements GameObject, Observer {
         this.img1 = img1;
     }
 
-    public Image getImg2() {
-        return img2;
-    }
-
     public void setImg2(Image img2) {
         this.img2 = img2;
     }
@@ -227,12 +214,6 @@ public abstract class Throwable implements GameObject, Observer {
     }
     else if(hasMovedOffScreen())
         controller.unregister(this);
-    }
-
-
-    @Override
-    public void move(double time) {
-
     }
 
 

@@ -11,7 +11,7 @@
       <!--         <effect>-->
       <!--            <GaussianBlur radius="50.0" />-->
       <!--         </effect>-->
-       <Image url="@/mainWallpaper.jpg"/>
+       <Image url="@/MainMenuBackground.jpg"/>
    </ImageView>
    <AnchorPane prefHeight="720.0" prefWidth="1280.0">
        <AnchorPane layoutX="63.0" layoutY="28.0" prefHeight="650.0" prefWidth="700.0"
@@ -24,35 +24,35 @@
          </Text>
            <ImageView fx:id="wallpaper2" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="225.0"
                       pickOnBounds="true" preserveRatio="true">
-               <Image url="@/wallpaper2.jpg"/>
+               <Image url="@/Background2.jpg"/>
          </ImageView>
            <ImageView fx:id="wallpaper1" fitHeight="133.0" fitWidth="213.0" layoutX="35.0" layoutY="80.0"
                       pickOnBounds="true" preserveRatio="true">
-               <Image url="@/wallpaper1.jpg"/>
+               <Image url="@/Background1.jpg"/>
          </ImageView>
            <ImageView fx:id="wallpaper3" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="370.0"
                       pickOnBounds="true" preserveRatio="true">
-               <Image url="@/wallpaper3.png"/>
+               <Image url="@/Background3.png"/>
          </ImageView>
            <ImageView fx:id="wallpaper4" fitHeight="120.0" fitWidth="213.0" layoutX="35.0" layoutY="515.0"
                       pickOnBounds="true" preserveRatio="true">
-               <Image url="@/wallpaper4.png"/>
+               <Image url="@/Background4.png"/>
          </ImageView>
            <ImageView fx:id="wallpaper5" fitHeight="133.0" fitWidth="213.0" layoutX="455.0" layoutY="80.0"
                       pickOnBounds="true" preserveRatio="true">
-               <Image url="@/wallpaper5.png"/>
+               <Image url="@/Background5.png"/>
          </ImageView>
            <ImageView fx:id="wallpaper6" fitHeight="133.0" fitWidth="213.0" layoutX="455.0" layoutY="225.0"
                       pickOnBounds="true" preserveRatio="true">
-               <Image url="@/wallpaper6.png"/>
+               <Image url="@/Background6.png"/>
          </ImageView>
            <ImageView fx:id="wallpaper7" fitHeight="133.0" fitWidth="213.0" layoutX="455.0" layoutY="370.0"
                       pickOnBounds="true" preserveRatio="true">
-               <Image url="@/wallpaper7.png"/>
+               <Image url="@/Background7.png"/>
          </ImageView>
            <ImageView fx:id="wallpaper8" fitHeight="133.0" fitWidth="213.0" layoutX="455.0" layoutY="515.0"
                       pickOnBounds="true" preserveRatio="true">
-               <Image url="@/wallpaper8.png"/>
+               <Image url="@/Background8.png"/>
          </ImageView>
       </AnchorPane>
        <JFXToggleButton fx:id="soundToggle" layoutX="944.0" layoutY="319.0" text="Music" toggleColor="ORANGE"
@@ -63,7 +63,7 @@
       </JFXToggleButton>
        <ImageView fx:id="back" fitHeight="72.0" fitWidth="74.0" layoutX="1130.0" layoutY="600.0" pickOnBounds="true"
                   preserveRatio="true">
-           <Image url="@/back.png"/>
+           <Image url="@/BackButton.png"/>
       </ImageView>
        <JFXButton fx:id="help" buttonType="RAISED" layoutX="1100.0" layoutY="28.0" mnemonicParsing="false"
                   prefHeight="43.0" prefWidth="110.0" style="-fx-background-color: orange; -fx-background-radius: 200;"

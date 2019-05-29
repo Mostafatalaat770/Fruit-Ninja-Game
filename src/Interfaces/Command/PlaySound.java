@@ -25,57 +25,57 @@ public class PlaySound implements Command {
         String filename = null;
         switch (type) {
             case "main theme":
-                filename = "main-theme.wav";
+                filename = "MainTheme.wav";
                 break;
             case "time's up":
-                filename = "time-up.wav";
+                filename = "TimesUp.wav";
                 break;
             case "game over":
-                filename = "Game-over.wav";
+                filename = "GameOver.wav";
                 break;
             case "pause":
                 filename = "Pause.wav";
                 break;
             case "resumeMusic":
-                filename = "Unpause.wav";
+                filename = "Resume.wav";
                 break;
             case "press":
-                filename = "Next-screen-button.wav";
+                filename = "Button.wav";
                 break;
             case "equip wallpaper":
-                filename = "equip-new-wallpaper.wav";
+                filename = "NewBackground.wav";
                 break;
             case "start game":
-                filename = "Game-start.wav";
+                filename = "GameStart.wav";
                 break;
             case "throw bomb":
-                filename = "Throw-bomb.wav";
+                filename = "BombThrow.wav";
                 break;
             case "throw fruit":
             case "classic mode":
             case "arcade mode":
-                filename = "Throw-fruit.wav";
+                filename = "FruitThrow.wav";
                 break;
             case "exit":
-                filename = "menu-bomb.wav";
+                filename = "MainMenuExit.wav";
                 break;
             case "freeze":
-                filename = "Bonus-Banana-Freeze.wav";
+                filename = "FreezeBanana.wav";
                 break;
             case "extra life":
-                filename = "extra-life.wav";
+                filename = "ExtraLife.wav";
                 break;
             case "high score":
-                filename = "New-best-score.wav";
+                filename = "NewHighScore.wav";
                 break;
             case "bomb explode":
-                filename = "Bomb-explode.wav";
+                filename = "BombExplode.wav";
                 break;
             case "slice":
-                filename = "pome-slice-1.wav";
+                filename = "FruitSlice.wav";
                 break;
             case "lose life":
-                filename = "gank.wav";
+                filename = "LoseLife.wav";
                 break;
             case "combo":
                 filename = "Combo.wav";
