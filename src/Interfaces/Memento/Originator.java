@@ -5,7 +5,7 @@ import Gui.Controller.Controller;
 /**
  * @author Mostafa Talaat
  */
-public class Originator {
+class Originator {
     private Controller state;
 
     public Controller getState() {

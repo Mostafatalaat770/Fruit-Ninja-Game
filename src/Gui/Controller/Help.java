@@ -18,7 +18,7 @@ public class Help implements Initializable {
     public Text text4;
     public Text text5;
     @FXML private ImageView back;
-    Controller controller=Controller.getInstance();
+    final Controller controller = Controller.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

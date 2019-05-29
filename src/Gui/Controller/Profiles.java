@@ -27,8 +27,8 @@ public class Profiles implements Initializable {
 @FXML private JFXTextField usernameTextField;
 @FXML private JFXButton logIn;
 @FXML private JFXButton signUp;
-    Controller controller = Controller.getInstance();
-    private ArrayList<String> names = new ArrayList<>();
+    final Controller controller = Controller.getInstance();
+    private final ArrayList<String> names = new ArrayList<>();
     private ObservableList<String> usernames = FXCollections.observableArrayList();
 
 
@@ -59,7 +59,7 @@ public class Profiles implements Initializable {
                 } catch (JDOMException | IOException e) {
                     e.printStackTrace();
                 }
-                //goes to main screeen
+                // goes to main screen
                 controller.playSound("press", 0);
                 SceneChanger sceneChanger=new SceneChanger();
                 try {

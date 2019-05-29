@@ -6,7 +6,7 @@ import Interfaces.GameObject;
  * @author Mostafa Talaat
  */
 public class Strategy {
-    private GameMode gameMode;
+    private final GameMode gameMode;
 
 
     public Strategy(GameMode gameMode) {

@@ -9,7 +9,7 @@ import Interfaces.Factory.ClassicMode;
  */
 public class Player {
 
-    private String username;
+    private final String username;
     private int arcadeScore;
     private int classicScore;
 

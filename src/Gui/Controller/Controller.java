@@ -30,12 +30,12 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author Mostafa Talaat
  */
 public class Controller implements GameActions {
-    private static Controller ourInstance = new Controller();
-    public ArrayList<GameObject> throwables = new ArrayList<>();
-    public Settings settings = Settings.getInstance();
+    private static final Controller ourInstance = new Controller();
+    public final ArrayList<GameObject> throwables = new ArrayList<>();
+    public final Settings settings = Settings.getInstance();
     public Strategy gameMode = null;
     public int score = 0;
-    public int personalHighscore = 0;
+    public final UsersDB usersDB = UsersDB.getInstance();
     private int highestScore = 0;
     public int secs = 0;
     public int mins = 0;
@@ -49,13 +49,13 @@ public class Controller implements GameActions {
     private boolean comboEffect = false;
     public int luckyStrike = 1;
     public int fatalBombRateControl = 0;
-    public UsersDB usersDB = UsersDB.getInstance();
-    private Files files = new Files();
-    private Invoker invoker = new Invoker();
-    private ArrayList<Observer> observers = new ArrayList<Observer>();
+    private final Files files = new Files();
+    private final Invoker invoker = new Invoker();
+    private final ArrayList<Observer> observers = new ArrayList<Observer>();
+    private final Random random = new Random();
     private boolean personalScorePassed = false;
     private boolean highestScorePassed = false;
-    private Random random=new Random();
+    public int personalHighScore = 0;
 
 
     public static Controller getInstance() {
@@ -78,7 +78,7 @@ public class Controller implements GameActions {
         comboChecker = 0;
         comboEffect = false;
         comboTimer = 0;
-        personalHighscore = usersDB.getPlayer().getScore();
+        personalHighScore = usersDB.getPlayer().getScore();
         highestScore = gameMode.getHighScore();
 
     }
@@ -111,7 +111,7 @@ public class Controller implements GameActions {
         comboChecker = 0;
         comboEffect = false;
         comboTimer = 0;
-        personalHighscore = usersDB.getPlayer().getScore();
+        personalHighScore = usersDB.getPlayer().getScore();
         highestScore = gameMode.getHighScore();
 
     }
@@ -162,7 +162,7 @@ public class Controller implements GameActions {
         }
         Font theFont1 = Font.font("Gang Of Three", 15);
         gc.setFont(theFont1);
-        gc.fillText("best: " + personalHighscore, 20, 50);
+        gc.fillText("best: " + personalHighScore, 20, 50);
         gc.fillText("all time best: " + highestScore, 20, 70);
 
 
@@ -174,17 +174,15 @@ public class Controller implements GameActions {
 
     public void slice(double x, double y) throws InterruptedException {
         for (GameObject throwable : throwables) {
-            if (x > throwable.getXlocation() && x < throwable.getXlocation() + throwable.getImg1().getWidth() && y > throwable.getYlocation() && y < throwable.getYlocation() + throwable.getImg1().getHeight()) {
+            if (x > throwable.getLocationX() && x < throwable.getLocationX() + throwable.getImg1().getWidth() && y > throwable.getLocationY() && y < throwable.getLocationY() + throwable.getImg1().getHeight()) {
 
                 if (!throwable.isSliced()) {
-                    if (comboEffect == false) {
+                    if (!comboEffect) {
                         comboEffect = true;
                     }
-                    if (comboEffect == true) {
-                        comboChecker++;
-                    }
+                    comboChecker++;
                     throwable.slice(getInstance());
-                    notifyallobservers();
+                    notifyAllObservers();
                     updateScore();
                 }
             }
@@ -236,14 +234,14 @@ public class Controller implements GameActions {
                 playSound("high score", 0);
             }
             usersDB.getPlayer().setScore(score);
-            personalHighscore = usersDB.getPlayer().getScore();
+            personalHighScore = usersDB.getPlayer().getScore();
         }
-        if (highestScore < personalHighscore) {
+        if (highestScore < personalHighScore) {
             if (!highestScorePassed) {
                 highestScorePassed = true;
                 playSound("high score", 0);
             }
-            highestScore = personalHighscore;
+            highestScore = personalHighScore;
         }
     }
 
@@ -311,7 +309,7 @@ public class Controller implements GameActions {
         observers.remove(O);
     }
 
-    private void notifyallobservers() {
+    private void notifyAllObservers() {
         int size = observers.size();
         while (size-- > 0)
             observers.get(size).update();

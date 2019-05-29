@@ -7,12 +7,12 @@ import javafx.scene.image.Image;
  * @author Mostafa Talaat
  */
 public class MagicBeans extends SpecialFruit {
-    private Controller controller = Controller.getInstance();
+    private final Controller controller = Controller.getInstance();
 
     public MagicBeans() {
         super();
-        super.setImg1(new Image(this.getClass().getResourceAsStream("/Magic_Bean.png"), 75, 75, true, true));
-        super.setImg2(new Image(this.getClass().getResourceAsStream("/Sliced_Magic_Bean.png"), 75, 75, true, true));
+        super.setImg1(new Image(this.getClass().getResourceAsStream("/MagicBean.png"), 75, 75, true, true));
+        super.setImg2(new Image(this.getClass().getResourceAsStream("/MagicBeanSliced.png"), 75, 75, true, true));
     }
 
     @Override

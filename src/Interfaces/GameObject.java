@@ -8,27 +8,17 @@ public interface GameObject {
     /**
      * @return X location of game object
      */
-    double getXlocation();
+    double getLocationX();
 
     /**
      * @return Y location of game object
      */
-    double getYlocation();
+    double getLocationY();
 
     /**
      * @return max Y location that the object can reach on the screen
      */
     double getMaxHeight();
-
-    /**
-     * @return velocity at which game object is thrown
-     */
-    int getInitialVelocity();
-
-    /**
-     * @return failing velocity of game object
-     */
-    int getFallingVelocity();
 
     /**
      * @return whether the object is sliced or not
@@ -90,22 +80,11 @@ public interface GameObject {
 
     void setImg1(Image img1);
 
-    Image getImg2();
-
     void setImg2(Image img2);
 
     boolean isLeftToRight();
 
     void setLeftToRight(boolean leftToRight);
-
-    /**
-     * it is used to move the object on the screen
-     *
-     * @param time: time elapsed since the object is thrown
-     *              it is used calculate the new position of
-     *              fruit object.
-     */
-    void move(double time);
 
     /**
      * @return the type of game object
@@ -118,7 +97,7 @@ public interface GameObject {
     void render(GraphicsContext gc);
 
     /**
-     * updates the movment of any fruit
+     * updates the movement of any fruit
      */
     void updatePosition();
 

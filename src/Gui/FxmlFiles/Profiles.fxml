@@ -15,7 +15,7 @@
         <!--         <effect>-->
         <!--            <GaussianBlur radius="50.0" />-->
         <!--         </effect>-->
-        <Image url="@/mainWallpaper.jpg"/>
+        <Image url="@/MainMenuBackground.jpg"/>
     </ImageView>
     <AnchorPane prefHeight="1280.0" prefWidth="1280.0">
         <AnchorPane layoutX="65.0" layoutY="61.0" prefHeight="598.0" prefWidth="486.0"

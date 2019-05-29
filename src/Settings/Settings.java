@@ -4,9 +4,9 @@ package Settings;
  * @author Mostafa Talaat
  */
 public class Settings {
-    private static Settings ourInstance = new Settings();
-    private Sounds sounds = new Sounds();
-    private Backgrounds backgrounds = new Backgrounds();
+    private static final Settings ourInstance = new Settings();
+    private final Sounds sounds = new Sounds();
+    private final Backgrounds backgrounds = new Backgrounds();
 
     private Settings() {
     }

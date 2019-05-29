@@ -7,12 +7,12 @@ import javafx.scene.image.Image;
  * @author Mostafa Talaat
  */
 public class DangerousBomb extends Bomb {
-    private Controller controller = Controller.getInstance();
+    private final Controller controller = Controller.getInstance();
 
     public DangerousBomb() {
         super();
-        super.setImg1(new Image(this.getClass().getResourceAsStream("/-10_Bomb.png"), 75, 75, true, true));
-        super.setImg2(new Image(this.getClass().getResourceAsStream("/-10_Bomb_Sliced.png"), 75, 75, true, true));
+        super.setImg1(new Image(this.getClass().getResourceAsStream("/-10Bomb.png"), 75, 75, true, true));
+        super.setImg2(new Image(this.getClass().getResourceAsStream("/-10BombSliced.png"), 75, 75, true, true));
     }
 
     @Override

@@ -6,8 +6,8 @@ import java.util.List;
 /**
  * @author Mostafa Talaat
  */
-public class CareTaker {
-    private List<Memento> mementoList = new ArrayList<Memento>();
+class CareTaker {
+    private final List<Memento> mementoList = new ArrayList<>();
 
     void add(Memento state) {
         mementoList.add(state);

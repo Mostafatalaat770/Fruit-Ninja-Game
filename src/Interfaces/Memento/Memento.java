@@ -6,7 +6,7 @@ import Gui.Controller.Controller;
  * @author Mostafa Talaat
  */
 class Memento {
-    private Controller state;
+    private final Controller state;
 
     Memento(Controller state) {
         this.state = state;

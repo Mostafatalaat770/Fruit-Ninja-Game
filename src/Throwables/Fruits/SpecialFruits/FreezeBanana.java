@@ -8,11 +8,11 @@ import javafx.scene.image.Image;
  */
 public class FreezeBanana extends SpecialFruit {
 
-    private Controller controller = Controller.getInstance();
+    private final Controller controller = Controller.getInstance();
     public FreezeBanana() {
         super();
-        super.setImg1(new Image(this.getClass().getResourceAsStream("/Freeze_Banana.png"), 75, 75, true, true));
-        super.setImg2(new Image(this.getClass().getResourceAsStream("/SlicedFreezeBanana.png"), 75, 75, true, true));
+        super.setImg1(new Image(this.getClass().getResourceAsStream("/FreezeBanana.png"), 75, 75, true, true));
+        super.setImg2(new Image(this.getClass().getResourceAsStream("/FreezeBananaSliced.png"), 75, 75, true, true));
     }
 
     @Override
