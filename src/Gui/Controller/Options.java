@@ -36,8 +36,8 @@ public class Options implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        help.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 20));
-        credits.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 20));
+        help.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 16));
+        credits.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 16));
         text1.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 29));
         soundToggle.setSelected(controller.settings.getSounds().isMusic());
         FXToggle.setSelected(controller.settings.getSounds().isFx());

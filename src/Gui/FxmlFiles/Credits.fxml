@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8"
-           fx:controller="Gui.Controller.Credits">
+<StackPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="720.0" prefWidth="1280.0"
+           xmlns="http://javafx.com/javafx/8.0.172-ea" fx:controller="Gui.Controller.Credits">
    <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
       <!--         <effect>-->
       <!--            <GaussianBlur radius="50.0" />-->
@@ -15,12 +14,12 @@
       <Image url="@/mainWallpaper.jpg"/>
    </ImageView>
    <AnchorPane prefHeight="200.0" prefWidth="200.0">
-      <AnchorPane layoutX="452.0" prefHeight="720.0" prefWidth="377.0"
+      <AnchorPane layoutX="465.0" layoutY="35.0" prefHeight="650.0" prefWidth="350.0"
                   style="-fx-background-color: orange; -fx-background-radius: 20;">
-         <Canvas fx:id="canvas" height="720.0" width="378.0"/>
+         <Canvas fx:id="canvas" height="650.0" width="350.0"/>
       </AnchorPane>
-      <ImageView fx:id="back" fitHeight="65.0" fitWidth="78.0" layoutX="1184.0" layoutY="627.0"
-                 pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="back" fitHeight="72.0" fitWidth="74.0" layoutX="1130.0" layoutY="600.0" pickOnBounds="true"
+                 preserveRatio="true">
          <Image url="@/back.png"/>
       </ImageView>
    </AnchorPane>
