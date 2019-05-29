@@ -108,9 +108,7 @@ public class MainMenu implements Initializable {
         transition10.setByX(-5);
 
 
-
-
-       classic_img.setOnMouseExited((event) -> {
+        classic_img.setOnMouseDragged((event) -> {
     	   if(!selected) {
     		   selected = true;
     		   	classic_img.setVisible(false);
@@ -137,7 +135,7 @@ public class MainMenu implements Initializable {
     	   }
        });
 
-       arcade_img.setOnMouseExited((event) -> {
+        arcade_img.setOnMouseDragged((event) -> {
     	   if(!selected) {
     		   selected = true;
     		   arcade_img.setVisible(false);
@@ -163,7 +161,7 @@ public class MainMenu implements Initializable {
     	   }
        });
 
-       exit_img.setOnMouseExited((event) -> {
+        exit_img.setOnMouseDragged((event) -> {
            controller.settings.getSounds().getMainTheme().stop();
            controller.playSound("exit", 0);
            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
