@@ -17,10 +17,6 @@ public class Strategy {
         return gameMode.createObject();
     }
 
-    public void sort() {
-        gameMode.sort();
-    }
-
     public int getHighScore() {
         return gameMode.getHighScore();
     }

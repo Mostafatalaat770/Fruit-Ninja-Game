@@ -9,9 +9,7 @@ import Throwables.Fruits.Banana;
 import Throwables.Fruits.Melon;
 import Throwables.Fruits.Orange;
 import Throwables.Fruits.SpecialFruits.FreezeBanana;
-import UsersDB.Player;
 
-import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -43,24 +41,10 @@ public class ArcadeMode implements GameMode {
         return null;
     }
 
-    public void sort() {
-        for (int i = 0; i < controller.usersDB.getPlayers().size() - 1; i++) {
-            for (int j = 0; j < controller.usersDB.getPlayers().size() - i - 1; j++) {
-                if (controller.usersDB.getPlayers().get(j).getArcadeScore() < controller.usersDB.getPlayers().get(j + 1).getArcadeScore()) {
-                    Collections.swap(controller.usersDB.getPlayers(), j, j + 1);
-                }
-            }
-        }
-    }
+
 
     public int getHighScore() {
-        int max = 0;
-        for (Player player : controller.usersDB.getPlayers()) {
-            if (player.getArcadeScore() > max) {
-                max = player.getArcadeScore();
-            }
-        }
-        return max;
+        return controller.usersDB.getHighestScore(2);
     }
 
     public boolean validate(int score) {

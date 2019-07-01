@@ -2,9 +2,7 @@ package Gui.Controller;
 
 
 import Gui.SceneChanger;
-import Interfaces.Factory.ArcadeMode;
-import Interfaces.Factory.ClassicMode;
-import Interfaces.Strategy.Strategy;
+import UsersDB.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -16,6 +14,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Leaderboard implements Initializable {
@@ -38,16 +37,16 @@ public class Leaderboard implements Initializable {
         text2.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 50));
         text3.setFont(Font.loadFont(this.getClass().getResourceAsStream("/fonts/GangOfThree.ttf"), 50));
 
-        controller.gameMode = new Strategy(new ClassicMode());
-        controller.gameMode.sort();
-        for (int i=0;i<controller.usersDB.getPlayers().size();i++){
-            leaderboardClassic.getItems().add(new PlayerLeaderboard(controller.usersDB.getPlayers().get(i).getUsername(),controller.usersDB.getPlayers().get(i).getClassicScore()));
+
+        List<Player> players = controller.usersDB.query(1);
+        for (Player player : players) {
+            leaderboardClassic.getItems().add(new PlayerLeaderboard(player.getUsername(), player.getClassicScore()));
         }
 
-        controller.gameMode = new Strategy(new ArcadeMode());
-        controller.gameMode.sort();
-        for (int i=0;i<controller.usersDB.getPlayers().size();i++){
-            leaderboardArcade.getItems().add(new PlayerLeaderboard(controller.usersDB.getPlayers().get(i).getUsername(),controller.usersDB.getPlayers().get(i).getArcadeScore()));
+        players = controller.usersDB.query(2);
+
+        for (Player player : players) {
+            leaderboardArcade.getItems().add(new PlayerLeaderboard(player.getUsername(), player.getArcadeScore()));
         }
 
         usernameClassic.setCellValueFactory(new PropertyValueFactory<>("username"));

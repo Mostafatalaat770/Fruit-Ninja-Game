@@ -79,6 +79,11 @@ public class Profiles implements Initializable {
                 controller.settings.getSounds().setMusic(true);
                 controller.settings.getSounds().setFx(true);
                 controller.settings.changeBackground(1);
+                try {
+                    controller.saveSettings();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 // goes to main menu
                 controller.playSound("press", 0);

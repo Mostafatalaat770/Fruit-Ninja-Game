@@ -9,9 +9,7 @@ import Throwables.Fruits.Banana;
 import Throwables.Fruits.Melon;
 import Throwables.Fruits.Orange;
 import Throwables.Fruits.SpecialFruits.MagicBeans;
-import UsersDB.Player;
 
-import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -45,24 +43,10 @@ public class ClassicMode implements GameMode {
         return null;
     }
 
-    public void sort() {
-        for (int i = 0; i < controller.usersDB.getPlayers().size() - 1; i++) {
-            for (int j = 0; j < controller.usersDB.getPlayers().size() - i - 1; j++) {
-                if (controller.usersDB.getPlayers().get(j).getClassicScore() < controller.usersDB.getPlayers().get(j + 1).getClassicScore()) {
-                    Collections.swap(controller.usersDB.getPlayers(), j, j + 1);
-                }
-            }
-        }
-    }
+
 
     public int getHighScore() {
-        int max = 0;
-        for (Player player : controller.usersDB.getPlayers()) {
-            if (player.getClassicScore() > max) {
-                max = player.getClassicScore();
-            }
-        }
-        return max;
+        return controller.usersDB.getHighestScore(1);
     }
 
     public boolean validate(int score) {
