@@ -11,7 +11,6 @@ import Throwables.Fruits.Melon;
 import Throwables.Fruits.Orange;
 import Throwables.Fruits.SpecialFruits.FreezeBanana;
 import Throwables.Fruits.SpecialFruits.MagicBeans;
-import UsersDB.Player;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -246,42 +245,9 @@ public class FilesManagement {
         }
     }
 
-    public void savePlayers(Controller controller) throws IOException {
-        Element levelElement = new Element("Players");
-        Document doc = new Document(levelElement);
-        Element parent;
-        Element child;
-        Player player;
-        for (int i = 0; i < controller.usersDB.getPlayers().size(); i++) {
-            player = controller.usersDB.getPlayers().get(i);
-            parent = new Element("player" + (i + 1));
+    public void savePlayers(Controller controller) {
 
-            child = new Element("name");
-            child.setText(player.getUsername());
-            parent.addContent(child);
-
-            child = new Element("arcadeScore");
-            child.setText(Integer.toString(player.getArcadeScore()));
-            parent.addContent(child);
-
-            child = new Element("classicScore");
-            child.setText(Integer.toString(player.getClassicScore()));
-            parent.addContent(child);
-            doc.getRootElement().addContent(parent);
-        }
-
-
-        XMLOutputter xmlOutput = new XMLOutputter();
-
-        File file = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Players");
-        if (file.mkdirs()) {
-            file.createNewFile();
-        }
-        xmlOutput.setFormat(Format.getPrettyFormat());
-        xmlOutput.output(doc, new FileWriter(file + "/players.txt"));
-
-        //--------------------------- Settings for selected user --------------------------//
-
+        controller.usersDB.updatePlayer();
 
     }
 
@@ -311,17 +277,10 @@ public class FilesManagement {
         xmlOutput.output(doc, new FileWriter(file + "/settings.txt"));
     }
 
-    public void loadPlayers(Controller controller) throws JDOMException, IOException {
-        File inputFile = new File(System.getProperty("user.home") + File.separator + "Documents" + File.separator + "Fruit Ninja Game/Players" + File.separator + "players.txt");
-        SAXBuilder saxBuilder = new SAXBuilder();
+    public void loadPlayers(Controller controller) {
 
-        Document document = saxBuilder.build(inputFile);
+        controller.usersDB.setPlayers(controller.usersDB.query(0));
 
-        List<Element> children = document.getRootElement().getChildren();
-
-        for (Element child : children) {
-            controller.usersDB.addUser(child.getChildText("name"), Integer.parseInt(child.getChildText("arcadeScore")), Integer.parseInt(child.getChildText("classicScore")));
-        }
     }
 
     public void loadSettings(Controller controller) throws JDOMException, IOException {
