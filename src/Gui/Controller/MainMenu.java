@@ -6,7 +6,6 @@
 package Gui.Controller;
 
 
-import Gui.SceneChanger;
 import Interfaces.Factory.ArcadeMode;
 import Interfaces.Factory.ClassicMode;
 import Interfaces.Strategy.Strategy;
@@ -118,12 +117,11 @@ public class MainMenu implements Initializable {
                controller.settings.getSounds().getMainTheme().stop();
                controller.playSound("slice", 0);
            		transition3.setOnFinished((event1) -> {
-                    SceneChanger sceneChanger=new SceneChanger();
-					try {
+                    try {
                     	controller.type = "classic";
                     	controller.gameMode = new Strategy(new ClassicMode());
                     	controller.ResetGame();
-                    	sceneChanger.getClassic(event);
+                        controller.sceneChanger.getClassic(event);
                     } catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -145,12 +143,11 @@ public class MainMenu implements Initializable {
                controller.settings.getSounds().getMainTheme().stop();
                controller.playSound("slice", 0);
     		   transition7.setOnFinished((event1) -> {
-                   SceneChanger sceneChanger=new SceneChanger();
-    			   try {
+                   try {
     				   controller.type = "arcade";
     				   controller.gameMode = new Strategy(new ArcadeMode());
     				   controller.ResetGame();
-    				   sceneChanger.getArcade(event);
+                       controller.sceneChanger.getArcade(event);
     			   } catch (IOException e) {
     				   e.printStackTrace();
     			   }
@@ -179,12 +176,11 @@ public class MainMenu implements Initializable {
        loadClassic.setOnMouseClicked(event -> {
            controller.settings.getSounds().getMainTheme().stop();
            controller.playSound("press", 0);
-           SceneChanger sceneChanger=new SceneChanger();
            try {
                controller.type = "classic";
                controller.gameMode = new Strategy(new ClassicMode());
                controller.loadGame();
-               sceneChanger.getClassic(event);
+               controller.sceneChanger.getClassic(event);
            } catch (IOException | JDOMException e) {
                e.printStackTrace();
            }
@@ -193,12 +189,11 @@ public class MainMenu implements Initializable {
        loadArcade.setOnMouseClicked(event -> {
            controller.settings.getSounds().getMainTheme().stop();
            controller.playSound("press", 0);
-           SceneChanger sceneChanger=new SceneChanger();
            try {
                controller.type = "arcade";
                controller.gameMode = new Strategy(new ArcadeMode());
                controller.loadGame();
-               sceneChanger.getArcade(event);
+               controller.sceneChanger.getArcade(event);
            } catch (IOException | JDOMException e) {
                // TODO Auto-generated catch block
                e.printStackTrace();
@@ -207,9 +202,8 @@ public class MainMenu implements Initializable {
 
        options.setOnMouseClicked(event -> {
            controller.playSound("press", 0);
-           SceneChanger sceneChanger=new SceneChanger();
            try {
-               sceneChanger.getOptions(event);
+               controller.sceneChanger.getOptions(event);
            } catch (IOException e) {
                // TODO Auto-generated catch block
                e.printStackTrace();
@@ -218,9 +212,8 @@ public class MainMenu implements Initializable {
 
        leaderboard.setOnMouseClicked(event -> {
            controller.playSound("press", 0);
-           SceneChanger sceneChanger=new SceneChanger();
            try {
-               sceneChanger.getLeaderboard(event);
+               controller.sceneChanger.getLeaderboard(event);
            } catch (IOException e) {
                e.printStackTrace();
            }

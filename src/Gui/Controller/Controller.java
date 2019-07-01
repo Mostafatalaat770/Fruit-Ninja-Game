@@ -1,5 +1,6 @@
 package Gui.Controller;
 
+import Gui.SceneChanger;
 import Interfaces.Command.Command;
 import Interfaces.Command.Invoker;
 import Interfaces.Command.PlaySound;
@@ -57,6 +58,8 @@ public class Controller implements GameActions {
     private boolean highestScorePassed = false;
     public int personalHighScore = 0;
     public boolean inGame = false; // for in-game button functionality
+
+    public SceneChanger sceneChanger = SceneChanger.getInstance();
 
     public static Controller getInstance() {
         return ourInstance;

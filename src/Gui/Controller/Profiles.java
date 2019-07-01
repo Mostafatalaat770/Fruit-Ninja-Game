@@ -1,6 +1,5 @@
 package Gui.Controller;
 
-import Gui.SceneChanger;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
@@ -61,9 +60,8 @@ public class Profiles implements Initializable {
                 }
                 // goes to main screen
                 controller.playSound("press", 0);
-                SceneChanger sceneChanger=new SceneChanger();
                 try {
-                    sceneChanger.getMainMenu(event);
+                    controller.sceneChanger.getMainMenu(event);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -92,9 +90,8 @@ public class Profiles implements Initializable {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                SceneChanger sceneChanger=new SceneChanger();
                 try {
-                    sceneChanger.getMainMenu(event);
+                    controller.sceneChanger.getMainMenu(event);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

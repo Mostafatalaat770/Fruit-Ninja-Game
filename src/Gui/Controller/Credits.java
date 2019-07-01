@@ -1,6 +1,5 @@
 package Gui.Controller;
 
-import Gui.SceneChanger;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -66,9 +65,8 @@ public class Credits implements Initializable {
        back.setOnMouseClicked(event -> {
            timer.stop();
            controller.playSound("press", 0);
-           SceneChanger sceneChanger=new SceneChanger();
            try {
-               sceneChanger.getOptions(event);
+               controller.sceneChanger.getOptions(event);
            } catch (IOException e) {
                e.printStackTrace();
            }
