@@ -272,7 +272,7 @@ public class Controller implements GameActions {
         return invoker.playSound(type, duration);
     }
 
-    public void resumeMusic() {
+    void resumeMusic() {
         Command playSound = new PlaySound();
         invoker.setCommand(playSound);
         invoker.resume();
@@ -353,7 +353,7 @@ public class Controller implements GameActions {
     }
 
 
-    public void saveSettings() throws IOException {
+    void saveSettings() throws IOException {
         files.saveSettings(getInstance());
     }
 }
