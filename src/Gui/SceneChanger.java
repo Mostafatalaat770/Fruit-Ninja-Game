@@ -12,62 +12,71 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SceneChanger {
+    private static SceneChanger instance = new SceneChanger();
+    Scene scene = null;
+    Stage stage = null;
+    Parent root = null;
+
+    public static SceneChanger getInstance() {
+        return instance;
+    }
+
     public void getArcade(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Arcade.fxml"));
-        Scene arcadeScene = new Scene(root, 1270, 720);
+        root = FXMLLoader.load(getClass().getResource("FxmlFiles/Arcade.fxml"));
+        scene = new Scene(root, 1270, 720);
         Image image = new Image(this.getClass().getResourceAsStream("/Cursor1.png"));
-        arcadeScene.setCursor(new ImageCursor(image));
-        Stage arcadeWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        arcadeWindow.setScene(arcadeScene);
-        arcadeWindow.show();
+        scene.setCursor(new ImageCursor(image));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
     public void getOptions(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Settings.fxml"));
-        Scene arcadeScene = new Scene(root, 1270, 720);
-        Stage arcadeWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        arcadeWindow.setScene(arcadeScene);
-        arcadeWindow.show();
+        root = FXMLLoader.load(getClass().getResource("FxmlFiles/Settings.fxml"));
+        scene = new Scene(root, 1270, 720);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void getClassic(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Classic.fxml"));
-        Scene classicScene = new Scene(root, 1270, 720);
+        root = FXMLLoader.load(getClass().getResource("FxmlFiles/Classic.fxml"));
+        scene = new Scene(root, 1270, 720);
         Image image = new Image(this.getClass().getResourceAsStream("/Cursor1.png"));
-        classicScene.setCursor(new ImageCursor(image));
-        Stage classicWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        classicWindow.setScene(classicScene);
-        classicWindow.show();
+        scene.setCursor(new ImageCursor(image));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void getMainMenu(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/MainMenu.fxml"));
-        Scene classicScene = new Scene(root, 1270, 720);
-        Stage classicWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        classicWindow.setScene(classicScene);
-        classicWindow.show();
+        root = FXMLLoader.load(getClass().getResource("FxmlFiles/MainMenu.fxml"));
+        scene = new Scene(root, 1270, 720);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void getLeaderboard(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Leaderboard.fxml"));
-        Scene classicScene = new Scene(root, 1270, 720);
-        Stage classicWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        classicWindow.setScene(classicScene);
-        classicWindow.show();
+        root = FXMLLoader.load(getClass().getResource("FxmlFiles/Leaderboard.fxml"));
+        scene = new Scene(root, 1270, 720);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void getHelp(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Help.fxml"));
-        Scene classicScene = new Scene(root, 1270, 720);
-        Stage classicWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        classicWindow.setScene(classicScene);
-        classicWindow.show();
+        root = FXMLLoader.load(getClass().getResource("FxmlFiles/Help.fxml"));
+        scene = new Scene(root, 1270, 720);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
     public void getCredits(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FxmlFiles/Credits.fxml"));
-        Scene classicScene = new Scene(root, 1270, 720);
-        Stage classicWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        classicWindow.setScene(classicScene);
-        classicWindow.show();
+        root = FXMLLoader.load(getClass().getResource("FxmlFiles/Credits.fxml"));
+        scene = new Scene(root, 1270, 720);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 

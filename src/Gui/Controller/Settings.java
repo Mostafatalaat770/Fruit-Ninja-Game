@@ -1,6 +1,5 @@
 package Gui.Controller;
 
-import Gui.SceneChanger;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -51,21 +50,20 @@ public class Settings implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            SceneChanger sceneChanger=new SceneChanger();
 
             try {
                 if (controller.inGame) {
                     switch (controller.type) {
                         case "classic":
-                            sceneChanger.getClassic(event);
+                            controller.sceneChanger.getClassic(event);
                             break;
 
                         case "arcade":
-                            sceneChanger.getArcade(event);
+                            controller.sceneChanger.getArcade(event);
                             break;
                     }
                 } else {
-                    sceneChanger.getMainMenu(event);
+                    controller.sceneChanger.getMainMenu(event);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -75,9 +73,8 @@ public class Settings implements Initializable {
 
         help.setOnMouseClicked(event -> {
             controller.playSound("press", 0);
-            SceneChanger sceneChanger=new SceneChanger();
             try {
-                sceneChanger.getHelp(event);
+                controller.sceneChanger.getHelp(event);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -85,9 +82,8 @@ public class Settings implements Initializable {
 
         credits.setOnMouseClicked(event -> {
             controller.playSound("press", 0);
-            SceneChanger sceneChanger=new SceneChanger();
             try {
-                sceneChanger.getCredits(event);
+                controller.sceneChanger.getCredits(event);
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -1,6 +1,5 @@
 package Gui.Controller;
 
-import Gui.SceneChanger;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -43,6 +42,7 @@ public class Arcade implements Initializable {
     private boolean stopAll = true;
     private GraphicsContext gc;
     private boolean timesUp = false;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -214,9 +214,9 @@ public class Arcade implements Initializable {
                 timer.stop();
                 clock.stop();
                 controller.inGame = true;
-                SceneChanger sceneChanger = new SceneChanger();
+
                 try {
-                    sceneChanger.getOptions(event);
+                    controller.sceneChanger.getOptions(event);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -232,9 +232,9 @@ public class Arcade implements Initializable {
                 timer.stop();
                 clock.stop();
                 controller.resumeMusic();
-                SceneChanger sceneChanger = new SceneChanger();
+
                 try {
-                    sceneChanger.getMainMenu(event);
+                    controller.sceneChanger.getMainMenu(event);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

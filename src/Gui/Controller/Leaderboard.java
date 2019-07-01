@@ -1,7 +1,6 @@
 package Gui.Controller;
 
 
-import Gui.SceneChanger;
 import UsersDB.Player;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -56,10 +55,9 @@ public class Leaderboard implements Initializable {
 
         back.setOnMouseClicked(event -> {
             controller.playSound("press", 0);
-            SceneChanger sceneChanger=new SceneChanger();
             try {
 
-                sceneChanger.getMainMenu(event);
+                controller.sceneChanger.getMainMenu(event);
             } catch (IOException e) {
                 e.printStackTrace();
             }
